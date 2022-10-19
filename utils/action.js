@@ -1,5 +1,9 @@
 // 登录,退出,授权相关方法类
-import { login, userInfo } from '../api/login'
+import {
+  login,
+  userInfo,
+  updateUserInfo
+} from '../api/login'
 import initAxios from '../request/create'
 
 // 微信登录
@@ -8,29 +12,66 @@ export function weLogin() {
     wx.login({
       success(res) {
         if (res.code) {
-          login({ code: res.code, 'mode': 'mini_program_code' }).then((info) => {
+          login({
+            code: res.code
+          }).then((info) => {
+            //  需要做个单独处理
             switch (info.status) {
               // 登录成功
               case 'LOGIN_SUCCESS':
                 wx.setStorageSync('token', info.access_token)
                 initAxios()
-                resolve(info)
+                resolve(info.data)
                 break
-              // 没有绑定
+                // 没有绑定
               case 'NO_BIND':
-                // 进入绑定逻辑
-                wx.setStorage({ key: 'ticket', data: info.ticket })
-                reject(info)
+                // 注册逻辑，需要绑定用户数据
+                reject({
+                  ...info,
+                  type: 'register'
+                })
+
                 break
             }
             resolve(info)
           }).catch((error) => {
-            console.log(error)
             reject(error)
           })
         }
       }
     })
+  })
+}
+export function WxGetUserInfo() {
+  return new Promise((resolve, reject) => {
+  wx.getSetting({
+    success(res){
+      if(res.authSetting['scope.userInfo']) {
+        //  说明已经授权了
+        wx.getUserInfo({
+          lang: 'zh_CN',
+          withCredentials: true,
+          success(res) {
+            console.log(res, '用户信息')
+            updateUserInfo(res.userInfo).then((info) => {
+              wx.setStorageSync('token', info.access_token)
+              initAxios()
+              resolve(info.data)
+            }).catch((e) => {
+              reject(e)
+            })
+          },
+          fail(e) {
+            reject(e)
+          }
+        })
+      }
+    },
+    fail() {
+      console.log('用户未授权进行登录！')
+    }
+  })
+    
   })
 }
 

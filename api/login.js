@@ -12,7 +12,14 @@ export function login(data) {
 // 获取用户信息
 export function getInfo() {
   return request.axios({
-    method: 'get',
-    url: '/users/me'
+    method: 'post',
+    url: '/getUserInfo'
+  })
+}
+// 获取用户信息
+export function updateUserInfo() {
+  return request.axios({
+    method: 'post',
+    url: '/updateUserInfo'
   })
 }

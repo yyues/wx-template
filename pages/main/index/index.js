@@ -9,7 +9,8 @@ import {
   store
 } from '../../../store/test'
 import {
-  weLogin
+  weLogin,
+  WxGetUserInfo
 } from '../../../utils/action'
 Page({
   data: {
@@ -31,7 +32,13 @@ Page({
   handleLogin() {
     console.log('login')
     weLogin().then(res => {
+      // 这儿才是 获取用户信息
       console.log(res, '登录返回的数据')
+      WxGetUserInfo().then(data => {
+        console.log(data, ';11')
+      })
+    }).catch(e => {
+
     })
   }
 
