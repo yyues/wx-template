@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/main/index/index",
+    "pages/main/playground/index",
     "pages/main/me/index"
   ],
   "window":{
