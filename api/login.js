@@ -17,9 +17,10 @@ export function getInfo() {
   })
 }
 // 获取用户信息
-export function updateUserInfo() {
+export function test(data) {
   return request.axios({
-    method: 'post',
-    url: '/updateUserInfo'
+    method: 'get',
+    url: '/todo/getList',
+    data
   })
 }

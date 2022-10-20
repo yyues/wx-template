@@ -7,7 +7,8 @@ function initAxios() {
   const baseUrl = WE_APP_BASE_API
   const header = {
     'content-type': 'application/json; charset=UTF-8',
-    'Authorization': 'Bearer ' + getToken()
+    'Authorization': 'Bearer ' + getToken(),
+    'token': getToken()
   }
   const timeout = 15000
 
@@ -25,12 +26,12 @@ function initAxios() {
   // });
 
   // resolve 拦截, 格式化返回数据
-  const resolveWrap = ({ data = {}}) => {
+  const resolveWrap = ({ data = {} }) => {
     return data
   }
 
   // reject 拦截错误信息
-  const rejectWrap = ({ data = {}}) => {
+  const rejectWrap = ({ data = {} }) => {
     console.log('接口请求错误', data)
     const message = data.message
     // 重新登录
