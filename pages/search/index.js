@@ -1,4 +1,4 @@
-// pages/activity/index/index.js
+// pages/search/index.js
 Page({
 
   /**

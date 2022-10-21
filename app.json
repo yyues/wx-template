@@ -1,7 +1,12 @@
 {
   "pages":[
     "pages/main/index/index",
-    "pages/main/playground/index",
+    "pages/playground/index",
+    "pages/search/index",
+    "pages/task/index",
+    "pages/square/index",
+    "pages/circle/index",
+    "pages/detail/index",
     "pages/main/me/index"
   ],
   "window":{

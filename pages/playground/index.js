@@ -1,4 +1,4 @@
-// pages/activity/index/index.js
+// pages/playground/index.js
 Page({
 
   /**

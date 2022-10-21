@@ -1,4 +1,4 @@
-// pages/main/playground/index.js
+// pages/task/index.js
 Page({
 
   /**
