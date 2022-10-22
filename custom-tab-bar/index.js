@@ -2,14 +2,31 @@ Component({
   data: {
     active: 0,
     list: [{
-      pagePath: '/pages/main/index/index',
+      pagePath: '/pages/home/index',
       iconPath: './image/home.png',
       selectedIconPath: './image/home_active.png',
       text: '首页'
     }, {
-      pagePath: '/pages/main/me/index',
-      iconPath: './image/me.png',
-      selectedIconPath: './image/me_active.png',
+      pagePath: '/pages/task/index',
+      iconPath: './image/task.png',
+      selectedIconPath: './image/task_active.png',
+      text: '任务',
+      type: 'navigateTo'
+    }, {
+      pagePath: '/pages/add/index',
+      iconPath: './image/add.png',
+      selectedIconPath: './image/add.png',
+      text: '添加',
+      type: 'navigateTo'
+    }, {
+      pagePath: '/pages/playground/index',
+      iconPath: './image/playground.png',
+      selectedIconPath: './image/playground_active.png',
+      text: '操场',
+    }, {
+      pagePath: '/pages/user/index',
+      iconPath: './image/user.png',
+      selectedIconPath: './image/user_active.png',
       text: '我的'
     }
     ]
@@ -20,7 +37,15 @@ Component({
       console.log(e, this.data.list)
       const data = this.data.list[e.detail]
       const url = data.pagePath
-      wx.switchTab({ url })
+
+      if (data.type === 'navigateTo') {
+        wx.navigateTo({ url })
+      } else if (data.type === 'redirectTo') {
+        wx.redirectTo({ url })
+      } else {
+        wx.switchTab({ url })
+      }
+
       this.setData({
         active: e.detail
       })

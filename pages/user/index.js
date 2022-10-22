@@ -27,7 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    initTabActive.bind(this)(1)
+    initTabActive.bind(this)(4)
   },
 
   /**
@@ -63,8 +63,5 @@ Page({
    */
   onShareAppMessage() {
 
-  },
-  onClickLeft() {
-    wx.navigateBack()
-  },
+  }
 })

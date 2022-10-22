@@ -1,2 +1,7 @@
-<!--pages/task/index.wxml-->
-<text>pages/task/index.wxml</text>
+<view class="page-wrapper">
+  <!-- 导航栏 -->
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
+    <view slot="title" class="nav-title">Today</view>
+  </van-nav-bar>
+  <calendar bind:takeoverTap="takeoverTap" bind:afterTapDate="afterTapDate" bind:afterCalendarRender="afterCalendarRender" bind:onSwipe="onSwipe" bind:whenChangeMonth="whenChangeMonth" />
+</view>

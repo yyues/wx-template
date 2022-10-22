@@ -1,6 +1,6 @@
 <view class="page-wrapper">
   <!-- 导航栏 -->
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;">
-    <view slot="title" class="nav-title">操场</view>
+    <view slot="title" class="nav-title">我的</view>
   </van-nav-bar>
 </view>

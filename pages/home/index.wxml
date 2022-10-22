@@ -1,0 +1,42 @@
+<!--pages/home/index.wxml-->
+<view class="page-wrapper">
+  <!-- 导航栏 -->
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;">
+    <view slot="title" class="nav-title">Hi,请先登录</view>
+  </van-nav-bar>
+  <van-search value="{{ searchValue }}" placeholder="搜索你创建的任务" bind:search="onSearch" bind:cancel="onCancel" background="#F9F9F9" custom-class="my-search" />
+  <view class="header">推荐</view>
+  <view class="total">
+    <view wx:for="{{reArray}}" wx:key="index" class="content" style="{{item.style}}" hover-class='high-content'>
+      <van-image width='48' height="48" src="{{item.url}}" class="image"></van-image>
+      <block wx:if="{{item.some}}">
+        <view class="name"><text>{{item.name}}</text></view>
+        <view class="count"><text>({{item.count}})</text></view>
+      </block>
+      <block wx:else>
+        <view class="name-count">
+          <text>{{item.name}}</text>
+          <text>({{item.count}})</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="today">
+    <view class="header">今日待办</view>
+    <view wx:if="{{todoList.length !==0}}">
+      <view class="to-do" hover-class="hidh-todo">
+        <van-checkbox-group value="{{ selectList }}" bind:change="onChange">
+          <view class="flex item" wx:for="{{todoList}}" wx:key="index">
+            <van-checkbox name="{{item.value}}" shape="square" checked-color="#60a5fa">
+              <text class="overflow {{current[index]?'hidden':''}} ">{{item.content}}({{item.time}})</text>
+            </van-checkbox>
+            <!-- 任务优先级图标 -->
+            <view class="icon">
+
+            </view>
+          </view>
+        </van-checkbox-group>
+      </view>
+    </view>
+  </view>
+</view>

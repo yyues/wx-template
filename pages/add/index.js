@@ -1,4 +1,4 @@
-// pages/task/index.js
+
 import { initTabActive } from "../../utils/index";
 Page({
 
@@ -27,7 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    initTabActive.bind(this)(1)
+    initTabActive.bind(this)(3)
   },
 
   /**
@@ -66,5 +66,5 @@ Page({
   },
   onClickLeft() {
     wx.navigateBack()
-  },
+  }
 })
