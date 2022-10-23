@@ -1,7 +1,22 @@
 <view class="page-wrapper">
   <!-- 导航栏 -->
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
-    <view slot="title" class="nav-title">Today</view>
+    <view slot="title" class="nav-title">{{showTime}}</view>
   </van-nav-bar>
-  <calendar bind:takeoverTap="takeoverTap" bind:afterTapDate="afterTapDate" bind:afterCalendarRender="afterCalendarRender" bind:onSwipe="onSwipe" bind:whenChangeMonth="whenChangeMonth" />
+  <view class="flex total">
+    <calendar bind:selectDay="onSelect" class="calendar" />
+    <view class="content">
+      <block wx:if="{{currentDayTask.length !== 0}}">
+        <!-- <van-steps steps="{{ currentDayTask }}" active="{{ currentActive }}" direction="vertical" custom-class="my-step" /> -->
+      </block>
+      <block wx:else>
+        <view class="empty">
+          <van-image class="image" width='240rpx' height='240rpx' src="../../images/empty.png"> </van-image>
+          <view class="text">今天还没有待办哦，点击 + 去添加吧！</view>
+        </view>
+      </block>
+    </view>
+
+  </view>
+
 </view>

@@ -11,7 +11,6 @@ Component({
       iconPath: './image/task.png',
       selectedIconPath: './image/task_active.png',
       text: '任务',
-      type: 'navigateTo'
     }, {
       pagePath: '/pages/add/index',
       iconPath: './image/add.png',
@@ -28,8 +27,7 @@ Component({
       iconPath: './image/user.png',
       selectedIconPath: './image/user_active.png',
       text: '我的'
-    }
-    ]
+    }]
   },
   methods: {
     // 切换底部导航
@@ -39,11 +37,17 @@ Component({
       const url = data.pagePath
 
       if (data.type === 'navigateTo') {
-        wx.navigateTo({ url })
+        wx.navigateTo({
+          url
+        })
       } else if (data.type === 'redirectTo') {
-        wx.redirectTo({ url })
+        wx.redirectTo({
+          url
+        })
       } else {
-        wx.switchTab({ url })
+        wx.switchTab({
+          url
+        })
       }
 
       this.setData({

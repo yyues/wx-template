@@ -1,0 +1,32 @@
+<view class="card" hover-class="high-card">
+  <view class="header">
+    <view class="select" wx:if="{{hasSelect}}">
+      <!-- 选择框  -->
+    </view>
+    <view class="content">
+      <!-- 标题，需要超出一定范围省略号 -->
+      <view class="top flex">
+        <view class="title-icon" wx:if="{{data.icon}}">
+          <!-- icon 或者 svg -->
+        </view>
+        <view class="title"> <text>{{data.content}}</text> </view>
+      </view>
+      <view class="show-detail flex">
+        <!-- 标签 -->
+        <view class="labels" wx:if="{{data.labels && Array.isArray(data.labels)}}">
+          <!-- van-table -->
+        </view>
+        <!-- 任务类型 -->
+        <view class="type" wx:if="{{data.type}}"> <text>type</text> </view>
+        <!-- 延期时间 -->
+        <view class="delay" wx:if="{{data.is_delay}}"> {{data.delay_time}}</view>
+      </view>
+    </view>
+    <view class="level-icon">
+      <!-- 任务优先级的 图标显示位置 -->
+    </view>
+  </view>
+  <view class="action" wx:if="{{hasAction && data.showActicon}}">
+    <!-- 应该是个for 循环 -->
+  </view>
+</view>

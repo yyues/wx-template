@@ -1,1 +1,29 @@
-/* pages/task/index.wxss */
+.flex {
+  display: flex;
+}
+.total {
+  height: calc(100% - 340rpx);
+  flex-direction: column;
+}
+.total .calendar {
+  height: max-content;
+}
+.total .content {
+  flex: 1;
+  height: 100%;
+}
+.total .empty {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.total .empty image {
+  width: 240rpx;
+  height: 240rpx;
+  background-color: skyblue;
+}
+.page-wrapper {
+  height: 100vh;
+}
