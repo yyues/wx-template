@@ -1,0 +1,32 @@
+<view class="wrapper" hover-class="high-wrapper">
+  <view class="avatar">
+    <image class="img" src="../../images/date.png"></image>
+  </view>
+  <view class="content">
+    <view class="header">
+      <!-- 用户名称 及 发布时间 -->
+      <view class="left">
+        <view class="nickname">
+          <text>Pearl Myers</text>
+        </view>
+        <view class="date">
+          <text>Yesterday</text>
+        </view>
+      </view>
+      <!-- 操作栏 -->
+      <view class="action">
+        <image src="../../images/actions.png"></image>
+      </view>
+    </view>
+    <view class="desc">
+      <text> I am looking for a chilled out roommate for a house on 17th floor of a XYZ appartment.</text>
+    </view>
+    <view class="bottom">
+      <view class="comment">
+        <image class="star" src="../../images/heart_active.png" wx:if="{{data.is_stared}}"></image>
+        <image class="star" src="../../images/heart.png" wx:else></image>
+      </view>
+      <view class="form"> <text>星星在唱歌</text> </view>
+    </view>
+  </view>
+</view>

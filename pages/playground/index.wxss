@@ -1,1 +1,13 @@
-/* pages/playground/index.wxss */
+.my-tabs {
+  background-color: #F9F9F9;
+}
+.my-tabs .van-tab {
+  flex: 0 0 auto;
+  padding: 0 32rpx;
+  text-align: center;
+  min-width: 100rpx;
+}
+.my-tab {
+  height: 100%;
+  background-color: skyblue;
+}

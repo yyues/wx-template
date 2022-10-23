@@ -1,0 +1,71 @@
+.wrapper {
+  background-color: #fff;
+  border-radius: 12rpx;
+  margin: 16rpx 24rpx;
+  display: flex;
+  padding: 16rpx;
+}
+.wrapper .avatar {
+  margin-right: 16rpx;
+}
+.wrapper .avatar .img {
+  width: 72rpx;
+  height: 72rpx;
+}
+.wrapper .content {
+  flex: auto;
+}
+.wrapper .content .header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+.wrapper .content .header .left .nickname text {
+  /** 文本1 */
+  font-size: 32rpx;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: #161f3d;
+}
+.wrapper .content .header .left .date {
+  height: max-content;
+}
+.wrapper .content .header .left .date text {
+  font-size: 22rpx;
+  font-weight: 400;
+  line-height: 42rpx;
+  color: #a1a1aa;
+}
+.wrapper .content .header .action image {
+  width: 48rpx;
+  height: 10rpx;
+}
+.wrapper .content .desc {
+  min-height: 78rpx;
+}
+.wrapper .content .desc text {
+  font-size: 26rpx;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 17px;
+  color: #a1a1aa;
+  text-align: left;
+  vertical-align: top;
+}
+.wrapper .content .bottom {
+  margin-top: 12rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wrapper .content .bottom .comment .star {
+  width: 48rpx;
+  height: 46rpx;
+}
+.wrapper .content .bottom .form text {
+  font-size: 24rpx;
+  color: #0284c7;
+}
+.high-wrapper {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
