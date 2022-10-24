@@ -1,0 +1,45 @@
+.hight-card {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+.selected .name text {
+  color: gray;
+  text-decoration: line-through;
+}
+.card {
+  border-radius: 16rpx;
+  padding: 16rpx;
+  margin: 16rpx 24rpx;
+  background-color: #fff;
+  min-height: 120rpx;
+  display: flex;
+}
+.card .select {
+  margin-right: 16rpx;
+  padding: 12rpx 0;
+  padding-left: 16rpx;
+}
+.card .wrapper {
+  padding-right: 20rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.card .wrapper .header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+.card .wrapper .header .content text {
+  font-size: 32rpx;
+}
+.card .wrapper .header .action image {
+  width: 48rpx;
+  height: 10rpx;
+}
+.card .wrapper .label {
+  display: flex;
+}
+.card .wrapper .label .my-tag {
+  margin-right: 16rpx;
+}

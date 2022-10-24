@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-search": "@vant/weapp/search/index",
     "van-checkbox": "@vant/weapp/checkbox/index",
-    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "task-card": "../../components/task-card/index"
   }
 }

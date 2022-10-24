@@ -24,7 +24,9 @@ Component({
         type: 'person',
         is_delay: false,
         delay_time: '2天',
-        showActicon: false
+        showActicon: false,
+        checked: false,
+        is_master: true
       }
     }
   },
@@ -33,13 +35,17 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    checked: false
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-
+    onSelect(e) {
+      this.setData({
+        checked: e.detail
+      })
+    }
   }
 })

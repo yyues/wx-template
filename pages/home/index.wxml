@@ -23,20 +23,6 @@
   </view>
   <view class="today">
     <view class="header">今日待办</view>
-    <view wx:if="{{todoList.length !==0}}">
-      <view class="to-do" hover-class="hidh-todo">
-        <van-checkbox-group value="{{ selectList }}" bind:change="onChange">
-          <view class="flex item" wx:for="{{todoList}}" wx:key="index">
-            <van-checkbox name="{{item.value}}" shape="square" checked-color="#60a5fa">
-              <text class="overflow {{current[index]?'hidden':''}} ">{{item.content}}({{item.time}})</text>
-            </van-checkbox>
-            <!-- 任务优先级图标 -->
-            <view class="icon">
-
-            </view>
-          </view>
-        </van-checkbox-group>
-      </view>
-    </view>
+    <task-card></task-card>
   </view>
 </view>
