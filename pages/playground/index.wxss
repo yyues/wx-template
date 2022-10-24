@@ -1,5 +1,5 @@
 .my-tabs {
-  background-color: #F9F9F9;
+  display: flex;
 }
 .my-tabs .van-tab {
   flex: 0 0 auto;
@@ -7,7 +7,22 @@
   text-align: center;
   min-width: 100rpx;
 }
-.my-tab {
-  height: 100%;
-  background-color: skyblue;
+.my-tabs .van-tabs__nav {
+  background-color: #f9f9f9;
+}
+.my-tabs .van-tabs__content {
+  padding-top: 108rpx;
+  flex: 1;
+}
+.wrapper {
+  position: relative;
+  min-height: calc(100vh - 500rpx);
+}
+.add-info {
+  position: absolute;
+  bottom: 10px;
+  right: 40rpx;
+  height: 120rpx;
+  width: 120rpx;
+  z-index: 999;
 }

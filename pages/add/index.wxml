@@ -5,7 +5,7 @@
   </van-nav-bar>
   <view class="part">
     <view class="title"><text>待办内容</text></view>
-    <van-field value="{{ postForm.content }}" placeholder="请输入待办内容" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize input-class="my-input" bind:change="onTaskChange" />
+    <van-field value="{{ postForm.content }}" placeholder="请输入待办内容" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize="{{true}}" bind:change="onTaskChange" />
   </view>
   <!-- 日期 -->
   <view class="part">
@@ -84,7 +84,7 @@
     </view>
   </view>
   <view class="operation">
-    <van-button color="#5B67CA" custom-style="my-submit" bind:click="handleSubmit" loading="{{loading}}">创建待办</van-button>
+    <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{loading}}" loading-text="请求中">创建待办</van-button>
   </view>
   <van-toast id="van-toast" />
   <!-- 选择时间 -->

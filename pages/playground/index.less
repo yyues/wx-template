@@ -1,16 +1,31 @@
 .my-tabs {
-  background-color: #F9F9F9;
-
+  display: flex;
   .van-tab {
     flex: 0 0 auto;
     padding: 0 32rpx;
     text-align: center;
     min-width: 100rpx;
   }
+  .van-tabs__nav {
+    background-color: #f9f9f9;
+  }
+  .van-tabs__content {
+    padding-top: 108rpx;
+    flex: 1;
+  }
 }
 
-.my-tab {
-  // height: 80vh;
-  height: 100%;
-  background-color: skyblue;
+.wrapper {
+  position: relative;
+  min-height: calc(100vh - 500rpx);
+  // background-color: skyblue;
+}
+.add-info {
+  position: absolute;
+  bottom: 10px;
+  // bottom: calc(360rpx - 100vh);
+  right: 40rpx;
+  height: 120rpx;
+  width: 120rpx;
+  z-index: 999;
 }

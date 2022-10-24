@@ -10,9 +10,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.add-part .my-upload {
-  margin-top: 14vh;
+  .my-upload {
+    margin-top: 14vh;
+  }
 }
 .my-input {
   border: 1px solid #eee;
@@ -23,20 +23,23 @@
   align-items: center;
   padding: 300rpx 0;
 }
-.my-submit.van-button {
-  min-width: 240rpx;
-  letter-spacing: 4rpx;
-  border-radius: 12rpx;
-  font-size: 32rpx;
-}
-.my-submit .van-field__placeholder {
-  color: red;
+
+.my-submit {
+  &.van-button {
+    min-width: 240rpx;
+    letter-spacing: 4rpx;
+    border-radius: 12rpx;
+    font-size: 32rpx;
+  }
+  .van-field__placeholder {
+    color: red;
+  }
 }
 .tips {
   margin-top: 18rpx;
-}
-.tips text {
-  font-size: 28rpx;
-  line-height: 44rpx;
-  color: #a1a1aa;
+  text {
+    font-size: 28rpx;
+    line-height: 44rpx;
+    color: #a1a1aa;
+  }
 }

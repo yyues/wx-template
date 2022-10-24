@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "my-comment": "../../components/comment/index"
+    "my-comment": "../../components/comment/index",
+    "square-card": "../../components/square-card/index"
   }
 }

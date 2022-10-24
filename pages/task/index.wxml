@@ -11,7 +11,7 @@
       </block>
       <block wx:else>
         <view class="empty">
-          <van-image class="image" width='240rpx' height='240rpx' src="../../images/empty.png"> </van-image>
+          <image class="image" src="../../images/empty.png"> </image>
           <view class="text">今天还没有待办哦，点击 + 去添加吧！</view>
         </view>
       </block>

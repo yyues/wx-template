@@ -63,5 +63,15 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  onAddCircle() {
+    wx.navigateTo({
+      url: '/pages/circle/index?type=add',
+    })
+  },
+  onAddDongTai(){
+    wx.navigateTo({
+      url: '/pages/square/index?type=add',
+    })
   }
 })

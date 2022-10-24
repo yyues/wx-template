@@ -5,9 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    pageTitle: '新建动态',
+    type: 'add',
+    max_content: 99,
+    postForm: {
+      content: '',
+      is_exist_form: false
+    }
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -61,6 +66,32 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
+
+  },
+  onClickLeft() {
+    wx.redirectTo({
+      url: '/pages/playground/index'
+    })
+  },
+  onTaskChange(e) {
+    const data = this.data.postForm
+    this.setData({
+      postForm: {
+        ...data,
+        content: e.detail
+      }
+    })
+  },
+  onExistFormChange(e) {
+    const data = this.data.postForm
+    this.setData({
+      postForm: {
+        ...data,
+        is_exist_form: e.detail
+      },
+    })
+  },
+  handleSubmit() {
 
   }
 })

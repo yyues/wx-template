@@ -1,2 +1,25 @@
-<!--pages/square/index.wxml-->
-<text>pages/square/index.wxml</text>
+<view class="expecial-wrapper">
+  <!-- 导航栏 -->
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" z-index="{{999}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
+    <view slot="title" class="nav-title">{{pageTitle}}</view>
+  </van-nav-bar>
+  <view class="part">
+    <view class="title"> <text>内容</text> </view>
+    <van-field value="{{ postForm.content }}" type="textarea" placeholder="发布你的想法吧！" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize="{{true}}" input-class="textarea" bind:change="onTaskChange" />
+  </view>
+  <!-- 是否发布到圈子 -->
+  <view class="config flex">
+    <view class="contet">
+      <view class="title"> <text>是否发布到圈子</text> </view>
+      <view class="desc"> <text>发布后将会展示在所属圈子的动态内 </text></view>
+    </view>
+    <view class="select">
+      <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_exist_form }}" shape="square" bind:change="onExistFormChange">
+      </van-checkbox>
+    </view>
+  </view>
+  <view class="operation">
+    <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{loading}}" loading-text="请求中">发布</van-button>
+  </view>
+  <van-toast id="van-toast" />
+</view>

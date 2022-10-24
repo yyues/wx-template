@@ -3,12 +3,25 @@
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" z-index="{{999}}" custom-style="background: #ffffff;">
     <view slot="title" class="nav-title">操场</view>
   </van-nav-bar>
-  <van-tabs animated swipeable color="#5B67CA" title-active-color="#5B67CA" nav-class="my-tabs" style="height: 100%;">
-    <van-tab title="推荐" custom-class="my-tab">
-      <my-comment></my-comment>
+  <van-tabs animated swipeable sticky offset-top="{{90}}" color="#5B67CA" title-active-color="#5B67CA" custom-class="my-tabs">
+    <van-tab title="圈子" custom-class="my-tab">
+      <view class="wrapper">
+        <!-- 圈子 -->
+        <view class="img-wrapper" bindtap="onAddCircle">
+          <image class="add-info" src="../../images/new_add.png"></image>
+        </view>
+        <square-card></square-card>
+      </view>
+
     </van-tab>
-    <van-tab title="圈子" custom-class="my-tab">内容 2</van-tab>
-    <van-tab title="动态" custom-class="my-tab">内容 3</van-tab>
-    <van-tab title="我的" custom-class="my-tab">内容 4</van-tab>
+    <van-tab title="动态" custom-class="my-tab">
+      <view class="wrapper">
+        <!-- 动态 -->
+        <view class="img-wrapper" bindtap="onAddDongTai">
+          <image class="add-info" src="../../images/new_add.png"></image>
+        </view>
+        <my-comment></my-comment>
+      </view>
+    </van-tab>
   </van-tabs>
 </view>

@@ -1,1 +1,110 @@
-/* pages/user/index.wxss */
+.user-wrapper {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.user-wrapper .nav-title {
+  letter-spacing: 4rpx;
+  color: white;
+}
+.user-wrapper .my-navbar .van-nav-bar__content {
+  background-color: #0369a1;
+  border-bottom: none;
+}
+.user-wrapper .bg {
+  height: 320rpx;
+  background-color: #0369a1;
+  position: relative;
+  z-index: -1;
+}
+.user-wrapper .bg::after {
+  content: "";
+  width: 620rpx;
+  height: 310rpx;
+  border-radius: 0 0 310rpx 310rpx;
+  position: absolute;
+  background-color: #0047cc99;
+  z-index: 20;
+  right: -310rpx;
+  top: 0rpx;
+}
+.user-wrapper .user-card {
+  background-color: #fff;
+  min-height: 360rpx;
+  position: absolute;
+  padding: 24rpx;
+  width: calc(100vw - 96rpx);
+  border-radius: 12rpx;
+  top: 280rpx;
+  margin: 0 24rpx;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+.user-wrapper .user-card .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-wrapper .user-card .header .image {
+  margin-right: 32rpx;
+  position: relative;
+}
+.user-wrapper .user-card .header .image .avatar {
+  width: 200rpx;
+  height: 200rpx;
+}
+.user-wrapper .user-card .header .image .icon {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.user-wrapper .user-card .header .content {
+  text-align: center;
+}
+.user-wrapper .user-card .header .content .name {
+  margin-top: 20rpx;
+}
+.user-wrapper .user-card .header .content .name text {
+  color: #0e0415;
+  font-family: Noto Sans SC;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.user-wrapper .user-card .header .content .city {
+  margin-top: 20rpx;
+  font-size: 13px;
+  font-weight: 400;
+  color: #161f3d;
+  text-align: center;
+}
+.user-wrapper .action-wrapper {
+  flex: 1;
+  background-color: #f6f6f6;
+  padding-top: 200rpx;
+}
+.user-wrapper .action-wrapper .action {
+  margin: 10px 24rpx;
+  background-color: #fff;
+  padding: 16rpx 24rpx;
+  min-height: 112rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16rpx;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+.user-wrapper .action-wrapper .action .content text {
+  font-size: 32rpx;
+  letter-spacing: 2rpx;
+}
+.user-wrapper .action-wrapper .action .content .high-icon {
+  border-radius: 6px;
+  background: #e0e0e0;
+  box-shadow: 5px 5px 5px #cccccc, -5px -5px 5px #f4f4f4;
+}

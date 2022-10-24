@@ -10,19 +10,7 @@ Page({
    */
   data: {
     showTime: '',
-    currentDayTask: [{
-        text: '步骤一',
-        desc: '描述信息',
-        inactiveIcon: 'location-o',
-        activeIcon: 'success',
-      },
-      {
-        text: '步骤二',
-        desc: '描述信息',
-        inactiveIcon: 'like-o',
-        activeIcon: 'plus',
-      },
-    ],
+    currentDayTask: [],
     currentActive: '',
     finishList: []
   },
@@ -103,7 +91,7 @@ Page({
       '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十', '二十一', '二十二',
       '二十三', '二十四', '二十五', '二十六', '二十七', '二十八', '二十九', '三十', '三十一',
     ]
-    return `${month[moment(time).month()]}月${day[moment(time).date() -1 ]}日`
+    return `${month[moment(time).month()]}月${day[moment(time).date() - 1]}日`
   }
 
 })
