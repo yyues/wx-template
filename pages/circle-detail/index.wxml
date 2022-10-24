@@ -1,0 +1,7 @@
+<view class="page-wrapper">
+  <!-- 导航栏 -->
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
+    <view slot="title" class="nav-title">我的圈子</view>
+  </van-nav-bar>
+  <square-card />
+</view>

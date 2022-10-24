@@ -1,7 +1,4 @@
-// pages/task/index.js
-import {
-  initTabActive
-} from "../../utils/index";
+// pages/circle-detail/index.js
 Page({
 
   /**
@@ -29,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    initTabActive.bind(this)(4)
+    
   },
 
   /**
@@ -66,9 +63,7 @@ Page({
   onShareAppMessage() {
 
   },
-  onCircle() {
-    wx.navigateTo({
-      url: '/pages/circle-detail/index?type=user',
-    })
+  onClickLeft() {
+    wx.navigateBack()
   }
 })

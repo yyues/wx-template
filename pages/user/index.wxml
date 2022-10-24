@@ -29,12 +29,12 @@
         <van-icon name="arrow" class="icon-van" />
       </view>
     </view>
-    <!-- 我的任务 -->
+    <!-- 我的圈子 -->
     <view class="action">
       <view class="content">
-        <text>我的任务</text>
+        <text>我的圈子</text>
       </view>
-      <view class="icon" hover-class="high-icon">
+      <view class="icon" hover-class="high-icon" bindtap="onCircle">
         <van-icon name="arrow" class="icon-van" />
       </view>
     </view>

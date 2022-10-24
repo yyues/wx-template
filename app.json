@@ -8,7 +8,8 @@
     "pages/circle/index",
     "pages/detail/index",
     "pages/user/index",
-    "pages/add/index"
+    "pages/add/index",
+    "pages/circle-detail/index"
   ],
   "window": {
     "navigationStyle": "custom",
