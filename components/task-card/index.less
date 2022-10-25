@@ -38,9 +38,17 @@
       justify-content: space-between;
 
       .content {
+        display: flex;
+        align-items: center;
+
         text {
           font-size: 32rpx;
         }
+
+        .time {
+          margin-left: 16rpx;
+        }
+
       }
 
       .action {
@@ -55,10 +63,28 @@
 
     .label {
       display: flex;
+      justify-content: space-between;
 
-      .my-tag {
-        margin-right: 16rpx;
+      .left {
+        .my-tag {
+          margin-right: 16rpx;
+        }
       }
+    }
+  }
+
+  .desc {
+    min-height: 44rpx;
+    margin-bottom: 12rpx;
+
+    text {
+      font-size: 28rpx;
+      line-height: 44rpx;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #94a3b8;
     }
   }
 }

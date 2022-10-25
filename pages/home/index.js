@@ -1,6 +1,10 @@
 // pages/home/index.js
-import { initTabActive } from "../../utils/index";
-import { getToken } from "../../utils/action";
+import {
+  initTabActive
+} from "../../utils/index";
+import {
+  getToken
+} from "../../utils/action";
 Page({
 
   /**
@@ -9,18 +13,64 @@ Page({
   data: {
     isLogin: false,
     searchValue: '',
-    reArray: [
-      { name: '全部任务', count: 60, some: true, style: 'background:#7c3aed', url: '../../images/date.png' },
-      { name: '已过期', count: 1, some: false, style: 'background: rgb(231, 125, 125);',  url: '../../images/date.png' },
-      { name: '今日', count: 9, some: false, style: 'background: #4f46e5',  url: '../../images/date.png' },
-      { name: '已完成任务', count: 169, some: true, style: 'background:#0891b2', url: '../../images/date.png' },
+    reArray: [{
+        name: '全部任务',
+        count: 60,
+        some: true,
+        style: 'background:#7c3aed',
+        url: '../../images/date.png'
+      },
+      {
+        name: '已过期',
+        count: 1,
+        some: false,
+        style: 'background: rgb(231, 125, 125);',
+        url: '../../images/date.png'
+      },
+      {
+        name: '今日',
+        count: 9,
+        some: false,
+        style: 'background: #4f46e5',
+        url: '../../images/date.png'
+      },
+      {
+        name: '已完成任务',
+        count: 169,
+        some: true,
+        style: 'background:#0891b2',
+        url: '../../images/date.png'
+      },
     ],
     selectList: [],
-    todoList: [
-      { icon: '', content: '学习', time: '09:00', level: 0, value: 'id0' },
-      { icon: '', content: '吃早饭', time: '10:00', level: 0, value: 'id1' },
-      { icon: '', content: '绘制油画', time: '11:00', level: 1, value: 'id2' },
-      { icon: '', content: '中午睡觉', time: '12:00', level: 2, value: 'id3' },
+    todoList: [{
+        icon: '',
+        content: '学习',
+        time: '09:00',
+        level: 0,
+        value: 'id0'
+      },
+      {
+        icon: '',
+        content: '吃早饭',
+        time: '10:00',
+        level: 0,
+        value: 'id1'
+      },
+      {
+        icon: '',
+        content: '绘制油画',
+        time: '11:00',
+        level: 1,
+        value: 'id2'
+      },
+      {
+        icon: '',
+        content: '中午睡觉',
+        time: '12:00',
+        level: 2,
+        value: 'id3'
+      },
     ],
     current: [],
     hasLogin: !!getToken(),
@@ -32,7 +82,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    console.log('页面加载');
   },
 
   /**
@@ -47,6 +97,11 @@ Page({
    */
   onShow() {
     initTabActive.bind(this)(0)
+    this.setData({
+      avatar_url: wx.getStorageSync('avatar_url'),
+      username: wx.getStorageSync('username'),
+      hasLogin: !!getToken()
+    })
   },
 
   /**

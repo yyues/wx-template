@@ -31,6 +31,10 @@ Page({
    */
   onShow() {
     initTabActive.bind(this)(4)
+    this.setData({
+      avatar_url: wx.getStorageSync('avatar_url'),
+      username: wx.getStorageSync('username')
+    })
   },
 
   /**

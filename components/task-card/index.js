@@ -31,7 +31,8 @@ Component({
         delay_time: '2天',
         showActicon: false,
         checked: false,
-        is_master: true
+        is_master: true,
+        is_cycle_todo: false
       }
     }
   },

@@ -1,6 +1,11 @@
-import { WxPermission, WxLogin } from './action'
+import {
+  WxPermission,
+  WxLogin
+} from './action'
 import initAxios from '../request/create'
-import { login } from '../api/login'
+import {
+  login
+} from '../api/login'
 /**
  * tabbar 高亮提示
  * @param {string|number} index
@@ -30,7 +35,9 @@ export const Login = (param) => {
   // 先前会有申请用户授权 操作，本函数只负责登录
   return new Promise((resolve, reject) => {
     // loading 开始
-    wx.showLoading({ title: '登录中' })
+    wx.showLoading({
+      title: '登录中'
+    })
     WxLogin().then(() => {
       // 登录
       login(param)
@@ -41,6 +48,7 @@ export const Login = (param) => {
           wx.setStorageSync('token', res.access_token)
           // 更新 axios请求
           initAxios()
+          wx.hideLoading()
           wx.showToast({
             title: '登录成功！',
             duration: 1500,

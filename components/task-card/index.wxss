@@ -30,8 +30,15 @@
   justify-content: space-between;
   margin-bottom: 16rpx;
 }
+.card .wrapper .header .content {
+  display: flex;
+  align-items: center;
+}
 .card .wrapper .header .content text {
   font-size: 32rpx;
+}
+.card .wrapper .header .content .time {
+  margin-left: 16rpx;
 }
 .card .wrapper .header .action image {
   width: 48rpx;
@@ -39,7 +46,21 @@
 }
 .card .wrapper .label {
   display: flex;
+  justify-content: space-between;
 }
-.card .wrapper .label .my-tag {
+.card .wrapper .label .left .my-tag {
   margin-right: 16rpx;
+}
+.card .desc {
+  min-height: 44rpx;
+  margin-bottom: 12rpx;
+}
+.card .desc text {
+  font-size: 28rpx;
+  line-height: 44rpx;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #94a3b8;
 }

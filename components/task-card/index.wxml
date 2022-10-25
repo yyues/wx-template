@@ -7,17 +7,35 @@
       <view class="content">
         <view class="icon"></view>
         <view class="name">
-          <text>起床吃饭</text>
+          <text>{{data.content}}</text>
         </view>
+
       </view>
       <view class="action">
-        <image src="../../images/actions.png"></image>
+        <van-tag color="#5B67CA" size="small" custom-class="my-tag time" wx:if="{{type === 'user'}}">
+          <!-- <text>{{data.start_time}}-{{data.end_time}}</text> -->
+          <text>{{data.execute_time}}</text>
+        </van-tag>
+        <image src="../../images/actions.png" wx:else></image>
       </view>
     </view>
+    <view class="desc">
+      <text wx:if="{{data.description}}">{{data.description}}</text>
+    </view>
     <view class="label">
-      <van-tag color="#16a34a" size="medium" custom-class="my-tag" wx:if="{{data.is_master}}">
-        官方
-      </van-tag>
+      <view class="left">
+        <van-tag color="#16a34a" size="medium" custom-class="my-tag" wx:if="{{data.is_current_user}}">
+          我的
+        </van-tag>
+        <van-tag color="#16a34a" size="medium" custom-class="my-tag" wx:if="{{data.is_cycle_todo}}">
+          周期任务
+        </van-tag>
+      </view>
+      <view class="right">
+        <van-tag color="#ef4444" size="medium" custom-class="my-tag">
+          {{data.delay_time}}
+        </van-tag>
+      </view>
     </view>
   </view>
 </view>
