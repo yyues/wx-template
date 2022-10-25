@@ -117,8 +117,8 @@ Page({
         type: 'success',
         message: '创建成功！',
         onClose: () => {
-          wx.navigateBack({
-            delta: 0,
+          wx.reLaunch({
+            url: '/pages/home/index',
           })
         },
       });

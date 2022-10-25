@@ -1,0 +1,7 @@
+{
+  "homeButton": true,
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "task-card": "../../components/task-card/index"
+  }
+}

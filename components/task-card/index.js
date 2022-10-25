@@ -7,12 +7,17 @@ Component({
     // 是否有选择框，默认 false
     hasSelect: {
       type: Boolean,
-      value: false
+      value: true
     },
     // 是否有操作栏，默认 false
     hasAction: {
       type: Boolean,
       value: false
+    },
+    // 类型，是用来判断使用位置的
+    type: {
+      type: String,
+      value: 'home'
     },
     data: {
       type: Object,
@@ -46,6 +51,9 @@ Component({
       this.setData({
         checked: e.detail
       })
+    },
+    onClick(e) {
+      this.triggerEvent('onClick', e.detail)
     }
   }
 })

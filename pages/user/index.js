@@ -71,5 +71,10 @@ Page({
     wx.navigateTo({
       url: '/pages/circle-detail/index?type=user',
     })
+  },
+  onTodo() {
+    wx.navigateTo({
+      url: '/pages/todo-detail/index?type=user',
+    })
   }
 })

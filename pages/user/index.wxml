@@ -25,7 +25,7 @@
       <view class="content">
         <text>我的待办</text>
       </view>
-      <view class="icon" hover-class="high-icon">
+      <view class="icon" hover-class="high-icon" bindtap="onTodo">
         <van-icon name="arrow" class="icon-van" />
       </view>
     </view>

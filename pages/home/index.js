@@ -1,5 +1,6 @@
 // pages/home/index.js
 import { initTabActive } from "../../utils/index";
+import { getToken } from "../../utils/action";
 Page({
 
   /**
@@ -9,10 +10,10 @@ Page({
     isLogin: false,
     searchValue: '',
     reArray: [
-      { name: '全部任务', count: 60, some: true, style: 'background:#7c3aed', url: '' },
-      { name: '已过期', count: 1, some: false, style: 'background: rgb(231, 125, 125);', url: '' },
-      { name: '今日', count: 9, some: false, style: 'background: #4f46e5', url: '' },
-      { name: '已完成任务', count: 169, some: true, style: 'background:#0891b2', url: '' },
+      { name: '全部任务', count: 60, some: true, style: 'background:#7c3aed', url: '../../images/date.png' },
+      { name: '已过期', count: 1, some: false, style: 'background: rgb(231, 125, 125);',  url: '../../images/date.png' },
+      { name: '今日', count: 9, some: false, style: 'background: #4f46e5',  url: '../../images/date.png' },
+      { name: '已完成任务', count: 169, some: true, style: 'background:#0891b2', url: '../../images/date.png' },
     ],
     selectList: [],
     todoList: [
@@ -21,7 +22,10 @@ Page({
       { icon: '', content: '绘制油画', time: '11:00', level: 1, value: 'id2' },
       { icon: '', content: '中午睡觉', time: '12:00', level: 2, value: 'id3' },
     ],
-    current: []
+    current: [],
+    hasLogin: !!getToken(),
+    avatar_url: wx.getStorageSync('avatar_url'),
+    username: wx.getStorageSync('username'),
   },
 
   /**

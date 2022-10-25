@@ -2,13 +2,19 @@
 <view class="page-wrapper">
   <!-- 导航栏 -->
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;">
-    <view slot="title" class="nav-title">Hi,请先登录</view>
+    <view slot="left" class="nav-title">
+      <view class="user" wx:if="{{ hasLogin}}">
+        <image class="image" src="{{avatar_url}}"></image>
+        <view class="name"> <text>{{username}}</text> </view>
+      </view>
+      <text wx:else>Hi,请先登录！</text>
+    </view>
   </van-nav-bar>
   <van-search value="{{ searchValue }}" placeholder="搜索你创建的任务" bind:search="onSearch" bind:cancel="onCancel" background="#F9F9F9" custom-class="my-search" />
   <view class="header">推荐</view>
   <view class="total">
     <view wx:for="{{reArray}}" wx:key="index" class="content" style="{{item.style}}" hover-class='high-content'>
-      <van-image width='48' height="48" src="{{item.url}}" class="image"></van-image>
+      <image width='48' height="48" src="{{item.url}}" class="image"></image>
       <block wx:if="{{item.some}}">
         <view class="name"><text>{{item.name}}</text></view>
         <view class="count"><text>({{item.count}})</text></view>

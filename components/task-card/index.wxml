@@ -1,20 +1,23 @@
-<view class="card" hover-class="high-card">
-  <view class="select">
-    <van-checkbox checked-color="#5B67CA" value="{{ checked }}" shape="square" bind:change="onSelect">
-    </van-checkbox>
+<view class="card" hover-class="high-card" bind:tap="onClick" data-content="{{data}}">
+  <view class="select" wx:if="{{hasSelect}}">
+    <van-checkbox checked-color="#5B67CA" value="{{ checked }}" shape="square" bind:change="onSelect"></van-checkbox>
   </view>
   <view class="wrapper {{checked ? 'selected' :''}}">
     <view class="header">
       <view class="content">
         <view class="icon"></view>
-        <view class="name"><text>起床吃饭</text> </view>
+        <view class="name">
+          <text>起床吃饭</text>
+        </view>
       </view>
       <view class="action">
         <image src="../../images/actions.png"></image>
       </view>
     </view>
     <view class="label">
-      <van-tag color="#16a34a" size="medium" custom-class="my-tag" wx:if="{{data.is_master}}">官方</van-tag>
+      <van-tag color="#16a34a" size="medium" custom-class="my-tag" wx:if="{{data.is_master}}">
+        官方
+      </van-tag>
     </view>
   </view>
 </view>

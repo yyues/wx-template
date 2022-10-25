@@ -43,6 +43,8 @@
 }
 .total .content .image {
   margin-bottom: 16rpx;
+  width: 96rpx;
+  height: 96rpx;
 }
 .total .content .count {
   margin-top: 6rpx;
@@ -89,4 +91,17 @@
 .today .to-do .hidden {
   color: #d4d4d8;
   text-decoration: line-through;
+}
+.user {
+  display: flex;
+  align-items: center;
+}
+.user .image {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  margin-right: 12rpx;
+}
+.user .name text {
+  color: #64748b;
 }

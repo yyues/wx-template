@@ -1,0 +1,10 @@
+<view class="page-wrapper">
+  <!-- 导航栏 -->
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
+    <view slot="title" class="nav-title">我的待办</view>
+  </van-nav-bar>
+  <view class="wrapper">
+    <task-card wx:for="{{currentList}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
+  </view>
+
+</view>

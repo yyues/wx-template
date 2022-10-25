@@ -9,7 +9,8 @@
     "pages/detail/index",
     "pages/user/index",
     "pages/add/index",
-    "pages/circle-detail/index"
+    "pages/circle-detail/index",
+    "pages/todo-detail/index"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -38,18 +39,6 @@
     ]
   },
   "usingComponents": {
-    "svg-icon": "/components/svg-icon/index",
-    "unit": "/components/unit/index",
-    "van-field": "@vant/weapp/field/index",
-    "van-dialog": "@vant/weapp/dialog/index",
-    "van-popup": "@vant/weapp/popup/index",
-    "van-row": "@vant/weapp/row/index",
-    "van-col": "@vant/weapp/col/index",
-    "van-button": "@vant/weapp/button/index",
-    "van-icon": "@vant/weapp/icon/index",
-    "van-picker": "@vant/weapp/picker/index",
-    "van-toast": "@vant/weapp/toast/index",
-    "van-nav-bar": "@vant/weapp/nav-bar/index",
-    "van-image": "@vant/weapp/image/index"
+    "van-nav-bar": "@vant/weapp/nav-bar/index"
   }
 }
