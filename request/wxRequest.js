@@ -3,27 +3,19 @@ export default function wxRequest(config) {
     wx.request({
       ...config,
       success(res) {
-        const {
-          resolveWrap,
-          rejectWrap,
-          transformResponse,
-          validateStatus,
-        } = config;
-        if ((validateStatus && validateStatus(res)) || ifSuccess(res)) {
-          // eslint-disable-next-line no-underscore-dangle
-          const _resolve = resolveWrap ? resolveWrap(res) : res;
-          return resolve(transformResponse ? transformResponse(_resolve) : _resolve);
+        const { resolveWrap, rejectWrap } = config
+        if (!res.data.success) {
+          // 请求成功，但是 处理逻辑失败
+          return reject(rejectWrap ? rejectWrap(res) : res)
         }
-        return reject(rejectWrap ? rejectWrap(res) : res);
+        // 请求成功 直接 过滤 需要的数据使用
+        const data = resolveWrap ? resolveWrap(res.data) : res.data
+        resolve(data)
       },
       fail(res) {
-        const { rejectWrap } = config;
-        reject(rejectWrap ? rejectWrap(res) : res);
-      },
-    });
-  });
-}
-
-function ifSuccess(res) {
-  return /^2/.test(res.statusCode.toString()) && res.data.errcode === 0;
+        const { rejectWrap } = config
+        reject(rejectWrap ? rejectWrap(res) : res)
+      }
+    })
+  })
 }

@@ -14,7 +14,7 @@
     <van-calendar show="{{ show }}" bind:confirm="onConfirm" bind:close="onClose" color="#5B67CA" />
   </view>
   <!-- 周期天数应该有待办周期时长的限制 -->
-  <view class="part" wx:if="{{postForm.is_cycle_task}}">
+  <view class="part" wx:if="{{postForm.is_cycle_todo}}">
     <view class="title"><text>待办周期时长(天)</text></view>
     <van-field value="{{ postForm.task_cycle }}" placeholder="请输入待办周期时长" type="{{number}}" border="{{ true }}" clearable="{{ true }}" max="{{90}}" input-class="my-input" bind:change="onTaskCycleChange" />
   </view>
@@ -59,7 +59,7 @@
       <view class="desc"> <text>可以建立99字以内的待办内容 </text></view>
     </view>
     <view class="select">
-      <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_long_task }}" shape="square" bind:change="onLongTaskChange">
+      <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_long_todo }}" shape="square" bind:change="onLongTaskChange">
       </van-checkbox>
     </view>
   </view>
@@ -79,7 +79,7 @@
       <view class="desc"> <text>可在开始日期后待办周期内创建相同待办</text></view>
     </view>
     <view class="select">
-      <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_cycle_task }}" shape="square" bind:change="onCycleTaskChange">
+      <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_cycle_todo }}" shape="square" bind:change="onCycleTaskChange">
       </van-checkbox>
     </view>
   </view>

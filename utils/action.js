@@ -1,51 +1,66 @@
 // 登录,退出,授权相关方法类
-import {
-  login,
-  userInfo,
-  updateUserInfo
-} from '../api/login'
 import initAxios from '../request/create'
 
-// 微信登录 - 一键式授权登录
+/**
+ *
+ * @param {*} type  授权类型，参考小程序文档的授权类型，默认是用户授权
+ * @return {Promise} 返回 Promise 类型
+ * @description 微信授权方法 异步类型
+ */
+export const WxPermission = (type = 'scope.userInfo') => {
+  return new Promise((resolve, reject) => {
+    wx.getSetting({
+      success(data) {
+        if (data.authSetting[type]) {
+          // 调用获取用户授权信息
+          if (type === 'scope.userInfo') {
+            wx.getUserInfo({
+              lang: 'zh_CN',
+              success(info) {
+                resolve(info)
+              },
+              fail(e) {
+                reject({
+                  type: 'USER_PERMISSION_ERROR',
+                  message: '获取用户信息授权错误',
+                  detail: e
+                })
+              }
+            })
+          } else {
+            // 可以 重复利用
+            resolve(data)
+          }
+        } else {
+          reject({
+            type: 'NO_PERMISSION',
+            message: '用户没有授权信息',
+            detail: {}
+          })
+        }
+      },
+      fail(e) {
+        reject({
+          type: 'PERMISSION_ERROR',
+          message: '用户授权错误',
+          detail: e
+        })
+      }
+    })
+  })
+}
+
+/**
+ *
+ * @returns {Promise}
+ * @description 登录方法，需要重新调用
+ */
 export function WxLogin() {
   return new Promise((resolve, reject) => {
     wx.login({
       success(res) {
-        wx.getSetting({
-          success(data) {
-            if (data.authSetting['scope.userInfo']) {
-              wx.getUserInfo({
-                lang: 'zh_CN',
-                success(info) {
-                  resolve({
-                    ...res,
-                    ...info
-                  })
-                },
-                fail(e) {
-                  reject({
-                    type: 'NO_PERMISSION',
-                    message: '没有授权获取用户信息',
-                    detail: e
-                  })
-                }
-              })
-            } else {
-              reject({
-                type: 'NO_PERMISSION',
-                message: '用户没有授权用户信息',
-                detail: {}
-              })
-            }
-          },
-          fail(e) {
-            reject({
-              type: 'PERMISSION_ERROR',
-              message: '用户授权错误',
-              detail: e
-            })
-          }
-        })
+        // 用户登录成功
+        resolve(res)
       },
       fail(e) {
         reject({
@@ -54,24 +69,6 @@ export function WxLogin() {
           detail: e
         })
       }
-    })
-  })
-}
-
-
-// 获取并设置用户信息
-export function setUserInfo() {
-  return new Promise((resolve, reject) => {
-    const app = getApp() || this || null
-    userInfo().then((res) => {
-      console.log(res)
-      // 存入全局与缓存
-      app && (app.globalData.userInfo = res)
-      wx.setStorageSync('userInfo', res)
-      resolve(res)
-    }).catch((err) => {
-      console.log(err)
-      reject(err)
     })
   })
 }

@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    avatar_url: wx.getStorageSync('avatar_url'),
+    username: wx.getStorageSync('username'),
   },
 
   /**

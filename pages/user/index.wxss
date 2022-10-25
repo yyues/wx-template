@@ -53,6 +53,7 @@
 .user-wrapper .user-card .header .image .avatar {
   width: 200rpx;
   height: 200rpx;
+  border-radius: 50%;
 }
 .user-wrapper .user-card .header .image .icon {
   width: 80rpx;

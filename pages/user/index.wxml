@@ -9,11 +9,11 @@
   <view class="user-card">
     <view class="header">
       <view class="image">
-        <image class="avatar" src="../../images/avatar_default.png"></image>
+        <image class="avatar" src="{{ avatar_url || '../../images/avatar_default.png' }}"></image>
         <image class="icon" src="../../images/avatar_icon.png"></image>
       </view>
       <view class="content">
-        <view class="name"> <text>假如爱有天意</text> </view>
+        <view class="name"> <text>{{ username ? username : '假如爱有天意' }}</text> </view>
         <view class="city"><text>浙江 杭州</text> </view>
       </view>
     </view>

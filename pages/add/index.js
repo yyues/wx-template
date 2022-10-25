@@ -26,10 +26,10 @@ Page({
       level: 0,
       content: '',
       task_type: 'person',
-      is_long_task: false,
-      is_cycle_task: false,
+      is_long_todo: false,
+      is_cycle_todo: false,
       is_multiplayer: false,
-      task_cycle: ''
+      task_cycle: 1
     }
   },
 
@@ -113,12 +113,15 @@ Page({
       loading: true
     })
     taskSave(param).then(res => {
-      if (res.success) {
-        Toast('创建成功！')
-        wx.navigateBack({
-          delta: 0,
-        })
-      }
+      Toast({
+        type: 'success',
+        message: '创建成功！',
+        onClose: () => {
+          wx.navigateBack({
+            delta: 0,
+          })
+        },
+      });
     }).finally(() => {
       this.setData({
         loading: false
@@ -237,7 +240,7 @@ Page({
     this.setData({
       postForm: {
         ...data,
-        is_long_task: e.detail
+        is_long_todo: e.detail
       },
       max_content: 99
     })
@@ -247,7 +250,7 @@ Page({
     this.setData({
       postForm: {
         ...data,
-        is_cycle_task: e.detail
+        is_cycle_todo: e.detail
       },
     })
   },

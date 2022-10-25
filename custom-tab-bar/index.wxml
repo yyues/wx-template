@@ -5,4 +5,9 @@
     <image slot="icon-active" src="{{ item.selectedIconPath }}" mode="aspectFit" class="log-style {{ item.pagePath === '/pages/add/index'? 'add-icon' :'' }}" />
     <!-- {{item.text}} -->
   </van-tabbar-item>
+  <van-dialog use-slot title="亲，请登录！" show="{{ show }}" show-cancel-button confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo" confirm-button-color="#5B67CA">
+    <view class="content">
+      <text>需要登录后才能解锁该操作哦！</text>
+    </view>
+  </van-dialog>
 </van-tabbar>
