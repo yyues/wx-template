@@ -7,11 +7,31 @@
     <image src="../../images/user_bg.png"></image>
   </view>
   <view class="content" style="top: {{top}}" bindtouchmove="onView">
-    <view class="point" bindtouchmove="onPoint"></view>
+    <view class="point" bindtap="onPoint"></view>
     <view class="card">
       <image src="{{avatar_url}}"></image>
       <view class="username">
         <text>{{username}}</text>
+      </view>
+    </view>
+    <view class="action" wx:if="{{showAll}}">
+      <view class="item" bindtap="onTodo">
+        <view class="image">
+          <image src="../../images/user_task.png"></image>
+        </view>
+        <view class="contents"> <text>我的待办</text> </view>
+      </view>
+      <view class="item">
+        <view class="image">
+          <image src="../../images/user_circle.png"></image>
+        </view>
+        <view class="contents"><text>我的圈子</text> </view>
+      </view>
+      <view class="item">
+        <view class="image">
+          <image src="../../images/user_square.png"></image>
+        </view>
+        <view class="contents"> <text>我的动态</text> </view>
       </view>
     </view>
   </view>

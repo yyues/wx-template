@@ -17,7 +17,7 @@
   width: calc(100% - 10rpx * 4);
   min-height: 1000rpx;
   background-color: #fff;
-  top: 1188rpx;
+  top: calc(100vh - 350rpx);
   border-radius: 20rpx 20rpx 0 0;
   padding: 20rpx;
   z-index: 20;
@@ -48,4 +48,31 @@
 }
 .user-page .content .card .username text {
   font-size: 24px;
+}
+.high-point {
+  background-color: #5b67ca;
+}
+.action {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+  width: calc(100% - 24rpx);
+  border-radius: 16rpx;
+  margin: 16rpx 0;
+  padding: 16rpx;
+  background-color: #f5f5f5;
+}
+.action .item {
+  padding: 20rpx;
+  text-align: center;
+}
+.action .item image {
+  width: 90rpx;
+  height: 90rpx;
+}
+.action .item .contents {
+  margin-top: 10rpx;
+}
+.action .item .contents text {
+  color: black;
 }

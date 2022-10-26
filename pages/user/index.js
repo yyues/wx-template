@@ -10,7 +10,7 @@ Page({
   data: {
     avatar_url: wx.getStorageSync('avatar_url'),
     username: wx.getStorageSync('username'),
-    top: '1208rpx',
+    top: 'calc(100vh - 350rpx)',
     showAll: false
   },
 
@@ -81,16 +81,41 @@ Page({
     };
   },
   onView(e) {
-    if (this.data.showAll) return
-    this.debounce(this.handleMove(e), 150)
+    this.setData({
+      top: `500rpx`,
+      showAll: true
+    })
+    // if (this.data.showAll) return
+    // this.debounce(this.handleMove(e), 150)
   },
   onPoint(e) {
-    this.handleMove(e)
-    // this.debounce(this.handleMove(e), 150)
+    this.setData({
+      top: `calc(100vh - 350rpx)`,
+      showAll: false
+    })
+    return
+    if (!this.data.showAll) return
+    const height = e.touches[0].pageY
+    const before = Number(this.data.top.replace('rpx', '')) / 2
+    if (height > 600) {
+      this.setData({
+        top: `calc(100vh - 350rpx)`,
+        showAll: false
+      })
+      return
+    }
+    if (height > before) {
+      this.setData({
+        top: `${height * 2}rpx`,
+        showAll: false
+      })
+      return
+    }
   },
   handleMove(e) {
     const height = e.touches[0].pageY
     const before = Number(this.data.top.replace('rpx', '')) / 2
+
     // 滑动大于一定距离直接 滑到顶部
     if (before - height > 25) {
       this.setData({
@@ -102,13 +127,17 @@ Page({
     // 下滑回到原位
     if (before - height < -25) {
       this.setData({
-        top: `1208rpx`,
+        top: `calc(100vh - 350rpx)`,
         showAll: false
       })
       return
     }
     // 设置最低位置
     if (height > 600) {
+      this.setData({
+        top: `500rpx`,
+        showAll: false
+      })
       return
     }
     // 设置上拉最高位置

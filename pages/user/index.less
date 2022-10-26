@@ -1,25 +1,29 @@
 @import "../../style/index.less";
 @img-height: 1348rpx;
 @base-px: 10rpx;
+
 .user-page {
   width: 100%;
   height: 100vh;
   overflow: hidden;
   position: relative;
   z-index: 10;
+
   .user-bg {
     width: 100%;
+
     image {
       width: 100%;
       height: 1348rpx;
     }
   }
+
   .content {
     position: absolute;
     width: calc(100% - @base-px * 4);
     min-height: 1000rpx;
     background-color: #fff;
-    top: @img-height - 160rpx;
+    top: calc(100vh - 350rpx);
     border-radius: @base-px * 2 @base-px * 2 0 0;
     padding: 20rpx;
     z-index: 20;
@@ -27,6 +31,7 @@
     flex-direction: column;
     align-items: center;
     transition: all 0.28s;
+
     .point {
       width: 120rpx;
       height: 12rpx;
@@ -35,6 +40,7 @@
       background: rgba(216, 216, 216, 1);
       margin: @base-px * 1 0;
     }
+
     .card {
       display: flex;
       align-items: center;
@@ -47,10 +53,55 @@
         border-radius: 50%;
         margin: @base-px * 2 @base-px * 4 @base-px * 2 @base-px * 2;
       }
+
       .username {
         text {
           font-size: 24px;
         }
+      }
+    }
+  }
+}
+
+.high-point {
+  background-color: @primary-color;
+}
+
+.action {
+  display: flex;
+  // align-items: center;
+  justify-content: space-between;
+  padding: @base-px * 2;
+  width: calc(100% - 24rpx);
+  border-radius: 16rpx;
+  margin: @primary-margin;
+  // margin-top: @base-size * 4;
+  padding: @primary-padding;
+  background-color: @page-bg-color;
+
+  .item {
+    // flex: auto;
+    padding: 20rpx;
+    text-align: center;
+
+    &:not(:first-child) {
+      // border-left: 1px solid @text-header-color;
+    }
+
+    // background-color: skyblue;
+
+    image {
+      width: 90rpx;
+      height: 90rpx;
+    }
+
+    .contents {
+      margin-top: @base-px;
+
+      text {
+        // font-size: @size-16;
+        // line-height: @line-h-16;
+        color: black;
       }
     }
   }
