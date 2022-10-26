@@ -1,90 +1,96 @@
-.hight-card {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
-
-.selected {
-  .name {
-    text {
-      color: gray;
-      text-decoration: line-through;
-    }
-  }
-}
-
-.card {
-  border-radius: 16rpx;
-  padding: 16rpx;
-  margin: 16rpx 24rpx;
-  background-color: #fff;
-  min-height: 120rpx;
-  display: flex;
-
-  .select {
-    margin-right: 16rpx;
-    padding: 12rpx 0;
-    padding-left: 16rpx;
-  }
-
-  .wrapper {
-    padding-right: 20rpx;
-    flex: 1;
+@import "../../style/index.less";
+.wrapper {
+  //  卡片 主要内容
+  border-radius: @primary-radius;
+  background-color: @primary-bg-color;
+  padding: @primary-padding;
+  margin: @primary-margin;
+  min-height: @primary-card-min-height;
+  position: relative;
+  .header {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
-    .header {
-
+    align-items: flex-end;
+    justify-content: space-between;
+    .left {
       display: flex;
-      justify-content: space-between;
-
+      align-items: center;
       .content {
-        display: flex;
-        align-items: center;
-
+        margin-left: @base-size;
+        width: 70vw;
+        // text-overflow: -o-ellipsis-lastline;
+        overflow: hidden; //溢出内容隐藏
+        white-space: nowrap;
+        text-overflow: ellipsis; //文本溢出部分用省略号表示
+        // display: -webkit-box; //特别显示模式
+        // -webkit-line-clamp: 2; //行数
+        // line-clamp: 2;
         text {
-          font-size: 32rpx;
-        }
-
-        .time {
-          margin-left: 16rpx;
-        }
-
-      }
-
-      .action {
-        image {
-          width: 48rpx;
-          height: 10rpx;
+          // color: @text-header-color;
+          // font-weight: 700;
+          // font-size: @size-20;
+          line-height: @line-h-16;
+          letter-spacing: 1rpx;
         }
       }
-
-      margin-bottom: 16rpx;
     }
-
-    .label {
-      display: flex;
-      justify-content: space-between;
-
-      .left {
-        .my-tag {
-          margin-right: 16rpx;
+    .right {
+      .time {
+        display: flex;
+        align-items: flex-end;
+        // align-self: start;
+        .start {
+          letter-spacing: 2rpx;
+          text {
+            font-size: @size-20 !important;
+            // line-height: @line-h-20 !important;
+          }
+        }
+        .am {
+          margin-left: @base-size;
+          text {
+            font-size: @size-12;
+            // line-height: @line-h-12;
+            color: @text-2-color;
+          }
         }
       }
+      .ruixin {
+        background-color: @primary-color;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-radius: 0 @primary-radius 0 @primary-radius;
+        color: white;
+        font-size: @size-12;
+        line-height: @line-h-12;
+        padding: 4rpx @primary-padding;
+      }
+    }
+    margin: @base-size 0 @base-size * 3 0;
+  }
+  .icon {
+    margin-right: @base-size;
+    image {
+      width: 60rpx;
+      height: 60rpx;
     }
   }
-
-  .desc {
-    min-height: 44rpx;
-    margin-bottom: 12rpx;
-
-    text {
-      font-size: 28rpx;
-      line-height: 44rpx;
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      color: #94a3b8;
+  .action {
+    margin: @base-size * 3 0 @base-size @base-size;
+    display: flex;
+    align-items: center;
+  }
+  .type {
+    position: absolute;
+    right: 20rpx;
+    bottom: 10rpx;
+    image {
+      width: 90rpx;
+      height: 90rpx;
     }
   }
+}
+.selected,
+.high {
+  box-shadow: @primary-hover-shadow;
 }

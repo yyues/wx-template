@@ -1,66 +1,82 @@
-.hight-card {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-}
-.selected .name text {
-  color: gray;
-  text-decoration: line-through;
-}
-.card {
+.wrapper {
   border-radius: 16rpx;
+  background-color: #ffffff;
   padding: 16rpx;
-  margin: 16rpx 24rpx;
-  background-color: #fff;
-  min-height: 120rpx;
-  display: flex;
+  margin: 16rpx 0;
+  min-height: 144rpx;
+  position: relative;
 }
-.card .select {
-  margin-right: 16rpx;
-  padding: 12rpx 0;
-  padding-left: 16rpx;
-}
-.card .wrapper {
-  padding-right: 20rpx;
-  flex: 1;
+.wrapper .header {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.card .wrapper .header {
-  display: flex;
+  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 16rpx;
+  margin: 10rpx 0 30rpx 0;
 }
-.card .wrapper .header .content {
+.wrapper .header .left {
   display: flex;
   align-items: center;
 }
-.card .wrapper .header .content text {
-  font-size: 32rpx;
-}
-.card .wrapper .header .content .time {
-  margin-left: 16rpx;
-}
-.card .wrapper .header .action image {
-  width: 48rpx;
-  height: 10rpx;
-}
-.card .wrapper .label {
-  display: flex;
-  justify-content: space-between;
-}
-.card .wrapper .label .left .my-tag {
-  margin-right: 16rpx;
-}
-.card .desc {
-  min-height: 44rpx;
-  margin-bottom: 12rpx;
-}
-.card .desc text {
-  font-size: 28rpx;
-  line-height: 44rpx;
-  width: 100%;
-  white-space: nowrap;
+.wrapper .header .left .content {
+  margin-left: 10rpx;
+  width: 70vw;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
+}
+.wrapper .header .left .content text {
+  line-height: 48rpx;
+  letter-spacing: 1rpx;
+}
+.wrapper .header .right .time {
+  display: flex;
+  align-items: flex-end;
+}
+.wrapper .header .right .time .start {
+  letter-spacing: 2rpx;
+}
+.wrapper .header .right .time .start text {
+  font-size: 40rpx !important;
+}
+.wrapper .header .right .time .am {
+  margin-left: 10rpx;
+}
+.wrapper .header .right .time .am text {
+  font-size: 24rpx;
   color: #94a3b8;
+}
+.wrapper .header .right .ruixin {
+  background-color: #5b67ca;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 16rpx 0 16rpx;
+  color: white;
+  font-size: 24rpx;
+  line-height: 28rpx;
+  padding: 4rpx 16rpx;
+}
+.wrapper .icon {
+  margin-right: 10rpx;
+}
+.wrapper .icon image {
+  width: 60rpx;
+  height: 60rpx;
+}
+.wrapper .action {
+  margin: 30rpx 0 10rpx 10rpx;
+  display: flex;
+  align-items: center;
+}
+.wrapper .type {
+  position: absolute;
+  right: 20rpx;
+  bottom: 10rpx;
+}
+.wrapper .type image {
+  width: 90rpx;
+  height: 90rpx;
+}
+.selected,
+.high {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }

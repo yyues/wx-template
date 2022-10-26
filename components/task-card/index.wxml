@@ -1,41 +1,31 @@
-<view class="card" hover-class="high-card" bind:tap="onClick" data-content="{{data}}">
-  <view class="select" wx:if="{{hasSelect}}">
-    <van-checkbox checked-color="#5B67CA" value="{{ checked }}" shape="square" bind:change="onSelect"></van-checkbox>
-  </view>
-  <view class="wrapper {{checked ? 'selected' :''}}">
-    <view class="header">
+<view class="wrapper margin-12 padding-10 bg-white   {{checked ? 'selected':'' }}" hover-class="high">
+  <view class="header">
+    <view class="left">
       <view class="content">
-        <view class="icon"></view>
-        <view class="name">
-          <text>{{data.content}}</text>
+        <text>{{data.content || '明天准时上班！！！'}}</text>
+      </view>
+    </view>
+    <view class="right">
+      <!-- <view class="time">
+      
+        <view class="start"> <text>10:00</text> </view>
+        <view class="am">
+          <text>AM</text>
         </view>
 
-      </view>
-      <view class="action">
-        <van-tag color="#5B67CA" size="small" custom-class="my-tag time" wx:if="{{type === 'user'}}">
-          <!-- <text>{{data.start_time}}-{{data.end_time}}</text> -->
-          <text>{{data.execute_time}}</text>
-        </van-tag>
-        <image src="../../images/actions.png" wx:else></image>
+      </view> -->
+      <!-- 瑞幸格式的 时间提示 -->
+      <view class="ruixin">
+        {{data.execute_time || '2022-10-28'}}
       </view>
     </view>
-    <view class="desc">
-      <text wx:if="{{data.description}}">{{data.description}}</text>
-    </view>
-    <view class="label">
-      <view class="left">
-        <van-tag color="#16a34a" size="medium" custom-class="my-tag" wx:if="{{data.is_current_user}}">
-          我的
-        </van-tag>
-        <van-tag color="#16a34a" size="medium" custom-class="my-tag" wx:if="{{data.is_cycle_todo}}">
-          周期任务
-        </van-tag>
-      </view>
-      <view class="right">
-        <van-tag color="#ef4444" size="medium" custom-class="my-tag">
-          {{data.delay_time}}
-        </van-tag>
-      </view>
-    </view>
+  </view>
+  <view class="action">
+    <van-tag color="#0891b2" size="medium" custom-class="my-tag">
+      {{data.start_time || '10:00'}}-{{data.end_time || '18:00'}}
+    </van-tag>
+  </view>
+  <view class="type">
+    <image src="./image/running.png"></image>
   </view>
 </view>

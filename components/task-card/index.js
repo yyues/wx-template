@@ -41,7 +41,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    checked: false
+    checked: false,
+    icon_url: './image/my.png'
   },
 
   /**
@@ -55,6 +56,27 @@ Component({
     },
     onClick(e) {
       this.triggerEvent('onClick', e.detail)
+    },
+    setIcon() {
+      // 设置我的图标
+      const type = this.data.task_type
+      let url
+      switch (type) {
+        case 'person':
+          url = './image/my.png'
+          break;
+        default:
+          url = './image/my.png'
+          break;
+      }
+      this.setData({
+        icon_url: url
+      })
+    }
+  },
+  lifetimes: {
+    ready() {
+      this.setIcon()
     }
   }
 })

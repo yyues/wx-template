@@ -6,5 +6,6 @@
   <view class="wrapper">
     <task-card wx:for="{{currentList}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
   </view>
+  <task-card />
 
 </view>

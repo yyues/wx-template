@@ -1,53 +1,18 @@
-<view class="user-wrapper">
-
+<view class="user-page">
   <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff00; " custom-class="my-navbar">
+  <!-- <van-nav-bar border="{{false}}" wx:if="{{showAll}}" fixed placeholder="{{true}}" custom-style="background-color: transparent">
     <view slot="title" class="nav-title">我的</view>
-  </van-nav-bar>
-  <!-- 背景图片样式 -->
-  <view class="bg"></view>
-  <view class="user-card">
-    <view class="header">
-      <view class="image">
-        <image class="avatar" src="{{ avatar_url || '../../images/avatar_default.png' }}"></image>
-        <image class="icon" src="../../images/avatar_icon.png"></image>
-      </view>
-      <view class="content">
-        <view class="name"> <text>{{ username ? username : '假如爱有天意' }}</text> </view>
-        <view class="city"><text>浙江 杭州</text> </view>
+  </van-nav-bar> -->
+  <view class="user-bg">
+    <image src="../../images/user_bg.png"></image>
+  </view>
+  <view class="content" style="top: {{top}}" bindtouchmove="onView">
+    <view class="point" bindtouchmove="onPoint"></view>
+    <view class="card">
+      <image src="{{avatar_url}}"></image>
+      <view class="username">
+        <text>{{username}}</text>
       </view>
     </view>
   </view>
-
-  <view class="action-wrapper">
-    <!-- 我的待办 -->
-    <view class="action">
-      <view class="content">
-        <text>我的待办</text>
-      </view>
-      <view class="icon" hover-class="high-icon" bindtap="onTodo">
-        <van-icon name="arrow" class="icon-van" />
-      </view>
-    </view>
-    <!-- 我的圈子 -->
-    <view class="action">
-      <view class="content">
-        <text>我的圈子</text>
-      </view>
-      <view class="icon" hover-class="high-icon" bindtap="onCircle">
-        <van-icon name="arrow" class="icon-van" />
-      </view>
-    </view>
-    <!-- 我的目标-->
-    <view class="action">
-      <view class="content">
-        <text>我的目标</text>
-      </view>
-      <view class="icon" hover-class="high-icon">
-        <van-icon name="arrow" class="icon-van" />
-      </view>
-    </view>
-  </view>
-
-  <!-- <image src="../../images/avatar_bg.png" class="avatar-bg"></image> -->
 </view>
