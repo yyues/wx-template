@@ -1,7 +1,6 @@
 {
   "usingComponents": {
     "calendar": "../../components/calendar/calendar",
-    "van-steps": "@vant/weapp/steps/index",
     "task-card": "../../components/task-card/index"
   }
 }
