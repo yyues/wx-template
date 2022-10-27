@@ -10,7 +10,7 @@ Page({
     hasLogin: !!getToken(),
     avatar_url: wx.getStorageSync('avatar_url'),
     username: wx.getStorageSync('username'),
-    weather_default: 'http://192.168.1.166:7001/public/weather/night_bg.png'
+    weather_default: 'http://127.0.0.1:7001/public/weather/night_bg.png'
   },
 
   /**

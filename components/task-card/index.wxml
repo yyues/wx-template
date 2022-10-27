@@ -1,6 +1,7 @@
 <view class="wrapper margin-12 padding-10 bg-white   {{checked ? 'selected':'' }}" hover-class="high">
   <view class="header">
     <view class="left">
+      <view class="point" style="background-color: {{data.primary_color ||'#5b67ca'}}"></view>
       <view class="content">
         <text>{{data.content || '明天准时上班！！！'}}</text>
       </view>
@@ -20,12 +21,23 @@
       </view>
     </view>
   </view>
+  <view class="progress" wx:if="{{data.is_multiplayer}}">
+    <!-- 需要计算 他的进度条长度 等于当前完成人数/ uid 的长度 -->
+  </view>
   <view class="action">
-    <van-tag color="#0891b2" size="medium" custom-class="my-tag">
+    <view class="time-circle">
+      <image src="../../images/time_circle.png"></image>
+      <view class="days">
+        <text class="number">7</text>
+        <view class="day">days</view>
+      </view>
+    </view>
+    <!-- <van-tag color="#0891b2" size="medium" custom-class="my-tag">
       {{data.start_time || '10:00'}}-{{data.end_time || '18:00'}}
-    </van-tag>
+    </van-tag> -->
   </view>
   <view class="type">
-    <image src="./image/running.png"></image>
+    <image wx:if="{{!data.is_multiplayer}}" src="{{data.create_url}}"></image>
+    <view class="person" wx:else> </view>
   </view>
 </view>

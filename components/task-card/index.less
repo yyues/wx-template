@@ -1,29 +1,47 @@
 @import "../../style/index.less";
+
 .wrapper {
   //  卡片 主要内容
   border-radius: @primary-radius;
   background-color: @primary-bg-color;
   padding: @primary-padding;
   margin: @primary-margin;
-  min-height: @primary-card-min-height;
+  // min-height: @primary-card-min-height;
   position: relative;
+
   .header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+
     .left {
       display: flex;
       align-items: center;
+      position: relative;
+
+      .point {
+        width: 8rpx;
+        height: 48rpx;
+        background-color: @primary-color;
+        position: absolute;
+        border-radius: 12rpx;
+        // left: -2rpx;
+        // top: 28rpx;
+      }
+
       .content {
-        margin-left: @base-size;
+        margin-left: @base-size * 2;
         width: 70vw;
         // text-overflow: -o-ellipsis-lastline;
         overflow: hidden; //溢出内容隐藏
         white-space: nowrap;
         text-overflow: ellipsis; //文本溢出部分用省略号表示
+
         // display: -webkit-box; //特别显示模式
         // -webkit-line-clamp: 2; //行数
         // line-clamp: 2;
+
+
         text {
           // color: @text-header-color;
           // font-weight: 700;
@@ -33,20 +51,25 @@
         }
       }
     }
+
     .right {
       .time {
         display: flex;
         align-items: flex-end;
+
         // align-self: start;
         .start {
           letter-spacing: 2rpx;
+
           text {
-            font-size: @size-20 !important;
+            font-size: @size-20  !important;
             // line-height: @line-h-20 !important;
           }
         }
+
         .am {
           margin-left: @base-size;
+
           text {
             font-size: @size-12;
             // line-height: @line-h-12;
@@ -54,6 +77,7 @@
           }
         }
       }
+
       .ruixin {
         background-color: @primary-color;
         position: absolute;
@@ -66,30 +90,67 @@
         padding: 4rpx @primary-padding;
       }
     }
+
     margin: @base-size 0 @base-size * 3 0;
   }
+
   .icon {
     margin-right: @base-size;
+
     image {
       width: 60rpx;
       height: 60rpx;
     }
   }
+
   .action {
-    margin: @base-size * 3 0 @base-size @base-size;
+    margin: @base-size * 4 0 @base-size @base-size;
     display: flex;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    .time-circle {
+      display: flex;
+      align-items: center;
+
+      image {
+        width: 40rpx;
+        height: 40rpx;
+        margin-right: @base-size;
+      }
+
+      .days {
+        display: flex;
+        align-items: flex-end;
+
+        .number {
+          display: block;
+          color: #171725;
+          font-size: @size-16;
+          margin-right: @base-size / 1.5;
+        }
+
+        .day {
+          color: #9CA4AB;
+          font-size: @size-14;
+        }
+      }
+    }
   }
+
   .type {
     position: absolute;
     right: 20rpx;
     bottom: 10rpx;
+
     image {
-      width: 90rpx;
-      height: 90rpx;
+      width: 60rpx;
+      height: 60rpx;
+      border-radius: 50%;
     }
   }
 }
+
 .selected,
 .high {
   box-shadow: @primary-hover-shadow;

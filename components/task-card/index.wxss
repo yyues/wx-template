@@ -3,7 +3,6 @@
   background-color: #ffffff;
   padding: 16rpx;
   margin: 16rpx 0;
-  min-height: 144rpx;
   position: relative;
 }
 .wrapper .header {
@@ -15,9 +14,17 @@
 .wrapper .header .left {
   display: flex;
   align-items: center;
+  position: relative;
+}
+.wrapper .header .left .point {
+  width: 8rpx;
+  height: 48rpx;
+  background-color: #5b67ca;
+  position: absolute;
+  border-radius: 12rpx;
 }
 .wrapper .header .left .content {
-  margin-left: 10rpx;
+  margin-left: 20rpx;
   width: 70vw;
   overflow: hidden;
   white-space: nowrap;
@@ -63,9 +70,33 @@
   height: 60rpx;
 }
 .wrapper .action {
-  margin: 30rpx 0 10rpx 10rpx;
+  margin: 40rpx 0 10rpx 10rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.wrapper .action .time-circle {
   display: flex;
   align-items: center;
+}
+.wrapper .action .time-circle image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.wrapper .action .time-circle .days {
+  display: flex;
+  align-items: flex-end;
+}
+.wrapper .action .time-circle .days .number {
+  display: block;
+  color: #171725;
+  font-size: 32rpx;
+  margin-right: 10rpx / 1.5;
+}
+.wrapper .action .time-circle .days .day {
+  color: #9CA4AB;
+  font-size: 28rpx;
 }
 .wrapper .type {
   position: absolute;
@@ -73,8 +104,9 @@
   bottom: 10rpx;
 }
 .wrapper .type image {
-  width: 90rpx;
-  height: 90rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
 }
 .selected,
 .high {
