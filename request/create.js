@@ -26,17 +26,20 @@ function initAxios() {
   // });
 
   // resolve 拦截, 格式化返回数据
-  const resolveWrap = ({ data = {}}) => {
+  const resolveWrap = ({ data = {} }) => {
     return data
   }
 
   // reject 拦截错误信息
-  const rejectWrap = ({ data = {}}) => {
+  const rejectWrap = ({ data = {} }) => {
     // 调整逻辑 401 或者 403 需要重新登录
     const { code, message } = data
     if ([401, 403].includes(code)) {
       // 重新登录的逻辑
       // Login()
+      // wx.navigateTo({
+      //   url: '/pages/login/index',
+      // })
       return
     }
     !data.success &&

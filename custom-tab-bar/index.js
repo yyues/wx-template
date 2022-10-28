@@ -1,5 +1,4 @@
-import { getToken, WxLogin } from '../utils/action'
-import { Login } from '../utils/index'
+
 
 Component({
   data: {
@@ -23,7 +22,6 @@ Component({
         selectedIconPath: './image/add.png',
         text: '添加',
         type: 'navigateTo',
-        isLogin: true
       },
       {
         pagePath: '/pages/playground/index',
@@ -46,13 +44,6 @@ Component({
     switchTab(e) {
       const data = this.data.list[e.detail]
       const url = data.pagePath
-      if (data.isLogin && !getToken()) {
-        this.setData({
-          show: true,
-          currentPath: data.pagePath
-        })
-        return
-      }
       if (data.type === 'navigateTo') {
         wx.navigateTo({
           url
@@ -70,23 +61,5 @@ Component({
         active: e.detail
       })
     },
-    getUserInfo(event) {
-      const data = event.detail
-      // 成功后去往原本要去的页面
-      const currentPath = this.data.currentPath
-      WxLogin().then((info) => {
-        const param = { ...data, ...info }
-        Login(param).then(() => {
-          // Loading 动画 做完该做的事情
-          wx.navigateTo({
-            url: currentPath
-          })
-        })
-      })
-    },
-
-    onClose() {
-      this.setData({ show: false })
-    }
   }
 })

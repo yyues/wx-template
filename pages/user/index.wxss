@@ -7,6 +7,8 @@
 }
 .user-page .user-bg {
   width: 100%;
+  height: 1348rpx;
+  background-size: cover;
 }
 .user-page .user-bg image {
   width: 100%;

@@ -15,7 +15,7 @@
       </view>
       <!-- 操作栏 -->
       <view class="action">
-        <image src="../../images/actions.png"></image>
+        <!-- <image src="../../images/actions.png"></image> -->
       </view>
     </view>
     <view class="desc">

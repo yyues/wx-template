@@ -3,8 +3,9 @@
   <!-- <van-nav-bar border="{{false}}" wx:if="{{showAll}}" fixed placeholder="{{true}}" custom-style="background-color: transparent">
     <view slot="title" class="nav-title">我的</view>
   </van-nav-bar> -->
-  <view class="user-bg">
-    <image src="../../images/user_bg.png"></image>
+  <view class="user-bg" style="background-image: url({{user_bg}});">
+    <!-- <image src="../../images/user_bg.png"></image> -->
+    <!-- 1 -->
   </view>
   <view class="content" style="top: {{top}}" bindtouchmove="onView">
     <view class="point" bindtap="onPoint"></view>

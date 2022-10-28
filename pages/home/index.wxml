@@ -30,4 +30,5 @@
       </view>
     </view>
   </view>
+  <button bindtap="onLogin">登录</button>
 </view>

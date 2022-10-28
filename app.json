@@ -9,8 +9,10 @@
     "pages/detail/index",
     "pages/user/index",
     "pages/add/index",
-    "pages/circle-detail/index",
-    "pages/todo-detail/index"
+    "pages/my-circle/index",
+    "pages/my-todo/index",
+    "pages/todo-detail/index",
+    "pages/login/index"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -39,6 +41,7 @@
     ]
   },
   "usingComponents": {
-    "van-nav-bar": "@vant/weapp/nav-bar/index"
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   }
 }

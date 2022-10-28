@@ -1,0 +1,69 @@
+@import "../../style/index.less";
+.login-wrapper {
+  position: relative;
+  height: 100vh;
+  // background-position: end;
+  // background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 100;
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.35);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  .nav-left {
+    color: white;
+  }
+  .nav-title {
+    color: white;
+    letter-spacing: 2rpx;
+  }
+
+  display: flex;
+  flex-direction: column;
+  .operation {
+    margin-top: @base-size * 40;
+    position: relative;
+    z-index: 100;
+    text-align: center;
+    .my-submit {
+      min-width: 240rpx;
+      border-radius: 12rpx;
+      letter-spacing: 4rpx;
+    }
+  }
+  .card {
+    position: relative;
+    z-index: 100;
+    padding: @base-size * 2;
+    background-color: #fff;
+    margin: 16rpx 24rpx;
+    width: auto;
+    height: auto;
+    min-height: 300rpx;
+    border-radius: 24rpx;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    image {
+      width: 100%;
+      height: 320rpx;
+      object-fit: cover;
+    }
+    .content {
+      margin-top: @base-size;
+      color: white;
+    }
+    .author {
+      color: white;
+      font-size: 28rpx;
+      text-align: right;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-// pages/todo-detail/index.js
+// pages/my-circle/index.js
 Page({
 
   /**
@@ -62,10 +62,5 @@ Page({
    */
   onShareAppMessage() {
 
-  },
-  onClickLeft() {
-    wx.navigateBack({
-      delta: 0,
-    })
   }
 })

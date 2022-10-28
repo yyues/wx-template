@@ -1,4 +1,4 @@
-<view class="wrapper margin-12 padding-10 bg-white   {{checked ? 'selected':'' }}" hover-class="high">
+<view class="wrapper margin-12 padding-10 bg-white   {{checked ? 'selected':'' }}" hover-class="high" bindtap="onClick" data-id="{{data.id}}">
   <view class="header">
     <view class="left">
       <view class="point" style="background-color: {{data.primary_color ||'#5b67ca'}}"></view>
@@ -37,7 +37,11 @@
     </van-tag> -->
   </view>
   <view class="type">
-    <image wx:if="{{!data.is_multiplayer}}" src="{{data.create_url}}"></image>
-    <view class="person" wx:else> </view>
+    <image src="{{data.create_url}}"></image>
+    <view class="person" wx:if="{{!data.is_multiplayer}}">
+      <view class="three-more" wx:if="{{data.invite_url.length > 2}}">
+
+      </view>
+    </view>
   </view>
 </view>

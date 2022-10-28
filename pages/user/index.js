@@ -11,7 +11,8 @@ Page({
     avatar_url: wx.getStorageSync('avatar_url'),
     username: wx.getStorageSync('username'),
     top: 'calc(100vh - 350rpx)',
-    showAll: false
+    showAll: false,
+    user_bg: 'http://43.143.205.208:7001/public/user/user_bg.png',
   },
 
   /**
@@ -160,7 +161,7 @@ Page({
   },
   onTodo() {
     wx.navigateTo({
-      url: '/pages/todo-detail/index?type=user',
+      url: '/pages/my-todo/index?type=user',
     })
   }
 })

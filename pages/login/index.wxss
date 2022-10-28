@@ -1,0 +1,65 @@
+.login-wrapper {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+.login-wrapper::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.35);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.login-wrapper .nav-left {
+  color: white;
+}
+.login-wrapper .nav-title {
+  color: white;
+  letter-spacing: 2rpx;
+}
+.login-wrapper .operation {
+  margin-top: 400rpx;
+  position: relative;
+  z-index: 100;
+  text-align: center;
+}
+.login-wrapper .operation .my-submit {
+  min-width: 240rpx;
+  border-radius: 12rpx;
+  letter-spacing: 4rpx;
+}
+.login-wrapper .card {
+  position: relative;
+  z-index: 100;
+  padding: 20rpx;
+  background-color: #fff;
+  margin: 16rpx 24rpx;
+  width: auto;
+  height: auto;
+  min-height: 300rpx;
+  border-radius: 24rpx;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.login-wrapper .card image {
+  width: 100%;
+  height: 320rpx;
+  object-fit: cover;
+}
+.login-wrapper .card .content {
+  margin-top: 10rpx;
+  color: white;
+}
+.login-wrapper .card .author {
+  color: white;
+  font-size: 28rpx;
+  text-align: right;
+}

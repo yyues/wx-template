@@ -55,7 +55,8 @@ Component({
       })
     },
     onClick(e) {
-      this.triggerEvent('onClick', e.detail)
+      const id = e.currentTarget.dataset.id
+      this.triggerEvent('onClick', id)
     },
     setIcon() {
       // 设置我的图标

@@ -1,0 +1,22 @@
+<view class="login-wrapper" style="background-image: url({{login_bg}});">
+  <!-- 导航栏 -->
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff00; z-index: 10; ">
+    <view slot="title" class="nav-title">登录</view>
+    <view slot="left" class="nav-left" bindtap="onClickLeft">
+      <van-icon name="arrow-left" color="#fff" />
+    </view>
+  </van-nav-bar>
+  <view class="card" wx:if="{{true}}" style="background-image: url({{login_card}});">
+    <!-- <image src="{{login_card}}" webp="{{true}}" lazy-load="{{true}}"></image> -->
+    <view class="content">
+      <text>总有地上的生灵，敢于直面雷霆的威光。</text>
+    </view>
+    <view class="author">
+      <text>--- 万叶</text>
+    </view>
+  </view>
+
+  <view class="operation">
+    <van-button color="#5B67CA" custom-class="my-submit" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</van-button>
+  </view>
+</view>

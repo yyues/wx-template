@@ -1,11 +1,11 @@
 import {
-  WxPermission,
   WxLogin
 } from './action'
 import initAxios from '../request/create'
 import {
   login
 } from '../api/login'
+import Dialog from '@vant/weapp/dialog/dialog';
 /**
  * tabbar 高亮提示
  * @param {string|number} index
@@ -68,4 +68,20 @@ export const Login = (param) => {
         })
     })
   })
+}
+export const hasLogin = () => {
+  // 提示用户登录，然后跳到登录页就行
+  Dialog.confirm({
+    title: '请先登录',
+    message: '登录吧！解锁更多操作！',
+  })
+    .then(() => {
+      // on confirm
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    })
+    .catch(() => {
+      // on cancel
+    });
 }
