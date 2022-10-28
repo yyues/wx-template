@@ -5,5 +5,4 @@
     <image slot="icon-active" src="{{ item.selectedIconPath }}" mode="aspectFit" class="log-style {{ item.pagePath === '/pages/add/index'? 'add-icon' :'' }}" />
     <!-- {{item.text}} -->
   </van-tabbar-item>
-  <van-dialog id="van-dialog" />
 </van-tabbar>

@@ -1,5 +1,6 @@
 <view class="user-page">
   <!-- 导航栏 -->
+  <van-dialog id="van-dialog" />
   <!-- <van-nav-bar border="{{false}}" wx:if="{{showAll}}" fixed placeholder="{{true}}" custom-style="background-color: transparent">
     <view slot="title" class="nav-title">我的</view>
   </van-nav-bar> -->

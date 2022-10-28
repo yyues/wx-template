@@ -1,5 +1,5 @@
 
-
+import { hasLogin } from "../utils/index";
 Component({
   data: {
     active: 0,
@@ -22,6 +22,7 @@ Component({
         selectedIconPath: './image/add.png',
         text: '添加',
         type: 'navigateTo',
+        hasLogin: true,
       },
       {
         pagePath: '/pages/playground/index',
@@ -44,6 +45,10 @@ Component({
     switchTab(e) {
       const data = this.data.list[e.detail]
       const url = data.pagePath
+      if(data.hasLogin){
+        hasLogin()
+        return
+      }
       if (data.type === 'navigateTo') {
         wx.navigateTo({
           url

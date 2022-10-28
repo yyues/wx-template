@@ -1,5 +1,6 @@
 <view class="page-wrapper">
   <!-- 导航栏 -->
+  <van-dialog id="van-dialog" />
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;">
     <view slot="left" class="nav-title">
       <view class="user" wx:if="{{ hasLogin}}">
