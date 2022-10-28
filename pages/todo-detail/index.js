@@ -1,11 +1,18 @@
 // pages/todo-detail/index.js
+import {
+  getTodoById
+} from "../../api/todo";
+import {
+  getLocationParams
+} from "../../utils/index";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    loading: false,
+    data: {}
   },
 
   /**
@@ -26,7 +33,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.GetTodoDetail()
   },
 
   /**
@@ -63,9 +70,27 @@ Page({
   onShareAppMessage() {
 
   },
+  GetTodoDetail() {
+    const id = getLocationParams('id')
+    this.setData({
+      loading: true
+    })
+    getTodoById({
+      id
+    }).then(res => {
+      this.setData({
+        data: res
+      })
+    }).finally(() => {
+      this.setData({
+        loading: false
+      })
+    })
+
+  },
   onClickLeft() {
-    wx.navigateBack({
-      delta: 0,
+    wx.reLaunch({
+      url: '/pages/my-todo/index',
     })
   }
 })

@@ -88,3 +88,11 @@ export const hasLogin = () => {
       // on cancel
     });
 }
+// 获取页面URL参数
+export function getLocationParams(name) {
+  //获取页面栈
+  const pages = getCurrentPages();
+  //获取路由参数
+  const curPage = pages[pages.length - 1];
+  return name ? curPage.options[name] : curPage.options;
+}

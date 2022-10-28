@@ -28,7 +28,7 @@ Page({
    */
   onShow() {
     // 渲染时请求数据
-    // this.GetList()
+    this.GetList()
   },
 
   /**

@@ -17,3 +17,11 @@ export const getUserAllTodo = (data) => {
     data
   })
 }
+// 根据 id 查询 指定待办
+export const getTodoById = (data) => {
+  return request.axios({
+    method: 'GET',
+    url: '/todo/find',
+    data
+  })
+}

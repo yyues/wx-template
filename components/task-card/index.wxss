@@ -92,7 +92,6 @@
   display: block;
   color: #171725;
   font-size: 32rpx;
-  margin-right: 10rpx / 1.5;
 }
 .wrapper .action .time-circle .days .day {
   color: #9CA4AB;

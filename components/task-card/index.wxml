@@ -28,7 +28,7 @@
     <view class="time-circle">
       <image src="../../images/time_circle.png"></image>
       <view class="days">
-        <text class="number">7</text>
+        <text class="number">{{data.task_cycle || '7'}}</text>
         <view class="day">days</view>
       </view>
     </view>

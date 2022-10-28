@@ -1,6 +1,6 @@
 
 import { hasLogin } from "../utils/index";
-
+import { getToken } from "../utils/action";
 Component({
   data: {
     active: 0,
@@ -46,7 +46,7 @@ Component({
     switchTab(e) {
       const data = this.data.list[e.detail]
       const url = data.pagePath
-      if(data.hasLogin){
+      if(data.hasLogin && !getToken()){
         hasLogin()
         return
       }

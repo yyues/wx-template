@@ -3,4 +3,33 @@
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
     <view slot="title" class="nav-title">详情</view>
   </van-nav-bar>
+  <view class="wrapper">
+    <view class="loading" wx:if="{{loading}}">
+      <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>
+    </view>
+    <view class="content" wx:else>
+      <view class="error" wx:if="{{Object.keys(todoDat).length == 0}}">
+        <text>error</text>
+      </view>
+      <view class="detail" wx:else>
+        <!-- 主体信息 -->
+        <view class="header" style=" background-image: url({{data.bg_url || ''}}); color: {{data.primary_color || ''}}">
+          <view class="content">
+            <text>{{data.content}}</text>
+          </view>
+          <view class="desc">
+            <text>{{data.description}}</text>
+          </view>
+        </view>
+        <view class="more">
+          <view class="label">
+            <van-tag color="#5b67ca" size="medium" custom-class="my-tag" wx:if="{{data.is_current_user}}">我的</van-tag>
+          </view>
+          <view class="author">
+            <image src="{{data.create_url}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
