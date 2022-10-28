@@ -1,5 +1,6 @@
 import {
-  WxLogin
+  WxLogin,
+  getToken
 } from './action'
 import initAxios from '../request/create'
 import {
@@ -70,6 +71,8 @@ export const Login = (param) => {
   })
 }
 export const hasLogin = () => {
+  const token = !!getToken()
+  if(token) return
   // 提示用户登录，然后跳到登录页就行
   Dialog.confirm({
     title: '请先登录',

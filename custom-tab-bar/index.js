@@ -1,5 +1,6 @@
 
 import { hasLogin } from "../utils/index";
+
 Component({
   data: {
     active: 0,
