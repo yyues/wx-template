@@ -4,6 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     searchForm: {
       page: 0,
       limit: 10,
@@ -76,7 +77,8 @@ Page({
     const arr = this.data.currentList
     //  保留请求前的旧数据
     this.setData({
-      beforeList: arr
+      beforeList: arr,
+      loading: true
     })
     getUserAllTodo(param).then((res) => {
       // 更新数据
@@ -96,13 +98,18 @@ Page({
           }
         })
       }
+    }).finally(() => {
+      this.setData({
+        loading: false
+      })
     })
   },
   onClickLeft() {
-    wx.navigateBack()
+    wx.redirectTo({
+      url: '/pages/user/index',
+    })
   },
   handleClick(e) {
-    console.log(e.detail, 'di');
     wx.navigateTo({
       url: '/pages/todo-detail/index?id=' + e.detail + '&type=user',
     })

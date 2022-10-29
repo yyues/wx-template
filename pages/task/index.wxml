@@ -1,23 +1,25 @@
-<view class="page-wrapper">
-  <!-- 导航栏 -->
+<view class="task-wrapper">
   <van-dialog id="van-dialog" />
+  <!-- 导航栏 -->
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
     <view slot="title" class="nav-title">{{showTime}}</view>
   </van-nav-bar>
-  <view class="flex total">
-    <calendar bind:selectDay="onSelect" class="calendar" />
-    <view class="content">
-      <block wx:if="{{currentDayTask.length !== 0}}">
-        <!-- <van-steps steps="{{ currentDayTask }}" active="{{ currentActive }}" direction="vertical" custom-class="my-step" /> -->
-      </block>
-      <block wx:else>
-        <view class="empty">
-          <image class="image" src="../../images/empty.png"> </image>
-          <view class="text">今天还没有待办哦，点击 + 去添加吧！</view>
-        </view>
-      </block>
+  <calendar bind:selectDay="onSelect" class="calendar" />
+  <view class="wrapper">
+    <view class="loading" wx:if="{{loading}}">
+      <image src="../../images/page/loading.gif"></image>
     </view>
-
+    <view class="content" wx:else>
+      <view class="empty" wx:if="{{currentDayTask.length == 0}}">
+        <image src="../../images/page/empty.png"></image>
+        <view class="message">
+          <text>当天没有待办的数据哦！</text>
+        </view>
+      </view>
+      <view class="detail" wx:else>
+        <!-- 主要数据 -->
+        <task-card wx:for="{{currentDayTask}}" wx:key="id" hasSelect="{{false}}" type="task" data="{{item}}" bindonClick="handleClick" />
+      </view>
+    </view>
   </view>
-
 </view>

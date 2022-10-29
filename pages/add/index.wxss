@@ -3,10 +3,10 @@
   color: #334155 !important;
 }
 .my-input:focus {
-  border-bottom: 1px solid #5B67CA;
+  border-bottom: 1px solid #5b67ca;
 }
 .my-input.van-field__control--disabled {
-  color: #10275A;
+  color: #10275a;
 }
 .part {
   margin-bottom: 32rpx;
@@ -36,7 +36,7 @@
 }
 .part .date .current-time {
   min-width: 100rpx;
-  color: #10275A;
+  color: #10275a;
 }
 .part .date .img {
   width: 40rpx;
@@ -46,11 +46,11 @@
   padding: 20rpx 32rpx;
 }
 .part .high-date .wrapper {
-  border-bottom: 1px solid #5B67CA;
+  border-bottom: 1px solid #5b67ca;
 }
 .my-date-picker {
-  border-top: 1px solid #5B67CA55;
-  border-bottom: 1px solid #5B67CA55;
+  border-top: 1px solid #5b67ca55;
+  border-bottom: 1px solid #5b67ca55;
 }
 .md-dialog .van-dialog__header--isolated {
   padding: 20rpx 0;
@@ -99,9 +99,6 @@
   flex-direction: column;
   align-items: center;
   padding: 160rpx 0;
-}
-.my-submit button {
-  border-radius: 12rpx;
 }
 .my-submit.van-button {
   border-radius: 12rpx;

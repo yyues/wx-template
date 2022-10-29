@@ -117,7 +117,7 @@ Page({
         type: 'success',
         message: '创建成功！',
         onClose: () => {
-          wx.reLaunch({
+          wx.redirectTo({
             url: '/pages/home/index',
           })
         },

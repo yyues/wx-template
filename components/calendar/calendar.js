@@ -29,7 +29,7 @@ Component({
     swiperHeight: 0,
     scrolling: false,
     swiperData: [],
-    currentList: [false, false, false, false, false, false, false, ],
+    currentList: [false, false, false, false, false, false, false,],
     selectTime: ''
   },
 
@@ -55,16 +55,6 @@ Component({
       const start = res.subtract(days, 'days').format('YYYY-MM-DD')
       const end = res.weekday(6).format('YYYY-MM-DD')
       return [start, end]
-    },
-    // 获取上一周的 星期当天
-    getLastWeekDay(date = new Date(), count = 1) {
-      const res = moment(date).subtract(count, 'weeks').format('YYYY-MM-DD')
-      return res
-    },
-    //  获取下一周的 星期当天
-    getNextWeekDay(date = new Date(), count = 1) {
-      const res = moment(date).add(count, 'weeks').format('YYYY-MM-DD')
-      return res
     },
     //  根据时间范围组，获取范围时间段内，每天的月天数
     getCalenDarByArray(arr) {
@@ -133,22 +123,22 @@ Component({
       const data = this.data.swiperData[current]
       const arr = [data[0].calendateDay, data[6].calendateDay]
 
-      if (current < oldIndex) {
-        const LastCancel = [moment(arr[0]).subtract(7, 'days').format('YYYY-MM-DD'), moment(arr[1]).subtract(7, 'days').format('YYYY-MM-DD')]
-        const last = this.filterTree(LastCancel)
-        target.unshift(last)
-        //  查看以前的日历
-      } else {
-        // push 一条
-        const nextCalender = [moment(arr[0]).add(7, 'days').format('YYYY-MM-DD'), moment(arr[1]).add(7, 'days').format('YYYY-MM-DD')]
-        const next = this.filterTree(nextCalender)
-        target.push(next)
-      }
-      this.setData({
-        swiperData: target,
-        swiperCurrent: current,
-        oldCurrent: oldIndex
-      })
+      // if (current < oldIndex) {
+      //   const LastCancel = [moment(arr[0]).subtract(7, 'days').format('YYYY-MM-DD'), moment(arr[1]).subtract(7, 'days').format('YYYY-MM-DD')]
+      //   const last = this.filterTree(LastCancel)
+      //   target.unshift(last)
+      //   //  查看以前的日历
+      // } else {
+      //   // push 一条
+      //   const nextCalender = [moment(arr[0]).add(7, 'days').format('YYYY-MM-DD'), moment(arr[1]).add(7, 'days').format('YYYY-MM-DD')]
+      //   const next = this.filterTree(nextCalender)
+      //   target.push(next)
+      // }
+      // this.setData({
+      //   swiperData: target,
+      //   swiperCurrent: current,
+      //   oldCurrent: oldIndex
+      // })
       console.log(e, '滚动切换');
     },
     selectChange(e) {

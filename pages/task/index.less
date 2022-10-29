@@ -1,36 +1,51 @@
-.flex {
+@import "../../style/index.less";
+.task-wrapper {
+  min-height: 100vh;
+
   display: flex;
-}
-
-.total {
-  height: calc(100% - 340rpx);
   flex-direction: column;
-
-  .calendar {
-    height: max-content;
-  }
-
-  .content {
+  .wrapper {
     flex: 1;
-    height: 100%;
-    // background-color: red;
-  }
 
-  .empty {
     display: flex;
-    height: 100%;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
 
-    .image {
-      width: 240rpx;
-      height: 240rpx;
-      background-color: skyblue;
+    .loading,
+    .content {
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+    }
+    .loading {
+      justify-content: center;
+      align-items: center;
+    }
+    .content {
+      .empty {
+        margin-top: 10vh;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        image {
+          width: 400rpx;
+          height: 300rpx;
+        }
+        .message {
+          margin-top: @base-size * 4;
+          text {
+            font-size: @size-14;
+            color: @primary-text-color;
+            line-height: @line-h-14;
+          }
+        }
+      }
+      .detail {
+        flex: 1;
+        padding: @primary-theme-padding;
+        background-color: @page-bg-color;
+      }
     }
   }
-}
-
-.page-wrapper {
-  height: 100vh;
 }

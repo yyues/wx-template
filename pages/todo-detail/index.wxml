@@ -1,6 +1,6 @@
 <view class="detail-page">
   <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff00;" left-arrow bind:click-left="onClickLeft">
     <view slot="title" class="nav-title">详情</view>
   </van-nav-bar>
   <view class="wrapper">
@@ -8,28 +8,114 @@
       <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>
     </view>
     <view class="content" wx:else>
-      <view class="error" wx:if="{{Object.keys(todoDat).length == 0}}">
+      <view class="error" wx:if="{{Object.keys(data).length == 0}}">
         <text>error</text>
       </view>
       <view class="detail" wx:else>
         <!-- 主体信息 -->
-        <view class="header" style=" background-image: url({{data.bg_url || ''}}); color: {{data.primary_color || ''}}">
-          <view class="content">
+        <view class="header" style="{{header}}">
+          <view class="content van-ellipsis">
             <text>{{data.content}}</text>
           </view>
           <view class="desc">
             <text>{{data.description}}</text>
           </view>
+          <view class="action" bindtap="onAction" hover-class="h-action" wx:if="{{ type === 'user'}}">
+            <van-icon name="ellipsis" size="48rpx" />
+          </view>
         </view>
         <view class="more">
           <view class="label">
             <van-tag color="#5b67ca" size="medium" custom-class="my-tag" wx:if="{{data.is_current_user}}">我的</van-tag>
+            <van-tag color="#FF927A" size="medium" custom-class="my-tag" wx:if="{{data.is_multiplayer}}">多人</van-tag>
           </view>
-          <view class="author">
+          <view class="author" wx:if="{{false}}">
             <image src="{{data.create_url}}"></image>
           </view>
+        </view>
+        <!-- 待办时间 -->
+        <view class="timeline">
+          <view class="title"> <text>时间</text> </view>
+          <view class="content">
+            <!-- 两种情况，一种是截止时间一种是时间范围内 -->
+            <view class="deadline" wx:if="{{data.is_deadline}}">
+              <view class="icon">
+                <image src="../../images/time_circle.png"></image>
+              </view>
+              <view class="data">
+                <view class="day"> <text>{{data.execute_time}}</text> </view>
+                <view class="hour"> <text>至{{data.end_time}}</text> </view>
+              </view>
+            </view>
+            <!-- 这种 是正常情况 -->
+            <view class="time-range">
+              <view class="start">
+                <view class="icon">
+                  <image src="../../images/time_circle.png"></image>
+                </view>
+                <view class="data">
+                  <view class="day"> <text>{{data.execute_time}}</text> </view>
+                  <view class="hour"> <text>{{data.start_time}}</text> </view>
+                </view>
+              </view>
+              <view class="end">
+                <view class="icon">
+                  <image src="../../images/time_circle.png"></image>
+                </view>
+                <view class="data">
+                  <view class="day"> <text>{{data.execute_time}}</text> </view>
+                  <view class="hour"> <text>{{data.end_time}}</text> </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 多人 信息 -->
+        <view class="team" wx:if="{{data.is_multiplayer}}">
+          <!--  -->
+          <view class="title">
+            <text>小伙伴们</text>
+          </view>
+          <view class="content">
+            <view class="empty" wx:if="{{data.invite_url.length ==0}}">
+              <text>还没有邀请小伙伴哦，快去邀请吧！</text>
+            </view>
+            <view class="wrapper" wx:else>
+              <image wx:for="data.invite_url" wx:key="index" src="{{item}}" lazy-load="{{true}}"></image>
+            </view>
+          </view>
+        </view>
+        <view class="operation">
+          <van-button color="#5B67CA" wx:if="{{type === 'invite'}}" custom-class="my-submit" bind:click="onInvited" loading="{{loading}}" loading-text="接受中">接受邀请</van-button>
         </view>
       </view>
     </view>
   </view>
+  <van-popup show="{{ show }}" round position="bottom" custom-style="height: 30%;border-radius: 24rpx" bind:close="onClose" closeable>
+
+    <view class="actions">
+      <view class="header">
+        <text>操作栏</text>
+      </view>
+      <view class="wrapper">
+        <view class="item" bindtap="onEdit">
+          <van-icon name="edit" custom-class="my-icon" size="80rpx" color="#9ca3af" />
+          <text>编辑</text>
+        </view>
+        <view class="item" bindtap="onDelay">
+          <van-icon name="underway-o" custom-class="my-icon" size="80rpx" color="#9ca3af" />
+          <text>延迟</text>
+        </view>
+        <view class="item" bindtap="onDelete">
+          <van-icon name="edit" custom-class="my-icon" size="80rpx" color="#9ca3af" />
+          <text>删除</text>
+        </view>
+        <view class="item" bindtap="onInvite" wx:if="{{data.is_multiplayer}}">
+          <van-icon name="share-o" custom-class="my-icon" size="80rpx" color="#9ca3af" />
+          <text>邀请</text>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+  <van-dialog id="van-dialog" />
 </view>

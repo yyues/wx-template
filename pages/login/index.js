@@ -84,7 +84,7 @@ Page({
           duration: 1000,
           success() {
             // Loading 动画 做完该做的事情 
-            wx.reLaunch({
+            wx.redirectTo({
               url: `/${fullPath}`,
             })
           }

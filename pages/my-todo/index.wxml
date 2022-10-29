@@ -4,8 +4,22 @@
     <view slot="title" class="nav-title">我的待办</view>
   </van-nav-bar>
   <view class="wrapper">
-    <task-card wx:for="{{currentList}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
+    <view class="loading" wx:if="{{loading}}">
+      <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>
+    </view>
+    <view class="content" wx:else>
+      <view class="error" wx:if="{{currentList.length == 0}}">
+        <!-- <text>error</text> -->
+        <image src="../../images/page/empty.png"></image>
+        <view class="message">
+          <text>还没有自己的待办哦，快去创建吧！</text>
+        </view>
+      </view>
+      <view class="detail" wx:else>
+        <view class="wrapper">
+          <task-card wx:for="{{currentList}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
+        </view>
+      </view>
+    </view>
   </view>
-  <task-card />
-
 </view>

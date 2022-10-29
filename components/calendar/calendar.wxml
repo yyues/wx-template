@@ -1,7 +1,7 @@
 <!--component/calendar/calendar.wxml-->
 <view class="calendar">
   <!-- 重新编写  日历组件 需要使用 到 swiper 组件 -->
-  <swiper bindchange="onChange" style="height:160rpx" circular="{{true}}" current="{{swiperCurrent}}" duration="{{swiperDuration}}">
+  <swiper bindchange="onChange" style="height:160rpx" circular="{{false}}" current="{{swiperCurrent}}" duration="{{swiperDuration}}">
     <!-- 第一层 是wrapper 遍历 -->
     <block wx:for="{{swiperData}}" wx:key="index">
       <swiper-item>
