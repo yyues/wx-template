@@ -28,7 +28,7 @@ export const getTodoById = (data) => {
 // 根据 id 延迟天数
 export const delayCurrentToDo = (data) => {
   return request.axios({
-    method: 'post',
+    method: 'POST',
     url: '/todo/delay',
     data
   })
@@ -36,14 +36,14 @@ export const delayCurrentToDo = (data) => {
 // 根据 id 延迟天数
 export const deleteTodoById = (data) => {
   return request.axios({
-    method: 'post',
+    method: 'POST',
     url: '/todo/delete',
     data
   })
 }
 export const getTodoByDate = (data) => {
   return request.axios({
-    method: 'get',
+    method: 'GET',
     url: '/todo/get-by-date',
     data
   })

@@ -1,27 +1,35 @@
-<view class="page-wrapper">
+<view class="circle-wrapper">
   <!-- 导航栏 -->
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" z-index="{{999}}" custom-style="background: #ffffff;">
-    <view slot="title" class="nav-title">操场</view>
+    <view slot="left" class="nav-title">圈子</view>
   </van-nav-bar>
-  <van-tabs animated swipeable sticky offset-top="{{90}}" color="#5B67CA" title-active-color="#5B67CA" custom-class="my-tabs">
-    <van-tab title="圈子" custom-class="my-tab">
-      <view class="wrapper">
-        <!-- 圈子 -->
-        <view class="img-wrapper" bindtap="onAddCircle">
-          <image class="add-info" src="../../images/new_add.png"></image>
+  <view class="action">
+    <view class="header {{type == 'public' ?'active':''}}">
+      <text>公开</text>
+    </view>
+    <view class="operation">
+      <!-- 添加 -->
+      <van-icon name="plus" size="14px" custom-class="icon" bindtap="onAddCircle" />
+      <!-- 搜索 -->
+      <van-icon name="search" size="14px" custom-class="icon" />
+    </view>
+  </view>
+  <view class="wrapper">
+    <view class="loading" wx:if="{{loading}}">
+      <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>
+    </view>
+    <view class="content" wx:else>
+      <!-- 主要内容 -->
+      <view class="empty" wx:if="{{data.length == 0}}">
+        <image src="../../images/page/empty.png"></image>
+        <view class="message">
+          <text>没有公开的圈子，真是奇怪哦！</text>
         </view>
-        <square-card></square-card>
       </view>
+      <view class="detail" wx:else>
+        <!-- 主要数据 -->
 
-    </van-tab>
-    <van-tab title="动态" custom-class="my-tab">
-      <view class="wrapper">
-        <!-- 动态 -->
-        <view class="img-wrapper" bindtap="onAddDongTai">
-          <image class="add-info" src="../../images/new_add.png"></image>
-        </view>
-        <my-comment></my-comment>
       </view>
-    </van-tab>
-  </van-tabs>
+    </view>
+  </view>
 </view>

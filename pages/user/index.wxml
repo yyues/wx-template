@@ -23,7 +23,7 @@
         </view>
         <view class="contents"> <text>我的待办</text> </view>
       </view>
-      <view class="item">
+      <view class="item" bindtap="onCircle">
         <view class="image">
           <image src="../../images/user_circle.png"></image>
         </view>

@@ -156,7 +156,7 @@ Page({
   },
   onCircle() {
     wx.navigateTo({
-      url: '/pages/circle-detail/index?type=user',
+      url: '/pages/my-circle/index?type=user',
     })
   },
   onTodo() {

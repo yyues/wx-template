@@ -1,31 +1,93 @@
-.my-tabs {
-  display: flex;
-  .van-tab {
-    flex: 0 0 auto;
-    padding: 0 32rpx;
-    text-align: center;
-    min-width: 100rpx;
-  }
-  .van-tabs__nav {
-    background-color: #f9f9f9;
-  }
-  .van-tabs__content {
-    padding-top: 108rpx;
-    flex: 1;
-  }
-}
+@import '../../style/index.less';
 
-.wrapper {
-  position: relative;
-  min-height: calc(100vh - 500rpx);
-  // background-color: skyblue;
-}
-.add-info {
-  position: absolute;
-  bottom: 10px;
-  // bottom: calc(360rpx - 100vh);
-  right: 40rpx;
-  height: 120rpx;
-  width: 120rpx;
-  z-index: 999;
+.circle-wrapper {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  .action {
+    padding: @primary-theme-padding;
+
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .active {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 48rpx;
+        height: 4rpx;
+        border-radius: 8rpx;
+        bottom: 0;
+        left: 6rpx;
+        background-color: @primary-color;
+      }
+
+      text {
+        color: @primary-color  !important;
+      }
+    }
+
+    .header {
+      text {
+        font-size: @size-16;
+        font-weight: 500;
+        letter-spacing: 0.7px;
+        line-height: @line-h-16;
+        color: rgba(156, 164, 171, 1);
+      }
+
+    }
+
+    .operation {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        background-color: @page-bg-color;
+        border-radius: @primary-radius;
+        padding: @base-size;
+        margin: 0 @base-size;
+      }
+    }
+  }
+
+  .wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .loading,
+    .content,
+    .empty {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .loading {
+      align-items: center;
+      margin-top: 16vh;
+    }
+
+    .empty {
+      margin-top: 20vh;
+      align-items: center;
+
+      image {
+        width: 400rpx;
+        height: 300rpx;
+      }
+      .message {
+        margin-top: @base-size;
+        text {
+          color: @primary-text-color;
+        }
+      }
+    }
+  }
 }

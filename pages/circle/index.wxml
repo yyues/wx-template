@@ -7,17 +7,19 @@
     <view class="add-part">
       <!-- 新建的 部分 很简单 一个名字 和一个头像， 是否定时发布，默认是false -->
       <view class="my-upload">
-        <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" max-size="{{10240}}" max-count="1" preview-size="180px" />
+        <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="{{1}}" preview-size="180px" bind:delete="onDeletePicture" />
       </view>
       <!-- <view class="title">名称</view> -->
       <van-field value="{{ postForm.name }}" placeholder="请输入圈子名称" border="{{ true }}" clearable="{{ true }}" input-class="my-input" bind:change="onTaskChange" />
       <view class="operation">
-        <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{loading}}" loading-text="请求中" disabled="{{!postForm.name ||!postForm.avatar_url}}">创建</van-button>
+        <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleAdd" loading="{{loading}}" loading-text="创建中" disabled="{{!postForm.name ||!postForm.avatar_url}}">创建</van-button>
         <view class="tips">
           <text>创建后需要发布才能被别人看见哦！</text>
         </view>
+        <view class="tips">
+          <text>在我的圈子里可以发布哦！</text>
+        </view>
       </view>
-
     </view>
   </block>
   <view class="edit-part" wx:else>

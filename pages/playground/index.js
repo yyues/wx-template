@@ -1,12 +1,24 @@
 // pages/task/index.js
-import { initTabActive } from "../../utils/index";
+import {
+  initTabActive
+} from "../../utils/index";
+import {
+  getPublicCircle
+} from "../../api/circle";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    loading: false,
+    data: [],
+    type: 'public',
+    searchForm: {
+      page: 0,
+      limit: 10,
+      keyword: ''
+    },
   },
 
   /**
@@ -48,7 +60,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    const data = {
+      page: 0,
+      limit: 10,
+      keyword: ''
+    }
+    this.setData({
+        searchForm: data
+      },
+      () => {
+        this.GetList('refresh')
+      }
+    )
   },
 
   /**
@@ -69,9 +92,36 @@ Page({
       url: '/pages/circle/index?type=add',
     })
   },
-  onAddDongTai(){
-    wx.navigateTo({
-      url: '/pages/square/index?type=add',
+  GetList(type) {
+    this.setData({
+      loading: true
+    })
+    const param = {
+      ...this.data.searchForm,
+      status: 'published',
+    }
+    const arr = this.data.data
+    getPublicCircle(param).then(res => {
+      const data = type && type === 'refresh' ? [...res.rows] : [...arr, ...res.rows]
+      this.setData({
+        data: data
+      })
+      if (type && type === 'refresh') {
+        // 页面下拉刷新
+        wx.stopPullDownRefresh({
+          success() {
+            wx.showToast({
+              title: '刷新成功',
+              icon: 'success',
+              duration: 1500
+            })
+          }
+        })
+      }
+    }).finally(() => {
+      this.setData({
+        loading: false
+      })
     })
   }
 })

@@ -1,28 +1,74 @@
-.my-tabs {
+.circle-wrapper {
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
 }
-.my-tabs .van-tab {
-  flex: 0 0 auto;
-  padding: 0 32rpx;
-  text-align: center;
-  min-width: 100rpx;
+.circle-wrapper .action {
+  padding: 20rpx 24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.my-tabs .van-tabs__nav {
-  background-color: #f9f9f9;
-}
-.my-tabs .van-tabs__content {
-  padding-top: 108rpx;
-  flex: 1;
-}
-.wrapper {
+.circle-wrapper .action .active {
   position: relative;
-  min-height: calc(100vh - 500rpx);
 }
-.add-info {
+.circle-wrapper .action .active::after {
+  content: '';
   position: absolute;
-  bottom: 10px;
-  right: 40rpx;
-  height: 120rpx;
-  width: 120rpx;
-  z-index: 999;
+  width: 48rpx;
+  height: 4rpx;
+  border-radius: 8rpx;
+  bottom: 0;
+  left: 6rpx;
+  background-color: #5b67ca;
+}
+.circle-wrapper .action .active text {
+  color: #5b67ca !important;
+}
+.circle-wrapper .action .header text {
+  font-size: 32rpx;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+  line-height: 48rpx;
+  color: #9ca4ab;
+}
+.circle-wrapper .action .operation {
+  display: flex;
+  align-items: center;
+}
+.circle-wrapper .action .operation .icon {
+  background-color: #f5f5f5;
+  border-radius: 24rpx;
+  padding: 10rpx;
+  margin: 0 10rpx;
+}
+.circle-wrapper .wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.circle-wrapper .wrapper .loading,
+.circle-wrapper .wrapper .content,
+.circle-wrapper .wrapper .empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.circle-wrapper .wrapper .loading {
+  align-items: center;
+  margin-top: 16vh;
+}
+.circle-wrapper .wrapper .empty {
+  margin-top: 20vh;
+  align-items: center;
+}
+.circle-wrapper .wrapper .empty image {
+  width: 400rpx;
+  height: 300rpx;
+}
+.circle-wrapper .wrapper .empty .message {
+  margin-top: 10rpx;
+}
+.circle-wrapper .wrapper .empty .message text {
+  color: #475569;
 }

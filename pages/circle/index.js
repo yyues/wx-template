@@ -1,4 +1,13 @@
 import Toast from '@vant/weapp/toast/toast';
+import {
+  circleSave
+} from "../../api/circle";
+import {
+  WE_APP_BASE_API
+} from '../../env'
+import {
+  getToken
+} from "../../utils/action";
 Page({
 
   /**
@@ -73,8 +82,25 @@ Page({
   onShareAppMessage() {
 
   },
-  handleSubmit() {
-
+  handleAdd() {
+    const param = {
+      ...this.data.postForm,
+      publish_time: new Date().getTime()
+    }
+    this.setData({
+      loading: true
+    })
+    circleSave(param).then(res => {
+      wx.showToast({
+        title: '创建成功！',
+        icon: 'success',
+        duration: 1500
+      })
+    }).finally(() => {
+      this.setData({
+        loading: false
+      })
+    })
   },
   onChange(e) {
     const data = this.data.postForm
@@ -101,19 +127,51 @@ Page({
   },
   // 上传逻辑接口
   afterRead(event) {
-    const { file } = event.detail;
+    const {
+      file
+    } = event.detail;
+    var _this = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
+      url: WE_APP_BASE_API + '/upload',
       filePath: file.url,
       name: 'file',
-      formData: { user: 'test' },
+      header: {
+        token: getToken()
+      },
+      formData: {
+        user: 'test'
+      },
       success(res) {
+        // 获取 我的接口 返回的 url 路径
+        const data = JSON.parse(res.data)
+        const url = WE_APP_BASE_API + data.data.url
         // 上传完成需要更新 fileList
-        const { fileList = [] } = this.data;
-        fileList.push({ ...file, url: res.data });
-        this.setData({ fileList });
+        const fileList = [{
+          ...file,
+          url,
+          deletable: true,
+        }]
+        const postForm = _this.data.postForm
+        _this.setData({
+          fileList,
+          postForm: {
+            ...postForm,
+            avatar_url: url
+          }
+        });
       },
     });
+  },
+  // 删除上传图片接口
+  onDeletePicture() {
+    const postForm = this.data.postForm
+    this.setData({
+      fileList: [],
+      postForm: {
+        ...postForm,
+        avatar_url: ''
+      }
+    })
   }
 })
