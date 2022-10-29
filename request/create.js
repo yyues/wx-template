@@ -37,9 +37,9 @@ function initAxios() {
     if ([401, 403].includes(code)) {
       // 重新登录的逻辑
       // Login()
-      // wx.navigateTo({
-      //   url: '/pages/login/index',
-      // })
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
       return
     }
     !data.success &&

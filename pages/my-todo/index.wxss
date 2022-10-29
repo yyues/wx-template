@@ -27,6 +27,10 @@
   align-items: center;
   padding-top: 16vh;
 }
+.page-wrapper .wrapper .content .error image {
+  width: 400rpx;
+  height: 300rpx;
+}
 .page-wrapper .wrapper .content .error .message {
   margin-top: 10rpx;
 }
