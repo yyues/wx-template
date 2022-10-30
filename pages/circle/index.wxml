@@ -23,6 +23,7 @@
     </view>
   </block>
   <view class="edit-part" wx:else>
+    <!-- 区分 编辑 和 发布 -->
     edit
   </view>
 </view>

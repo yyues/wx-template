@@ -17,7 +17,7 @@
       </view>
       <view class="detail" wx:else>
         <view class="wrapper">
-          <task-card wx:for="{{currentList}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
+          <circle-card wx:for="{{currentList}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
         </view>
       </view>
     </view>

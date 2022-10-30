@@ -1,0 +1,30 @@
+<view class="wrapper {{checked ? 'selected':'' }}" hover-class="high" bindtap="onClick" data-id="{{data.id}}">
+  <!-- 头部  底部注定有个操作栏 -->
+  <view class="top">
+    <image src="{{data.avatar_url}}"></image>
+    <view class="content">
+      <view class="name">
+        <text>{{data.name}}</text>
+      </view>
+      <view class="desc">
+        <text>{{data.description || '还没有描述哦！'}}</text>
+      </view>
+    </view>
+  </view>
+  <!--操作栏  -->
+  <view class="actions">
+    <view class="more">
+      <!-- 人数 -->
+      <view class="number">
+        <van-icon name="friends-o" size="24px" custom-class="my-number" />
+        <text>{{data.current_number || 1}}/{{data.max_persons}}</text>
+      </view>
+      <!-- 标签 -->
+    </view>
+    <view class="operation">
+      <van-tag color="#0891b2" size="medium" custom-class="my-tag" wx:if="{{data.status == 're_publish'}}" bindtap="onPublish">
+        去发布
+      </van-tag>
+    </view>
+  </view>
+</view>

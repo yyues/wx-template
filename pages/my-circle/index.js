@@ -112,8 +112,8 @@ Page({
     })
   },
   handleClick(e) {
-    wx.navigateTo({
-      url: '/pages/todo-detail/index?id=' + e.detail + '&type=user',
-    })
+    // wx.navigateTo({
+    //   url: '/pages/todo-detail/index?id=' + e.detail + '&type=user',
+    // })
   }
 })

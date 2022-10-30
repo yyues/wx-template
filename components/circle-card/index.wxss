@@ -1,0 +1,45 @@
+.wrapper {
+  border-radius: 24rpx;
+  background-color: #ffffff;
+  padding: 16rpx;
+  margin: 16rpx 0;
+  position: relative;
+}
+.wrapper .top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.wrapper .top image {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+}
+.wrapper .top .content .name {
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #475569;
+}
+.wrapper .top .content .desc text {
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: #94a3b8;
+}
+.wrapper .actions {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper .actions .more .number {
+  display: flex;
+  align-items: flex-end;
+}
+.wrapper .actions .more .number .my-number {
+  margin-right: 10rpx / 2;
+}
+.wrapper .actions .more .number text {
+  color: #475569;
+  font-size: 28rpx;
+  line-height: 44rpx;
+}

@@ -8,6 +8,9 @@ import {
 import {
   getToken
 } from "../../utils/action";
+import {
+  getLocationParams
+} from "../../utils/index";
 Page({
 
   /**
@@ -45,7 +48,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    const type = getLocationParams('type')
+    this.setData({
+      type,
+      pageTitle: '发布'
+    })
   },
 
   /**
@@ -94,8 +101,12 @@ Page({
       wx.showToast({
         title: '创建成功！',
         icon: 'success',
-        duration: 1500
+        duration: 1500,
+        success() {
+          wx.navigateBack()
+        }
       })
+
     }).finally(() => {
       this.setData({
         loading: false

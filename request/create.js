@@ -11,7 +11,7 @@ function initAxios() {
     token: getToken()
   }
   const timeout = 15000
-
+  // 给APP 全局值 赋值 免得 报错
   // request拦截 请求参数
   // const transformRequest = (data) => {
   //   console.log(232323,data)

@@ -1,0 +1,63 @@
+@import '../../style/index.less';
+
+.wrapper {
+  //  卡片 主要内容
+  border-radius: @primary-radius;
+  background-color: @primary-bg-color;
+  padding: @primary-padding;
+  margin: @primary-margin;
+  // min-height: @primary-card-min-height;
+  position: relative;
+
+  .top {
+    display: flex;
+    align-items: center;
+    margin-bottom: @base-size;
+
+    image {
+      width: 96rpx;
+      height: 96rpx;
+      border-radius: @base-size;
+      margin-right: @base-size * 2;
+    }
+
+    .content {
+      .name {
+        font-size: @size-16;
+        line-height: @line-h-16;
+        color: @primary-text-color;
+      }
+
+      .desc {
+        text {
+          font-size: @size-14;
+          line-height: @line-h-14;
+          color: @primary-second-text-color;
+        }
+      }
+    }
+  }
+
+  .actions {
+    margin-top: @base-size * 3;
+    display: flex;
+    justify-content: space-between;
+
+    // padding:  0 ;
+    .more {
+      .number {
+        display: flex;
+        align-items: flex-end;
+
+        .my-number {
+          margin-right: @base-size / 2;
+        }
+        text {
+          color: @primary-text-color;
+          font-size: @size-14;
+          line-height: @line-h-14;
+        }
+      }
+    }
+  }
+}

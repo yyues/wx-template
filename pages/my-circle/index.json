@@ -1,6 +1,6 @@
 {
   "enablePullDownRefresh": true,
   "usingComponents": {
-
+    "circle-card": "../../components/circle-card/index"
   }
 }

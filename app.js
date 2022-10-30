@@ -1,4 +1,5 @@
 // 初始化aixos
+import { getToken } from "./utils/action";
 import initAxios from './request/create'
 App({
   onLaunch: function() {
@@ -6,10 +7,12 @@ App({
     initAxios()
     // 初始化全局分享
     _initShare()
+    // 初始化 默认值
+    // this.gloabalData.token = getToken()
   },
   globalData: {
     token: null,
-    userInfo: null,
+    // userInfo: null,
     systemInfo: wx.getSystemInfoSync()
   }
 })
