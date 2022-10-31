@@ -25,3 +25,11 @@ export const getUserAllCircle = (data) => {
     data
   })
 }
+// 根据 id 查询详情
+export const getDetailById = (data) => {
+  return request.axios({
+    method: 'GET',
+    url: '/circle/find',
+    data
+  })
+}

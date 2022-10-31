@@ -40,14 +40,14 @@ Component({
       const id = e.currentTarget.dataset.id
       this.triggerEvent('onClick', id)
     },
-    onPublish(e) {
-      const id = e.currentTarget.dataset.id
+    onPublish() {
+      const id = this.data.data.id
       wx.redirectTo({
         url: '/pages/circle/index?type=publish&id=' + id,
       })
     }
   },
   lifetimes: {
-    ready() {}
+    ready() { }
   }
 })

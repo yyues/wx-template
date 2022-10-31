@@ -1,6 +1,8 @@
 import Toast from '@vant/weapp/toast/toast';
+import moment from "moment";
 import {
-  circleSave
+  circleSave,
+  getDetailById
 } from "../../api/circle";
 import {
   WE_APP_BASE_API
@@ -20,15 +22,19 @@ Page({
     pageTitle: '新建圈子',
     type: 'add',
     fileList: [],
+    show: false, // 展示日期组件
+    showTime: false, // 过期时间
     loading: false,
-
+    hasOwner: false, // 是否有圈主的微信号
+    hasGroup: false, // 是否有圈子的 微信的图
     postForm: {
       name: '',
       content: '',
       avatar_url: '',
       is_timing_publish: false,
       publish_time: 0
-    }
+    },
+    publishLoading: false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -41,7 +47,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    // const type = getLocationParams('type')
+    // this.setData({
+    //   type,
+    // })
   },
 
   /**
@@ -51,8 +60,15 @@ Page({
     const type = getLocationParams('type')
     this.setData({
       type,
-      pageTitle: '发布'
     })
+    if (type === 'publish') {
+      this.setData({
+        pageTitle: '发布'
+      })
+    }
+    if (type !== 'add') {
+      this.getCiclrDetail()
+    }
   },
 
   /**
@@ -113,6 +129,9 @@ Page({
       })
     })
   },
+  handlePublish() {
+
+  },
   onChange(e) {
     const data = this.data.postForm
     this.setData({
@@ -122,12 +141,97 @@ Page({
       }
     })
   },
-  onTaskChange(e) {
+  onDescChange(e) {
+    const data = this.data.postForm
+    this.setData({
+      postForm: {
+        ...data,
+        description: e.detail
+      }
+    })
+  },
+  onNameChange(e) {
     const data = this.data.postForm
     this.setData({
       postForm: {
         ...data,
         name: e.detail
+      }
+    })
+  },
+  onNumbercChange(e) {
+    const data = this.data.postForm
+    this.setData({
+      postForm: {
+        ...data,
+        max_persons: Number(e.detail)
+      }
+    })
+  },
+  onMasterChange(e) {
+    const data = this.data.postForm
+    this.setData({
+      postForm: {
+        ...data,
+        wx_master: Number(e.detail)
+      }
+    })
+  },
+  onMarkChange(e) {
+    const data = this.data.postForm
+    this.setData({
+      postForm: {
+        ...data,
+        wx_mark: Number(e.detail)
+      }
+    })
+  },
+  onOwnerChange(e) {
+    const data = e.detail
+    const postForm = this.data.postForm
+    if (!data) {
+      this.setData({
+        postForm: {
+          ...postForm,
+          wx_master: '',
+          wx_mark: ''
+        }
+      })
+    }
+    this.setData({ hasOwner: data })
+  },
+  onGroupChange(e) {
+    const data = e.detail
+    const postForm = this.data.postForm
+    if (!data) {
+      this.setData({
+        postForm: {
+          ...postForm,
+          wx_image_url: '',
+          wx_image_out: ''
+        }
+      })
+    }
+    this.setData({ hasGroup: data })
+  },
+  onTimingChange(e) {
+    const data = e.detail
+    const postForm = this.data.postForm
+    this.setData({
+      postForm: {
+        ...postForm,
+        is_timing_publish: data,
+        publish_time: data ? postForm.publish_time : 0
+      }
+    })
+  },
+  onPrivateChange(e) {
+    const data = e.detail
+    const postForm = this.data.postForm
+    this.setData({
+      postForm: {
+        ...postForm,
+        is_private: data
       }
     })
   },
@@ -164,12 +268,10 @@ Page({
           deletable: true,
         }]
         const postForm = _this.data.postForm
+        const info = _this.data.type === 'add' ? { ...postForm, avatar_url: url } : { ...postForm, wx_image_url: url }
         _this.setData({
           fileList,
-          postForm: {
-            ...postForm,
-            avatar_url: url
-          }
+          postForm: info
         });
       },
     });
@@ -177,12 +279,75 @@ Page({
   // 删除上传图片接口
   onDeletePicture() {
     const postForm = this.data.postForm
-    this.setData({
-      fileList: [],
-      postForm: {
-        ...postForm,
-        avatar_url: ''
-      }
+    const type = this.data.type
+    if (type === 'add') {
+      this.setData({
+        fileList: [],
+        postForm: {
+          ...postForm,
+          avatar_url: ''
+        }
+      })
+    } else {
+      // 这个逻辑有点问题，现在是不允许 修改上传过得头像的
+      this.setData({
+        fileList: [],
+        postForm: {
+          ...postForm,
+          wx_image_url: ''
+        }
+      })
+    }
+  },
+  //  获取 id
+  getCiclrDetail() {
+    this.setData({ loading: true })
+    const id = getLocationParams('id')
+    getDetailById({ id }).then(res => {
+      this.setData({ postForm: res })
+    }).finally(() => {
+      this.setData({ loading: false })
     })
-  }
+  },
+  // 隐藏 日历组件显示
+  onClose() {
+    this.setData({
+      show: false
+    })
+  },
+  onCloseTime() {
+    this.setData({
+      showTime: false
+    })
+  },
+  onConfirm(e) {
+    const data = this.data.postForm
+    this.setData({
+      postForm: {
+        ...data,
+        wx_image_out: moment(e.detail).format('YYYY-MM-DD')
+      },
+      show: false
+    })
+  },
+  onConfirmTime(e) {
+    const data = this.data.postForm
+    this.setData({
+      postForm: {
+        ...data,
+        publish_time: moment(e.detail).format('YYYY-MM-DD')
+      },
+      showTime: false
+    })
+  },
+  showCalender() {
+    this.setData({
+      show: true
+    })
+  },
+  showCalenderTime() {
+    this.setData({
+      showTime: true
+    })
+  },
 })

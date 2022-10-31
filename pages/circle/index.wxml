@@ -10,7 +10,7 @@
         <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="{{1}}" preview-size="180px" bind:delete="onDeletePicture" />
       </view>
       <!-- <view class="title">名称</view> -->
-      <van-field value="{{ postForm.name }}" placeholder="请输入圈子名称" border="{{ true }}" clearable="{{ true }}" input-class="my-input" bind:change="onTaskChange" />
+      <van-field value="{{ postForm.name }}" placeholder="请输入圈子名称" border="{{ true }}" clearable="{{ true }}" input-class="my-input" bind:change="onNameChange" />
       <view class="operation">
         <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleAdd" loading="{{loading}}" loading-text="创建中" disabled="{{!postForm.name ||!postForm.avatar_url}}">创建</van-button>
         <view class="tips">
@@ -22,8 +22,93 @@
       </view>
     </view>
   </block>
-  <view class="edit-part" wx:else>
-    <!-- 区分 编辑 和 发布 -->
-    edit
+  <view class="wrapper" wx:else>
+    <view class="loading" wx:if="{{loading}}">
+      <image src="../../images/page/loading.gif"></image>
+    </view>
+    <view class="edit-part" wx:else>
+      <!-- 区分 编辑 和 发布 -->
+      <!-- 名称 -->
+      <view class="part">
+        <view class="title"> <text>圈名</text> </view>
+        <van-field value="{{ postForm.name }}" border="{{ true }}" clearable="{{ true }}" bind:change="onNameChange" maxlength="19" />
+      </view>
+      <!-- 描述 -->
+      <view class="part">
+        <view class="title"> <text>描述</text> </view>
+        <van-field value="{{ postForm.description }}" placeholder="请添加圈子描述哦！" type="textarea" clearable="{{ true }}" autosize bind:change="onDescChange" maxlength="49" />
+      </view>
+      <!-- 人数 -->
+      <view class="part">
+        <view class="title"> <text>人数上限</text> </view>
+        <van-field value="{{ postForm.max_persons }}" type="number" clearable="{{ true }}" bind:change="onNumbercChange" />
+      </view>
+      <!-- 可选项 是否设置个人微信  -->
+      <view class="config">
+        <view class="title">
+          <van-checkbox checked-color="#5B67CA" value="{{ hasOwner }}" shape="square" bind:change="onOwnerChange">
+          </van-checkbox>
+          <text>设置个人微信号</text>
+        </view>
+      </view>
+      <view class="part flex" wx:if="{{hasOwner}}">
+        <view class="title"> <text>个人微信号</text></view>
+        <view class="input">
+          <van-field value="{{ postForm.wx_master }}" placeholder="快填写自己的微信号吧！" clearable="{{ true }}" bind:change="onMasterChange" />
+        </view>
+      </view>
+      <view class="part flex" wx:if="{{hasOwner}}">
+        <view class="title"> <text>加微备注</text></view>
+        <view class="input">
+          <van-field value="{{ postForm.wx_mark }}" clearable="{{ true }}" placeholder="提醒他人添加自己的备注哦！" bind:change="onMarkChange" />
+        </view>
+      </view>
+
+      <!-- 可选项 是否 对应有微信群  -->
+      <view class="config">
+        <view class="title">
+          <van-checkbox checked-color="#5B67CA" value="{{ hasGroup }}" shape="square" bind:change="onGroupChange">
+          </van-checkbox>
+          <text>设置微信群</text>
+        </view>
+      </view>
+      <view class="part" wx:if="{{hasGroup}}">
+        <view class="title"> <text>微信群聊名片</text></view>
+        <view class="content">
+          <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="{{1}}" bind:delete="onDeletePicture">
+            <van-button icon="plus" type="primary" color="#5B67CA" size="small">上传</van-button>
+          </van-uploader>
+        </view>
+      </view>
+      <view class="part" wx:if="{{hasGroup}}">
+        <view class="title"> <text>名片过期时间</text></view>
+        <van-field value="{{ postForm.wx_image_out }}" placeholder="请输入过期时间" clearable="{{ true }}" right-icon="calendar-o" disabled input-class="my-input" bindtap="showCalender" />
+        <van-calendar show="{{ show }}" bind:confirm="onConfirm" bind:close="onClose" color="#5B67CA" />
+      </view>
+      <!--  可选项 是否  私密 -->
+      <view class="config">
+        <view class="title">
+          <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_private }}" shape="square" bind:change="onPrivateChange">
+          </van-checkbox>
+          <text>私密圈子</text>
+        </view>
+      </view>
+      <!-- 可选项 定时发布 -->
+      <view class="config">
+        <view class="title">
+          <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_timing_publish }}" shape="square" bind:change="onTimingChange">
+          </van-checkbox>
+          <text>设置发布时间</text>
+        </view>
+      </view>
+      <view class="part" wx:if="{{ postForm.is_timing_publish }}">
+        <view class="title"> <text>发布时间</text></view>
+        <van-field value="{{ postForm.publish_time }}" placeholder="请输入发布时间" clearable="{{ true }}" right-icon="calendar-o" disabled input-class="my-input" bindtap="showCalenderTime" />
+        <van-calendar show="{{ showTime }}" bind:confirm="onConfirmTime" bind:close="onCloseTime" color="#5B67CA" />
+      </view>
+      <view class="operation">
+        <van-button color="#5B67CA" custom-class="my-submit" wx:if="{{ type === 'publish'}}" bind:click="handlePublish" loading="{{publishLoading}}" loading-text="发布中">发布</van-button>
+      </view>
+    </view>
   </view>
 </view>

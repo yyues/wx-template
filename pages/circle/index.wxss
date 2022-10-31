@@ -1,10 +1,23 @@
 .add-part,
 .edit-part {
   height: calc(100vh - 180rpx);
-  padding: 0 24rpx;
 }
 .page-wrapper {
   background-color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.page-wrapper .wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.page-wrapper .wrapper .loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .add-part {
   display: flex;
@@ -39,4 +52,54 @@
   font-size: 28rpx;
   line-height: 44rpx;
   color: #a1a1aa;
+}
+.part {
+  margin-bottom: 32rpx;
+  transition: height 0.28s;
+}
+.part .title {
+  padding: 0rpx 32rpx;
+  background-color: #fff;
+}
+.part .title text {
+  color: #8a8ab2;
+  font-family: Roboto;
+  font-size: 28rpx;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+.part .content {
+  padding: 16rpx 32rpx;
+}
+.config {
+  margin-bottom: 32rpx;
+  transition: height 0.28s;
+}
+.config .title {
+  padding: 0rpx 32rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+.config .title text {
+  color: #8a8ab2;
+  font-family: Roboto;
+  font-size: 28rpx;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.flex .title {
+  min-width: 180rpx;
+  padding-right: 10rpx !important;
+}
+.flex .input {
+  flex: 1;
 }
