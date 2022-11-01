@@ -13,7 +13,7 @@
   position: relative;
 }
 .circle-wrapper .action .active::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 48rpx;
   height: 4rpx;
@@ -71,4 +71,10 @@
 }
 .circle-wrapper .wrapper .empty .message text {
   color: #475569;
+}
+.circle-wrapper .wrapper .content {
+  padding: 20rpx 24rpx;
+}
+.circle-wrapper .wrapper .content .detail {
+  flex: 1;
 }

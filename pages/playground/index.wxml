@@ -28,7 +28,9 @@
       </view>
       <view class="detail" wx:else>
         <!-- 主要数据 -->
-
+        <view class="wrapper">
+          <circle-card wx:for="{{data}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
+        </view>
       </view>
     </view>
   </view>

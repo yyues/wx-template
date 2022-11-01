@@ -1,4 +1,7 @@
 {
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "详情",
+  "homeButton": "true",
   "usingComponents": {
     "van-tag": "@vant/weapp/tag/index",
     "van-icon": "@vant/weapp/icon/index",

@@ -34,7 +34,8 @@ Page({
       is_timing_publish: false,
       publish_time: 0
     },
-    publishLoading: false
+    publishLoading: false,
+    uploading: false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -66,8 +67,13 @@ Page({
         pageTitle: '发布'
       })
     }
-    if (type !== 'add') {
-      this.getCiclrDetail()
+    if (this.data.uploading) {
+      // 上传图片 会走 onshow 方法， 处理一下逻辑就行
+      this.setData({ uploading: false })
+    } else {
+      if (type !== 'add') {
+        this.getCiclrDetail()
+      }
     }
   },
 
@@ -108,11 +114,12 @@ Page({
   handleAdd() {
     const param = {
       ...this.data.postForm,
-      publish_time: new Date().getTime()
+      publish_time: moment().format('YYYY-MM-DD')
     }
-    this.setData({
-      loading: true
-    })
+    // 直接把 发布时间传过去就行了
+    // this.setData({
+    //   loading: true
+    // })
     circleSave(param).then(res => {
       wx.showToast({
         title: '创建成功！',
@@ -124,13 +131,32 @@ Page({
       })
 
     }).finally(() => {
-      this.setData({
-        loading: false
-      })
+      // this.setData({
+      //   loading: false
+      // })
     })
   },
   handlePublish() {
-
+    const postForm = this.data.postForm
+    const param = {
+      ...postForm,
+      status: 'published'
+    }
+    this.setData({ publishLoading: true })
+    circleSave(param).then(res => {
+      wx.showToast({
+        title: '发布成功！',
+        icon: 'success',
+        duration: 1500,
+        success() {
+          wx.reLaunch({
+            url: '/pages/my-circle/index',
+          })
+        }
+      })
+    }).finally(() => {
+      this.setData({ publishLoading: false })
+    })
   },
   onChange(e) {
     const data = this.data.postForm
@@ -164,7 +190,7 @@ Page({
     this.setData({
       postForm: {
         ...data,
-        max_persons: Number(e.detail)
+        max_persons: Number(e.detail) || 0
       }
     })
   },
@@ -173,7 +199,7 @@ Page({
     this.setData({
       postForm: {
         ...data,
-        wx_master: Number(e.detail)
+        wx_master: e.detail
       }
     })
   },
@@ -182,7 +208,7 @@ Page({
     this.setData({
       postForm: {
         ...data,
-        wx_mark: Number(e.detail)
+        wx_mark: e.detail
       }
     })
   },
@@ -205,14 +231,22 @@ Page({
     const postForm = this.data.postForm
     if (!data) {
       this.setData({
+        hasGroup: data,
         postForm: {
           ...postForm,
           wx_image_url: '',
           wx_image_out: ''
         }
       })
+      return
     }
-    this.setData({ hasGroup: data })
+    this.setData({
+      hasGroup: data,
+      postForm: {
+        ...postForm,
+        wx_image_out: moment().add(7, 'days').format('YYYY-MM-DD')
+      }
+    })
   },
   onTimingChange(e) {
     const data = e.detail
@@ -245,6 +279,8 @@ Page({
     const {
       file
     } = event.detail;
+    this.setData({ uploading: true })
+    console.log('111');
     var _this = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({

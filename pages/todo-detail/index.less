@@ -8,7 +8,7 @@
 
 .detail-page {
   min-height: 100vh;
-  // background-color: @page-bg-color;
+  background-color: @page-bg-color;
   display: flex;
   flex-direction: column;
 
@@ -39,181 +39,200 @@
       //  主要样式
       .detail {
         flex: 1;
-        padding: @primary-theme-padding;
         display: flex;
         flex-direction: column;
-        // 标题
-        .header {
-          // padding: @base-size * 2 0;
-          background-color: @primary-bg-color;
-          // padding: @primary-padding;
-          border-radius: @primary-radius;
-          min-height: 160rpx;
-          position: relative;
-
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          //  标题
-          .content {
-            // margin-bottom: @base-size;
-
-            text {
-              font-size: @size-20;
-              line-height: @line-h-20;
-              color: rgba(23, 23, 37, 1);
-              font-weight: 700;
-            }
-          }
-
-          // 描述
-          .desc {
-            text {
-              font-size: @size-14;
-              line-height: @line-h-14;
-              font-weight: 400;
-              color: rgba(120, 130, 138, 1);
-            }
-          }
-          .action {
-            position: absolute;
-            right: @base-size * 2.4;
-            top: @base-size;
-            padding: 2rpx;
-          }
-          .h-action {
-            border: 2rpx solid @page-bg-color;
-            border-radius: @primary-radius;
+        //  背景 图片
+        .image_bg {
+          image {
+            width: 100%;
+            height: 400rpx;
+            object-fit: cover;
           }
         }
-
-        // more
-        .more {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          margin: @base-size 0;
-          padding: @base-size * 2 0;
-
-          .author {
-            image {
-              width: 72rpx;
-              height: 72rpx;
-              border-radius: 50%;
-            }
-          }
-          .label {
-            // 标签
-            display: flex;
-            // justify-content: space-evenly;
-            .my-tag {
-              margin-right: @base-size * 2;
-            }
-          }
-        }
-
-        // 时间
-        .timeline {
-          background-color: @primary-bg-color;
-
-          .title {
-            margin-bottom: @base-size * 2;
-            text {
-              font-size: @size-14;
-              font-weight: 500;
-              letter-spacing: 0.7px;
-              line-height: @line-h-14;
-              color: rgba(156, 164, 171, 1);
-            }
-          }
-          .content {
+        //  top
+        .top {
+          background-color: #fff;
+          padding: @primary-padding;
+          min-height: 250rpx;
+          // 标题
+          .header {
             border-radius: @primary-radius;
-            border: 2rpx solid @page-bg-color;
-            padding: @primary-padding * 2;
-          }
-          .icon {
-            width: 80rpx;
-            height: 80rpx;
-            background-color: @page-bg-color;
-
+            min-height: 160rpx;
+            position: relative;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-around;
+            //  标题
+            .content {
+              // margin-bottom: @base-size;
 
-            border-radius: @primary-radius;
-            margin-right: @base-size * 2;
-            image {
-              width: 48rpx;
-              height: 48rpx;
-            }
-          }
-          .data {
-            .day {
               text {
-                font-size: @size-12;
-                line-height: @line-h-12;
-                letter-spacing: 0.06px;
-                color: rgba(156, 164, 171, 1);
-                text-align: left;
-                vertical-align: top;
+                font-size: @size-20;
+                line-height: @line-h-20;
+                color: rgba(23, 23, 37, 1);
+                font-weight: 700;
               }
             }
-            .hour {
+
+            // 描述
+            .desc {
               text {
                 font-size: @size-14;
                 line-height: @line-h-14;
-                font-weight: 700;
-                letter-spacing: 0.07px;
+                font-weight: 400;
+                color: rgba(120, 130, 138, 1);
               }
             }
+            .action {
+              position: absolute;
+              right: @base-size * 2.4;
+              top: @base-size;
+              padding: 2rpx;
+            }
+            .h-action {
+              border: 2rpx solid @page-bg-color;
+              border-radius: @primary-radius;
+            }
           }
-          .time-range {
+
+          // more
+          .more {
             display: flex;
             align-items: center;
-            .start,
-            .end {
-              flex: 1;
-              display: flex;
-            }
-          }
-        }
-        // 参与人员
-        .team {
-          margin-top: @base-size * 2;
-          background-color: @primary-bg-color;
+            justify-content: space-between;
+            margin-top: @base-size * 2;
 
-          .title {
-            margin-bottom: @base-size * 2;
-            text {
-              font-size: @size-14;
-              font-weight: 500;
-              letter-spacing: 0.7px;
-              line-height: @line-h-14;
-              color: rgba(156, 164, 171, 1);
-            }
-          }
-          .content {
-            border-radius: @primary-radius;
-            border: 2rpx solid @page-bg-color;
-            padding: @primary-padding * 2;
-            .empty {
-              text {
-                color: #a09fd5;
+            .author {
+              image {
+                width: 72rpx;
+                height: 72rpx;
+                border-radius: 50%;
               }
             }
-            .wrapper {
+            .label {
+              // 标签
               display: flex;
-              flex-wrap: wrap;
-              image {
-                width: 80rpx;
-                height: 80rpx;
-                border-radius: 50%;
-                margin: 0 @base-size * 2 @base-size * 2 0;
+              // justify-content: space-evenly;
+              .my-tag {
+                margin-right: @base-size * 2;
               }
             }
           }
         }
+
+        // bottom
+        .bottom {
+          background-color: @page-bg-color;
+          padding: @primary-padding;
+          // 时间
+          .timeline {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            // background-image: url('http://127.0.0.1:7001/public/card/card_bg.jpg');
+            background-size: contain;
+            background: #fff;
+            box-shadow: 6px 6px 12px #f3f3f3, -6px -6px 12px #f7f7f7;
+            // margin: @primary-padding;
+            padding: @primary-padding;
+            .title {
+              margin-bottom: @base-size * 2;
+              text {
+                font-size: @size-14;
+                font-weight: 500;
+                letter-spacing: 0.7px;
+                line-height: @line-h-14;
+                color: rgba(156, 164, 171, 1);
+              }
+            }
+            .content {
+              border-radius: @primary-radius;
+              border: 2rpx solid @page-bg-color;
+              padding: @primary-padding * 2;
+            }
+            .icon {
+              width: 80rpx;
+              height: 80rpx;
+              background-color: @page-bg-color;
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              border-radius: @primary-radius;
+              margin-right: @base-size * 2;
+              image {
+                width: 48rpx;
+                height: 48rpx;
+              }
+            }
+            .data {
+              .day {
+                text {
+                  font-size: @size-12;
+                  line-height: @line-h-12;
+                  letter-spacing: 0.06px;
+                  color: rgba(156, 164, 171, 1);
+                  text-align: left;
+                  vertical-align: top;
+                }
+              }
+              .hour {
+                text {
+                  font-size: @size-14;
+                  line-height: @line-h-14;
+                  font-weight: 700;
+                  letter-spacing: 0.07px;
+                }
+              }
+            }
+            .time-range {
+              display: flex;
+              align-items: center;
+              .start,
+              .end {
+                flex: 1;
+                display: flex;
+              }
+            }
+          }
+          // 参与人员
+          .team {
+            margin-top: @base-size * 2;
+            background-color: @primary-bg-color;
+
+            .title {
+              margin-bottom: @base-size * 2;
+              text {
+                font-size: @size-14;
+                font-weight: 500;
+                letter-spacing: 0.7px;
+                line-height: @line-h-14;
+                color: rgba(156, 164, 171, 1);
+              }
+            }
+            .content {
+              border-radius: @primary-radius;
+              border: 2rpx solid @page-bg-color;
+              padding: @primary-padding * 2;
+              .empty {
+                text {
+                  color: #a09fd5;
+                }
+              }
+              .wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                image {
+                  width: 80rpx;
+                  height: 80rpx;
+                  border-radius: 50%;
+                  margin: 0 @base-size * 2 @base-size * 2 0;
+                }
+              }
+            }
+          }
+        }
+
         .operation {
           flex: 1;
           padding: @primary-padding;
@@ -230,7 +249,6 @@
   padding: @primary-padding;
   .header {
     margin-top: @base-size;
-    
   }
   .wrapper {
     margin-top: @base-size * 4;

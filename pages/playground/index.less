@@ -1,15 +1,14 @@
-@import '../../style/index.less';
+@import "../../style/index.less";
 
 .circle-wrapper {
   min-height: 100vh;
 
   display: flex;
   flex-direction: column;
-
+ 
   .action {
     padding: @primary-theme-padding;
-
-
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,7 +17,7 @@
       position: relative;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 48rpx;
         height: 4rpx;
@@ -29,7 +28,7 @@
       }
 
       text {
-        color: @primary-color  !important;
+        color: @primary-color !important;
       }
     }
 
@@ -41,7 +40,6 @@
         line-height: @line-h-16;
         color: rgba(156, 164, 171, 1);
       }
-
     }
 
     .operation {
@@ -87,6 +85,12 @@
         text {
           color: @primary-text-color;
         }
+      }
+    }
+    .content {
+      padding: @primary-theme-padding;
+      .detail {
+        flex: 1;
       }
     }
   }

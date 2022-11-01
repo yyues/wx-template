@@ -139,6 +139,10 @@ Page({
       url: '/pages/add/index?type=edit&id=' + id,
     })
   },
+  onFinish() {
+    const id = getLocationParams('id')
+    //  完成 需要 更新状态
+  },
   onDelay() {
     // 当前操作 默认会延迟一天， 可以传递延迟天数
     const id = getLocationParams('id')
