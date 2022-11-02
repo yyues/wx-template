@@ -1,65 +1,54 @@
 .login-wrapper {
-  position: relative;
   height: 100vh;
-  background-size: cover;
-  z-index: 100;
+  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
-}
-.login-wrapper::after {
-  content: "";
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.35);
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-}
-.login-wrapper .nav-left {
-  color: white;
 }
 .login-wrapper .nav-title {
-  color: white;
+  color: #24271E;
   letter-spacing: 2rpx;
 }
-.login-wrapper .operation {
-  margin-top: 400rpx;
-  position: relative;
-  z-index: 100;
-  text-align: center;
+.login-wrapper .content {
+  padding-top: 2vh;
 }
-.login-wrapper .operation .my-submit {
+.login-wrapper .content .header {
+  padding: 0 60rpx;
+}
+.login-wrapper .content .header text {
+  font-size: 40rpx;
+  line-height: 64rpx;
+  color: #24271E;
+  letter-spacing: 1rpx;
+}
+.login-wrapper .content .header .strong {
+  margin-left: 20rpx;
+  font-weight: 700;
+}
+.login-wrapper .content .desc {
+  padding: 0 60rpx;
+  margin-top: 20rpx;
+}
+.login-wrapper .content .desc text {
+  font-size: 28rpx;
+  color: #94a3b8;
+}
+.login-wrapper .content .image {
+  padding: 0 60rpx;
+  margin-top: 2vh;
+}
+.login-wrapper .content .image image {
+  object-fit: cover;
+  width: 100%;
+  height: 756rpx;
+  border-radius: 10rpx;
+}
+.login-wrapper .content .operation {
+  padding: 0 60rpx;
+  margin-top: 7vh;
+}
+.login-wrapper .content .operation .my-submit {
+  width: 100%;
   min-width: 240rpx;
   border-radius: 12rpx;
-  letter-spacing: 4rpx;
-}
-.login-wrapper .card {
-  position: relative;
-  z-index: 100;
-  padding: 20rpx;
-  background-color: #fff;
-  margin: 16rpx 24rpx;
-  width: auto;
-  height: auto;
-  min-height: 300rpx;
-  border-radius: 24rpx;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-.login-wrapper .card image {
-  width: 100%;
-  height: 320rpx;
-  object-fit: cover;
-}
-.login-wrapper .card .content {
-  margin-top: 10rpx;
-  color: white;
-}
-.login-wrapper .card .author {
-  color: white;
-  font-size: 28rpx;
-  text-align: right;
+  letter-spacing: 0.7rpx;
 }

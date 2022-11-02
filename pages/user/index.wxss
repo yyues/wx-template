@@ -48,4 +48,5 @@
   line-height: 44rpx;
   margin-top: 25rpx;
   color: #475569;
+  letter-spacing: 0.7px;
 }

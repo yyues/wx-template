@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    login_bg: 'http://43.143.205.208:7001/public/login/login_bg.webp',
-    login_card: 'http://43.143.205.208:7001/public/login/login_card.jpg'
+    appName: 'Tasknow',
+    login_bg: `https://picsum.photos/seed/${Math.random() * 1000}/296/526`
   },
   /**
    * 生命周期函数--监听页面加载
