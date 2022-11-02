@@ -1,0 +1,3 @@
+<scroll-view scroll-y style="height:{{height}}" refresher-enabled="{{true}}" refresher-threshold="{{100}}" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort" enable-back-to-top="{{true}}" enable-flex="{{true}}">
+    <slot></slot>
+</scroll-view>

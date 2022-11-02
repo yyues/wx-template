@@ -8,7 +8,7 @@ Page({
    */
   data: {
     appName: 'Tasknow',
-    login_bg: `https://picsum.photos/seed/${Math.random() * 1000}/296/526`
+    login_bg: `https://picsum.photos/seed/dog/296/526.webp`
   },
   /**
    * 生命周期函数--监听页面加载

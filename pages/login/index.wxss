@@ -9,7 +9,7 @@
   letter-spacing: 2rpx;
 }
 .login-wrapper .content {
-  padding-top: 2vh;
+  padding-top: 5vh;
 }
 .login-wrapper .content .header {
   padding: 0 60rpx;
