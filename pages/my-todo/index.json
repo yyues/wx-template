@@ -1,6 +1,7 @@
 {
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "task-card": "../../components/task-card/index"
+    "task-card": "../../components/task-card/index",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

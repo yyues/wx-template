@@ -3,7 +3,6 @@
 }
 .calendar {
   background-color: #fff;
-  border-bottom: 1px solid #eee;
 }
 .wrapper {
   display: flex;
@@ -34,7 +33,7 @@
   margin-top: 12rpx;
 }
 .wrapper .selected {
-  background-color: #5B67CA;
+  background-color: #5b67ca;
   color: white;
   position: relative;
 }
@@ -51,7 +50,7 @@
   border-radius: 4rpx;
 }
 .wrapper .now .day {
-  background-color: #5B67CA99;
+  background-color: rgba(91, 103, 202, 0.9);
   border-radius: 12rpx;
   color: white;
 }

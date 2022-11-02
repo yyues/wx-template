@@ -1,80 +1,51 @@
+.nav-title {
+  color: white;
+  letter-spacing: 4rpx;
+}
 .user-page {
-  width: 100%;
   height: 100vh;
-  overflow: hidden;
-  position: relative;
-  z-index: 10;
 }
-.user-page .user-bg {
+.user-page .bg {
   width: 100%;
-  height: 1348rpx;
-  background-size: cover;
+  height: 400rpx;
+  background-color: rgba(91, 103, 202, 0.9);
+  margin-top: -180rpx;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 40rpx 40rpx;
 }
-.user-page .user-bg image {
-  width: 100%;
-  height: 1348rpx;
+.user-page .bg .wrapper image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 16rpx;
+  object-fit: cover;
 }
-.user-page .content {
-  position: absolute;
-  width: calc(100% - 10rpx * 4);
-  min-height: 1000rpx;
-  background-color: #fff;
-  top: calc(100vh - 350rpx);
-  border-radius: 20rpx 20rpx 0 0;
-  padding: 20rpx;
-  z-index: 20;
+.user-page .bg .username {
+  height: 118rpx;
+  margin-left: 30rpx;
+  font-size: 40rpx;
+  color: #24271E;
+}
+.user-page .bg .username .label {
+  padding-top: 10rpx;
+}
+.user-page .action-wrapper {
+  padding: 20rpx 24rpx;
+  background-color: #f5f5f5;
+}
+.user-page .extal {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.28s;
 }
-.user-page .content .point {
-  width: 120rpx;
-  height: 12rpx;
-  opacity: 1;
-  border-radius: 7rpx;
-  background: #d8d8d8;
-  margin: 10rpx 0;
+.user-page .extal image {
+  height: 32px;
+  width: 32px;
 }
-.user-page .content .card {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-}
-.user-page .content .card image {
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 50%;
-  margin: 20rpx 40rpx 20rpx 20rpx;
-}
-.user-page .content .card .username text {
-  font-size: 24px;
-}
-.high-point {
-  background-color: #5b67ca;
-}
-.action {
-  display: flex;
-  justify-content: space-between;
-  padding: 20rpx;
-  width: calc(100% - 24rpx);
-  border-radius: 16rpx;
-  margin: 16rpx 0;
-  padding: 16rpx;
-  background-color: #f5f5f5;
-}
-.action .item {
-  padding: 20rpx;
-  text-align: center;
-}
-.action .item image {
-  width: 90rpx;
-  height: 90rpx;
-}
-.action .item .contents {
-  margin-top: 10rpx;
-}
-.action .item .contents text {
-  color: black;
+.user-page .extal text {
+  display: block;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  margin-top: 25rpx;
+  color: #475569;
 }

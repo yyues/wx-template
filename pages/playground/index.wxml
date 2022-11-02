@@ -1,19 +1,16 @@
 <view class="circle-wrapper">
   <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" z-index="{{999}}" custom-style="background: #ffffff;">
-    <view slot="left" class="nav-title">圈子</view>
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}">
+    <view slot="left" class="nav-title">
+      <view class="title"> <text>圈子</text> </view>
+      <view class="type {{type == 'public' ?'active':''}}">
+        <text>公开</text>
+      </view>
+      <view class="type {{type == 'secret' ?'active':''}}" wx:if="{{false}}">
+        <text>私密</text>
+      </view>
+    </view>
   </van-nav-bar>
-  <view class="action">
-    <view class="header {{type == 'public' ?'active':''}}">
-      <text>公开</text>
-    </view>
-    <view class="operation">
-      <!-- 添加 -->
-      <van-icon name="plus" size="14px" custom-class="icon" bindtap="onAddCircle" />
-      <!-- 搜索 -->
-      <van-icon name="search" size="14px" custom-class="icon" />
-    </view>
-  </view>
   <view class="wrapper">
     <view class="loading" wx:if="{{loading}}">
       <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>

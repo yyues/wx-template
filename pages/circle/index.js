@@ -235,7 +235,7 @@ Page({
         postForm: {
           ...postForm,
           wx_image_url: '',
-          wx_image_out: ''
+          wx_image_out: null
         }
       })
       return

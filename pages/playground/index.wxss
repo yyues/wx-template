@@ -1,46 +1,27 @@
+.nav-title {
+  display: flex;
+  align-items: flex-end;
+}
+.nav-title .title {
+  margin-right: 10rpx;
+}
+.nav-title .title text {
+  font-size: 32rpx;
+  color: #24271E;
+  line-height: 48rpx;
+}
+.nav-title .type text {
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: #94a3b8;
+}
+.nav-title .active text {
+  color: #5b67ca !important;
+}
 .circle-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-.circle-wrapper .action {
-  padding: 20rpx 24rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.circle-wrapper .action .active {
-  position: relative;
-}
-.circle-wrapper .action .active::after {
-  content: "";
-  position: absolute;
-  width: 48rpx;
-  height: 4rpx;
-  border-radius: 8rpx;
-  bottom: 0;
-  left: 6rpx;
-  background-color: #5b67ca;
-}
-.circle-wrapper .action .active text {
-  color: #5b67ca !important;
-}
-.circle-wrapper .action .header text {
-  font-size: 32rpx;
-  font-weight: 500;
-  letter-spacing: 0.7px;
-  line-height: 48rpx;
-  color: #9ca4ab;
-}
-.circle-wrapper .action .operation {
-  display: flex;
-  align-items: center;
-}
-.circle-wrapper .action .operation .icon {
-  background-color: #f5f5f5;
-  border-radius: 24rpx;
-  padding: 10rpx;
-  margin: 0 10rpx;
 }
 .circle-wrapper .wrapper {
   flex: 1;

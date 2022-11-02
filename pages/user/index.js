@@ -2,6 +2,7 @@
 import {
   initTabActive
 } from "../../utils/index";
+import { WE_APP_BASE_API } from "../../env";
 Page({
 
   /**
@@ -10,9 +11,6 @@ Page({
   data: {
     avatar_url: wx.getStorageSync('avatar_url'),
     username: wx.getStorageSync('username'),
-    top: 'calc(100vh - 350rpx)',
-    showAll: false,
-    user_bg: 'http://43.143.205.208:7001/public/user/user_bg.png',
   },
 
   /**
@@ -35,9 +33,10 @@ Page({
   onShow() {
     initTabActive.bind(this)(4)
     this.setData({
-      avatar_url: wx.getStorageSync('avatar_url') || '../../images/avatar_default.png',
-      username: wx.getStorageSync('username') || '假如爱有天意'
+      avatar_url: wx.getStorageSync('avatar_url') ||   '../../images/user/avatar_default.png',
+      username: wx.getStorageSync('username') || 'Tasknow_9527'
     })
+    // WE_APP_BASE_API +  '/public/user/avatar_default.png'
   },
 
   /**
@@ -80,79 +79,6 @@ Page({
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => fn.apply(this, args), ms);
     };
-  },
-  onView(e) {
-    this.setData({
-      top: `500rpx`,
-      showAll: true
-    })
-    // if (this.data.showAll) return
-    // this.debounce(this.handleMove(e), 150)
-  },
-  onPoint(e) {
-    this.setData({
-      top: `calc(100vh - 350rpx)`,
-      showAll: false
-    })
-    return
-    if (!this.data.showAll) return
-    const height = e.touches[0].pageY
-    const before = Number(this.data.top.replace('rpx', '')) / 2
-    if (height > 600) {
-      this.setData({
-        top: `calc(100vh - 350rpx)`,
-        showAll: false
-      })
-      return
-    }
-    if (height > before) {
-      this.setData({
-        top: `${height * 2}rpx`,
-        showAll: false
-      })
-      return
-    }
-  },
-  handleMove(e) {
-    const height = e.touches[0].pageY
-    const before = Number(this.data.top.replace('rpx', '')) / 2
-
-    // 滑动大于一定距离直接 滑到顶部
-    if (before - height > 25) {
-      this.setData({
-        top: `500rpx`,
-        showAll: true
-      })
-      return
-    }
-    // 下滑回到原位
-    if (before - height < -25) {
-      this.setData({
-        top: `calc(100vh - 350rpx)`,
-        showAll: false
-      })
-      return
-    }
-    // 设置最低位置
-    if (height > 600) {
-      this.setData({
-        top: `500rpx`,
-        showAll: false
-      })
-      return
-    }
-    // 设置上拉最高位置
-    if (height <= 250) {
-      this.setData({
-        top: `500rpx`
-      })
-      return
-    }
-    this.setData({
-      top: `${height * 2}rpx`,
-      showAll: false
-    })
-
   },
   onCircle() {
     wx.navigateTo({

@@ -99,7 +99,7 @@
       </view>
     </view>
   </view>
-  <van-popup show="{{ show }}" round position="bottom" custom-style="height: 30%;border-radius: 24rpx" bind:close="onClose" closeable>
+  <van-popup show="{{ show }}" round position="bottom" custom-style="height: max-content;border-radius: 24rpx" bind:close="onClose" closeable>
 
     <view class="actions">
       <view class="header">
@@ -107,23 +107,23 @@
       </view>
       <view class="wrapper">
         <view class="item" bindtap="onEdit">
-          <van-icon name="edit" custom-class="my-icon" size="80rpx" color="#9ca3af" />
+          <image src="../../images/action/edit.png" class="my-icon"> </image>
           <text>编辑</text>
         </view>
         <view class="item" bindtap="onDelay">
-          <van-icon name="underway-o" custom-class="my-icon" size="80rpx" color="#9ca3af" />
+          <image src="../../images/action/delay.png" class="my-icon"> </image>
           <text>延迟</text>
         </view>
         <view class="item" bindtap="onFinish">
-          <van-icon name="success" custom-class="my-icon" size="80rpx" color="#9ca3af" />
+          <image src="../../images/action/success.png" class="my-icon"> </image>
           <text>完成</text>
         </view>
         <view class="item" bindtap="onDelete">
-          <van-icon name="delete-o" custom-class="my-icon" size="80rpx" color="#9ca3af" />
+          <image src="../../images/action/delete.png" class="my-icon"> </image>
           <text>删除</text>
         </view>
         <view class="item" bindtap="onInvite" wx:if="{{data.is_multiplayer}}">
-          <van-icon name="share-o" custom-class="my-icon" size="80rpx" color="#9ca3af" />
+          <image src="../../images/action/share.png" class="my-icon"> </image>
           <text>邀请</text>
         </view>
       </view>

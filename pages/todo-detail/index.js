@@ -150,6 +150,7 @@ Page({
       id,
       num: 1
     }
+    var _this = this
     delayCurrentToDo(param).then(res => {
       wx.showToast({
         title: '延迟一天成功',
@@ -157,10 +158,10 @@ Page({
         icon: 'success',
         success() {
           // 需要刷新当前界面
-          this.setData({
+          _this.setData({
             show: false,
           }, () => {
-            this.GetTodoDetail()
+            _this.GetTodoDetail()
           })
         }
       })

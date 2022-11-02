@@ -1,59 +1,33 @@
 @import "../../style/index.less";
-
+.nav-title {
+  display: flex;
+  align-items: flex-end;
+  .title {
+    text {
+      font-size: @size-16;
+      color: @text-header-color;
+      line-height: @line-h-16;
+    }
+    margin-right: @base-size;
+  }
+  .type {
+    text {
+      font-size: @size-14;
+      line-height: @line-h-14;
+      color: @primary-second-text-color;
+    }
+  }
+  .active {
+    text {
+      color: @primary-color !important;
+    }
+  }
+}
 .circle-wrapper {
   min-height: 100vh;
 
   display: flex;
   flex-direction: column;
- 
-  .action {
-    padding: @primary-theme-padding;
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .active {
-      position: relative;
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 48rpx;
-        height: 4rpx;
-        border-radius: 8rpx;
-        bottom: 0;
-        left: 6rpx;
-        background-color: @primary-color;
-      }
-
-      text {
-        color: @primary-color !important;
-      }
-    }
-
-    .header {
-      text {
-        font-size: @size-16;
-        font-weight: 500;
-        letter-spacing: 0.7px;
-        line-height: @line-h-16;
-        color: rgba(156, 164, 171, 1);
-      }
-    }
-
-    .operation {
-      display: flex;
-      align-items: center;
-
-      .icon {
-        background-color: @page-bg-color;
-        border-radius: @primary-radius;
-        padding: @base-size;
-        margin: 0 @base-size;
-      }
-    }
-  }
 
   .wrapper {
     flex: 1;

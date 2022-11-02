@@ -13,7 +13,7 @@
     </view>
   </van-nav-bar>
   <van-search value="{{ searchValue }}" placeholder="搜索你创建的任务" bind:search="onSearch" bind:cancel="onCancel" custom-class="my-search" />
-  <view class="weather">
+  <view class="weather" wx:if="{{false}}">
     <view class="content" style="background-image: url({{weather_default}}) ">
       <view class="left">
         <view class="temp">

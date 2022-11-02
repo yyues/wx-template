@@ -1,5 +1,5 @@
 {
-  "enablePullDownRefresh": true,
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index",
     "circle-card": "../../components/circle-card/index"

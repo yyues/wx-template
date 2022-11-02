@@ -1,109 +1,62 @@
 @import "../../style/index.less";
-@img-height: 1348rpx;
-@base-px: 10rpx;
+
+.nav-title {
+  // color: @text-header-color;
+  color: white;
+  letter-spacing: 4rpx;
+}
 
 .user-page {
-  width: 100%;
   height: 100vh;
-  overflow: hidden;
-  position: relative;
-  z-index: 10;
 
-  .user-bg {
+  //  背景色 面板
+  .bg {
     width: 100%;
-    height: 1348rpx;
-    background-size: cover;
-    image {
-      width: 100%;
-      height: 1348rpx;
-    }
-  }
-
-  .content {
-    position: absolute;
-    width: calc(100% - @base-px * 4);
-    min-height: 1000rpx;
-    background-color: #fff;
-    top: calc(100vh - 350rpx);
-    border-radius: @base-px * 2 @base-px * 2 0 0;
-    padding: 20rpx;
-    z-index: 20;
+    height: 400rpx;
+    background-color: rgba(@primary-color, 0.9);
+    margin-top: -180rpx;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.28s;
-
-    .point {
-      width: 120rpx;
-      height: 12rpx;
-      opacity: 1;
-      border-radius: 7rpx;
-      background: rgba(216, 216, 216, 1);
-      margin: @base-px * 1 0;
-    }
-
-    .card {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      width: 100%;
-
+    // justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 0 @base-size * 4 @base-size * 4;
+    .wrapper {
       image {
         width: 120rpx;
         height: 120rpx;
-        border-radius: 50%;
-        margin: @base-px * 2 @base-px * 4 @base-px * 2 @base-px * 2;
+        border-radius: 16rpx;
+        object-fit: cover;
       }
-
-      .username {
-        text {
-          font-size: 24px;
-        }
+    }
+    .username {
+      height: 118rpx;
+      margin-left: @base-size * 3;
+      font-size: @size-20;
+      // line-height: 108rpx;
+      color: @text-header-color;
+      .label {
+        padding-top: @base-size;
       }
     }
   }
-}
-
-.high-point {
-  background-color: @primary-color;
-}
-
-.action {
-  display: flex;
-  // align-items: center;
-  justify-content: space-between;
-  padding: @base-px * 2;
-  width: calc(100% - 24rpx);
-  border-radius: 16rpx;
-  margin: @primary-margin;
-  // margin-top: @base-size * 4;
-  padding: @primary-padding;
-  background-color: @page-bg-color;
-
-  .item {
-    // flex: auto;
-    padding: 20rpx;
-    text-align: center;
-
-    &:not(:first-child) {
-      // border-left: 1px solid @text-header-color;
-    }
-
-    // background-color: skyblue;
-
+  .action-wrapper {
+    padding: @primary-theme-padding;
+    background-color: @page-bg-color;
+  }
+  // van -操作栏
+  .extal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     image {
-      width: 90rpx;
-      height: 90rpx;
+      height: 32px;
+      width: 32px;
     }
-
-    .contents {
-      margin-top: @base-px;
-
-      text {
-        // font-size: @size-16;
-        // line-height: @line-h-16;
-        color: black;
-      }
+    text {
+      display: block;
+      font-size: @size-14;
+      line-height: @line-h-14;
+      margin-top: @base-size * 2.5;
+      color: @primary-text-color;
     }
   }
 }

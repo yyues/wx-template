@@ -1,5 +1,5 @@
 {
-  "enablePullDownRefresh": true,
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "calendar": "../../components/calendar/calendar",
     "task-card": "../../components/task-card/index"

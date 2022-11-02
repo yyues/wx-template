@@ -1,34 +1,53 @@
 <view class="user-page">
-  <!-- 导航栏 -->
   <van-dialog id="van-dialog" />
-  <!-- <van-nav-bar border="{{false}}" wx:if="{{showAll}}" fixed placeholder="{{true}}" custom-style="background-color: transparent">
+  <!-- 导航栏 -->
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background-color: #ffffff00">
     <view slot="title" class="nav-title">我的</view>
-  </van-nav-bar> -->
-  <view class="user-bg" style="background-image: url({{user_bg}});">
-    <!-- <image src="../../images/user_bg.png"></image> -->
-    <!-- 1 -->
-  </view>
-  <view class="content" style="top: {{top}}" bindtouchmove="onView">
-    <view class="point" bindtap="onPoint"></view>
-    <view class="card">
+    <!-- <view slot="left" class="nav-left">
+      <van-icon name="arrow-left" color="#fff" />
+    </view> -->
+  </van-nav-bar>
+  <!-- 一个背景色， -->
+  <view class="bg">
+    <view class="wrapper">
       <image src="{{avatar_url}}"></image>
-      <view class="username">
+    </view>
+    <view class="username">
+      <view class="content">
         <text>{{username}}</text>
       </view>
-    </view>
-    <view class="action" wx:if="{{showAll}}">
-      <view class="item" bindtap="onTodo">
-        <view class="image">
-          <image src="../../images/user_task.png"></image>
-        </view>
-        <view class="contents"> <text>我的待办</text> </view>
-      </view>
-      <view class="item" bindtap="onCircle">
-        <view class="image">
-          <image src="../../images/user_circle.png"></image>
-        </view>
-        <view class="contents"><text>我的圈子</text> </view>
+      <view class="label">
+        <van-tag size="small" color="#4e8886">内测用户</van-tag>
       </view>
     </view>
+  </view>
+  <!-- 纯纯的 操作按钮 不是很想 花里胡哨了 -->
+  <view class="action-wrapper">
+    <van-grid>
+      <van-grid-item use-slot>
+        <view class="extal" bindtap="onTodo">
+          <image src="../../images/user/todo.png"></image>
+          <text>我的待办</text>
+        </view>
+      </van-grid-item>
+      <van-grid-item use-slot>
+        <view class="extal" bindtap="onCircle">
+          <image src="../../images/user/circle.png"></image>
+          <text>我的圈子</text>
+        </view>
+      </van-grid-item>
+      <van-grid-item use-slot>
+        <view class="extal">
+          <image src="../../images/user/message.png"></image>
+          <text>我的消息</text>
+        </view>
+      </van-grid-item>
+      <van-grid-item use-slot>
+        <view class="extal">
+          <image src="../../images/user/setting.png"></image>
+          <text>设置</text>
+        </view>
+      </van-grid-item>
+    </van-grid>
   </view>
 </view>
