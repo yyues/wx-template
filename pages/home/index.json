@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "van-search": "@vant/weapp/search/index",
-    "re-loading": "../../components/refresh/index"
+    "van-search": "@vant/weapp/search/index"
   }
 }

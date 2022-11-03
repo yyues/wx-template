@@ -14,6 +14,31 @@
   display: flex;
   flex-direction: column;
 }
-.page-wrapper .height {
-  height: calc(100vh - 388rpx);
+.page-wrapper .other-page {
+  padding: 20rpx 24rpx;
+}
+.page-wrapper .other-page .title {
+  padding: 10rpx 0;
+}
+.page-wrapper .other-page .title text {
+  color: #24271E;
+  letter-spacing: 0.73px;
+}
+.page-wrapper .other-page .content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.page-wrapper .other-page .content .item {
+  flex: auto;
+  padding: 20rpx;
+  justify-self: center;
+  background-color: #f5f4f5;
+  border-radius: 12rpx;
+}
+.page-wrapper .other-page .content .item:first-child {
+  margin-right: 10rpx;
+}
+.page-wrapper .other-page .content .item:last-child {
+  margin-left: 10rpx;
 }

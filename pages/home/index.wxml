@@ -1,19 +1,31 @@
 <view class="page-wrapper">
-    <!-- 导航栏 -->
-    <van-dialog id="van-dialog" />
-    <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;">
-        <view slot="left" class="nav-title">
-            <view class="user" wx:if="{{ hasLogin}}">
-                <image class="image" src="{{avatar_url}}"></image>
-                <view class="name">
-                    <text>{{username}}</text>
-                </view>
-            </view>
-            <text wx:else>Hi,请先登录！</text>
+  <!-- 导航栏 -->
+  <van-dialog id="van-dialog" />
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;">
+    <view slot="left" class="nav-title">
+      <view class="user" wx:if="{{ hasLogin}}">
+        <image class="image" src="{{avatar_url}}"></image>
+        <view class="name">
+          <text>{{username}}</text>
         </view>
-    </van-nav-bar>
-    <van-search value="{{ searchValue }}" placeholder="搜索你创建的任务" bind:search="onSearch" bind:cancel="onCancel" custom-class="my-search" />
-    <re-loading>
-        <text>111</text>
-    </re-loading>
+      </view>
+      <text wx:else>Hi,请先登录！</text>
+    </view>
+  </van-nav-bar>
+  <van-search value="{{ searchValue }}" placeholder="搜索你创建的任务" bind:search="onSearch" bind:cancel="onCancel" custom-class="my-search" />
+  <view class="other-page">
+    <view class="title"> <text>快捷入口</text> </view>
+    <view class="content">
+      <view class="item">
+        <view class="icon"></view>
+        <view class="name">待办</view>
+        <view class="desc"></view>
+      </view>
+      <view class="item">
+        <view class="icon"></view>
+        <view class="name">圈子</view>
+        <view class="desc"></view>
+      </view>
+    </view>
+  </view>
 </view>

@@ -12,24 +12,12 @@ Component({
         text: '首页'
       },
       {
-        pagePath: '/pages/task/index',
-        iconPath: './image/task.png',
-        selectedIconPath: './image/task_active.png',
-        text: '任务'
-      },
-      {
         pagePath: '/pages/add/index',
         iconPath: './image/add.png',
         selectedIconPath: './image/add.png',
         text: '添加',
         type: 'navigateTo',
         hasLogin: true,
-      },
-      {
-        pagePath: '/pages/playground/index',
-        iconPath: './image/playground.png',
-        selectedIconPath: './image/playground_active.png',
-        text: '操场'
       },
       {
         pagePath: '/pages/user/index',
@@ -46,7 +34,7 @@ Component({
     switchTab(e) {
       const data = this.data.list[e.detail]
       const url = data.pagePath
-      if(data.hasLogin && !getToken()){
+      if (data.hasLogin && !getToken()) {
         hasLogin()
         return
       }
