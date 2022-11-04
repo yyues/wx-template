@@ -1,6 +1,5 @@
 .nav-title {
   color: white;
-  letter-spacing: 4rpx;
 }
 .user-page {
   height: 100vh;
@@ -48,5 +47,4 @@
   line-height: 44rpx;
   margin-top: 25rpx;
   color: #475569;
-  letter-spacing: 0.7px;
 }

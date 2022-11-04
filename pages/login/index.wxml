@@ -22,5 +22,5 @@
       <van-button color="#5B67CA" custom-class="my-submit" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权微信头像、昵称</van-button>
     </view>
   </view>
-
+  <van-toast id="van-toast" />
 </view>

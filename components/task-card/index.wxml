@@ -1,22 +1,22 @@
 <view class="wrapper margin-12 padding-10 bg-white   {{checked ? 'selected':'' }}" hover-class="high" bindtap="onClick" data-id="{{data.id}}">
   <view class="header">
+    <view class="select" wx:if="{{ type === 'home' }}">
+      <van-loading type="spinner" wx:if="{{ loading }}" color="#5B67CA" size="20px" />
+      <block wx:else>
+        <van-checkbox checked-color="#5B67CA" value="{{ isSelected }}" shape="square" bind:change="onSelect">
+        </van-checkbox>
+      </block>
+    </view>
     <view class="left">
-      <view class="point" style="background-color: {{data.primary_color ||'#5b67ca'}}"></view>
       <view class="content">
         <text>{{data.content || '明天准时上班！！！'}}</text>
       </view>
+
     </view>
     <view class="right">
-      <!-- <view class="time">
-      
-        <view class="start"> <text>10:00</text> </view>
-        <view class="am">
-          <text>AM</text>
-        </view>
 
-      </view> -->
       <!-- 瑞幸格式的 时间提示 -->
-      <view class="ruixin">
+      <view class="ruixin" wx:if="{{type !== 'home'}}">
         {{data.execute_time || '2022-10-28'}}
       </view>
     </view>
@@ -24,23 +24,20 @@
   <view class="progress" wx:if="{{data.is_multiplayer}}">
     <!-- 需要计算 他的进度条长度 等于当前完成人数/ uid 的长度 -->
   </view>
+
   <view class="action">
     <view class="time-circle">
-      <image src="../../images/time_circle.png"></image>
+      <van-icon name="clock-o" size="20px" />
       <view class="days">
         <text class="number">{{data.task_cycle || '7'}}</text>
-        <view class="day">days</view>
+        <text class="day"> 天</text>
       </view>
     </view>
-    <!-- <van-tag color="#0891b2" size="medium" custom-class="my-tag">
-      {{data.start_time || '10:00'}}-{{data.end_time || '18:00'}}
-    </van-tag> -->
-  </view>
-  <view class="type">
-    <image src="{{data.create_url}}"></image>
-    <view class="person" wx:if="{{!data.is_multiplayer}}">
-      <view class="three-more" wx:if="{{data.invite_url.length > 2}}">
-
+    <view class="type">
+      <image src="{{data.create_url}}"></image>
+      <view class="person" wx:if="{{!data.is_multiplayer}}">
+        <view class="three-more" wx:if="{{data.invite_url.length > 2}}">
+        </view>
       </view>
     </view>
   </view>

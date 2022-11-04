@@ -2,6 +2,8 @@
   "component": true,
   "usingComponents": {
     "van-checkbox": "@vant/weapp/checkbox/index",
-    "van-tag": "@vant/weapp/tag/index"
+    "van-tag": "@vant/weapp/tag/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-loading": "@vant/weapp/loading/index"
   }
 }

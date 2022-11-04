@@ -22,7 +22,6 @@
 }
 .page-wrapper .other-page .title text {
   color: #24271E;
-  letter-spacing: 0.73px;
 }
 .page-wrapper .other-page .content {
   display: flex;
@@ -32,13 +31,39 @@
 .page-wrapper .other-page .content .item {
   flex: auto;
   padding: 20rpx;
-  justify-self: center;
-  background-color: #f5f4f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 12rpx;
+}
+.page-wrapper .other-page .content .item .icon {
+  margin-bottom: 20rpx;
+}
+.page-wrapper .other-page .content .item .icon image {
+  width: 96rpx;
+  height: 96rpx;
 }
 .page-wrapper .other-page .content .item:first-child {
   margin-right: 10rpx;
+  background-color: #f5f5f5;
 }
 .page-wrapper .other-page .content .item:last-child {
   margin-left: 10rpx;
+  background-color: #f5f5f5;
+}
+.page-wrapper .other-page .content .item:last-child .icon image {
+  width: 112rpx !important;
+  height: 96rpx;
+}
+.page-wrapper .today {
+  flex: 1;
+  padding: 20rpx 24rpx;
+  background-color: #f5f5f5;
+}
+.page-wrapper .today .header {
+  margin-bottom: 20rpx;
+  color: #24271E;
+}
+.page-wrapper .today .header text {
+  color: #24271E;
 }

@@ -1,7 +1,7 @@
 <view class="circle-wrapper">
   <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}">
-    <view slot="left" class="nav-title">
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" left-arrow bind:click-left="onClickLeft">
+    <view slot="title" class="nav-title">
       <view class="title"> <text>圈子</text> </view>
       <view class="type {{type == 'public' ?'active':''}}">
         <text>公开</text>
@@ -17,6 +17,9 @@
     </view>
     <view class="content" wx:else>
       <!-- 主要内容 -->
+      <view class="add" bindtap="onAddCircle">
+        <van-icon name="plus" color="#fff" size="32px" />
+      </view>
       <view class="empty" wx:if="{{data.length == 0}}">
         <image src="../../images/page/empty.png"></image>
         <view class="message">

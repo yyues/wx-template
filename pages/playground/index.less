@@ -62,9 +62,19 @@
       }
     }
     .content {
+      position: relative;
       padding: @primary-theme-padding;
       .detail {
         flex: 1;
+      }
+      .add {
+        position: absolute;
+        right: 40rpx;
+        bottom: 10vh;
+        background-color: @primary-color;
+        padding: @primary-padding;
+        border-radius: 50%;
+        box-shadow: @primary-hover-shadow;
       }
     }
   }

@@ -1,6 +1,5 @@
 <view class="page-wrapper">
   <!-- 导航栏 -->
-  <van-dialog id="van-dialog" />
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;">
     <view slot="left" class="nav-title">
       <view class="user" wx:if="{{ hasLogin}}">
@@ -16,16 +15,34 @@
   <view class="other-page">
     <view class="title"> <text>快捷入口</text> </view>
     <view class="content">
-      <view class="item">
-        <view class="icon"></view>
+      <view class="item" bindtap="onTodo">
+        <view class="icon">
+          <image src="../../images/user/todo.png"></image>
+        </view>
         <view class="name">待办</view>
         <view class="desc"></view>
       </view>
-      <view class="item">
-        <view class="icon"></view>
+      <view class="item" bindtap="onCircle">
+        <view class="icon">
+          <image src="../../images/home/circle.png"></image>
+        </view>
         <view class="name">圈子</view>
         <view class="desc"></view>
       </view>
     </view>
   </view>
+  <view class="today">
+    <view class="header">
+      <text>今日待办</text>
+    </view>
+    <block wx:if="{{data.length !== 0}}">
+      <view class="wrapper">
+        <task-card wx:for="{{data}}" wx:key="id" hasSelect="{{false}}" type="home" data="{{item}}" loading="{{arr[index]}}" index="{{index}}" bindfinish="onFinish" />
+      </view>
+    </block>
+    <view class="empty" wx:else>
+      <van-empty description="今日还没有待办哦！" />
+    </view>
+  </view>
+  <van-toast id="van-toast" />
 </view>

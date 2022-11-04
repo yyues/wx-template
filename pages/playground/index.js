@@ -123,5 +123,10 @@ Page({
         loading: false
       })
     })
-  }
+  },
+  onClickLeft() {
+    wx.switchTab({
+      url: '/pages/home/index'
+    })
+  },
 })
