@@ -100,7 +100,6 @@
     </view>
   </view>
   <van-popup show="{{ show }}" round position="bottom" custom-style="height: max-content;border-radius: 24rpx" bind:close="onClose" closeable>
-
     <view class="actions">
       <view class="header">
         <text>操作栏</text>

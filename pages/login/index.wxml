@@ -3,7 +3,8 @@
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff00; z-index: 10; ">
     <view slot="title" class="nav-title">登录</view>
     <view slot="left" class="nav-left" bindtap="onClickLeft">
-      <van-icon name="arrow-left" color="#5b67ca" />
+      <van-icon name="home-o" color="#5b67ca" size="24px" />
+      <!-- <van-icon name="arrow-left" color="#5b67ca" /> -->
     </view>
   </van-nav-bar>
   <view class="content">

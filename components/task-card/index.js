@@ -1,3 +1,5 @@
+import moment from "moment";
+import { WE_APP_BASE_API } from "../../env";
 Component({
   /**
    * 组件的属性列表
@@ -50,7 +52,9 @@ Component({
    */
   data: {
     isSelected: false,
-    icon_url: "./image/my.png",
+    today: moment().format("YYYY-MM-DD"),
+    bg: WE_APP_BASE_API + "/public/card/card_bg.png",
+    show: false,
   },
 
   /**
@@ -64,33 +68,23 @@ Component({
       });
       const id = this.data.data.id;
       const index = this.data.index;
-      this.triggerEvent("finish", {id, index});
+      this.triggerEvent("finish", { id, index });
       //  需要更新状态
     },
     onClick(e) {
       const id = e.currentTarget.dataset.id;
       this.triggerEvent("onClick", id);
-    },
-    setIcon() {
-      // 设置我的图标
-      const type = this.data.task_type;
-      let url;
-      switch (type) {
-        case "person":
-          url = "./image/my.png";
-          break;
-        default:
-          url = "./image/my.png";
-          break;
-      }
       this.setData({
-        icon_url: url,
+        show: false,
+      });
+    },
+    showOperation(e) {
+      this.setData({
+        show: true,
       });
     },
   },
   lifetimes: {
-    ready() {
-      this.setIcon();
-    },
+    ready() {},
   },
 });

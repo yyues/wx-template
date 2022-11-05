@@ -8,6 +8,9 @@
   color: #24271E;
   letter-spacing: 2rpx;
 }
+.login-wrapper .nav-left {
+  padding-top: 20rpx;
+}
 .login-wrapper .content {
   padding-top: 5vh;
 }

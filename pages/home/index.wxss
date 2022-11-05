@@ -21,7 +21,7 @@
   padding: 10rpx 0;
 }
 .page-wrapper .other-page .title text {
-  color: #24271E;
+  color: #24271e;
 }
 .page-wrapper .other-page .content {
   display: flex;
@@ -62,8 +62,8 @@
 }
 .page-wrapper .today .header {
   margin-bottom: 20rpx;
-  color: #24271E;
+  color: #24271e;
 }
 .page-wrapper .today .header text {
-  color: #24271E;
+  color: #24271e;
 }
