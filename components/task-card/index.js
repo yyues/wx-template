@@ -1,5 +1,7 @@
 import moment from "moment";
-import { WE_APP_BASE_API } from "../../env";
+import {
+  WE_APP_BASE_API
+} from "../../env";
 Component({
   /**
    * 组件的属性列表
@@ -68,21 +70,26 @@ Component({
       });
       const id = this.data.data.id;
       const index = this.data.index;
-      this.triggerEvent("finish", { id, index });
+      this.triggerEvent("finish", {
+        id,
+        index
+      });
       //  需要更新状态
     },
     onClick(e) {
       const id = e.currentTarget.dataset.id;
       this.triggerEvent("onClick", id);
-      this.setData({
-        show: false,
-      });
+      
     },
     showOperation(e) {
+      const data = this.data.show
       this.setData({
-        show: true,
+        show: !data,
       });
     },
+    onClock(e) {
+      console.log('1111');
+    }
   },
   lifetimes: {
     ready() {},

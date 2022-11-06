@@ -47,11 +47,30 @@
       </view>
     </view>
     <!-- 右边的操作 -->
-    <view class="right" catchtap="showOperation" wx:if="{{type == 'home'}}">
-      <image src="../../images/action/action.png"></image>
+    <view class="right" wx:if="{{type == 'home'}}">
+      <image src="../../images/action/action.png" class="{{ show ? 'active': ''}}" catchtap="showOperation"></image>
+      <view class="operation" wx:if="{{show}}">
+        <view class="item" catchtap="onClock">
+          <view class="image-wrapper">
+            <image src="../../images/action/clock.png"></image>
+          </view>
+        </view>
+        <view class="item" catchtap="onClock">
+          <view class="image-wrapper">
+            <image src="../../images/action/finish.png"></image>
+          </view>
+        </view>
+        <view class="item" catchtap="onClock" wx:if="{{data.is_multiplayer}}">
+          <view class="image-wrapper">
+            <image src="../../images/action/invite.png"></image>
+          </view>
+        </view>
+        <view class="item" catchtap="onClock">
+          <view class="image-wrapper">
+            <image src="../../images/action/delay_v2.png"></image>
+          </view>
+        </view>
+      </view>
     </view>
-  </view>
-  <view class="operation" wx:if="{{type == 'home' && show}}">
-    <text>1</text>
   </view>
 </view>

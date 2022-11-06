@@ -1,7 +1,6 @@
 .wrapper {
   border-radius: 8rpx;
   background-color: #ffffff;
-  padding: 16rpx;
   margin: 12rpx 0;
   position: relative;
   background-size: cover;
@@ -9,7 +8,7 @@
 .wrapper .header {
   display: flex;
   align-items: center;
-  margin: 10rpx 0 30rpx 0;
+  padding: 16rpx;
 }
 .wrapper .header .select {
   margin-right: 10rpx;
@@ -70,6 +69,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 16rpx 16rpx;
 }
 .wrapper .action .left {
   display: flex;
@@ -87,15 +87,44 @@
   border-radius: 50%;
 }
 .wrapper .action .right {
-  width: 48rpx;
-  height: 48rpx;
+  display: flex;
+  align-items: center;
 }
 .wrapper .action .right image {
+  width: 36rpx;
+  height: 36rpx;
+}
+.wrapper .action .right .active {
+  transform: rotate(180deg);
+  transform: all 0.28s;
+}
+.wrapper .action .right .operation {
+  margin-left: 10rpx;
+  transition: width 0.28s;
+  display: flex;
+}
+.wrapper .action .right .operation .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  margin: 0 20rpx;
+}
+.wrapper .action .right .operation .item .image-wrapper {
+  width: 40rpx;
+  height: 40rpx;
+}
+.wrapper .action .right .operation .item .image-wrapper image {
   width: 100%;
   height: 100%;
 }
-.wrapper .operation {
-  transition: height 0.28s;
+.wrapper .action .right .operation .item .content {
+  margin-top: 10rpx;
+}
+.wrapper .action .right .operation .item .content text {
+  font-size: 24rpx;
+  line-height: 28rpx;
+  color: #24271e;
 }
 .selected,
 .high {
