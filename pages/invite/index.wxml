@@ -17,6 +17,31 @@
     </view>
     <block wx:else>
       <!-- 主要的内容了 -->
+      <view class="detail">
+        <!--  你的好友 邀请你 参数 TA 创建的 什么什么人去 -->
+        <view class="header">
+          <view class="info">
+            <text>你的好友</text>
+          </view>
+          <view class="user">
+            <image src="{{todoInfo.create_url}}"></image>
+            <view class="name">
+              <text>{{todoInfo.create_name}}</text>
+            </view>
+          </view>
+          <view class="info">
+            <text>邀请你参加TA创建的待办！</text>
+          </view>
+        </view>
+        <view class="card">
+          <view class="v_header">
+            <text>{{todoInfo.content}}</text>
+          </view>
+          <view class="v_desc">
+            <text>{{todoInfo.description || '还没有备注哦！'}}</text>
+          </view>
+        </view>
+      </view>
     </block>
   </view>
 </view>

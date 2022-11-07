@@ -35,3 +35,38 @@
   align-items: center;
   justify-content: center;
 }
+.invite-wrapper .content .detail {
+  display: flex;
+  flex-direction: column;
+}
+.invite-wrapper .content .detail .header {
+  padding: 20rpx 24rpx;
+}
+.invite-wrapper .content .detail .header .info {
+  margin: 20rpx 0;
+}
+.invite-wrapper .content .detail .header .info text {
+  font-size: 40rpx;
+  line-height: 64rpx;
+  color: #24271e;
+}
+.invite-wrapper .content .detail .header .user {
+  display: flex;
+  align-items: center;
+}
+.invite-wrapper .content .detail .header .user image {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 6rpx;
+}
+.invite-wrapper .content .detail .header .user .name {
+  margin-left: 20rpx;
+  font-size: 48rpx;
+  line-height: 56rpx;
+  font-weight: bold;
+  color: #94a3b8;
+}
+.invite-wrapper .content .detail .card {
+  padding: 16rpx;
+  border: 1ps solid chartreuse;
+}
