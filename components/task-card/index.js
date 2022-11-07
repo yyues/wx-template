@@ -63,19 +63,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onSelect(e) {
-      //  点击对号直接算是完成了， 需要考虑一下动画
-      this.setData({
-        isSelected: e.detail,
-      });
-      const id = this.data.data.id;
-      const index = this.data.index;
-      this.triggerEvent("finish", {
-        id,
-        index
-      });
-      //  需要更新状态
-    },
+    
     onClick(e) {
       const id = e.currentTarget.dataset.id;
       this.triggerEvent("onClick", id);

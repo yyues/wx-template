@@ -1,90 +1,94 @@
 <view class="expecial-wrapper">
   <!-- 导航栏 -->
   <van-nav-bar border="{{false}}" z-index="{{999}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
-    <view slot="title" class="nav-title">新建待办</view>
+    <view slot="title" class="nav-title">{{ type !== 'add' ? '编辑待办': '新建待办' }}</view>
   </van-nav-bar>
-  <view class="part">
-    <view class="title"><text>待办内容</text></view>
-    <van-field value="{{ postForm.content }}" placeholder="请输入待办内容" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize="{{true}}" bind:change="onTaskChange" />
+  <view class="loading" wx:if="{{ loading }}">
+    <image src="../../images/page/loading.gif"></image>
   </view>
-  <!-- 日期 -->
-  <view class="part">
-    <view class="title"><text>日期</text></view>
-    <van-field value="{{ postForm.execute_time }}" placeholder="请输入日期" border="{{ true }}" clearable="{{ true }}" right-icon="calendar-o" disabled input-class="my-input" bindtap="showCalender" />
-    <van-calendar show="{{ show }}" bind:confirm="onConfirm" bind:close="onClose" color="#5B67CA" />
-  </view>
-  <!-- 周期天数应该有待办周期时长的限制 -->
-  <view class="part" wx:if="{{postForm.is_cycle_todo}}">
-    <view class="title"><text>待办周期时长(天)</text></view>
-    <van-field value="{{ postForm.task_cycle }}" placeholder="请输入待办周期时长" type="{{number}}" border="{{ true }}" clearable="{{ true }}" max="{{90}}" input-class="my-input" bind:change="onTaskCycleChange" />
-  </view>
-  <!-- 时间 -->
-  <view class="part">
-    <view class="title"> <text>时间</text> </view>
-    <view class="flex">
-      <van-field value="{{ postForm.start_time }}" placeholder="请输入开始时间" border="{{ true }}" clearable="{{ true }}" disabled input-class="my-input" data-type="start" bindtap="showTime" />
-      <van-field value="{{ postForm.end_time }}" placeholder="请输入结束时间" border="{{ true }}" clearable="{{ true }}" disabled input-class="my-input" data-type="end" bindtap="showTime" />
+  <view wx:else>
+    <view class="part">
+      <view class="title"><text>待办内容</text></view>
+      <van-field value="{{ postForm.content }}" placeholder="请输入待办内容" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize="{{true}}" bind:change="onTaskChange" />
     </view>
-  </view>
-  <!-- 描述 -->
-  <view class="part">
-    <view class="title"><text>描述</text></view>
-    <van-field model:value="{{ postForm.description }}" placeholder="为你的待办添加一些描述吧！" border="{{ true }}" clearable="{{ true }}" maxlength="{{49}}" show-word-limit="{{true}}" input-class="my-input" bind:change="onDescChange" />
-  </view>
-  <view class="part">
-    <view class="title"><text>优先级</text></view>
-    <view class="wrapper">
-      <van-radio-group value="{{ postForm.level }}" bind:change="onLevelChange" direction="horizontal">
-        <van-radio name="{{0}}" shape="square" checked-color="#5B67CA" label-class="my-radio">正常(低)</van-radio>
-        <van-radio name="{{1}}" shape="square" checked-color="#5B67CA" label-class="my-radio">中</van-radio>
-        <van-radio name="{{2}}" shape="square" checked-color="#5B67CA" label-class="my-radio">高</van-radio>
-        <van-radio name="{{3}}" shape="square" checked-color="#5B67CA" label-class="my-radio">紧急</van-radio>
-      </van-radio-group>
+    <!-- 日期 -->
+    <view class="part">
+      <view class="title"><text>日期</text></view>
+      <van-field value="{{ postForm.execute_time }}" placeholder="请输入日期" border="{{ true }}" clearable="{{ true }}" right-icon="calendar-o" disabled input-class="my-input" bindtap="showCalender" />
+      <van-calendar show="{{ show }}" bind:confirm="onConfirm" bind:close="onClose" color="#5B67CA" />
     </view>
-  </view>
-  <view class="part">
-    <view class="title"><text>类型</text></view>
-    <view class="wrapper">
-      <van-radio-group value="{{ postForm.task_type }}" bind:change="onTaskTypeChange" direction="horizontal">
-        <van-radio name="person" shape="square" checked-color="#5B67CA" label-class="my-radio">个人</van-radio>
-        <van-radio name="private" shape="square" checked-color="#5B67CA" label-class="my-radio">公开</van-radio>
-        <van-radio name="secret" shape="square" checked-color="#5B67CA" label-class="my-radio">私密</van-radio>
-      </van-radio-group>
+    <!-- 周期天数应该有待办周期时长的限制 -->
+    <view class="part" wx:if="{{postForm.is_cycle_todo}}">
+      <view class="title"><text>待办周期时长(天)</text></view>
+      <van-field value="{{ postForm.task_cycle }}" placeholder="请输入待办周期时长" type="{{number}}" border="{{ true }}" clearable="{{ true }}" max="{{90}}" input-class="my-input" bind:change="onTaskCycleChange" />
     </view>
-  </view>
-
-  <view class="config flex">
-    <view class="contet">
-      <view class="title"> <text>是否是长待办</text> </view>
-      <view class="desc"> <text>可以建立99字以内的待办内容 </text></view>
+    <!-- 时间 -->
+    <view class="part">
+      <view class="title"> <text>时间</text> </view>
+      <view class="flex">
+        <van-field value="{{ postForm.start_time }}" placeholder="请输入开始时间" border="{{ true }}" clearable="{{ true }}" disabled input-class="my-input" data-type="start" bindtap="showTime" />
+        <van-field value="{{ postForm.end_time }}" placeholder="请输入结束时间" border="{{ true }}" clearable="{{ true }}" disabled input-class="my-input" data-type="end" bindtap="showTime" />
+      </view>
     </view>
-    <view class="select">
-      <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_long_todo }}" shape="square" bind:change="onLongTaskChange">
-      </van-checkbox>
+    <!-- 描述 -->
+    <view class="part">
+      <view class="title"><text>描述</text></view>
+      <van-field model:value="{{ postForm.description }}" placeholder="为你的待办添加一些描述吧！" border="{{ true }}" clearable="{{ true }}" maxlength="{{49}}" show-word-limit="{{true}}" input-class="my-input" bind:change="onDescChange" />
     </view>
-  </view>
-  <view class="config flex">
-    <view class="contet">
-      <view class="title"> <text>是否是多人待办</text> </view>
-      <view class="desc"> <text>可在创建待办后邀请TA参加哦！</text></view>
+    <view class="part">
+      <view class="title"><text>优先级</text></view>
+      <view class="wrapper">
+        <van-radio-group value="{{ postForm.level }}" bind:change="onLevelChange" direction="horizontal">
+          <van-radio name="{{0}}" shape="square" checked-color="#5B67CA" label-class="my-radio">正常(低)</van-radio>
+          <van-radio name="{{1}}" shape="square" checked-color="#5B67CA" label-class="my-radio">中</van-radio>
+          <van-radio name="{{2}}" shape="square" checked-color="#5B67CA" label-class="my-radio">高</van-radio>
+          <van-radio name="{{3}}" shape="square" checked-color="#5B67CA" label-class="my-radio">紧急</van-radio>
+        </van-radio-group>
+      </view>
     </view>
-    <view class="select">
-      <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_multiplayer }}" shape="square" bind:change="onMultiplayTaskChange">
-      </van-checkbox>
+    <view class="part">
+      <view class="title"><text>类型</text></view>
+      <view class="wrapper">
+        <van-radio-group value="{{ postForm.task_type }}" bind:change="onTaskTypeChange" direction="horizontal">
+          <van-radio name="person" shape="square" checked-color="#5B67CA" label-class="my-radio">个人</van-radio>
+          <van-radio name="private" shape="square" checked-color="#5B67CA" label-class="my-radio">公开</van-radio>
+          <van-radio name="secret" shape="square" checked-color="#5B67CA" label-class="my-radio">私密</van-radio>
+        </van-radio-group>
+      </view>
     </view>
-  </view>
-  <view class="config flex">
-    <view class="contet">
-      <view class="title"> <text>是否是周期待办</text> </view>
-      <view class="desc"> <text>可在开始日期后待办周期内创建相同待办</text></view>
+    <view class="config flex">
+      <view class="contet">
+        <view class="title"> <text>是否是长待办</text> </view>
+        <view class="desc"> <text>可以建立99字以内的待办内容 </text></view>
+      </view>
+      <view class="select">
+        <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_long_todo }}" shape="square" bind:change="onLongTaskChange">
+        </van-checkbox>
+      </view>
     </view>
-    <view class="select">
-      <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_cycle_todo }}" shape="square" bind:change="onCycleTaskChange">
-      </van-checkbox>
+    <view class="config flex">
+      <view class="contet">
+        <view class="title"> <text>是否是多人待办</text> </view>
+        <view class="desc"> <text>可在创建待办后邀请TA参加哦！</text></view>
+      </view>
+      <view class="select">
+        <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_multiplayer }}" shape="square" bind:change="onMultiplayTaskChange">
+        </van-checkbox>
+      </view>
     </view>
-  </view>
-  <view class="operation">
-    <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{loading}}" loading-text="请求中">创建待办</van-button>
+    <view class="config flex">
+      <view class="contet">
+        <view class="title"> <text>是否是周期待办</text> </view>
+        <view class="desc"> <text>可在开始日期后待办周期内创建相同待办</text></view>
+      </view>
+      <view class="select">
+        <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_cycle_todo }}" shape="square" bind:change="onCycleTaskChange">
+        </van-checkbox>
+      </view>
+    </view>
+    <view class="operation">
+      <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{btnLoading}}" loading-text="请求中">{{ type !== 'add' ? '保存': '创建' }}</van-button>
+    </view>
   </view>
   <van-toast id="van-toast" />
   <!-- 选择时间 -->
@@ -92,5 +96,4 @@
     <van-datetime-picker wx:if="{{timeType === 'start'}}" type="time" value="{{ postForm.start_time }}" show-toolbar="{{false}}" bind:input="onTimeChange" visible-item-count="{{4}}" active-class="my-date-picker" />
     <van-datetime-picker wx:else type="time" value="{{ postForm.end_time }}" show-toolbar="{{false}}" bind:input="onTimeChange" visible-item-count="{{4}}" active-class="my-date-picker" />
   </van-dialog>
-
 </view>

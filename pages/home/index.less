@@ -7,8 +7,11 @@
   image {
     width: 48rpx;
     height: 48rpx;
-    border-radius: 50%;
-    margin-right: @base-size;
+    border-radius: 8rpx;
+    margin-right: @base-size * 2;
+  }
+  .name {
+    color: white;
   }
 }
 
@@ -19,54 +22,10 @@
   display: flex;
   flex-direction: column;
 
-  .other-page {
-    padding: @primary-theme-padding;
-    .title {
-      padding: @base-size 0;
-      text {
-        color: @text-header-color;
-      }
-    }
-    .content {
-      display: flex;
-      justify-content: space-between;
-      margin-top: @base-size * 2;
-      .item {
-        flex: auto;
-        padding: @base-size * 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: @base-size * 1.2;
-        // color: white;
-        .icon {
-          margin-bottom: @base-size * 2;
-          image {
-            width: 96rpx;
-            height: 96rpx;
-          }
-        }
-        &:first-child {
-          margin-right: @base-size;
-          background-color: #f5f5f5;
-        }
-        &:last-child {
-          margin-left: @base-size;
-          background-color: #f5f5f5;
-          .icon {
-            image {
-              width: 112rpx !important;
-              height: 96rpx;
-            }
-          }
-        }
-      }
-    }
-  }
   .today {
     flex: 1;
     padding: @primary-theme-padding;
-    background-color: @page-bg-color;
+    // background-color: @page-bg-color;
     .header {
       margin-bottom: @base-size * 2;
       color: @text-header-color;
@@ -74,5 +33,71 @@
         color: @text-header-color;
       }
     }
+  }
+  .action-wrapper {
+    margin: @base-size * 2 0;
+    min-height: 360rpx;
+    .item {
+      border-radius: @base-size;
+      padding: @primary-padding;
+      margin: 0 @base-size * 2;
+      display: flex;
+      align-items: center;
+      border-radius: 8rpx;
+      image {
+        width: 44rpx;
+        height: 44rpx;
+      }
+      .content {
+        display: flex;
+        margin-left: @base-size * 2;
+        align-items: center;
+        text {
+          color: @text-header-color;
+          font-size: @size-16;
+          line-height: @line-h-16;
+          letter-spacing: 0.5px;
+          margin-right: @base-size * 2;
+        }
+      }
+      .seted {
+        text {
+          font-size: @size-14;
+          color: @primary-second-text-color;
+        }
+      }
+    }
+    .high {
+      background-color: @page-bg-color;
+    }
+  }
+}
+
+.operation-wrapper {
+  padding: @base-size * 2 0;
+  background-color: @page-bg-color;
+  // background-color: skyblue;
+}
+// van -操作栏
+.extal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff00;
+  image {
+    height: 32px;
+    width: 32px;
+  }
+  text {
+    display: block;
+    font-size: @size-14;
+    line-height: @line-h-14;
+    margin-top: @base-size * 2.5;
+    color: @primary-text-color;
+  }
+}
+.white-input {
+  .van-search__content {
+    background-color: #fff;
   }
 }

@@ -1,14 +1,24 @@
 @import "../../style/index.less";
+.nav-left {
+  display: flex;
+  align-items: center;
+
+  image {
+    width: 42rpx;
+    height: 42rpx;
+  }
+
+  text {
+    margin-left: @base-size * 2;
+    color: @text-header-color;
+    letter-spacing: 0.07px;
+    line-height: @line-h-16;
+    font-size: @size-16;
+  }
+}
 .login-wrapper {
   height: 100vh;
   background-color: @page-bg-color;
-  .nav-title {
-    color: @text-header-color;
-    letter-spacing: 2rpx;
-  }
-  .nav-left {
-    padding-top: @base-size * 2;
-  }
   display: flex;
   flex-direction: column;
 

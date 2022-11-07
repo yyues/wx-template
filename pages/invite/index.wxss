@@ -1,0 +1,37 @@
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+.nav-left .image-wrapper {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 10rpx;
+}
+.nav-left .image-wrapper image {
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+}
+.nav-left .nav-name {
+  margin-left: 20rpx;
+}
+.nav-left .nav-name text {
+  color: #24271e;
+  letter-spacing: 0.07px;
+  line-height: 48rpx;
+  font-size: 32rpx;
+}
+.invite-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.invite-wrapper .content {
+  flex: 1;
+}
+.invite-wrapper .content .loading {
+  height: calc(100vh - 180rpx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -12,7 +12,8 @@
     "pages/my-circle/index",
     "pages/my-todo/index",
     "pages/todo-detail/index",
-    "pages/login/index"
+    "pages/login/index",
+    "pages/invite/index"
   ],
   "window": {
     "navigationStyle": "custom",

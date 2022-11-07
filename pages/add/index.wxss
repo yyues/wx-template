@@ -48,6 +48,12 @@
 .part .high-date .wrapper {
   border-bottom: 1px solid #5b67ca;
 }
+.loading {
+  height: calc(100vh - 180rpx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .my-date-picker {
   border-top: 1px solid #5b67ca55;
   border-bottom: 1px solid #5b67ca55;

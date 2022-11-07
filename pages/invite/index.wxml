@@ -1,0 +1,22 @@
+<view class="invite-wrapper">
+  <!-- 邀请页，有两个部分一个是待办，一个是圈子 -->
+  <!-- 导航栏 -->
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff00">
+    <view slot="left" class="nav-left">
+      <view class="image-wrapper" bindtap="onClickLeft">
+        <image src="../../images/action/home.png"></image>
+      </view>
+      <view class="nav-name">
+        <text>查看邀请</text>
+      </view>
+    </view>
+  </van-nav-bar>
+  <view class="content">
+    <view class="loading" wx:if="{{loading}}">
+      <image src="../../images/page/loading.gif"></image>
+    </view>
+    <block wx:else>
+      <!-- 主要的内容了 -->
+    </block>
+  </view>
+</view>

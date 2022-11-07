@@ -1,15 +1,23 @@
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+.nav-left image {
+  width: 42rpx;
+  height: 42rpx;
+}
+.nav-left text {
+  margin-left: 20rpx;
+  color: #24271e;
+  letter-spacing: 0.07px;
+  line-height: 48rpx;
+  font-size: 32rpx;
+}
 .login-wrapper {
   height: 100vh;
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
-}
-.login-wrapper .nav-title {
-  color: #24271E;
-  letter-spacing: 2rpx;
-}
-.login-wrapper .nav-left {
-  padding-top: 20rpx;
 }
 .login-wrapper .content {
   padding-top: 5vh;
@@ -20,7 +28,7 @@
 .login-wrapper .content .header text {
   font-size: 40rpx;
   line-height: 64rpx;
-  color: #24271E;
+  color: #24271e;
   letter-spacing: 1rpx;
 }
 .login-wrapper .content .header .strong {

@@ -1,8 +1,13 @@
 {
   "usingComponents": {
     "van-search": "@vant/weapp/search/index",
-    "task-card": "../../components/task-card/index",
+    "today-card": "../../components/today-card/index",
     "van-empty": "@vant/weapp/empty/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-button": "@vant/weapp/button/index"
   }
 }

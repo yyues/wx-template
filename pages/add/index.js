@@ -1,197 +1,188 @@
-import {
-  initTabActive
-} from "../../utils/index";
-import Toast from '@vant/weapp/toast/toast';
+import { initTabActive } from "../../utils/index";
+import Toast from "@vant/weapp/toast/toast";
 import moment from "moment";
-import {
-  taskSave
-} from "../../api/todo";
+import { taskSave, getTodoById } from "../../api/todo";
+import { getLocationParams } from "../../utils/index";
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    value: '',
+    value: "",
     show: false,
     showDialog: false,
-    timeType: '',
+    timeType: "",
     max_content: 19,
     loading: false,
+    btnLoading: false,
+    type: "add",
     postForm: {
-      execute_time: '',
-      start_time: '',
-      end_time: '',
-      description: '',
+      execute_time: "",
+      start_time: "",
+      end_time: "",
+      description: "",
       level: 0,
-      content: '',
-      task_type: 'person',
+      content: "",
+      task_type: "person",
       is_long_todo: false,
       is_cycle_todo: false,
       is_multiplayer: false,
-      task_cycle: 1
-    }
+      task_cycle: 1,
+    },
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
-  },
+  onLoad(options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-
-  },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    initTabActive.bind(this)(3)
+    initTabActive.bind(this)(3);
+    const type = getLocationParams("type");
+    const id = getLocationParams("id");
+    this.setData({ type });
+    if (type == "edit") {
+      //  查详情
+      this.getDetail(id);
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-
-  },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
-
-  },
+  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  },
+  onShareAppMessage() {},
   validate(data) {
     const rules = {
-      content: '请输入待办内容!',
-      execute_time: '请选择日期！',
-      start_time: '请选择开始时间！',
-      end_time: '请选择结束时间！',
-
-    }
+      content: "请输入待办内容!",
+      execute_time: "请选择日期！",
+      start_time: "请选择开始时间！",
+      end_time: "请选择结束时间！",
+    };
     for (const key in rules) {
       if (!data[key]) {
-        return rules[key]
+        return rules[key];
       }
     }
-    return true
+    return true;
   },
   handleSubmit() {
-    const param = this.data.postForm
-    const res = this.validate(param)
+    const param = this.data.postForm;
+    const type = this.data.type;
+    const res = this.validate(param);
     if (res !== true) {
-      return Toast(res)
+      return Toast(res);
     }
     this.setData({
-      loading: true
-    })
-    taskSave(param).then(res => {
-      Toast({
-        type: 'success',
-        message: '创建成功！',
-        onClose: () => {
-          wx.redirectTo({
-            url: '/pages/home/index',
-          })
-        },
-      });
-    }).finally(() => {
-      this.setData({
-        loading: false
+      btnLoading: true,
+    });
+    taskSave(param)
+      .then((res) => {
+        Toast({
+          type: "success",
+          message: type == "add" ? "创建成功！" : "保存成功！",
+          onClose: () => {
+            wx.redirectTo({
+              url: "/pages/home/index",
+            });
+          },
+        });
       })
-    })
+      .finally(() => {
+        this.setData({
+          btnLoading: false,
+        });
+      });
   },
   onClickLeft() {
-    wx.navigateBack()
+    wx.navigateBack();
   },
-  onChange() {
-
-  },
+  onChange() {},
   showCalender() {
     this.setData({
-      show: true
-    })
+      show: true,
+    });
   },
   onConfirm(e) {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     this.setData({
       postForm: {
         ...data,
-        execute_time: moment(e.detail).format('YYYY-MM-DD')
+        execute_time: moment(e.detail).format("YYYY-MM-DD"),
       },
-      show: false
-    })
+      show: false,
+    });
   },
   onClose() {
     this.setData({
-      show: false
-    })
+      show: false,
+    });
   },
   onInput(e) {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     this.setData({
       postForm: {
         ...data,
-        time: e.detail
+        time: e.detail,
       },
-    })
+    });
   },
   showTime(e) {
-    const data = e.currentTarget.dataset.type
+    const data = e.currentTarget.dataset.type;
 
     this.setData({
       showDialog: true,
-      timeType: data
-    })
+      timeType: data,
+    });
   },
   onTimeChange(e) {
-    const data = this.data.postForm
-    if (this.data.timeType === 'start') {
+    const data = this.data.postForm;
+    if (this.data.timeType === "start") {
       this.setData({
         postForm: {
           ...data,
-          start_time: e.detail
-        }
-      })
+          start_time: e.detail,
+        },
+      });
     }
-    if (this.data.timeType === 'end') {
+    if (this.data.timeType === "end") {
       this.setData({
         postForm: {
           ...data,
-          end_time: e.detail
-        }
-      })
+          end_time: e.detail,
+        },
+      });
     }
   },
   onCloseDialog() {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     // this.setData({
     //   postForm: {
     //     ...data,
@@ -200,77 +191,95 @@ Page({
     // })
   },
   onTaskChange(e) {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     this.setData({
       postForm: {
         ...data,
-        content: e.detail
-      }
-    })
+        content: e.detail,
+      },
+    });
   },
   onDescChange(e) {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     this.setData({
       postForm: {
         ...data,
-        description: e.detail
-      }
-    })
+        description: e.detail,
+      },
+    });
   },
   onLevelChange(e) {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     this.setData({
       postForm: {
         ...data,
-        level: e.detail
-      }
-    })
+        level: e.detail,
+      },
+    });
   },
   onTaskTypeChange(e) {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     this.setData({
       postForm: {
         ...data,
-        task_type: e.detail
-      }
-    })
+        task_type: e.detail,
+      },
+    });
   },
   onLongTaskChange(e) {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     this.setData({
       postForm: {
         ...data,
-        is_long_todo: e.detail
+        is_long_todo: e.detail,
       },
-      max_content: 99
-    })
+      max_content: 99,
+    });
   },
   onCycleTaskChange(e) {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     this.setData({
       postForm: {
         ...data,
-        is_cycle_todo: e.detail
+        is_cycle_todo: e.detail,
       },
-    })
+    });
   },
 
   onMultiplayTaskChange(e) {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     this.setData({
       postForm: {
         ...data,
-        is_multiplayer: e.detail
+        is_multiplayer: e.detail,
       },
-    })
+    });
   },
   onTaskCycleChange(e) {
-    const data = this.data.postForm
+    const data = this.data.postForm;
     this.setData({
       postForm: {
         ...data,
-        task_cycle: e.detail
+        task_cycle: e.detail,
       },
+    });
+  },
+  getDetail(id) {
+    this.setData({
+      loading: true,
+    });
+    getTodoById({
+      id,
     })
-  }
-})
+      .then((res) => {
+        this.setData({
+          postForm: res,
+        });
+      })
+      .finally(() => {
+        this.setData({
+          loading: false,
+        });
+      });
+  },
+});

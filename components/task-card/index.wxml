@@ -1,17 +1,10 @@
 <view class="wrapper margin-12 padding-10 bg-white   {{checked ? 'selected':'' }}" hover-class="high" catchtap="onClick" data-id="{{data.id}}">
   <view class="header">
-    <view class="select" wx:if="{{ type === 'home' }}">
-      <van-loading type="spinner" wx:if="{{ loading }}" color="#5B67CA" size="20px" />
-      <block wx:else>
-        <van-checkbox checked-color="#5B67CA" value="{{ isSelected }}" shape="square" bind:change="onSelect">
-        </van-checkbox>
-      </block>
-    </view>
+
     <view class="left">
       <view class="content">
         <text>{{data.content || '明天准时上班！！！'}}</text>
       </view>
-
     </view>
     <view class="right">
       <!-- 瑞幸格式的 时间提示 -->

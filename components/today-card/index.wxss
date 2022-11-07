@@ -1,0 +1,57 @@
+.card {
+  padding: 20rpx 24rpx;
+  margin: 20rpx 0;
+  display: flex;
+  align-items: center;
+}
+.card .card__label {
+  min-width: 72rpx;
+}
+.card .card__content {
+  flex: 1;
+  margin-left: 10rpx;
+}
+.card .card__content .content {
+  width: 85%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 10rpx;
+}
+.card .card__content .content text {
+  color: #24271e;
+}
+.card .card__action {
+  padding-left: 20rpx;
+}
+.card .card__action image {
+  width: 48rpx;
+  height: 48rpx;
+}
+.card .card__detail {
+  display: flex;
+  align-items: flex-start;
+}
+.card .card__detail .remind {
+  margin-right: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.card .card__detail .remind image {
+  width: 100%;
+  height: 100%;
+}
+.card .card__detail .avatar {
+  margin: 0 10rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.card .card__detail .avatar image {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  border-radius: 4rpx;
+}
+.high {
+  background-color: rgba(245, 245, 245, 0.55);
+}

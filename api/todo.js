@@ -56,3 +56,11 @@ export const finishTodo = (data) => {
     data,
   });
 };
+
+export const setTodoClock = (data) => {
+  return request.axios({
+    method: "POST",
+    url: "/todo/set-clock",
+    data,
+  });
+};
