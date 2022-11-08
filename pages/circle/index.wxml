@@ -33,9 +33,9 @@
         <view class="title"> <text>圈名</text> </view>
         <van-field value="{{ postForm.name }}" border="{{ true }}" clearable="{{ true }}" bind:change="onNameChange" maxlength="19" />
       </view>
-      <!-- 内存 -->
+      <!-- 目标 -->
       <view class="part">
-        <view class="title"> <text>内容</text> </view>
+        <view class="title"> <text>目标</text> </view>
         <van-field value="{{ postForm.content }}" placeholder="请描述圈子的主要功能吧！" border="{{ true }}" clearable="{{ true }}" bind:change="onContentChange" maxlength="49" />
       </view>
       <!-- 描述 -->

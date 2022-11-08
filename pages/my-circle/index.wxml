@@ -1,8 +1,8 @@
 <view class="page-wrapper">
   <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
+  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;">
     <view slot="title" class="nav-title">我的圈子</view>
-    <view slot="left" class="nav-left">
+    <view slot="left" class="nav-left" bindtap="onClickLeft">
       <van-icon name="arrow-left" color="#5b67ca" />
     </view>
   </van-nav-bar>
@@ -20,7 +20,7 @@
       </view>
       <view class="detail" wx:else>
         <view class="wrapper">
-          <circle-card wx:for="{{currentList}}" wx:key="id" hasAction="{{true}}" type="user" data="{{item}}" index="{{index}}" bindclick="onClick" />
+          <circle-card wx:for="{{currentList}}" wx:key="id" hasAction="{{true}}" type="user" data="{{item}}" index="{{index}}" bindclick="onClick" binddetail="onDetail" />
         </view>
       </view>
     </view>

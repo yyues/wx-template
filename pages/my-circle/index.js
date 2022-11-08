@@ -30,6 +30,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    //  不过要先把 旧数据 清空了，防止回到该页面的时候重新请求造成数据重复
+    this.setData({
+      currentList: [],
+    });
     // 渲染时请求数据
     this.GetList();
   },
@@ -110,7 +114,7 @@ Page({
       });
   },
   onClickLeft() {
-    wx.redirectTo({
+    wx.switchTab({
       url: "/pages/user/index",
     });
   },
@@ -135,6 +139,13 @@ Page({
     const id = this.data.currentData.id;
     wx.redirectTo({
       url: "/pages/circle/index?type=edit&id=" + id,
+    });
+  },
+  onDetail(e) {
+    const id = e.detail;
+    console.log("QAQ", id);
+    wx.redirectTo({
+      url: "/pages/circle-detail/index?type=user&id=" + id,
     });
   },
 });

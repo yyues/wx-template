@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "circle-card": "../../components/circle-card/index"
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

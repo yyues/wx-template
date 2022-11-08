@@ -44,6 +44,10 @@ Component({
     onClick() {
       this.triggerEvent("click", this.data.index);
     },
+    onDetail() {
+      console.log("我点击了 圈子 的数据");
+      this.triggerEvent("detail", this.data.data.id);
+    },
   },
   lifetimes: {
     ready() {},

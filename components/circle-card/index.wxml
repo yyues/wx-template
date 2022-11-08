@@ -1,4 +1,4 @@
-<view class="wrapper {{checked ? 'selected':'' }}" hover-class="high">
+<view class="wrapper {{checked ? 'selected':'' }}" hover-class="high" bindtap="onDetail">
   <!-- 左中右布局， 参照 网易云样式，不再使用 card 样式 -->
   <view class="index">
     <text>{{index}}</text>
@@ -18,7 +18,7 @@
     </view>
   </view>
   <!-- 操作栏  -->
-  <view class="action" wx:if="{{hasAction}}" bindtap="onClick">
+  <view class="action" wx:if="{{hasAction}}" catchtap="onClick">
     <image src="../../images/action/ellipsis-v.png"></image>
   </view>
 </view>

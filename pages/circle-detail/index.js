@@ -1,69 +1,77 @@
-
+import { getDetailById } from "../../api/circle";
+import { getLocationParams } from "../../utils/index";
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    data: {},
+    loading: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
-  },
+  onLoad(options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-
-  },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    
+    // 因为整个页面只会走一个查询的接口，所以就不拆开写了
+    const id = getLocationParams("id");
+    this.setData({ loading: true });
+    getDetailById({ id })
+      .then((res) => {
+        this.setData({
+          data: res,
+        });
+      })
+      .finally(() => {
+        this.setData({ loading: false });
+      });
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-
-  },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
-
-  },
+  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  },
+  onShareAppMessage() {},
   onClickLeft() {
-    wx.navigateBack()
-  }
-})
+    const type = getLocationParams("type");
+    if (type == "user") {
+      wx.redirectTo({
+        url: "/pages/my-circle/index",
+      });
+      return;
+    }
+    if (type == "public") {
+      wx.navigateBack();
+      return;
+    }
+  },
+});
