@@ -1,18 +1,18 @@
 {
   "pages": [
     "pages/home/index",
+    "pages/user/index",
+    "pages/login/index",
     "pages/playground/index",
     "pages/search/index",
     "pages/task/index",
     "pages/square/index",
     "pages/circle/index",
     "pages/detail/index",
-    "pages/user/index",
     "pages/add/index",
     "pages/my-circle/index",
     "pages/my-todo/index",
     "pages/todo-detail/index",
-    "pages/login/index",
     "pages/invite/index"
   ],
   "window": {

@@ -6,17 +6,27 @@ Component({
     // 是否有操作栏，默认 false
     hasAction: {
       type: Boolean,
-      value: false
+      value: false,
     },
     // 类型，是用来判断使用位置的
     type: {
       type: String,
-      value: 'home'
+      value: "home",
     },
     data: {
       type: Object,
-      value: {}
-    }
+      value: {},
+    },
+    // 是否 被选中
+    checked: {
+      type: Boolean,
+      default: false,
+    },
+    // 数组的索引值
+    index: {
+      type: Number,
+      default: 0,
+    },
   },
 
   /**
@@ -24,30 +34,18 @@ Component({
    */
   data: {
     checked: false,
-    icon_url: './image/my.png'
+    icon_url: "./image/my.png",
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    onSelect(e) {
-      this.setData({
-        checked: e.detail
-      })
+    onClick() {
+      this.triggerEvent("click", this.data.index);
     },
-    onClick(e) {
-      const id = e.currentTarget.dataset.id
-      this.triggerEvent('onClick', id)
-    },
-    onPublish() {
-      const id = this.data.data.id
-      wx.redirectTo({
-        url: '/pages/circle/index?type=publish&id=' + id,
-      })
-    }
   },
   lifetimes: {
-    ready() { }
-  }
-})
+    ready() {},
+  },
+});

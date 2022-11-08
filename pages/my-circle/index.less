@@ -43,7 +43,6 @@
             color: @primary-text-color;
           }
         }
-
       }
 
       //  主要样式
@@ -52,11 +51,19 @@
         padding: @primary-theme-padding;
         display: flex;
         flex-direction: column;
-        background-color: @page-bg-color;
         .wrapper {
           height: 100%;
         }
       }
     }
+  }
+  .img {
+    width: 40rpx;
+    height: 40rpx;
+    vertical-align: middle;
+    margin-right: @base-size * 2;
+  }
+  .action-wrapper {
+    min-height: 240rpx;
   }
 }

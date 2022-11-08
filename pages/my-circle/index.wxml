@@ -20,9 +20,25 @@
       </view>
       <view class="detail" wx:else>
         <view class="wrapper">
-          <circle-card wx:for="{{currentList}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
+          <circle-card wx:for="{{currentList}}" wx:key="id" hasAction="{{true}}" type="user" data="{{item}}" index="{{index}}" bindclick="onClick" />
         </view>
       </view>
     </view>
   </view>
+  <van-action-sheet show="{{ show }}" title="详情" z-index="{{10001}}" bind:close="hidenAction" overlay="{{true}}">
+    <view class="action-wrapper">
+      <!-- 发布 -->
+      <van-cell title="去发布" bindtap="onPublish" center wx:if="{{currentData.status == 're_publish'}}">
+        <image slot="icon" class="img" src="../../images/action/publish.png"></image>
+      </van-cell>
+      <!-- 编辑 -->
+      <van-cell title="编辑" bindtap="onEdit" center wx:if="{{currentData.status !== 're_publish'}}">
+        <image slot="icon" class="img" src="../../images/action/edit.png"></image>
+      </van-cell>
+      <!-- 删除 -->
+      <van-cell title="删除">
+        <image slot="icon" class="img" src="../../images/action/delete.png"></image>
+      </van-cell>
+    </view>
+  </van-action-sheet>
 </view>

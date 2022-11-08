@@ -1,78 +1,65 @@
 // pages/task/index.js
-import {
-  initTabActive
-} from "../../utils/index";
+import { initTabActive } from "../../utils/index";
 import { WE_APP_BASE_API } from "../../env";
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    avatar_url: wx.getStorageSync('avatar_url'),
-    username: wx.getStorageSync('username'),
+    avatar_url: wx.getStorageSync("avatar_url"),
+    username: wx.getStorageSync("username"),
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
-  },
+  onLoad(options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-
-  },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    initTabActive.bind(this)(4)
+    initTabActive.bind(this)(2);
     this.setData({
-      avatar_url: wx.getStorageSync('avatar_url') ||   '../../images/user/avatar_default.png',
-      username: wx.getStorageSync('username') || 'Tasknow_9527'
-    })
+      avatar_url:
+        wx.getStorageSync("avatar_url") ||
+        "../../images/user/avatar_default.png",
+      username: wx.getStorageSync("username") || "Tasknow_9527",
+    });
     // WE_APP_BASE_API +  '/public/user/avatar_default.png'
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-
-  },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-    console.log('ddd');
+    console.log("ddd");
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  },
+  onShareAppMessage() {},
   debounce(fn, ms = 0) {
     let timeoutId;
     return function (...args) {
@@ -82,12 +69,12 @@ Page({
   },
   onCircle() {
     wx.navigateTo({
-      url: '/pages/my-circle/index?type=user',
-    })
+      url: "/pages/my-circle/index?type=user",
+    });
   },
   onTodo() {
     wx.navigateTo({
-      url: '/pages/my-todo/index?type=user',
-    })
-  }
-})
+      url: "/pages/my-todo/index?type=user",
+    });
+  },
+});

@@ -2,6 +2,8 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "circle-card": "../../components/circle-card/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-cell": "@vant/weapp/cell/index"
   }
 }

@@ -1,66 +1,62 @@
-@import '../../style/index.less';
-
+@import "../../style/index.less";
 .wrapper {
-  //  卡片 主要内容
-  border-radius: @primary-radius;
-  background-color: @primary-bg-color;
-  padding: @primary-padding;
-  margin: @primary-margin;
-  // min-height: @primary-card-min-height;
-  border: 2rpx solid @page-bg-color;
-  box-shadow: @primary-hover-shadow;
-  position: relative;
-
-  .top {
-    display: flex;
-    align-items: center;
-    margin-bottom: @base-size;
-
-    image {
-      width: 96rpx;
-      height: 96rpx;
-      border-radius: @base-size;
-      margin-right: @base-size * 2;
+  display: flex;
+  align-items: center;
+  padding: @base-size * 2;
+  margin-bottom: @base-size * 2;
+  // border-left: 1px solid #eee;
+  .index {
+    margin-right: @base-size* 4;
+    text {
+      color: @primary-second-text-color;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      font-size: 18px;
     }
+  }
+  .img {
+    width: 72rpx;
+    height: 72rpx;
+    image {
+      width: 100%;
+      height: 100%;
+      border-radius: 8rpx;
+    }
+    margin-right: @base-size * 2;
+  }
+  .content-wrapper {
+    flex: 1;
 
-    .content {
-      .name {
+    .name {
+      width: 88%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text {
         font-size: @size-16;
         line-height: @line-h-16;
-        color: @primary-text-color;
+        color: @text-header-color;
       }
-
-      .desc {
-        margin-top: @base-size;
-        text {
-          font-size: @size-14;
-          line-height: @line-h-14;
-          color: @primary-second-text-color;
-        }
+    }
+    .content {
+      width: 88%;
+      text {
+        font-size: @size-12;
+        line-height: @line-h-12;
+        color: @primary-second-text-color;
       }
     }
   }
-
-  .actions {
-    margin-top: @base-size * 3;
-    display: flex;
-    justify-content: space-between;
-
-    // padding:  0 ;
-    .more {
-      .number {
-        display: flex;
-        align-items: flex-end;
-
-        .my-number {
-          margin-right: @base-size / 2;
-        }
-        text {
-          color: @primary-text-color;
-          font-size: @size-14;
-          line-height: @line-h-14;
-        }
-      }
+  .action {
+    width: 48rpx;
+    height: 48rpx;
+    image {
+      width: 100%;
+      height: 100%;
     }
   }
+}
+.high {
+  border-radius: @primary-radius;
+
+  background-color: @primary-hover-bg-color;
 }

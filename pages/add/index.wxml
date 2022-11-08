@@ -56,7 +56,7 @@
         </van-radio-group>
       </view>
     </view>
-    <view class="config flex">
+    <view class="config flex" wx:if="{{false}}">
       <view class="contet">
         <view class="title"> <text>是否是长待办</text> </view>
         <view class="desc"> <text>可以建立99字以内的待办内容 </text></view>
