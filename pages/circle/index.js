@@ -94,6 +94,7 @@ Page({
       ...this.data.postForm,
       publish_time: moment().format("YYYY-MM-DD"),
     };
+    
     // 直接把 发布时间传过去就行了
     // this.setData({
     //   loading: true

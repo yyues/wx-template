@@ -1,4 +1,5 @@
 @import "../../style/index.less";
+
 .page-wrapper {
   min-height: 100vh;
 
@@ -9,10 +10,46 @@
     justify-content: center;
     align-items: center;
   }
+
   .content {
     //  不给一个 统一的margin了
     background-color: @page-bg-color;
-    height: 100%;
-    background-color: #fff;
+    height: 100vh;
+
+    .header {
+      margin: @base-size * 2 0;
+      padding: @primary-padding;
+      background-color: #fff;
+      display: flex;
+      // align-items: center;
+
+      .avatar {
+        image {
+          width: 128rpx;
+          height: 128rpx;
+          border-radius: 6px;
+        }
+
+        margin-right: @base-size * 2;
+      }
+
+      .info {
+
+        .up {
+          margin-bottom: @base-size;
+
+          label {
+            color: @primary-second-text-color;
+            font-size: @size-14;
+            margin-right: @base-size ;
+          }
+
+          text {
+            color: @text-header-color;
+            letter-spacing: 0.07px;
+          }
+        }
+      }
+    }
   }
 }

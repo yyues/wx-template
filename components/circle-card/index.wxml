@@ -4,7 +4,7 @@
     <text>{{index}}</text>
   </view>
   <view class="img">
-    <image src="{{data.avatar_url}}" alt=""/>
+    <image src="{{data.avatar_url}}" alt="" />
   </view>
   <view class="content-wrapper">
     <view class="name">
@@ -15,6 +15,7 @@
     </view>
     <view class="labels">
       <!-- 标签， -->
+      <van-tag plain wx:if="{{data.status == 're_publish'}}" color="#7A64C1">待发布</van-tag>
     </view>
   </view>
   <!-- 操作栏  -->

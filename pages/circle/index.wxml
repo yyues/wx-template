@@ -10,9 +10,9 @@
         <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="{{1}}" preview-size="180px" bind:delete="onDeletePicture" />
       </view>
       <!-- <view class="title">名称</view> -->
-      <van-field value="{{ postForm.name }}" placeholder="请输入圈子名称" border="{{ true }}" clearable="{{ true }}" input-class="my-input" bind:change="onNameChange" />
+      <van-field value="{{ postForm.name }}" placeholder="请输入圈子名称" border="{{ true }}" clearable="{{ true }}" input-class="my-input" bind:input="onNameChange" />
       <view class="operation">
-        <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleAdd" loading="{{loading}}" loading-text="创建中" disabled="{{!postForm.name ||!postForm.avatar_url}}">创建</van-button>
+        <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleAdd" loading="{{loading}}" loading-text="创建中" disabled="{{!postForm.name || !postForm.avatar_url}}">创建</van-button>
         <view class="tips">
           <text>创建后需要发布才能被别人看见哦！</text>
         </view>
@@ -31,22 +31,22 @@
       <!-- 名称 -->
       <view class="part">
         <view class="title"> <text>圈名</text> </view>
-        <van-field value="{{ postForm.name }}" border="{{ true }}" clearable="{{ true }}" bind:change="onNameChange" maxlength="19" />
+        <van-field value="{{ postForm.name }}" border="{{ true }}" clearable="{{ true }}" bind:input="onNameChange" maxlength="19" />
       </view>
       <!-- 目标 -->
       <view class="part">
         <view class="title"> <text>目标</text> </view>
-        <van-field value="{{ postForm.content }}" placeholder="请描述圈子的主要功能吧！" border="{{ true }}" clearable="{{ true }}" bind:change="onContentChange" maxlength="49" />
+        <van-field value="{{ postForm.content }}" placeholder="请描述圈子的主要功能吧！" border="{{ true }}" clearable="{{ true }}" bind:input="onContentChange" maxlength="49" />
       </view>
       <!-- 描述 -->
       <view class="part">
         <view class="title"> <text>描述</text> </view>
-        <van-field value="{{ postForm.description }}" placeholder="请添加圈子描述哦！" type="textarea" clearable="{{ true }}" autosize bind:change="onDescChange" maxlength="49" />
+        <van-field value="{{ postForm.description }}" placeholder="请添加圈子描述哦！" type="textarea" clearable="{{ true }}" autosize bind:input="onDescChange" maxlength="49" />
       </view>
       <!-- 人数 -->
       <view class="part">
         <view class="title"> <text>人数上限</text> </view>
-        <van-field value="{{ postForm.max_persons }}" type="number" clearable="{{ true }}" bind:change="onNumbercChange" />
+        <van-field value="{{ postForm.max_persons }}" type="number" clearable="{{ true }}" bind:input="onNumbercChange" />
       </view>
       <!-- 可选项 是否设置个人微信  -->
       <view class="config">
@@ -59,13 +59,13 @@
       <view class="part flex" wx:if="{{hasOwner}}">
         <view class="title"> <text>个人微信号</text></view>
         <view class="input">
-          <van-field value="{{ postForm.wx_master }}" placeholder="快填写自己的微信号吧！" clearable="{{ true }}" bind:change="onMasterChange" />
+          <van-field value="{{ postForm.wx_master }}" placeholder="快填写自己的微信号吧！" clearable="{{ true }}" bind:input="onMasterChange" />
         </view>
       </view>
       <view class="part flex" wx:if="{{hasOwner}}">
         <view class="title"> <text>加微备注</text></view>
         <view class="input">
-          <van-field value="{{ postForm.wx_mark }}" clearable="{{ true }}" placeholder="提醒他人添加自己的备注哦！" bind:change="onMarkChange" />
+          <van-field value="{{ postForm.wx_mark }}" clearable="{{ true }}" placeholder="提醒他人添加自己的备注哦！" bind:input="onMarkChange" />
         </view>
       </view>
 
