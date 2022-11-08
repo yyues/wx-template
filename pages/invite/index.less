@@ -1,40 +1,14 @@
 @import "../../style/index.less";
-
 .nav-left {
-  display: flex;
-  align-items: center;
-
-  .image-wrapper {
-    width: 42rpx;
-    height: 42rpx;
-
-    image {
-      width: 100%;
-      height: 100%;
-      vertical-align: top;
-    }
-
-    margin-right: @base-size;
-  }
-
-  .nav-name {
-    margin-left: @base-size * 2;
-
-    text {
-      color: @text-header-color;
-      letter-spacing: 0.07px;
-      line-height: @line-h-16;
-      font-size: @size-16;
-    }
-  }
+  color: white;
 }
-
 .invite-wrapper {
   min-height: 100vh;
 
   display: flex;
   flex-direction: column;
-
+  background: linear-gradient(to bottom, rgb(189, 195, 199), rgb(44, 62, 80));
+  background-attachment: fixed;
   .content {
     flex: 1;
 
@@ -45,48 +19,43 @@
       justify-content: center;
     }
 
-    // 下面就是主要的样式了
-    .detail {
+    display: flex;
+    justify-content: center;
+  }
+  // 下面就是主要的样式了
+  .card {
+    width: 84%;
+    height: 66vh;
+    margin-top: 4vh;
+    padding: @base-size * 2;
+    box-shadow: 0 10px 15px 3px rgb(0 0 0 / 0.1), 0 4px 6px 3px rgb(0 0 0 / 0.1);
+    border-radius: 12rpx;
+    background: inherit;
+
+    &::after {
+      position: absolute;
+      content: "";
+      background: inherit;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      filter: blur(10px);
+      z-index: 0;
+    }
+    .header {
       display: flex;
-      flex-direction: column;
-
-      .header {
-
-        padding: @primary-theme-padding;
-
-        .info {
-          margin: @base-size *2 0;
-
-          text {
-            font-size: @size-20;
-            line-height: @line-h-20;
-            color: @text-header-color;
-          }
-        }
-
-        .user {
-          display: flex;
-          align-items: center;
-
-          image {
-            width: 56rpx;
-            height: 56rpx;
-            border-radius: 6rpx;
-          }
-
-          .name {
-            margin-left: @base-size *2;
-            font-size: 48rpx;
-            line-height: 56rpx;
-            font-weight: bold;
-            color: @primary-second-text-color;
-          }
-        }
+      image {
+        width: 96rpx;
+        height: 96rpx;
+        border-radius: 4px;
       }
-      .card {
-        padding: @primary-padding;
-        border: 1ps solid chartreuse;
-      }
+      margin-bottom: @base-size *2;
+    }
+    .desc {
+      color: white;
+      font-size: 18px;
+      line-height: 36px;
     }
   }
 }

@@ -1,10 +1,11 @@
 // pages/home/index.js
 import { initTabActive } from "../../utils/index";
 import { getToken } from "../../utils/action";
-import { getTodoByDate, finishTodo, setTodoClock } from "../../api/todo";
+import { getTodoByDate, delayCurrentToDo, setTodoClock } from "../../api/todo";
 import Toast from "@vant/weapp/toast/toast";
 import moment from "moment";
 import { TEMP_ID } from "../../env";
+
 Page({
   /**
    * 页面的初始数据
@@ -204,5 +205,26 @@ Page({
   },
   onClose() {
     this.setData({ showTime: false });
+  },
+  onDelay() {
+    const id = this.data.current.id;
+    const param = {
+      id,
+      num: 1,
+    };
+    var _this = this;
+    delayCurrentToDo(param).then((res) => {
+      _this.setData({
+        show: false,
+      });
+      Toast.success({
+        zIndex: "99999",
+        message: "明天要完成哦！",
+        success() {
+          // 需要刷新当前界面
+          _this.GetToday();
+        },
+      });
+    });
   },
 });

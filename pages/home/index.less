@@ -37,39 +37,6 @@
   .action-wrapper {
     margin: @base-size * 2 0;
     min-height: 360rpx;
-    .item {
-      border-radius: @base-size;
-      padding: @primary-padding;
-      margin: 0 @base-size * 2;
-      display: flex;
-      align-items: center;
-      border-radius: 8rpx;
-      image {
-        width: 44rpx;
-        height: 44rpx;
-      }
-      .content {
-        display: flex;
-        margin-left: @base-size * 2;
-        align-items: center;
-        text {
-          color: @text-header-color;
-          font-size: @size-16;
-          line-height: @line-h-16;
-          letter-spacing: 0.5px;
-          margin-right: @base-size * 2;
-        }
-      }
-      .seted {
-        text {
-          font-size: @size-14;
-          color: @primary-second-text-color;
-        }
-      }
-    }
-    .high {
-      background-color: @page-bg-color;
-    }
   }
 }
 
@@ -77,6 +44,7 @@
   padding: @base-size * 2 0;
   background-color: @page-bg-color;
   // background-color: skyblue;
+  min-width: 100%;
 }
 // van -操作栏
 .extal {
@@ -99,5 +67,14 @@
 .white-input {
   .van-search__content {
     background-color: #fff;
+  }
+}
+.img {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: @base-size * 2;
+  &.spec {
+    padding-top: @base-size;
+    height: 30rpx;
   }
 }

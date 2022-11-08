@@ -1,33 +1,17 @@
 .nav-left {
-  display: flex;
-  align-items: center;
-}
-.nav-left .image-wrapper {
-  width: 42rpx;
-  height: 42rpx;
-  margin-right: 10rpx;
-}
-.nav-left .image-wrapper image {
-  width: 100%;
-  height: 100%;
-  vertical-align: top;
-}
-.nav-left .nav-name {
-  margin-left: 20rpx;
-}
-.nav-left .nav-name text {
-  color: #24271e;
-  letter-spacing: 0.07px;
-  line-height: 48rpx;
-  font-size: 32rpx;
+  color: white;
 }
 .invite-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(to bottom, #bdc3c7, #2c3e50);
+  background-attachment: fixed;
 }
 .invite-wrapper .content {
   flex: 1;
+  display: flex;
+  justify-content: center;
 }
 .invite-wrapper .content .loading {
   height: calc(100vh - 180rpx);
@@ -35,38 +19,37 @@
   align-items: center;
   justify-content: center;
 }
-.invite-wrapper .content .detail {
+.invite-wrapper .card {
+  width: 84%;
+  height: 66vh;
+  margin-top: 4vh;
+  padding: 20rpx;
+  box-shadow: 0 10px 15px 3px rgba(0, 0, 0, 0.1), 0 4px 6px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 12rpx;
+  background: inherit;
+}
+.invite-wrapper .card::after {
+  position: absolute;
+  content: "";
+  background: inherit;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(10px);
+  z-index: 0;
+}
+.invite-wrapper .card .header {
   display: flex;
-  flex-direction: column;
+  margin-bottom: 20rpx;
 }
-.invite-wrapper .content .detail .header {
-  padding: 20rpx 24rpx;
+.invite-wrapper .card .header image {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 4px;
 }
-.invite-wrapper .content .detail .header .info {
-  margin: 20rpx 0;
-}
-.invite-wrapper .content .detail .header .info text {
-  font-size: 40rpx;
-  line-height: 64rpx;
-  color: #24271e;
-}
-.invite-wrapper .content .detail .header .user {
-  display: flex;
-  align-items: center;
-}
-.invite-wrapper .content .detail .header .user image {
-  width: 56rpx;
-  height: 56rpx;
-  border-radius: 6rpx;
-}
-.invite-wrapper .content .detail .header .user .name {
-  margin-left: 20rpx;
-  font-size: 48rpx;
-  line-height: 56rpx;
-  font-weight: bold;
-  color: #94a3b8;
-}
-.invite-wrapper .content .detail .card {
-  padding: 16rpx;
-  border: 1ps solid chartreuse;
+.invite-wrapper .card .desc {
+  color: white;
+  font-size: 18px;
+  line-height: 36px;
 }
