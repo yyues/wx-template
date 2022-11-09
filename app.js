@@ -1,35 +1,45 @@
 // 初始化aixos
 import { getToken } from "./utils/action";
-import initAxios from './request/create'
+import initAxios from "./request/create";
 App({
-  onLaunch: function() {
+  onLaunch: function () {
     // 初始化axios
-    initAxios()
+    initAxios();
     // 初始化全局分享
-    _initShare()
+    _initShare();
     // 初始化 默认值
     // this.gloabalData.token = getToken()
   },
   globalData: {
-    token: null,
-    // userInfo: null,
-    systemInfo: wx.getSystemInfoSync()
-  }
-})
+    token: getToken(),
+    // 主题色
+    primaryColor: "#5b67ca",
+    // 次主体色。较主题色颜色亮丽一些
+    primarySecondColor: "#7174e2",
+    // 标题文字的颜色
+    textHeaderColor: "#24271e",
+    //  次级 文字标题 浅色系
+    primarySecondTextColor: "#94a3b8",
+    systemInfo: wx.getSystemInfoSync(),
+  },
+});
 
 // 设置全局默认分享
 function _initShare() {
-  var PageTmp = Page
-  Page = function(pageConfig) {
-    pageConfig = Object.assign({
-      onShareAppMessage: function() {
-        return {
-          title: 'weapp-template-默认分享文案',
-          path: '/pages/main/index/index',
-          imageUrl: 'https://img01.yzcdn.cn/vant/cat.jpeg'
-        }
-      }
-    }, pageConfig)
-    PageTmp(pageConfig)
-  }
+  var PageTmp = Page;
+  Page = function (pageConfig) {
+    pageConfig = Object.assign(
+      {
+        onShareAppMessage: function () {
+          return {
+            title: "weapp-template-默认分享文案",
+            path: "/pages/main/index/index",
+            imageUrl: "https://img01.yzcdn.cn/vant/cat.jpeg",
+          };
+        },
+      },
+      pageConfig
+    );
+    PageTmp(pageConfig);
+  };
 }
