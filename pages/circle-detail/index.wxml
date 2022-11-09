@@ -20,17 +20,67 @@
           <text>{{data.create_name}}</text>
         </view>
         <view class="up">
-          <label>当前人数</label>
-          <text>{{data.current_number}} / {{data.max_persons}}</text>
+          <van-tag plain color="#7A64C1" custom-class='v-tag'>内测</van-tag>
+          <van-tag plain color="#5b67ca" custom-class='v-tag' wx:if="{{data.is_current_user}}">我的</van-tag>
         </view>
-        <van-tag plain color="#7A64C1">内测</van-tag>
       </view>
     </view>
-    <!-- 头像区域 -->
+    <!-- 群成员 -->
+    <view class="member">
+      <view class="member-avatar">
+        <image src="{{data.create_url}}"></image>
+      </view>
+      <block wx:for="{{data.member_avatar}}" wx:key="index">
+        <view class="member-avatar">
+          <image src="{{item}}"></image>
+        </view>
+      </block>
+      <!--  一个添加的按钮 -->
+      <view class="member-avatar add" wx:if="{{ data.is_current_user }}">
+        <van-icon name="plus" size="24px" color="#94a3b8" />
+      </view>
+    </view>
+    <!-- 基本信息 -->
     <van-cell-group>
       <van-cell title="内容" value="{{data.content}}" />
       <van-cell title="目标" value="{{data.target}}" />
       <van-cell title="描述" value="{{data.description}}" />
+      <van-cell title="圈子人数" value="{{data.current_number}}" />
     </van-cell-group>
+    <!-- 涉及到微信相关的数据 -->
+    <view class="wx" wx:if="{{ type !== 'publish' }}">
+      <van-cell-group>
+        <van-cell title="圈主微信" is-link />
+        <van-cell title="加微备注" is-link />
+        <van-cell title="微信群聊名片" wx:if="{{ !!data.wx_image_url }}">
+          <view class="wx-circle" slot="right-icon">
+            <!-- 一个二维码  -->
+            <image src="../../images/action/code.png"></image>
+            <!-- 一个箭头 -->
+            <van-icon name="arrow" color="#969799" />
+          </view>
+        </van-cell>
+        <van-cell title="名片过期时间" wx:if="{{ !!data.wx_image_url }}" value="{{data.wx_image_out}}" />
+      </van-cell-group>
+    </view>
+    <!-- 圈子下归属的 所有待办   -->
+    <view class="all-todo" wx:if="{{ type !== 'publish' }}">
+      <van-cell title="待办" is-link />
+    </view>
+    <!-- 打卡规则 只有创建者才有打卡规则的按钮 -->
+    <view class="all-todo" wx:if="{{ type !== 'publish' && data.is_current_user}}">
+      <van-cell title="打卡规则" is-link />
+    </view>
+    <!-- 用户 打卡按钮   -->
+    <view class="user-card" wx:if="{{ type !== 'publish' }}">
+
+    </view>
+    <!-- 操作按钮 -->
+    <view class="opeartion">
+      <!--  从公开的页面进入的才有这个按钮 -->
+      <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{btnLoading}}" loading-text="请求中" disabled="{{data.current_number == data.max_persons}}" wx:if="{{type == 'publish' && !data.is_current_user}}">
+        {{data.current_number !== data.max_persons ? '加入' : '圈子已满，无法加入'}}
+      </van-button>
+    </view>
   </view>
 </view>

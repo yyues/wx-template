@@ -7,6 +7,7 @@ Page({
   data: {
     data: {},
     loading: false,
+    type: "user",
   },
 
   /**
@@ -23,6 +24,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    const type = getLocationParams("type");
+    this.setData({ type });
     // 因为整个页面只会走一个查询的接口，所以就不拆开写了
     const id = getLocationParams("id");
     this.setData({ loading: true });
@@ -69,7 +72,7 @@ Page({
       });
       return;
     }
-    if (type == "public") {
+    if (type == "publish") {
       wx.navigateBack();
       return;
     }

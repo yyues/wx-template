@@ -14,11 +14,11 @@
   .content {
     //  不给一个 统一的margin了
     background-color: @page-bg-color;
-    height: 100vh;
+    height: calc(100vh - 220rpx);
 
     .header {
       margin: @base-size * 2 0;
-      padding: @primary-padding;
+      padding: @primary-theme-padding;
       background-color: #fff;
       display: flex;
       // align-items: center;
@@ -34,14 +34,16 @@
       }
 
       .info {
-
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
         .up {
           margin-bottom: @base-size;
 
           label {
             color: @primary-second-text-color;
             font-size: @size-14;
-            margin-right: @base-size ;
+            margin-right: @base-size;
           }
 
           text {
@@ -51,5 +53,57 @@
         }
       }
     }
+    .member {
+      margin: @base-size * 2 0;
+      padding: @primary-theme-padding;
+      background-color: #fff;
+
+      display: flex;
+      flex-wrap: wrap;
+      .member-avatar {
+        width: 96rpx;
+        height: 96rpx;
+        image {
+          width: 100%;
+          height: 100%;
+          border-radius: @primary-radius;
+        }
+        margin-right: @base-size * 2;
+        line-height: 136rpx;
+      }
+      .add {
+        border: 1px dashed #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: @primary-radius;
+      }
+    }
+    .wx {
+      margin: @base-size * 2 0;
+      .wx-circle {
+        display: flex;
+        image {
+          width: 40rpx;
+          height: 40rpx;
+          margin-right: @base-size;
+        }
+        align-items: center;
+      }
+    }
+    .opeartion {
+      margin-top: @base-size * 6;
+      display: flex;
+      justify-content: center;
+    }
   }
+}
+.my-submit {
+  min-width: 200rpx;
+  &.van-button {
+    border-radius: 12rpx;
+  }
+}
+.v-tag {
+  margin-right: @base-size;
 }

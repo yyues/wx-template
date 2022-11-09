@@ -106,6 +106,9 @@
   align-items: center;
   padding: 160rpx 0;
 }
+.my-submit {
+  min-width: 200rpx;
+}
 .my-submit.van-button {
   border-radius: 12rpx;
 }

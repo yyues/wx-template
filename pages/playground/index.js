@@ -115,4 +115,10 @@ Page({
       url: "/pages/home/index",
     });
   },
+  onDetail(e) {
+    const id = e.detail;
+    wx.redirectTo({
+      url: "/pages/circle-detail/index?type=publish&id=" + id,
+    });
+  },
 });
