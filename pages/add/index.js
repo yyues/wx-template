@@ -190,6 +190,7 @@ Page({
       postForm: {
         ...data,
         is_deadline: e.detail,
+        start_time: e.detail ? '' : data.start_time
       },
       minHour: isToday ? moment().hour() : 0,
       minMinute: isToday ? moment().minute() : 0,
@@ -242,7 +243,7 @@ Page({
         ...data,
         content: e.detail,
       },
-    },()=>{
+    }, () => {
       console.log(this.data.postForm);
     });
   },
