@@ -1,6 +1,10 @@
 // pages/task/index.js
-import { initTabActive } from "../../utils/index";
-import { WE_APP_BASE_API } from "../../env";
+import {
+  initTabActive
+} from "../../utils/index";
+import {
+  WE_APP_BASE_API
+} from "../../env";
 Page({
   /**
    * 页面的初始数据
@@ -8,6 +12,7 @@ Page({
   data: {
     avatar_url: wx.getStorageSync("avatar_url"),
     username: wx.getStorageSync("username"),
+    appDeep: false
   },
 
   /**
@@ -26,8 +31,7 @@ Page({
   onShow() {
     initTabActive.bind(this)(2);
     this.setData({
-      avatar_url:
-        wx.getStorageSync("avatar_url") ||
+      avatar_url: wx.getStorageSync("avatar_url") ||
         "../../images/user/avatar_default.png",
       username: wx.getStorageSync("username") || "Tasknow_9527",
     });
@@ -60,21 +64,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {},
-  debounce(fn, ms = 0) {
-    let timeoutId;
-    return function (...args) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => fn.apply(this, args), ms);
-    };
-  },
-  onCircle() {
-    wx.navigateTo({
-      url: "/pages/my-circle/index?type=user",
-    });
-  },
-  onTodo() {
-    wx.navigateTo({
-      url: "/pages/my-todo/index?type=user",
-    });
-  },
+  onDeepChange(e) {
+    this.setData({
+      appDeep: e.detail
+    })
+  }
 });

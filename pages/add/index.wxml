@@ -10,7 +10,7 @@
     <!-- 内容 -->
     <view class="part">
       <view class="title"><text>待办内容</text></view>
-      <van-field value="{{ postForm.content }}" placeholder="请输入待办内容" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize="{{true}}" bind:input="onTaskChange" />
+      <van-field value="{{ postForm.content }}" placeholder="请输入待办内容" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize="{{true}}" bind:change="onTaskChange" />
     </view>
     <!-- 日期 -->
     <view class="part">
@@ -33,18 +33,18 @@
     <!-- 描述 -->
     <view class="part">
       <view class="title"><text>描述</text></view>
-      <van-field model:value="{{ postForm.description }}" placeholder="为你的待办添加一些描述吧！" border="{{ true }}" clearable="{{ true }}" maxlength="{{49}}" show-word-limit="{{true}}" bind:input="onDescChange" />
+      <van-field value="{{ postForm.description }}" placeholder="为你的待办添加一些描述吧！" border="{{ true }}" clearable="{{ true }}" maxlength="{{49}}" show-word-limit="{{true}}" bind:input="onDescChange" />
     </view>
     <!-- 可以有 标签 的位置 -->
     <view class="part">
       <view class="title"><text>标签</text></view>
-      <van-field model:value="{{ postForm.description }}" placeholder="添加喜欢的标签吧，最多三个哦！" border="{{ true }}" clearable="{{ true }}" bind:confirm="onLabelChange">
+      <van-field placeholder="添加喜欢的标签吧，最多三个哦！" border="{{ true }}" clearable="{{ true }}" bind:confirm="onLabelChange">
         <!-- 希望有个颜色的选择 -->
         <!-- <view slot="label"></view> -->
       </van-field>
       <!-- 标签展示区 -->
       <view class="wrapper" wx:if="{{postForm.labels.length !== 0}}">
-        <van-tag plain custom-class='v-tag' wx:for="{{postForm.labels}}" wx:key="index" closeable bind:close="onLabelClose" data-index="{{index}}">{{item}}</van-tag>
+        <van-tag plain custom-class='v-tag' wx:for="{{postForm.labels}}" wx:key="index" closeable bind:close="onLabelClose" size="medium" data-index="{{index}}">{{item}}</van-tag>
       </view>
     </view>
     <!-- 代办的优先级 -->

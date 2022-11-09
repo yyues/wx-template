@@ -18,6 +18,7 @@
     // justify-content: flex-end;
     align-items: flex-end;
     padding: 0 0 @base-size * 4 @base-size * 4;
+
     .wrapper {
       image {
         width: 120rpx;
@@ -26,36 +27,32 @@
         object-fit: cover;
       }
     }
+
     .username {
       height: 118rpx;
       margin-left: @base-size * 3;
       font-size: @size-20;
       // line-height: 108rpx;
       color: @text-header-color;
+
       .label {
         padding-top: @base-size;
       }
     }
   }
-  .action-wrapper {
-    padding: @primary-theme-padding;
-    background-color: @page-bg-color;
+
+  background-color: @page-bg-color;
+
+  .part {
+    &:first-child {
+      margin-top: @base-size * 2;
+    }
+
+    padding: @primary-padding 0;
   }
-  // van -操作栏
-  .extal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    image {
-      height: 32px;
-      width: 32px;
-    }
-    text {
-      display: block;
-      font-size: @size-14;
-      line-height: @line-h-14;
-      margin-top: @base-size * 2.5;
-      color: @primary-text-color;
-    }
+
+  .my-switch {
+    vertical-align: middle;
+    margin-left: @base-size * 2;
   }
 }

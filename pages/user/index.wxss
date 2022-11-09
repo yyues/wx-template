@@ -3,6 +3,7 @@
 }
 .user-page {
   height: 100vh;
+  background-color: #f5f5f5;
 }
 .user-page .bg {
   width: 100%;
@@ -28,23 +29,13 @@
 .user-page .bg .username .label {
   padding-top: 10rpx;
 }
-.user-page .action-wrapper {
-  padding: 20rpx 24rpx;
-  background-color: #f5f5f5;
+.user-page .part {
+  padding: 16rpx 0;
 }
-.user-page .extal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.user-page .part:first-child {
+  margin-top: 20rpx;
 }
-.user-page .extal image {
-  height: 32px;
-  width: 32px;
-}
-.user-page .extal text {
-  display: block;
-  font-size: 28rpx;
-  line-height: 44rpx;
-  margin-top: 25rpx;
-  color: #475569;
+.user-page .my-switch {
+  vertical-align: middle;
+  margin-left: 20rpx;
 }

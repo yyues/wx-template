@@ -21,33 +21,31 @@
       </view>
     </view>
   </view>
-  <!-- 纯纯的 操作按钮 不是很想 花里胡哨了 -->
-  <view class="action-wrapper">
-    <van-grid>
-      <van-grid-item use-slot>
-        <view class="extal" bindtap="onTodo">
-          <image src="../../images/user/todo.png"></image>
-          <text>我的待办</text>
-        </view>
-      </van-grid-item>
-      <van-grid-item use-slot>
-        <view class="extal" bindtap="onCircle">
-          <image src="../../images/user/circle.png"></image>
-          <text>我的圈子</text>
-        </view>
-      </van-grid-item>
-      <van-grid-item use-slot>
-        <view class="extal">
-          <image src="../../images/user/message.png"></image>
-          <text>我的消息</text>
-        </view>
-      </van-grid-item>
-      <van-grid-item use-slot>
-        <view class="extal">
-          <image src="../../images/user/setting.png"></image>
-          <text>设置</text>
-        </view>
-      </van-grid-item>
-    </van-grid>
+  <!-- 换成传统的单元格了 -->
+  <view class="part">
+    <!-- 基础的我的功能 -->
+    <van-cell-group inset>
+      <van-cell title="我的待办" is-link link-type="navigateTo" url="/pages/my-todo/index" />
+      <van-cell title="我的圈子" is-link link-type="navigateTo" url="/pages/my-circle/index" />
+      <van-cell title="我的消息" is-link link-type="navigateTo" url="/pages/my-message/index" />
+    </van-cell-group>
+  </view>
+  <view class="part">
+    <!-- 系统功能 -->
+    <van-cell-group inset>
+      <van-cell title="清除缓存" center>
+        <van-button plain color="#5b67ca" size="mini">清除</van-button>
+      </van-cell>
+      <van-cell title="深色模式" center>
+        <van-switch checked="{{ appDeep }}" active-color="#5B67CA" size='16px' slot="right-icon" custom-class='my-switch' bind:change="onDeepChange" />
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <view class="part">
+    <!-- 最后的最后 -->
+    <van-cell-group inset>
+      <van-cell title="请喝一杯coffee" is-link />
+      <van-cell title="关于开发者" is-link />
+    </van-cell-group>
   </view>
 </view>

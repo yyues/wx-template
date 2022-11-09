@@ -1,8 +1,15 @@
 import Toast from "@vant/weapp/toast/toast";
 import moment from "moment";
-import { taskSave, getTodoById } from "../../api/todo";
-import { getLocationParams } from "../../utils/index";
-import { getUserAllCircle } from "../../api/circle";
+import {
+  taskSave,
+  getTodoById
+} from "../../api/todo";
+import {
+  getLocationParams
+} from "../../utils/index";
+import {
+  getUserAllCircle
+} from "../../api/circle";
 Page({
   /**
    * 页面的初始数据
@@ -51,7 +58,9 @@ Page({
   onShow() {
     const type = getLocationParams("type");
     const id = getLocationParams("id");
-    this.setData({ type });
+    this.setData({
+      type
+    });
     if (type == "edit") {
       //  查详情
       this.getDetail(id);
@@ -111,6 +120,9 @@ Page({
   handleSubmit() {
     const param = this.data.postForm;
     const type = this.data.type;
+    console.log({
+      param
+    });
     const res = this.validate(param);
     if (res !== true) {
       return Toast(res);
@@ -172,14 +184,15 @@ Page({
   onDealineChange(e) {
     const data = this.data.postForm;
     //  检测是不是今天，今天的话就把最小时间限制到当前
+    console.log(data);
     const isToday = data.execute_time === moment().format("YYYY-MM-DD");
     this.setData({
       postForm: {
         ...data,
         is_deadline: e.detail,
       },
-      minHour: isToday ? moment().hour() : "0",
-      minMinute: isToday ? moment().minute() : "0",
+      minHour: isToday ? moment().hour() : 0,
+      minMinute: isToday ? moment().minute() : 0,
     });
   },
   showTime(e) {
@@ -229,6 +242,8 @@ Page({
         ...data,
         content: e.detail,
       },
+    },()=>{
+      console.log(this.data.postForm);
     });
   },
   onDescChange(e) {
@@ -314,21 +329,25 @@ Page({
     const postForm = this.data.postForm;
     if (postForm.labels.length >= 3) return Toast("最多三个哦！不能再添加了！");
     postForm.labels.push(data);
-    this.setData({ postForm });
+    this.setData({
+      postForm
+    });
   },
   onLabelClose(e) {
     const index = e.currentTarget.dataset.index;
     const postForm = this.data.postForm;
     postForm.labels.splice(index, 1);
-    this.setData({ postForm });
+    this.setData({
+      postForm
+    });
   },
   getDetail(id) {
     this.setData({
       loading: true,
     });
     getTodoById({
-      id,
-    })
+        id,
+      })
       .then((res) => {
         this.setData({
           postForm: res,
@@ -344,7 +363,9 @@ Page({
     getUserAllCircle({
       status: "published",
     }).then((res) => {
-      this.setData({ user_circle: res });
+      this.setData({
+        user_circle: res
+      });
     });
   },
 });
