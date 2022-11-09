@@ -1,18 +1,4 @@
-.my-input {
-  border-bottom: 1px solid rgb(232, 233, 243);
-  color: #334155 !important;
-
-  &:focus {
-    border-bottom: 1px solid #5b67ca;
-  }
-
-  &.van-field__control--disabled {
-    color: #10275a;
-  }
-
-  // text-align: center;
-}
-
+@import "../../style/index.less";
 .part {
   margin-bottom: 32rpx;
   transition: height 0.28s;
@@ -77,11 +63,9 @@
   border-top: 1px solid #5b67ca55;
   border-bottom: 1px solid #5b67ca55;
 }
-
-.md-dialog {
-  .van-dialog__header--isolated {
-    padding: 20rpx 0;
-  }
+.my-switch {
+  vertical-align: middle;
+  margin-left: @base-size * 2;
 }
 
 .flex {
@@ -142,4 +126,7 @@
   &.van-button {
     border-radius: 12rpx;
   }
+}
+.v-tag {
+  margin-right: @base-size;
 }

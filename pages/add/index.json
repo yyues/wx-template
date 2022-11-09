@@ -8,6 +8,8 @@
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-toast": "@vant/weapp/toast/index",
     "van-button": "@vant/weapp/button/index",
-    "van-field": "@vant/weapp/field/index"
+    "van-field": "@vant/weapp/field/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-switch": "@vant/weapp/switch/index"
   }
 }

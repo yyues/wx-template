@@ -1,13 +1,3 @@
-.my-input {
-  border-bottom: 1px solid #e8e9f3;
-  color: #334155 !important;
-}
-.my-input:focus {
-  border-bottom: 1px solid #5b67ca;
-}
-.my-input.van-field__control--disabled {
-  color: #10275a;
-}
 .part {
   margin-bottom: 32rpx;
   transition: height 0.28s;
@@ -58,8 +48,9 @@
   border-top: 1px solid #5b67ca55;
   border-bottom: 1px solid #5b67ca55;
 }
-.md-dialog .van-dialog__header--isolated {
-  padding: 20rpx 0;
+.my-switch {
+  vertical-align: middle;
+  margin-left: 20rpx;
 }
 .flex {
   display: flex;
@@ -111,4 +102,7 @@
 }
 .my-submit.van-button {
   border-radius: 12rpx;
+}
+.v-tag {
+  margin-right: 10rpx;
 }

@@ -81,7 +81,7 @@
         <view class="title"> <text>微信群聊名片</text></view>
         <view class="content">
           <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="{{1}}" bind:delete="onDeletePicture">
-            <van-button icon="plus" type="primary" color="#5B67CA" size="small">上传</van-button>
+            <van-button icon="plus" type="primary" color="#5B67CA" size="small" bind:before-read="beforeRead">上传</van-button>
           </van-uploader>
         </view>
       </view>
@@ -99,7 +99,7 @@
         </view>
       </view>
       <!-- 可选项 定时发布 -->
-      <view class="config">
+      <view class="config" wx:if="{{postForm.status === 're_publish'}}">
         <view class="title">
           <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_timing_publish }}" shape="square" bind:change="onTimingChange">
           </van-checkbox>
@@ -112,7 +112,8 @@
         <van-calendar show="{{ showTime }}" bind:confirm="onConfirmTime" bind:close="onCloseTime" color="#5B67CA" />
       </view>
       <view class="operation">
-        <van-button color="#5B67CA" custom-class="my-submit" wx:if="{{ type === 'publish'}}" bind:click="handlePublish" loading="{{publishLoading}}" loading-text="发布中">发布</van-button>
+        <van-button color="#5B67CA" custom-class="my-submit" wx:if="{{ type === 'publish'}}" bind:click="handlePublish" loading="{{btnLoading}}" loading-text="发布中">发布</van-button>
+        <van-button color="#5B67CA" custom-class="my-submit" wx:if="{{ type === 'edit'}}" bind:click="handleEdit" loading="{{btnLoading}}" loading-text="发布中">编辑</van-button>
       </view>
     </view>
   </view>

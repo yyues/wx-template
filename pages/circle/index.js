@@ -24,7 +24,7 @@ Page({
       is_timing_publish: false,
       publish_time: 0,
     },
-    publishLoading: false,
+    btnLoading: false,
     uploading: false,
   },
   /**
@@ -53,6 +53,11 @@ Page({
     if (type === "publish") {
       this.setData({
         pageTitle: "发布",
+      });
+    }
+    if (type === "edit") {
+      this.setData({
+        pageTitle: "编辑",
       });
     }
     if (this.data.uploading) {
@@ -94,7 +99,7 @@ Page({
       ...this.data.postForm,
       publish_time: moment().format("YYYY-MM-DD"),
     };
-    
+
     // 直接把 发布时间传过去就行了
     // this.setData({
     //   loading: true
@@ -122,7 +127,7 @@ Page({
       ...postForm,
       status: "published",
     };
-    this.setData({ publishLoading: true });
+    this.setData({ btnLoading: true });
     circleSave(param)
       .then((res) => {
         wx.showToast({
@@ -137,7 +142,30 @@ Page({
         });
       })
       .finally(() => {
-        this.setData({ publishLoading: false });
+        this.setData({ btnLoading: false });
+      });
+  },
+  handleEdit() {
+    const postForm = this.data.postForm;
+    const param = {
+      ...postForm,
+    };
+    this.setData({ btnLoading: true });
+    circleSave(param)
+      .then((res) => {
+        wx.showToast({
+          title: "修改成功！",
+          icon: "success",
+          duration: 1500,
+          success() {
+            wx.reLaunch({
+              url: "/pages/my-circle/index",
+            });
+          },
+        });
+      })
+      .finally(() => {
+        this.setData({ btnLoading: false });
       });
   },
   onChange(e) {
@@ -265,10 +293,14 @@ Page({
       url: "/pages/playground/index",
     });
   },
+  beforeRead() {
+    // 需要在上传前吧 状态设置 true 不然会重新加载界面
+    this.setData({ uploading: true });
+  },
   // 上传逻辑接口
   afterRead(event) {
     const { file } = event.detail;
-    this.setData({ uploading: true });
+
     console.log("111");
     var _this = this;
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
