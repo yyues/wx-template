@@ -45,7 +45,7 @@
             <view class="title"> <text>时间</text> </view>
             <view class="content">
               <!-- 两种情况，一种是截止时间一种是时间范围内 -->
-              <view class="deadline" wx:if="{{data.is_deadline}}">
+              <view class="time-range" wx:if="{{data.is_deadline}}">
                 <view class="icon">
                   <image src="../../images/time_circle.png"></image>
                 </view>
@@ -55,7 +55,7 @@
                 </view>
               </view>
               <!-- 这种 是正常情况 -->
-              <view class="time-range">
+              <view class="time-range" wx:else>
                 <view class="start">
                   <view class="icon">
                     <image src="../../images/time_circle.png"></image>
@@ -84,11 +84,11 @@
               <text>小伙伴们</text>
             </view>
             <view class="content">
-              <view class="empty" wx:if="{{data.invite_url.length ==0}}">
+              <view class="empty" wx:if="{{data.current_url.length ==0}}">
                 <text>还没有邀请小伙伴哦，快去邀请吧！</text>
               </view>
               <view class="wrapper" wx:else>
-                <image wx:for="data.invite_url" wx:key="index" src="{{item}}" lazy-load="{{true}}"></image>
+                <image wx:for="data.current_url" wx:key="index" src="{{item}}" lazy-load="{{true}}"></image>
               </view>
             </view>
           </view>

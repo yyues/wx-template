@@ -19,6 +19,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .page-wrapper .wrapper .content .error {
   flex: 1;
@@ -46,4 +47,13 @@
 }
 .page-wrapper .wrapper .content .detail .wrapper {
   height: 100%;
+}
+.page-wrapper .wrapper .content .add {
+  position: absolute;
+  right: 40rpx;
+  bottom: 10vh;
+  background-color: #5b67ca;
+  padding: 16rpx;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }

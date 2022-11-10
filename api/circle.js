@@ -33,3 +33,11 @@ export const getDetailById = (data) => {
     data
   })
 }
+// 接受别人的邀请
+export const receiveCircleById = (data) => {
+  return request.axios({
+    method: 'POST',
+    url: '/circle/join',
+    data
+  })
+}

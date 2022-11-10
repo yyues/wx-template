@@ -1,4 +1,5 @@
-import { getUserAllTodo } from '../../api/todo'
+import { getUserAllTodo } from "../../api/todo";
+import { getLocationParams } from "../../utils/index";
 Page({
   /**
    * 页面的初始数据
@@ -8,39 +9,52 @@ Page({
     searchForm: {
       page: 0,
       limit: 10,
-      keyword: ''
+      keyword: "",
     },
     currentList: [],
-    beforeList: []
+    beforeList: [],
+    type: "user", // 因为圈子下面也会管理有对应的待办，所以需要指定查询了
+    pageHeader: "我的待办",
+    master: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) { },
+  onLoad(options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() { },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    const type = getLocationParams("type");
+    const name = getLocationParams("name");
+    const master = getLocationParams("master");
+    if (type && type == "circle") {
+      this.setData({
+        pageHeader: `${name}的待办`,
+        master: master == "true",
+        type,
+      });
+    }
     // 渲染时请求数据
-    this.GetList()
+    this.GetList();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() { },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() { },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -49,69 +63,89 @@ Page({
     const data = {
       page: 0,
       limit: 10,
-      keyword: ''
-    }
-    this.setData({
-      searchForm: data
-    },
+      keyword: "",
+    };
+    this.setData(
+      {
+        searchForm: data,
+      },
       () => {
-        this.GetList('refresh')
+        this.GetList("refresh");
       }
-    )
+    );
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() { },
+  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() { },
+  onShareAppMessage() {},
   // 列表查询接口
   GetList(type) {
     const param = {
-      ...this.data.searchForm
+      ...this.data.searchForm,
+    };
+    // 因为圈子会有关联的待办，所以 需要新增查询配置
+    const form_type = getLocationParams("type");
+    const form_id = getLocationParams("id");
+    if (form_type && form_type == "circle") {
+      param.task_from_id = form_id;
     }
-    const arr = this.data.currentList
+    const arr = this.data.currentList;
     //  保留请求前的旧数据
     this.setData({
       beforeList: arr,
-      loading: true
-    })
-    getUserAllTodo(param).then((res) => {
-      // 更新数据
-      const data = type && type === 'refresh' ? [...res.rows] : [...arr, ...res.rows]
-      this.setData({
-        currentList: data
+      loading: true,
+    });
+    getUserAllTodo(param)
+      .then((res) => {
+        // 更新数据
+        const data =
+          type && type === "refresh" ? [...res.rows] : [...arr, ...res.rows];
+        this.setData({
+          currentList: data,
+        });
+        if (type && type === "refresh") {
+          // 页面下拉刷新
+          wx.stopPullDownRefresh({
+            success() {
+              wx.showToast({
+                title: "刷新成功",
+                icon: "success",
+                duration: 1500,
+              });
+            },
+          });
+        }
       })
-      if (type && type === 'refresh') {
-        // 页面下拉刷新
-        wx.stopPullDownRefresh({
-          success() {
-            wx.showToast({
-              title: '刷新成功',
-              icon: 'success',
-              duration: 1500
-            })
-          }
-        })
-      }
-    }).finally(() => {
-      this.setData({
-        loading: false
-      })
-    })
+      .finally(() => {
+        this.setData({
+          loading: false,
+        });
+      });
   },
   onClickLeft() {
+    if (this.data.type == "circle") {
+      wx.navigateBack();
+      return;
+    }
     wx.redirectTo({
-      url: '/pages/user/index',
-    })
+      url: "/pages/user/index",
+    });
   },
   handleClick(e) {
     wx.navigateTo({
-      url: '/pages/todo-detail/index?id=' + e.detail + '&type=user',
-    })
-  }
-})
+      url:
+        "/pages/todo-detail/index?id=" + e.detail + "&type=" + this.data.type,
+    });
+  },
+  goTodoAdd() {
+    wx.navigateTo({
+      url: "/pages/add/index?type=my-todo&from=circle",
+    });
+  },
+});

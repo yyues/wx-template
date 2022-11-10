@@ -24,13 +24,16 @@
         <van-tag plain wx:if="{{data.level == 2}}" color="#f87171">高</van-tag>
         <van-tag plain wx:if="{{data.level > 3}}" color="#e11d48">紧急</van-tag>
       </view>
+      <view class="many" wx:if="{{data.is_multiplayer && !data.is_current_user}}">
+        <van-tag plain color="#5b67ca">多人</van-tag>
+      </view>
       <view class="avatar" wx:if="{{false}}">
         <image src="{{data.create_url}}"></image>
       </view>
     </view>
   </view>
   <!-- 右边是一个操作栏 -->
-  <view class="card__action" bindtap="onClick">
+  <view class="card__action" bindtap="onClick" wx:if="{{data.is_current_user}}">
     <image src="../../images/action/ellipsis-v.png"></image>
   </view>
 </view>

@@ -52,6 +52,9 @@
   vertical-align: middle;
   border-radius: 4rpx;
 }
+.card .card__detail .many {
+  margin: 0 10rpx;
+}
 .high {
   background-color: rgba(245, 245, 245, 0.55);
 }

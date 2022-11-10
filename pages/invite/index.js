@@ -1,5 +1,6 @@
 import { getLocationParams } from "../../utils/index";
-import { getTodoById } from "../../api/todo";
+import { getTodoById, receiveTodoById } from "../../api/todo";
+import { getDetailById, receiveCircleById } from "../../api/circle";
 Page({
   /**
    * 页面的初始数据
@@ -7,6 +8,10 @@ Page({
   data: {
     loading: false,
     todoInfo: {},
+    type: "todo",
+    key: "",
+    isFull: false, // 待办的人数或者圈子的人数 是不是满了
+    btnLoading: false,
   },
 
   /**
@@ -25,8 +30,11 @@ Page({
   onShow() {
     //  检查是圈子还是待办
     const key = getLocationParams("key");
+    this.setData({ key });
     if (key === "todo") {
       this.GetTodoInfo();
+    } else {
+      this.GetCircleInfo();
     }
   },
 
@@ -66,10 +74,39 @@ Page({
       .then((res) => {
         this.setData({
           todoInfo: res,
+          isFull: res.team_number === res.max_number,
         });
       })
       .finally(() => {
         this.setData({ loading: false });
       });
+  },
+  GetCircleInfo() {
+    const id = getLocationParams("id");
+    this.setData({ loading: true });
+    getDetailById({ id })
+      .then((res) => {
+        this.setData({
+          todoInfo: res,
+          isFull: res.current_number === res.max_number,
+        });
+      })
+      .finally(() => {
+        this.setData({ loading: false });
+      });
+  },
+  handleJoin() {
+    const id = this.data.todoInfo.id;
+    const param = { id };
+    this.setData({ btnLoading: true });
+    const fn =
+      this.data.key == "todo"
+        ? receiveTodoById(param)
+        : receiveCircleById(param);
+    fn.then(() => {
+      Toast.success("加入成功！快去看看吧");
+    }).finally(()=>{
+      this.setData({ btnLoading: false });
+    });
   },
 });

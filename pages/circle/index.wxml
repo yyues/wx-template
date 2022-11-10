@@ -33,10 +33,15 @@
         <view class="title"> <text>圈名</text> </view>
         <van-field value="{{ postForm.name }}" border="{{ true }}" clearable="{{ true }}" bind:input="onNameChange" maxlength="19" />
       </view>
+      <!-- 内容 -->
+      <view class="part">
+        <view class="title"> <text>内容</text> </view>
+        <van-field value="{{ postForm.content }}" placeholder="请描述圈子的主要功能吧！" border="{{ true }}" clearable="{{ true }}" bind:input="onContentChange" maxlength="49" />
+      </view>
       <!-- 目标 -->
       <view class="part">
         <view class="title"> <text>目标</text> </view>
-        <van-field value="{{ postForm.content }}" placeholder="请描述圈子的主要功能吧！" border="{{ true }}" clearable="{{ true }}" bind:input="onContentChange" maxlength="49" />
+        <van-field value="{{ postForm.target }}" placeholder="为圈子设定一个目标吧" border="{{ true }}" clearable="{{ true }}" bind:input="onTargetChange" maxlength="49" />
       </view>
       <!-- 描述 -->
       <view class="part">
@@ -46,7 +51,7 @@
       <!-- 人数 -->
       <view class="part">
         <view class="title"> <text>人数上限</text> </view>
-        <van-field value="{{ postForm.max_persons }}" type="number" clearable="{{ true }}" bind:input="onNumbercChange" />
+        <van-field value="{{ postForm.max_number }}" type="number" clearable="{{ true }}" bind:input="onNumbercChange" />
       </view>
       <!-- 可选项 是否设置个人微信  -->
       <view class="config">

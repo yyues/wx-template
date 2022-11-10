@@ -62,7 +62,7 @@
         <image slot="icon" class="img" src="../../images/action/clock.png"></image>
       </van-cell>
       <!-- 邀请小伙伴一起参加 -->
-      <van-cell center title="邀请小伙伴一起参加" wx:if="{{current.is_multiplayer}}">
+      <van-cell center title="邀请小伙伴一起参加" wx:if="{{current.is_multiplayer }}">
         <image slot="icon" class="img" src="../../images/action/share.png"></image>
         <van-button slot="right-icon" plain type="info" bindtap='onShareAppMessage' open-type="share" block size="small" color="#5b67ca">一键邀请</van-button>
       </van-cell>

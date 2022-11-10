@@ -91,6 +91,25 @@
 .my-submit.van-button {
   border-radius: 12rpx;
 }
+.add-btn.van-button {
+  border: none;
+}
 .v-tag {
   margin-right: 10rpx;
+}
+.dialog-wrapper {
+  padding: 16rpx;
+}
+.dialog-wrapper .text {
+  margin: 12rpx 0;
+  text-align: center;
+  line-height: 48rpx;
+  color: #94a3b8;
+}
+.dialog-wrapper .image {
+  height: 100%;
+}
+.dialog-wrapper .image image {
+  width: 100%;
+  height: 100%;
 }

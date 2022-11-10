@@ -5,8 +5,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom, #bdc3c7, #2c3e50);
   background-attachment: fixed;
+  background-color: #f5f5f5;
 }
 .invite-wrapper .content {
   flex: 1;
@@ -26,18 +26,7 @@
   padding: 20rpx;
   box-shadow: 0 10px 15px 3px rgba(0, 0, 0, 0.1), 0 4px 6px 3px rgba(0, 0, 0, 0.1);
   border-radius: 12rpx;
-  background: inherit;
-}
-.invite-wrapper .card::after {
-  position: absolute;
-  content: "";
-  background: inherit;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  filter: blur(10px);
-  z-index: 0;
+  background-color: #fff;
 }
 .invite-wrapper .card .header {
   display: flex;
@@ -48,8 +37,32 @@
   height: 96rpx;
   border-radius: 4px;
 }
-.invite-wrapper .card .desc {
-  color: white;
-  font-size: 18px;
-  line-height: 36px;
+.invite-wrapper .content-wrapper,
+.invite-wrapper .detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.invite-wrapper .content-wrapper .content,
+.invite-wrapper .detail .content {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 40rpx;
+}
+.invite-wrapper .content-wrapper .content label,
+.invite-wrapper .detail .content label {
+  font-size: 28rpx;
+  color: #94a3b8;
+}
+.invite-wrapper .content-wrapper .content text,
+.invite-wrapper .detail .content text {
+  font-size: 40rpx;
+  color: #24271e;
+}
+.invite-wrapper .my-submit {
+  min-width: 200rpx;
+}
+.invite-wrapper .my-submit.van-button {
+  border-radius: 12rpx;
 }

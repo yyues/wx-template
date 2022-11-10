@@ -1,7 +1,7 @@
 <view class="page-wrapper">
   <!-- 导航栏 -->
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
-    <view slot="title" class="nav-title">我的待办</view>
+    <view slot="title" class="nav-title">{{pageHeader}}</view>
     <view slot="left" class="nav-left">
       <van-icon name="arrow-left" color="#5b67ca" />
     </view>
@@ -15,13 +15,18 @@
         <!-- <text>error</text> -->
         <image src="../../images/page/empty.png"></image>
         <view class="message">
-          <text>还没有自己的待办哦，快去创建吧！</text>
+          <text wx:if="{{type=='user'}}">还没有自己的待办哦，快去创建吧！</text>
+          <text wx:if="{{type=='circle'}}">圈子还没有待办哦，联系圈主添加吧！</text>
         </view>
       </view>
       <view class="detail" wx:else>
         <view class="wrapper">
           <task-card wx:for="{{currentList}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
         </view>
+
+      </view>
+      <view class="add" wx:if="{{type=='circle' && master}}" bindtap="goTodoAdd">
+        <van-icon name="plus" color="#fff" size="32px" />
       </view>
     </view>
   </view>

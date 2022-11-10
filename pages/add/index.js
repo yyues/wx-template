@@ -1,15 +1,8 @@
 import Toast from "@vant/weapp/toast/toast";
 import moment from "moment";
-import {
-  taskSave,
-  getTodoById
-} from "../../api/todo";
-import {
-  getLocationParams
-} from "../../utils/index";
-import {
-  getUserAllCircle
-} from "../../api/circle";
+import { taskSave, getTodoById } from "../../api/todo";
+import { getLocationParams } from "../../utils/index";
+import { getUserAllCircle } from "../../api/circle";
 Page({
   /**
    * 页面的初始数据
@@ -59,11 +52,20 @@ Page({
     const type = getLocationParams("type");
     const id = getLocationParams("id");
     this.setData({
-      type
+      type,
     });
     if (type == "edit") {
       //  查详情
       this.getDetail(id);
+    }
+    if (type == "my-todo") {
+      const postForm = this.data.postForm;
+      this.setData({
+        postForm: {
+          ...postForm,
+          task_type: "private",
+        },
+      });
     }
     this.GetUserCirlce();
   },
@@ -121,7 +123,7 @@ Page({
     const param = this.data.postForm;
     const type = this.data.type;
     console.log({
-      param
+      param,
     });
     const res = this.validate(param);
     if (res !== true) {
@@ -190,7 +192,7 @@ Page({
       postForm: {
         ...data,
         is_deadline: e.detail,
-        start_time: e.detail ? '' : data.start_time
+        start_time: e.detail ? "" : data.start_time,
       },
       minHour: isToday ? moment().hour() : 0,
       minMinute: isToday ? moment().minute() : 0,
@@ -238,14 +240,17 @@ Page({
   },
   onTaskChange(e) {
     const data = this.data.postForm;
-    this.setData({
-      postForm: {
-        ...data,
-        content: e.detail,
+    this.setData(
+      {
+        postForm: {
+          ...data,
+          content: e.detail,
+        },
       },
-    }, () => {
-      console.log(this.data.postForm);
-    });
+      () => {
+        console.log(this.data.postForm);
+      }
+    );
   },
   onDescChange(e) {
     const data = this.data.postForm;
@@ -331,7 +336,7 @@ Page({
     if (postForm.labels.length >= 3) return Toast("最多三个哦！不能再添加了！");
     postForm.labels.push(data);
     this.setData({
-      postForm
+      postForm,
     });
   },
   onLabelClose(e) {
@@ -339,7 +344,7 @@ Page({
     const postForm = this.data.postForm;
     postForm.labels.splice(index, 1);
     this.setData({
-      postForm
+      postForm,
     });
   },
   getDetail(id) {
@@ -347,8 +352,8 @@ Page({
       loading: true,
     });
     getTodoById({
-        id,
-      })
+      id,
+    })
       .then((res) => {
         this.setData({
           postForm: res,
@@ -365,7 +370,7 @@ Page({
       status: "published",
     }).then((res) => {
       this.setData({
-        user_circle: res
+        user_circle: res,
       });
     });
   },

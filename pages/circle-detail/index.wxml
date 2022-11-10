@@ -37,7 +37,8 @@
       </block>
       <!--  一个添加的按钮 -->
       <view class="member-avatar add" wx:if="{{ data.is_current_user }}">
-        <van-icon name="plus" size="24px" color="#94a3b8" />
+        <!-- <van-icon name="plus" size="24px" color="#94a3b8" /> -->
+        <van-button icon="plus" color="#94a3b8" custom-class="add-btn" plain bindtap='onShareAppMessage' open-type="share" />
       </view>
     </view>
     <!-- 基本信息 -->
@@ -50,9 +51,9 @@
     <!-- 涉及到微信相关的数据 -->
     <view class="wx" wx:if="{{ type !== 'publish' }}">
       <van-cell-group>
-        <van-cell title="圈主微信" is-link />
-        <van-cell title="加微备注" is-link />
-        <van-cell title="微信群聊名片" wx:if="{{ !!data.wx_image_url }}">
+        <van-cell title="圈主微信" is-link bind:click="showWx" />
+        <van-cell title="加微备注" is-link bind:click="showMark" />
+        <van-cell title="微信群聊名片" wx:if="{{ !!data.wx_image_url }}" bind:click="showImage">
           <view class="wx-circle" slot="right-icon">
             <!-- 一个二维码  -->
             <image src="../../images/action/code.png"></image>
@@ -65,7 +66,7 @@
     </view>
     <!-- 圈子下归属的 所有待办   -->
     <view class="all-todo" wx:if="{{ type !== 'publish' }}">
-      <van-cell title="待办" is-link />
+      <van-cell title="待办" is-link link-type="navigateTo" url="{{todoUrl}}" />
     </view>
     <!-- 打卡规则 只有创建者才有打卡规则的按钮 -->
     <view class="all-todo" wx:if="{{ type !== 'publish' && data.is_current_user}}">
@@ -78,9 +79,26 @@
     <!-- 操作按钮 -->
     <view class="opeartion">
       <!--  从公开的页面进入的才有这个按钮 -->
-      <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{btnLoading}}" loading-text="请求中" disabled="{{data.current_number == data.max_persons}}" wx:if="{{type == 'publish' && !data.is_current_user}}">
-        {{data.current_number !== data.max_persons ? '加入' : '圈子已满，无法加入'}}
+      <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{btnLoading}}" loading-text="请求中" disabled="{{data.current_number == data.max_number}}" wx:if="{{type == 'publish' && !data.is_current_user}}">
+        {{data.current_number !== data.max_number ? '加入' : '圈子已满，无法加入'}}
       </van-button>
     </view>
   </view>
+  <!-- 弹窗数据展示 主要有三种类型 文字 图片 提示 -->
+  <van-dialog use-slot show="{{ showDialog }}" theme="round" title="{{dialogConfig.header}}" style="--dialog-border-radius: 8px" show-confirm-button="{{dialogConfig.showConfirm}}" show-cancel-button="{{dialogConfig.showCancel}}" confirm-button-color="{{dialogConfig.primary_color}}" bind:confirm="{{dialogConfig.confirm_function}}" bind:cancel="{{dialogConfig.cancel_function}}" width="{{dialogConfig.width}}">
+    <view class="dialog-wrapper" style="height: {{dialogConfig.height}};">
+      <!--文本 -->
+      <view class="text" wx:if="{{dialogConfig.type =='string'}}">
+        <text>{{dialogConfig.content}}</text>
+      </view>
+      <!--图片 -->
+      <view class="image" wx:if="{{dialogConfig.type =='image'}}">
+        <image src="{{dialogConfig.content}}" mode="widthFix"></image>
+      </view>
+      <!--操作 -->
+      <view class="text" wx:if="{{dialogConfig.type =='operation'}}">
+        <text>{{dialogConfig.content}}</text>
+      </view>
+    </view>
+  </van-dialog>
 </view>

@@ -64,3 +64,11 @@ export const setTodoClock = (data) => {
     data,
   });
 };
+// 接受别人的邀请
+export const receiveTodoById = (data) => {
+  return request.axios({
+    method: 'POST',
+    url: '/todo/receive-invite',
+    data
+  })
+}
