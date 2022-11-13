@@ -1,4 +1,5 @@
 // pages/task/index.js
+import initAxios from '../../request/create'
 import {
   initTabActive
 } from "../../utils/index";
@@ -12,7 +13,8 @@ Page({
   data: {
     avatar_url: wx.getStorageSync("avatar_url"),
     username: wx.getStorageSync("username"),
-    appDeep: false
+    appDeep: false,
+    testUser: false, // 测试账号切换
   },
 
   /**
@@ -67,6 +69,29 @@ Page({
   onDeepChange(e) {
     this.setData({
       appDeep: e.detail
+    })
+  },
+  onAccountChange(e) {
+    if (this.data.testUser && !e.datail) {
+      // 说明要退出账号
+      wx.redirectTo({
+        url: '/pages/login/index',
+      })
+      // return
+    }
+    // 切换账号
+    if (e.detail) {
+      const test_token = '62_kiHSSVOzfySByWKGnn5zDJ0LVrEJgvmLoXF35LZ5Q6ahW47Vbzb0S1-EW8vLN88R4FMtn01-shyyKbcKkyqcTBfOkpA52pL3EQDPD89YEihr1WWmgHCBOgf9LDAMLXBAEGDYU'
+      const test_name = '爱意随风起'
+      const test_avatar = 'http://43.143.205.208:7001/public/preview.jpg'
+      wx.setStorageSync('username', test_name)
+      wx.setStorageSync('avatar_url', test_avatar)
+      wx.setStorageSync('token', test_token)
+      initAxios()
+      this.onShow()
+    }
+    this.setData({
+      testUser: e.detail
     })
   }
 });

@@ -30,6 +30,15 @@
       <van-cell title="我的消息" is-link link-type="navigateTo" url="/pages/my-message/index" />
     </van-cell-group>
   </view>
+  <!-- 开发测试功能 -->
+  <view class="part">
+    <!-- 系统功能 -->
+    <van-cell-group inset>
+      <van-cell title="切换测试账号" center>
+        <van-switch checked="{{ testUser }}" active-color="#5B67CA" size='16px' slot="right-icon" custom-class='my-switch' bind:change="onAccountChange" />
+      </van-cell>
+    </van-cell-group>
+  </view>
   <view class="part">
     <!-- 系统功能 -->
     <van-cell-group inset>
