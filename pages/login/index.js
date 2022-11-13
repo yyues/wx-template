@@ -1,6 +1,10 @@
 // pages/login/index.js
-import { WxLogin } from "../../utils/action";
-import { Login } from "../../utils/index";
+import {
+  WxLogin
+} from "../../utils/action";
+import {
+  Login
+} from "../../utils/index";
 import Toast from "@vant/weapp/toast/toast";
 Page({
   /**
@@ -55,34 +59,41 @@ Page({
     });
   },
   bindGetUserInfo(e) {
-    const data = e.detail;
-    // 成功后去往原本要去的页面
-    const fullPath = getCurrentPages()[0].is;
-    if (data.errMsg.indexOf("ok") === -1) {
-      Toast.fail("被拒绝了哦！");
-      return;
-    }
-    WxLogin().then((info) => {
-      const param = { ...data, ...info };
-      Login(param).then(() => {
-        wx.showToast({
-          title: "登录成功!",
-          icon: "success",
-          duration: 1000,
-          success() {
-            // Loading 动画 做完该做的事情
-            if (["pages/home/index", "pages/user/index"].includes(fullPath)) {
-              wx.switchTab({
-                url: `/${fullPath}`,
-              });
-              return
-            }
-            wx.redirectTo({
-              url: `/${fullPath}`,
+    wx.getUserProfile({
+      desc: '获得您的信息，',
+      success(res) {
+        // 成功后去往原本要去的页面
+        const fullPath = getCurrentPages()[0].is;
+        WxLogin().then((info) => {
+          const param = {
+            ...res,
+            ...info
+          };
+          Login(param).then(() => {
+            wx.showToast({
+              title: "登录成功!",
+              icon: "success",
+              duration: 1000,
+              success() {
+                // Loading 动画 做完该做的事情
+                if (["pages/home/index", "pages/user/index"].includes(fullPath)) {
+                  wx.switchTab({
+                    url: `/${fullPath}`,
+                  });
+                  return
+                }
+                wx.redirectTo({
+                  url: `/${fullPath}`,
+                });
+              },
             });
-          },
+          });
         });
-      });
-    });
+      },
+      fail(err) {
+        console.log(err);
+        Toast.fail("出错了哦！");
+      }
+    })
   },
 });
