@@ -1,10 +1,6 @@
 // pages/login/index.js
-import {
-  WxLogin
-} from "../../utils/action";
-import {
-  Login
-} from "../../utils/index";
+import { WxLogin } from "../../utils/action";
+import { getLocationParams, Login } from "../../utils/index";
 import Toast from "@vant/weapp/toast/toast";
 Page({
   /**
@@ -59,15 +55,17 @@ Page({
     });
   },
   bindGetUserInfo(e) {
+    const type = getLocationParams("type");
     wx.getUserProfile({
-      desc: '获得您的信息，',
+      desc: "获得您的信息，",
       success(res) {
         // 成功后去往原本要去的页面
-        const fullPath = getCurrentPages()[0].is;
+        const fullPath =
+          type == "reLogin" ? "pages/home/index" : getCurrentPages()[0].is;
         WxLogin().then((info) => {
           const param = {
             ...res,
-            ...info
+            ...info,
           };
           Login(param).then(() => {
             wx.showToast({
@@ -76,11 +74,13 @@ Page({
               duration: 1000,
               success() {
                 // Loading 动画 做完该做的事情
-                if (["pages/home/index", "pages/user/index"].includes(fullPath)) {
+                if (
+                  ["pages/home/index", "pages/user/index"].includes(fullPath)
+                ) {
                   wx.switchTab({
                     url: `/${fullPath}`,
                   });
-                  return
+                  return;
                 }
                 wx.redirectTo({
                   url: `/${fullPath}`,
@@ -93,7 +93,7 @@ Page({
       fail(err) {
         console.log(err);
         Toast.fail("出错了哦！");
-      }
-    })
+      },
+    });
   },
 });

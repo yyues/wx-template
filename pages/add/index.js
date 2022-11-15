@@ -16,6 +16,7 @@ Page({
     loading: false,
     btnLoading: false,
     type: "add",
+    label: "", // 输入的标签数据
     postForm: {
       execute_time: moment().format("YYYY-MM-DD"),
       start_time: "",
@@ -52,7 +53,7 @@ Page({
     const type = getLocationParams("type");
     const id = getLocationParams("id");
     this.setData({
-      type,
+      type: type ?? "add",
     });
     if (type == "edit") {
       //  查详情
@@ -138,7 +139,7 @@ Page({
           type: "success",
           message: type == "add" ? "创建成功！" : "保存成功！",
           onClose: () => {
-            wx.redirectTo({
+            wx.switchTab({
               url: "/pages/home/index",
             });
           },
@@ -337,6 +338,7 @@ Page({
     postForm.labels.push(data);
     this.setData({
       postForm,
+      label: "",
     });
   },
   onLabelClose(e) {

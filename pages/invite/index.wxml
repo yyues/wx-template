@@ -3,7 +3,7 @@
   <!-- 导航栏 -->
   <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff00">
     <view slot="left" class="nav-left">
-      <text>查看邀请</text>
+      <image src="../../images/action/home.png" bindtap="backHome"></image>
     </view>
   </van-nav-bar>
   <view class="content">
@@ -24,6 +24,8 @@
           <view class="content">
             <label wx:if="{{key == 'todo'}}">待办内容：</label>
             <label wx:if="{{key == 'circle'}}">圈子：</label>
+          </view>
+          <view class="content">
             <text wx:if="{{key == 'todo'}}">{{todoInfo.content}}</text>
             <text wx:if="{{key == 'circle'}}">{{todoInfo.name}}</text>
           </view>

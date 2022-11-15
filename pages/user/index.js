@@ -75,7 +75,7 @@ Page({
     if (this.data.testUser && !e.datail) {
       // 说明要退出账号
       wx.redirectTo({
-        url: '/pages/login/index',
+        url: '/pages/login/index?type=reLogin',
       })
       // return
     }

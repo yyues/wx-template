@@ -1,6 +1,20 @@
 @import "../../style/index.less";
 .nav-left {
-  color: white;
+  display: flex;
+  align-items: center;
+
+  image {
+    width: 42rpx;
+    height: 42rpx;
+  }
+
+  text {
+    margin-left: @base-size * 2;
+    color: @text-header-color;
+    letter-spacing: 0.07px;
+    line-height: @line-h-16;
+    font-size: @size-16;
+  }
 }
 .invite-wrapper {
   min-height: 100vh;
@@ -68,8 +82,10 @@
     justify-content: space-evenly;
     .content {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      // justify-content: center;
       margin-top: @base-size * 4;
+      text-align: center;
       label {
         font-size: @size-14;
         // line-height: @line-h-14;

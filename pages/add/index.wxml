@@ -38,7 +38,7 @@
     <!-- 可以有 标签 的位置 -->
     <view class="part">
       <view class="title"><text>标签</text></view>
-      <van-field placeholder="添加喜欢的标签吧，最多三个哦！" border="{{ true }}" clearable="{{ true }}" bind:confirm="onLabelChange">
+      <van-field placeholder="添加喜欢的标签吧，最多三个哦！" value="{{label}}" border="{{ true }}" clearable="{{ true }}" bind:confirm="onLabelChange">
         <!-- 希望有个颜色的选择 -->
         <!-- <view slot="label"></view> -->
       </van-field>

@@ -1,5 +1,17 @@
 .nav-left {
-  color: white;
+  display: flex;
+  align-items: center;
+}
+.nav-left image {
+  width: 42rpx;
+  height: 42rpx;
+}
+.nav-left text {
+  margin-left: 20rpx;
+  color: #24271e;
+  letter-spacing: 0.07px;
+  line-height: 48rpx;
+  font-size: 32rpx;
 }
 .invite-wrapper {
   min-height: 100vh;
@@ -47,8 +59,9 @@
 .invite-wrapper .content-wrapper .content,
 .invite-wrapper .detail .content {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   margin-top: 40rpx;
+  text-align: center;
 }
 .invite-wrapper .content-wrapper .content label,
 .invite-wrapper .detail .content label {

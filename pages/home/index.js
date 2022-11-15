@@ -125,11 +125,11 @@ Page({
     const arr = this.data.arr;
     arr[index] = true;
     this.setData({ arr });
-    // finishTodo({ id }).then((res) => {
-    //   //  重新走一个请求就行了
-    //   Toast.success('完成待办啦！')
-    //   this.GetToday();
-    // });
+    finishTodo({ id }).then((res) => {
+      //  重新走一个请求就行了
+      Toast.success('完成待办啦！')
+      this.GetToday();
+    });
   },
   onDetail(e) {
     const { id, index } = e.detail;

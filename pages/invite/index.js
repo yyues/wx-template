@@ -1,6 +1,7 @@
 import { getLocationParams } from "../../utils/index";
 import { getTodoById, receiveTodoById } from "../../api/todo";
 import { getDetailById, receiveCircleById } from "../../api/circle";
+import Toast from "@vant/weapp/toast/toast";
 Page({
   /**
    * 页面的初始数据
@@ -62,7 +63,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {},
-  onClickLeft() {
+  backHome() {
     wx.switchTab({
       url: "/pages/home/index",
     });
