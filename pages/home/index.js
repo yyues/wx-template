@@ -1,7 +1,12 @@
 // pages/home/index.js
 import { initTabActive } from "../../utils/index";
 import { getToken } from "../../utils/action";
-import { getTodoByDate, delayCurrentToDo, setTodoClock } from "../../api/todo";
+import {
+  getTodoByDate,
+  delayCurrentToDo,
+  setTodoClock,
+  finishTodo,
+} from "../../api/todo";
 import Toast from "@vant/weapp/toast/toast";
 import moment from "moment";
 import { TEMP_ID } from "../../env";
@@ -127,7 +132,7 @@ Page({
     this.setData({ arr });
     finishTodo({ id }).then((res) => {
       //  重新走一个请求就行了
-      Toast.success('完成待办啦！')
+      Toast.success("完成待办啦！");
       this.GetToday();
     });
   },
