@@ -4,7 +4,6 @@
 }
 .part .title {
   padding: 0rpx 32rpx;
-  background-color: #fff;
 }
 .part .title text {
   color: #8a8ab2;
@@ -16,7 +15,6 @@
   text-align: left;
 }
 .part .date {
-  background-color: #fff;
   padding: 20rpx 32rpx;
 }
 .part .date .wrapper {
@@ -35,6 +33,10 @@
 .part .wrapper {
   padding: 20rpx 32rpx;
 }
+.part .wrapper .empty {
+  color: #94a3b8;
+  font-size: 28rpx;
+}
 .part .high-date .wrapper {
   border-bottom: 1px solid #5b67ca;
 }
@@ -43,10 +45,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.my-date-picker {
-  border-top: 1px solid #5b67ca55;
-  border-bottom: 1px solid #5b67ca55;
 }
 .my-switch {
   vertical-align: middle;
@@ -69,9 +67,6 @@
   margin-bottom: 32rpx;
   padding: 0 32rpx;
   position: relative;
-}
-.config .title {
-  background-color: #fff;
 }
 .config .title text {
   color: #8a8ab2;
@@ -105,4 +100,7 @@
 }
 .v-tag {
   margin-right: 10rpx;
+}
+.expecial-wrapper {
+  background-color: #f5f5f5;
 }

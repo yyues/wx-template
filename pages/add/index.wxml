@@ -1,6 +1,7 @@
 <view class="expecial-wrapper">
   <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" z-index="{{999}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
+  <van-nav-bar border="{{false}}" z-index="{{999}}" fixed placeholder="{{true}}" custom-style="background: #f5f5f5;">
+    <van-icon name="arrow-left" slot="left" color="{{global.primaryColor}}" bindtap="onClickLeft" />
     <view slot="title" class="nav-title">{{ type !== 'add' ? '编辑待办': '新建待办' }}</view>
   </van-nav-bar>
   <view class="loading" wx:if="{{ loading }}">
@@ -10,35 +11,35 @@
     <!-- 内容 -->
     <view class="part">
       <view class="title"><text>待办内容</text></view>
-      <van-field value="{{ postForm.content }}" placeholder="请输入待办内容" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize="{{true}}" bind:change="onTaskChange" />
+      <van-field value="{{ postForm.content }}" placeholder="请输入待办内容" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize="{{true}}" bind:change="onTaskChange" custom-style="background: #f5f5f5" />
     </view>
     <!-- 日期 -->
     <view class="part">
       <view class="title"><text>日期</text></view>
-      <van-field value="{{ postForm.execute_time }}" placeholder="请输入日期" border="{{ true }}" clearable="{{ true }}" right-icon="calendar-o" disabled bindtap="showCalender" />
-      <van-calendar show="{{ show }}" bind:confirm="onConfirm" bind:close="onClose" color="#5B67CA" />
+      <van-field value="{{ postForm.execute_time }}" placeholder="请输入日期" custom-style="background: #f5f5f5" border="{{ true }}" clearable="{{ true }}" right-icon="calendar-o" disabled bindtap="showCalender" />
+      <van-calendar show="{{ show }}" bind:confirm="onConfirm" bind:close="onClose" color="{{global.primaryColor}}" />
     </view>
     <!-- 时间 -->
     <view class="part">
       <view class="title">
         <text> {{ postForm.is_deadline ? '截止时间' : '时间' }} </text>
-        <van-switch checked="{{ postForm.is_deadline }}" active-color="#5B67CA" size='16px' custom-class='my-switch' bind:change="onDealineChange" />
+        <van-switch checked="{{ postForm.is_deadline }}" active-color="{{global.primaryColor}}" size='16px' custom-class='my-switch' bind:change="onDealineChange" />
       </view>
       <view class="flex" wx:if="{{ !postForm.is_deadline }}">
-        <van-field value="{{ postForm.start_time }}" placeholder="请输入开始时间" border="{{ true }}" clearable="{{ true }}" disabled data-type="start" bindtap="showTime" />
-        <van-field value="{{ postForm.end_time }}" placeholder="请输入结束时间" border="{{ true }}" clearable="{{ true }}" disabled data-type="end" bindtap="showTime" />
+        <van-field value="{{ postForm.start_time }}" placeholder="请输入开始时间" custom-style="background: #f5f5f5" border="{{ true }}" clearable="{{ true }}" disabled data-type="start" bindtap="showTime" />
+        <van-field value="{{ postForm.end_time }}" placeholder="请输入结束时间" custom-style="background: #f5f5f5" border="{{ true }}" clearable="{{ true }}" disabled data-type="end" bindtap="showTime" />
       </view>
-      <van-field wx:else value="{{ postForm.end_time }}" placeholder="请输入截止时间" border="{{ true }}" clearable="{{ true }}" disabled data-type="end" bindtap="showTime" />
+      <van-field wx:else value="{{ postForm.end_time }}" placeholder="请输入截止时间" custom-style="background: #f5f5f5" border="{{ true }}" clearable="{{ true }}" disabled data-type="end" bindtap="showTime" />
     </view>
     <!-- 描述 -->
     <view class="part">
       <view class="title"><text>描述</text></view>
-      <van-field value="{{ postForm.description }}" placeholder="为你的待办添加一些描述吧！" border="{{ true }}" clearable="{{ true }}" maxlength="{{49}}" show-word-limit="{{true}}" bind:input="onDescChange" />
+      <van-field value="{{ postForm.description }}" custom-style="background: #f5f5f5" placeholder="为你的待办添加一些描述吧！" border="{{ true }}" clearable="{{ true }}" maxlength="{{49}}" show-word-limit="{{true}}" bind:input="onDescChange" />
     </view>
     <!-- 可以有 标签 的位置 -->
     <view class="part">
       <view class="title"><text>标签</text></view>
-      <van-field placeholder="添加喜欢的标签吧，最多三个哦！" value="{{label}}" border="{{ true }}" clearable="{{ true }}" bind:confirm="onLabelChange">
+      <van-field placeholder="添加喜欢的标签吧，最多三个哦！" custom-style="background: #f5f5f5" value="{{label}}" border="{{ true }}" clearable="{{ true }}" bind:confirm="onLabelChange">
         <!-- 希望有个颜色的选择 -->
         <!-- <view slot="label"></view> -->
       </van-field>
@@ -52,10 +53,10 @@
       <view class="title"><text>优先级</text></view>
       <view class="wrapper">
         <van-radio-group value="{{ postForm.level }}" bind:change="onLevelChange" direction="horizontal">
-          <van-radio name="{{0}}" shape="square" checked-color="#5B67CA" label-class="my-radio">正常(低)</van-radio>
-          <van-radio name="{{1}}" shape="square" checked-color="#5B67CA" label-class="my-radio">中</van-radio>
-          <van-radio name="{{2}}" shape="square" checked-color="#5B67CA" label-class="my-radio">高</van-radio>
-          <van-radio name="{{3}}" shape="square" checked-color="#5B67CA" label-class="my-radio">紧急</van-radio>
+          <van-radio name="{{0}}" shape="square" checked-color="{{global.primaryColor}}" label-class="my-radio">正常(低)</van-radio>
+          <van-radio name="{{1}}" shape="square" checked-color="{{global.primaryColor}}" label-class="my-radio">中</van-radio>
+          <van-radio name="{{2}}" shape="square" checked-color="{{global.primaryColor}}" label-class="my-radio">高</van-radio>
+          <van-radio name="{{3}}" shape="square" checked-color="{{global.primaryColor}}" label-class="my-radio">紧急</van-radio>
         </van-radio-group>
       </view>
     </view>
@@ -64,9 +65,9 @@
       <view class="title"><text>类型</text></view>
       <view class="wrapper">
         <van-radio-group value="{{ postForm.task_type }}" bind:change="onTaskTypeChange" direction="horizontal">
-          <van-radio name="person" shape="square" checked-color="#5B67CA" label-class="my-radio">个人</van-radio>
-          <van-radio name="private" shape="square" checked-color="#5B67CA" label-class="my-radio">公开</van-radio>
-          <!-- <van-radio name="secret" shape="square" checked-color="#5B67CA" label-class="my-radio">私密</van-radio> -->
+          <van-radio name="person" shape="square" checked-color="{{global.primaryColor}}" label-class="my-radio">个人</van-radio>
+          <van-radio name="private" shape="square" checked-color="{{global.primaryColor}}" label-class="my-radio">公开</van-radio>
+          <!-- <van-radio name="secret" shape="square" checked-color="{{global.primaryColor}}" label-class="my-radio">私密</van-radio> -->
         </van-radio-group>
       </view>
     </view>
@@ -75,9 +76,9 @@
       <view class="title"><text>归属圈子</text></view>
       <view class="wrapper">
         <van-radio-group wx:if="{{user_circle.length !== 0}}" value="{{ postForm.task_from_id }}" bind:change="onTaskIdChange">
-          <van-radio wx:for="{{user_circle}}" wx:key="index" name="{{item.id}}" shape="square" checked-color="#5B67CA" label-class="my-radio">{{item.name}}</van-radio>
+          <van-radio wx:for="{{user_circle}}" wx:key="index" name="{{item.id}}" shape="square" checked-color="{{global.primaryColor}}" label-class="my-radio">{{item.name}}</van-radio>
         </van-radio-group>
-        <text class="empty" wx:else> 还没有 自己的圈子哦，先去发布一个自己的圈子吧！</text>
+        <text class="empty" wx:else> 还没有自己的圈子哦!</text>
       </view>
     </view>
     <view class="config flex" wx:if="{{false}}">
@@ -86,7 +87,7 @@
         <view class="desc"> <text>可以建立99字以内的待办内容 </text></view>
       </view>
       <view class="select">
-        <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_long_todo }}" shape="square" bind:change="onLongTaskChange">
+        <van-checkbox checked-color="{{global.primaryColor}}" value="{{ postForm.is_long_todo }}" shape="square" bind:change="onLongTaskChange">
         </van-checkbox>
       </view>
     </view>
@@ -96,7 +97,7 @@
         <view class="desc"> <text>可在创建待办后邀请TA参加哦！</text></view>
       </view>
       <view class="select">
-        <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_multiplayer }}" shape="square" bind:change="onMultiplayTaskChange">
+        <van-checkbox checked-color="{{global.primaryColor}}" value="{{ postForm.is_multiplayer }}" shape="square" bind:change="onMultiplayTaskChange">
         </van-checkbox>
       </view>
     </view>
@@ -107,17 +108,17 @@
         <view class="desc"> <text>可在开始日期后待办周期内创建相同待办</text></view>
       </view>
       <view class="select">
-        <van-checkbox checked-color="#5B67CA" value="{{ postForm.is_cycle_todo }}" shape="square" bind:change="onCycleTaskChange">
+        <van-checkbox checked-color="{{global.primaryColor}}" value="{{ postForm.is_cycle_todo }}" shape="square" bind:change="onCycleTaskChange">
         </van-checkbox>
       </view>
     </view>
     <!-- 周期天数应该有待办周期时长的限制 -->
     <view class="part" wx:if="{{postForm.is_cycle_todo}}">
       <view class="title"><text>待办周期时长(天)</text></view>
-      <van-field value="{{ postForm.task_cycle }}" placeholder="请输入待办周期时长" type="number" border="{{ true }}" clearable="{{ true }}" max="{{90}}" bind:input="onTaskCycleChange" />
+      <van-field value="{{ postForm.task_cycle }}" custom-style="background: #f5f5f5" placeholder="请输入待办周期时长" type="number" border="{{ true }}" clearable="{{ true }}" max="{{90}}" bind:input="onTaskCycleChange" />
     </view>
     <view class="operation">
-      <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{btnLoading}}" loading-text="请求中">{{ type !== 'add' ? '保存': '创建' }}</van-button>
+      <van-button color="{{global.primaryColor}}" custom-class="my-submit" bind:click="handleSubmit" loading="{{btnLoading}}" loading-text="请求中">{{ type !== 'add' ? '保存': '创建' }}</van-button>
     </view>
   </view>
   <van-toast id="van-toast" />

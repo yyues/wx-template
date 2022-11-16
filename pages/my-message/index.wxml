@@ -1,11 +1,4 @@
 <view class="page-wrapper">
-  <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
-    <view slot="title" class="nav-title">我的消息</view>
-    <view slot="left" class="nav-left">
-      <van-icon name="arrow-left" color="#5b67ca" />
-    </view>
-  </van-nav-bar>
   <view class="wrapper">
     <view class="loading" wx:if="{{loading}}">
       <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>

@@ -3,6 +3,7 @@ import moment from "moment";
 import { taskSave, getTodoById } from "../../api/todo";
 import { getLocationParams } from "../../utils/index";
 import { getUserAllCircle } from "../../api/circle";
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -34,6 +35,7 @@ Page({
     user_circle: [], // 用户所拥有的 圈子且是公开的
     minHour: 0, // 可选择的最小时间
     minMinute: 0, // 可选择的最小分钟
+    global: {},
   },
 
   /**
@@ -54,6 +56,7 @@ Page({
     const id = getLocationParams("id");
     this.setData({
       type: type ?? "add",
+      global: app.globalData,
     });
     if (type == "edit") {
       //  查详情
@@ -123,10 +126,14 @@ Page({
   handleSubmit() {
     const param = this.data.postForm;
     const type = this.data.type;
-    console.log({
-      param,
-    });
+
     const res = this.validate(param);
+    if (
+      this.data.postForm.task_type == "private" &&
+      this.data.user_circle.length == 0
+    ) {
+      return Toast.fail("需要圈子哦！");
+    }
     if (res !== true) {
       return Toast(res);
     }

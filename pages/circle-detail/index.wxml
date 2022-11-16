@@ -51,7 +51,14 @@
     <!-- 涉及到微信相关的数据 -->
     <view class="wx" wx:if="{{ type !== 'publish' }}">
       <van-cell-group>
-        <van-cell title="圈主微信" is-link bind:click="showWx" />
+        <van-cell title="圈主微信">
+          <!-- 右侧图标 应该是个眼睛 ，点击后 变成 copy-->
+          <view class="wx-wrapper" slot="right-icon">
+            <van-icon name="eye-o" wx:if="{{!CanIsee}}" bindtap="showWx" />
+            <image src="../../images/action/copy.png" wx:if="{{CanIsee}}" bindtap="copyWx"></image>
+          </view>
+          <text wx:if="{{CanIsee}}">{{data.wx_master}}</text>
+        </van-cell>
         <van-cell title="加微备注" is-link bind:click="showMark" />
         <van-cell title="微信群聊名片" wx:if="{{ !!data.wx_image_url }}" bind:click="showImage">
           <view class="wx-circle" slot="right-icon">

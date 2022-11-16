@@ -113,11 +113,6 @@ Page({
         });
       });
   },
-  onClickLeft() {
-    wx.switchTab({
-      url: "/pages/user/index",
-    });
-  },
   onClick(e) {
     const data = this.data.currentList[e.detail];
     //  打开底部操作栏

@@ -36,11 +36,19 @@ Page({
     const name = getLocationParams("name");
     const master = getLocationParams("master");
     if (type && type == "circle") {
-      this.setData({
-        pageHeader: `${name}的待办`,
-        master: master == "true",
-        type,
-      });
+      this.setData(
+        {
+          pageHeader: `${name}的待办`,
+          master: master == "true",
+          type,
+        },
+        () => {
+          // 动态更新页面标题
+          wx.setNavigationBarTitle({
+            title: this.data.pageHeader,
+          });
+        }
+      );
     }
     // 渲染时请求数据
     this.GetList();
@@ -127,15 +135,6 @@ Page({
           loading: false,
         });
       });
-  },
-  onClickLeft() {
-    if (this.data.type == "circle") {
-      wx.navigateBack();
-      return;
-    }
-    wx.redirectTo({
-      url: "/pages/user/index",
-    });
   },
   handleClick(e) {
     wx.navigateTo({

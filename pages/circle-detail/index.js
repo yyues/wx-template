@@ -26,6 +26,7 @@ Page({
       header: "",
     },
     todoUrl: "",
+    CanIsee: false, // 能否直接看微信 ，默认不能
   },
 
   /**
@@ -87,7 +88,8 @@ Page({
       title: "快进来看看吧", //要请时的卡片头部
       imageUrl:
         "https://image.meiye.art/pic_1628437229638?imageMogr2/thumbnail/450x/interlace/1", //图片地址
-      path: "/pages/invite/index?type=detail&key=circle&id=" + that.data.data.id, // 用户点击首先进入的当前页面
+      path:
+        "/pages/invite/index?type=detail&key=circle&id=" + that.data.data.id, // 用户点击首先进入的当前页面
       success: function (res) {
         // 转发成功
       },
@@ -110,18 +112,14 @@ Page({
     }
   },
   showWx() {
-    const config = this.data.dialogConfig;
-    const res = this.data.data.wx_master;
     this.setData({
-      dialogConfig: {
-        ...config,
-        content: res,
-        type: "string",
-        width: "568rpx",
-        height: "120rpx",
-        header: "圈主微信",
-      },
-      showDialog: true,
+      CanIsee: true,
+    });
+  },
+  copyWx() {
+    //  复制微信号
+    wx.setClipboardData({
+      data: this.data.data.wx_master,
     });
   },
   showMark() {
@@ -133,7 +131,7 @@ Page({
         content: res,
         type: "string",
         width: "568rpx",
-        height: "480rpx",
+        height: "100rpx",
         header: "加微备注",
       },
       showDialog: true,
@@ -147,7 +145,7 @@ Page({
         ...config,
         content: res,
         type: "image",
-        height: "240rpx",
+        height: "480rpx",
         header: "群聊名片",
       },
       showDialog: true,

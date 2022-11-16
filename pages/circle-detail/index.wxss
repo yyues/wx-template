@@ -85,6 +85,16 @@
   display: flex;
   justify-content: center;
 }
+.page-wrapper .content .wx-wrapper {
+  display: flex;
+  align-items: center;
+}
+.page-wrapper .content .wx-wrapper image {
+  width: 32rpx;
+  height: 32rpx;
+  vertical-align: middle;
+  margin-left: 20rpx;
+}
 .my-submit {
   min-width: 200rpx;
 }

@@ -1,5 +1,8 @@
 {
   "enablePullDownRefresh": true,
+  "navigationBarTitleText": "我的消息",
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFF",
   "usingComponents": {
     "task-card": "../../components/task-card/index",
     "van-icon": "@vant/weapp/icon/index"

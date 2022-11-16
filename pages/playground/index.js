@@ -1,5 +1,6 @@
 // pages/task/index.js
 import { getPublicCircle } from "../../api/circle";
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -8,6 +9,7 @@ Page({
     loading: false,
     data: [],
     type: "public",
+    global: {},
     searchForm: {
       page: 0,
       limit: 10,
@@ -30,6 +32,9 @@ Page({
    */
   onShow() {
     this.GetList();
+    this.setData({
+      global: app.globalData,
+    });
   },
 
   /**

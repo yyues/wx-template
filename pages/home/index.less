@@ -17,7 +17,7 @@
 
 .page-wrapper {
   // 留着， 先不动样式
-  background-color: #fff;
+  background-color: @page-bg-color;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -41,17 +41,16 @@
 }
 
 .operation-wrapper {
-  padding: @base-size * 2 0;
-  background-color: @page-bg-color;
-  // background-color: skyblue;
+  display: flex;
+  margin: @base-size * 4 0;
   min-width: 100%;
 }
 // van -操作栏
 .extal {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff00;
   image {
     height: 32px;
     width: 32px;

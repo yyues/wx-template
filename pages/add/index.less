@@ -16,12 +16,9 @@
       letter-spacing: 0px;
       text-align: left;
     }
-
-    background-color: #fff;
   }
 
   .date {
-    background-color: #fff;
     padding: 20rpx 32rpx;
 
     .wrapper {
@@ -43,6 +40,10 @@
 
   .wrapper {
     padding: 20rpx 32rpx;
+    .empty {
+      color: @primary-second-text-color;
+      font-size: @size-14;
+    }
   }
 
   .high-date {
@@ -58,11 +59,6 @@
   justify-content: center;
 }
 
-.my-date-picker {
-  // background-color: #5B67CA55;
-  border-top: 1px solid #5b67ca55;
-  border-bottom: 1px solid #5b67ca55;
-}
 .my-switch {
   vertical-align: middle;
   margin-left: @base-size * 2;
@@ -98,8 +94,6 @@
       letter-spacing: 0px;
       text-align: left;
     }
-
-    background-color: #fff;
   }
 
   .desc {
@@ -129,4 +123,7 @@
 }
 .v-tag {
   margin-right: @base-size;
+}
+.expecial-wrapper {
+  background-color: @page-bg-color;
 }

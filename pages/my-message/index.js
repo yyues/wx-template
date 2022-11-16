@@ -1,6 +1,4 @@
-import {
-  getUserAllTodo
-} from '../../api/todo'
+import { getUserAllTodo } from "../../api/todo";
 Page({
   /**
    * 页面的初始数据
@@ -10,10 +8,10 @@ Page({
     searchForm: {
       page: 0,
       limit: 10,
-      keyword: ''
+      keyword: "",
     },
     currentList: [],
-    beforeList: []
+    beforeList: [],
   },
 
   /**
@@ -31,7 +29,7 @@ Page({
    */
   onShow() {
     // 渲染时请求数据
-    this.GetList()
+    this.GetList();
   },
 
   /**
@@ -51,15 +49,16 @@ Page({
     const data = {
       page: 0,
       limit: 10,
-      keyword: ''
-    }
-    this.setData({
-        searchForm: data
+      keyword: "",
+    };
+    this.setData(
+      {
+        searchForm: data,
       },
       () => {
-        this.GetList('refresh')
+        this.GetList("refresh");
       }
-    )
+    );
   },
 
   /**
@@ -74,42 +73,39 @@ Page({
   // 列表查询接口
   GetList(type) {
     const param = {
-      ...this.data.searchForm
-    }
-    const arr = this.data.currentList
+      ...this.data.searchForm,
+    };
+    const arr = this.data.currentList;
     //  保留请求前的旧数据
     this.setData({
       beforeList: arr,
-      loading: true
-    })
-    getUserAllTodo(param).then((res) => {
-      // 更新数据
-      const data = type && type === 'refresh' ? [...res.rows] : [...arr, ...res.rows]
-      this.setData({
-        currentList: []
+      loading: true,
+    });
+    getUserAllTodo(param)
+      .then((res) => {
+        // 更新数据
+        const data =
+          type && type === "refresh" ? [...res.rows] : [...arr, ...res.rows];
+        this.setData({
+          currentList: [],
+        });
+        if (type && type === "refresh") {
+          // 页面下拉刷新
+          wx.stopPullDownRefresh({
+            success() {
+              wx.showToast({
+                title: "刷新成功",
+                icon: "success",
+                duration: 1500,
+              });
+            },
+          });
+        }
       })
-      if (type && type === 'refresh') {
-        // 页面下拉刷新
-        wx.stopPullDownRefresh({
-          success() {
-            wx.showToast({
-              title: '刷新成功',
-              icon: 'success',
-              duration: 1500
-            })
-          }
-        })
-      }
-    }).finally(() => {
-      this.setData({
-        loading: false
-      })
-    })
+      .finally(() => {
+        this.setData({
+          loading: false,
+        });
+      });
   },
-  onClickLeft() {
-    wx.switchTab({
-      url: '/pages/user/index',
-    })
-  },
-
-})
+});

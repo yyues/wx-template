@@ -17,7 +17,7 @@
         <text>{{username}}</text>
       </view>
       <view class="label">
-        <van-tag size="small" color="#4e8886">内测用户</van-tag>
+        <van-tag size="medium" color="{{global.primaryColor}}">内测用户</van-tag>
       </view>
     </view>
   </view>
@@ -35,7 +35,7 @@
     <!-- 系统功能 -->
     <van-cell-group inset>
       <van-cell title="切换测试账号" center>
-        <van-switch checked="{{ testUser }}" active-color="#5B67CA" size='16px' slot="right-icon" custom-class='my-switch' bind:change="onAccountChange" />
+        <van-switch checked="{{ testUser }}" active-color="{{global.primaryColor}}" size='16px' slot="right-icon" custom-class='my-switch' bind:change="onAccountChange" />
       </van-cell>
     </van-cell-group>
   </view>
@@ -43,10 +43,10 @@
     <!-- 系统功能 -->
     <van-cell-group inset>
       <van-cell title="清除缓存" center>
-        <van-button plain color="#5b67ca" size="mini">清除</van-button>
+        <van-button plain color="{{global.primaryColor}}" size="mini" bindtap="clearCache">清除</van-button>
       </van-cell>
       <van-cell title="深色模式" center>
-        <van-switch checked="{{ appDeep }}" active-color="#5B67CA" size='16px' slot="right-icon" custom-class='my-switch' bind:change="onDeepChange" />
+        <van-switch checked="{{ appDeep }}" active-color="{{global.primaryColor}}" size='16px' slot="right-icon" custom-class='my-switch' bind:change="onDeepChange" />
       </van-cell>
     </van-cell-group>
   </view>
@@ -57,4 +57,5 @@
       <van-cell title="关于开发者" is-link />
     </van-cell-group>
   </view>
+  <van-toast id="van-toast" />
 </view>

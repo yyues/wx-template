@@ -1,5 +1,8 @@
 {
   "enablePullDownRefresh": true,
+  "navigationBarTitleText": "我的圈子",
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFF",
   "usingComponents": {
     "circle-card": "../../components/circle-card/index",
     "van-icon": "@vant/weapp/icon/index",
