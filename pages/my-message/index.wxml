@@ -13,9 +13,24 @@
       </view>
       <view class="detail" wx:else>
         <view class="wrapper">
-          <task-card wx:for="{{currentList}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
+          <msg-card wx:for="{{currentList}}" wx:key="id" hasAction="{{true}}" type="user" data="{{item}}" index="{{index}}" bindclick="onClick" binddetail="onDetail" />
         </view>
       </view>
     </view>
   </view>
+  <!-- 操作栏  同意/拒绝/删除/？批量删除 -->
+  <van-action-sheet show="{{ show }}" title="操作" bind:close="onClose">
+    <van-cell-group inset>
+      <van-cell title="同意" bind:click="onAgree">
+        <view class="icon" slot="icon">
+          <image src="../../images/action/copy.png"></image>
+        </view>
+        <van-icon slot="right-icon" wx:if="{{aloading}}" name="flag-o" size="16px" />
+      </van-cell>
+      <van-cell title="拒绝" is-link />
+      <van-cell title="删除" is-link />
+    </van-cell-group>
+  </van-action-sheet>
+  <!-- 提示 -->
+  <van-toast id="van-toast" />
 </view>

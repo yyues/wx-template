@@ -1,5 +1,6 @@
-import { getDetailById } from "../../api/circle";
+import { getDetailById, JoinCircle } from "../../api/circle";
 import { getLocationParams } from "../../utils/index";
+import Toast from "@vant/weapp/toast/toast";
 Page({
   /**
    * 页面的初始数据
@@ -27,6 +28,8 @@ Page({
     },
     todoUrl: "",
     CanIsee: false, // 能否直接看微信 ，默认不能
+    CanIseeMark: false, // 能否直接看微信备注
+    btnLoading: false, // 按钮加载动画
   },
 
   /**
@@ -54,6 +57,8 @@ Page({
           data: res,
           todoUrl: `/pages/my-todo/index?type=circle&name=${res.name}&id=${res.id}&master=${res.is_current_user}`,
         });
+        // 设置标题
+        wx.setNavigationBarTitle({ title: res.name });
       })
       .finally(() => {
         this.setData({ loading: false });
@@ -123,18 +128,14 @@ Page({
     });
   },
   showMark() {
-    const config = this.data.dialogConfig;
-    const res = this.data.data.wx_mark;
     this.setData({
-      dialogConfig: {
-        ...config,
-        content: res,
-        type: "string",
-        width: "568rpx",
-        height: "100rpx",
-        header: "加微备注",
-      },
-      showDialog: true,
+      CanIseeMark: true,
+    });
+  },
+  copyMark() {
+    //  复制微信号
+    wx.setClipboardData({
+      data: this.data.data.wx_mark,
     });
   },
   showImage() {
@@ -150,5 +151,17 @@ Page({
       },
       showDialog: true,
     });
+  },
+  handleJoin() {
+    this.setData({ btnLoading: true });
+    // 走申请，
+    const id = this.data.data.id;
+    JoinCircle({ id })
+      .then((res) => {
+        Toast(res.message || "等待审核！");
+      })
+      .finally(() => {
+        this.setData({ btnLoading: false });
+      });
   },
 });

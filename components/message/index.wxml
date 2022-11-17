@@ -3,12 +3,13 @@
   <view class="index">
     <text>{{index}}</text>
   </view>
-  <view class="img">
-    <image src="{{data.avatar_url}}" alt="" />
+  <view class="img" wx:if="{{data.form_url}}">
+    <image src="{{data.form_url}}" alt="" />
   </view>
   <view class="content-wrapper" bindtap="onDetail">
     <view class="name">
-      <text>{{data.name}}</text>
+      <text wx:if="{{data.form_type == 'circle-join'}}">圈子申请</text>
+      <text wx:if="{{data.form_type == 'circle-join-success'}}">已加入</text>
     </view>
     <view class="content van-multi-ellipsis--l2">
       <text>{{data.content}}</text>
@@ -19,7 +20,7 @@
     </view>
   </view>
   <!-- 操作栏  -->
-  <view class="action" wx:if="{{hasAction}}" catchtap="onClick">
+  <view class="action" wx:if="{{hasAction && data.CanIdo }}" catchtap="onClick">
     <image src="../../images/action/ellipsis-v.png"></image>
   </view>
 </view>

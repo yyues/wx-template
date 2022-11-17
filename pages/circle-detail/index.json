@@ -1,10 +1,14 @@
 {
+  "navigationBarTitleText": "详情",
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#f5f5f5",
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-tag": "@vant/weapp/tag/index",
     "van-button": "@vant/weapp/button/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

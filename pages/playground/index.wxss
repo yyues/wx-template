@@ -43,6 +43,7 @@
 .circle-wrapper .wrapper .content {
   position: relative;
   padding: 20rpx 24rpx;
+  padding-top: 0;
 }
 .circle-wrapper .wrapper .content .detail {
   flex: 1;

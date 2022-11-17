@@ -277,6 +277,7 @@ Page({
           wx_image_url: "",
           wx_image_out: null,
         },
+        fileList: [],
       });
       return;
     }
@@ -284,7 +285,7 @@ Page({
       hasGroup: data,
       postForm: {
         ...postForm,
-        wx_image_out: moment().add(7, "days").format("YYYY-MM-DD"),
+        wx_image_out: moment().add(7, "days").format("YYYY-MM-DD HH:mm"),
       },
     });
   },

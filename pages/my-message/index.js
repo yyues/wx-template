@@ -1,4 +1,6 @@
-import { getUserAllTodo } from "../../api/todo";
+import { getMyMsg } from "../../api/message";
+import { agreeJoinCircle } from "../../api/circle";
+import Toast from "@vant/weapp/toast/toast";
 Page({
   /**
    * 页面的初始数据
@@ -12,6 +14,9 @@ Page({
     },
     currentList: [],
     beforeList: [],
+    show: false, // 展示底部操作栏
+    current: {},
+    aloading: false, // 同意加载动画
   },
 
   /**
@@ -81,13 +86,13 @@ Page({
       beforeList: arr,
       loading: true,
     });
-    getUserAllTodo(param)
+    getMyMsg(param)
       .then((res) => {
         // 更新数据
         const data =
           type && type === "refresh" ? [...res.rows] : [...arr, ...res.rows];
         this.setData({
-          currentList: [],
+          currentList: data,
         });
         if (type && type === "refresh") {
           // 页面下拉刷新
@@ -107,5 +112,33 @@ Page({
           loading: false,
         });
       });
+  },
+  onDetail(e) {},
+  onClick(e) {
+    this.setData({ show: true, current: this.data.currentList[e.detail] });
+  },
+  onClose() {
+    this.setData({ show: false });
+  },
+  onAgree() {
+    const { form_type, form_id, create_uid, id } = this.data.current;
+    let fn;
+    if (form_type === "circle-join") {
+      const param = {
+        id: form_id,
+        apply_id: create_uid,
+        msgId: id,
+      };
+      fn = agreeJoinCircle(param);
+    }
+    if (!fn) return Toast.fail("系统错误");
+    this.setData({ aloading: true });
+    fn.then((res) => {
+      this.setData({ show: false }, () => {
+        Toast.success("已同意!");
+      });
+    }).finally(() => {
+      this.setData({ aloading: false });
+    });
   },
 });

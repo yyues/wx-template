@@ -1,11 +1,4 @@
 <view class="circle-wrapper">
-  <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}">
-    <view slot="left" class="nav-title">
-      <van-icon name="arrow-left" color="{{global.primaryColor}}" bindtap="onClickLeft" />
-      <view class="content"> <text>圈子</text></view>
-    </view>
-  </van-nav-bar>
   <view class="wrapper">
     <view class="loading" wx:if="{{loading}}">
       <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>

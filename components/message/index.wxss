@@ -2,11 +2,10 @@
   display: flex;
   align-items: center;
   padding: 20rpx;
+  margin-bottom: 10rpx;
 }
 .wrapper .index {
-  width: 22rpx;
   margin-right: 40rpx;
-  text-align: center;
 }
 .wrapper .index text {
   color: #94a3b8;
