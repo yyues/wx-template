@@ -15,6 +15,7 @@
         <view class="up">
           <van-tag plain color="#7A64C1" custom-class='v-tag'>内测</van-tag>
           <van-tag plain color="#5b67ca" custom-class='v-tag' wx:if="{{data.is_current_user}}">我的</van-tag>
+          <van-tag plain color="#4D8076" custom-class='v-tag' wx:if="{{data.IJoin}}">我加入的</van-tag>
         </view>
       </view>
     </view>
@@ -83,7 +84,7 @@
 
     </view>
     <!-- 操作按钮 -->
-    <view class="opeartion" wx:if="{{type == 'publish' && !data.is_current_user}}">
+    <view class="opeartion" wx:if="{{ type == 'publish' && !data.IJoin && !data.is_current_user }}">
       <!--  从公开的页面进入的才有这个按钮 -->
       <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleJoin" loading="{{btnLoading}}" loading-text="请求中" disabled="{{data.current_number == data.max_number}}">
         {{data.current_number !== data.max_number ? '加入' : '圈子已满，无法加入'}}

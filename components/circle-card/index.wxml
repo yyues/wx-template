@@ -19,7 +19,7 @@
     </view>
   </view>
   <!-- 操作栏  -->
-  <view class="action" wx:if="{{hasAction}}" catchtap="onClick">
+  <view class="action" wx:if="{{hasAction && data.is_current_user}}" catchtap="onClick">
     <image src="../../images/action/ellipsis-v.png"></image>
   </view>
 </view>
