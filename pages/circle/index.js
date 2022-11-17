@@ -9,12 +9,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageTitle: "新建圈子",
     type: "add",
     fileList: [],
     show: false, // 展示日期组件
     showTime: false, // 过期时间
-    loading: false,
+    loading: true,
     hasOwner: false, // 是否有圈主的微信号
     hasGroup: false, // 是否有圈子的 微信的图
     postForm: {
@@ -35,31 +34,19 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-    // const type = getLocationParams('type')
-    // this.setData({
-    //   type,
-    // })
-  },
-
+  onReady() {},
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
     const type = getLocationParams("type");
-    this.setData({
-      type,
+    // 调整结构
+    this.setData({ type });
+    // 设置标题
+    wx.setNavigationBarTitle({
+      title: type === "publish" ? "发布" : type === "edit" ? "编辑" : "新建",
     });
-    if (type === "publish") {
-      this.setData({
-        pageTitle: "发布",
-      });
-    }
-    if (type === "edit") {
-      this.setData({
-        pageTitle: "编辑",
-      });
-    }
+    console.log(this.data.uploading);
     if (this.data.uploading) {
       // 上传图片 会走 onshow 方法， 处理一下逻辑就行
       this.setData({
@@ -68,6 +55,8 @@ Page({
     } else {
       if (type !== "add") {
         this.getCiclrDetail();
+      } else {
+        this.setData({ loading: false });
       }
     }
   },
@@ -80,7 +69,16 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {},
+  onUnload() {
+    console.log("onUnload-add-circle");
+    // const type = this.data.type;
+    // if (type == "add") {
+    //   wx.redirectTo({
+    //     url: "/pages/playground/index",
+    //   });
+    //   return;
+    // }
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -287,6 +285,7 @@ Page({
         ...postForm,
         wx_image_out: moment().add(7, "days").format("YYYY-MM-DD HH:mm"),
       },
+      uploading: true,
     });
   },
   onTimingChange(e) {
@@ -315,19 +314,15 @@ Page({
       url: "/pages/playground/index",
     });
   },
-  beforeRead() {
+  beforeRead(event) {
     // 需要在上传前吧 状态设置 true 不然会重新加载界面
-    this.setData({
-      uploading: true,
-    });
+    this.setData({ uploading: true });
+    const { file, callback } = event.detail;
+    callback(true);
   },
   // 上传逻辑接口
   afterRead(event) {
     const { file } = event.detail;
-    this.setData({
-      uploading: true,
-    });
-    console.log("111");
     var _this = this;
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({

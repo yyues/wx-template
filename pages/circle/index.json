@@ -1,4 +1,7 @@
 {
+  "navigationBarTitleText": "新建",
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFF",
   "usingComponents": {
     "van-uploader": "@vant/weapp/uploader/index",
     "van-toast": "@vant/weapp/toast/index",

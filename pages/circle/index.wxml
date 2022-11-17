@@ -1,10 +1,9 @@
 <view class="page-wrapper">
-  <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" z-index="{{999}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
-    <view slot="title" class="nav-title">{{pageTitle}}</view>
-  </van-nav-bar>
-  <block wx:if="{{type === 'add'}}">
-    <view class="add-part">
+  <view class="loading" wx:if="{{loading}}">
+    <image src="../../images/page/loading.gif"></image>
+  </view>
+  <block wx:else>
+    <view class="add-part" wx:if="{{type === 'add'}}">
       <!-- 新建的 部分 很简单 一个名字 和一个头像， 是否定时发布，默认是false -->
       <view class="my-upload">
         <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="{{1}}" preview-size="180px" bind:delete="onDeletePicture" />
@@ -20,11 +19,6 @@
           <text>在我的圈子里可以发布哦！</text>
         </view>
       </view>
-    </view>
-  </block>
-  <view class="wrapper" wx:else>
-    <view class="loading" wx:if="{{loading}}">
-      <image src="../../images/page/loading.gif"></image>
     </view>
     <view class="edit-part" wx:else>
       <!-- 区分 编辑 和 发布 -->
@@ -85,8 +79,8 @@
       <view class="part" wx:if="{{hasGroup}}">
         <view class="title"> <text>微信群聊名片</text></view>
         <view class="content">
-          <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="{{1}}" bind:delete="onDeletePicture">
-            <van-button icon="plus" type="primary" color="#5B67CA" size="small" bind:before-read="beforeRead">上传</van-button>
+          <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="{{1}}" bind:delete="onDeletePicture" use-before-read bind:before-read="beforeRead">
+            <van-button icon="plus" type="primary" color="#5B67CA" size="small">上传</van-button>
           </van-uploader>
         </view>
       </view>
@@ -121,5 +115,5 @@
         <van-button color="#5B67CA" custom-class="my-submit" wx:if="{{ type === 'edit'}}" bind:click="handleEdit" loading="{{btnLoading}}" loading-text="发布中">编辑</van-button>
       </view>
     </view>
-  </view>
+  </block>
 </view>

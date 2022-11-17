@@ -31,10 +31,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.GetList();
     this.setData({
       global: app.globalData,
     });
+    this.GetList();
   },
 
   /**
@@ -45,7 +45,10 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {},
+  onUnload() {
+    console.log("onUnload");
+    this.setData({ data: [] });
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -76,9 +79,12 @@ Page({
    */
   onShareAppMessage() {},
   onAddCircle() {
-    wx.navigateTo({
-      url: "/pages/circle/index?type=add",
-    });
+    wx.redirectTo({
+      url: '/pages/circle/index?type=add',
+    })
+    // wx.navigateTo({
+    //   url: "/pages/circle/index?type=add",
+    // });
   },
   GetList(type) {
     this.setData({
