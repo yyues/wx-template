@@ -73,10 +73,6 @@
         <van-cell title="设置提醒时间" bindtap="onClock" center wx:if="{{!data.is_exist_remind && data.task_status == 'running'}}">
           <image slot="right-icon" class="img" src="../../images/action/clock.png"></image>
         </van-cell>
-        <!-- 邀请小伙伴一起参加 -->
-        <van-cell center title="邀请小伙伴一起参加" wx:if="{{data.is_multiplayer && data.task_status == 'running' }}" center>
-          <van-button slot="right-icon" plain type="info" bindtap='onShareAppMessage' open-type="share" block size="small" color="#5b67ca">一键邀请</van-button>
-        </van-cell>
         <!-- 延期到明天 -->
         <van-cell title="延至明日" bindtap="onDelay" center wx:if="{{data.task_status == 'running'}}">
           <image slot="right-icon" class="img spec" src="../../images/action/delay_v2.png"></image>

@@ -137,6 +137,11 @@ Page({
   onFinish() {
     const id = getLocationParams("id");
     //  完成 需要 更新状态
+    finishTodo({ id }).then((res) => {
+      //  重新走一个请求就行了
+      Toast.success("完成待办啦！");
+      this.onShow();
+    });
   },
   onDelay() {
     // 当前操作 默认会延迟一天， 可以传递延迟天数

@@ -36,7 +36,6 @@ Page({
     this.setData({
       global: app.globalData,
     });
-
     // 隐藏返回 home 按钮
     wx.hideHomeButton();
   },
@@ -49,10 +48,7 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-    console.log("onUnload");
-    this.setData({ data: [] });
-  },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -83,12 +79,9 @@ Page({
    */
   onShareAppMessage() {},
   onAddCircle() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: "/pages/circle/index?type=add",
     });
-    // wx.navigateTo({
-    //   url: "/pages/circle/index?type=add",
-    // });
   },
   GetList(type) {
     this.setData({
@@ -125,14 +118,9 @@ Page({
         });
       });
   },
-  onClickLeft() {
-    wx.switchTab({
-      url: "/pages/home/index",
-    });
-  },
   onDetail(e) {
     const id = e.detail;
-    wx.redirectTo({
+    wx.navigateTo({
       url: "/pages/circle-detail/index?type=publish&id=" + id,
     });
   },
