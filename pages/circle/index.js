@@ -46,7 +46,6 @@ Page({
     wx.setNavigationBarTitle({
       title: type === "publish" ? "发布" : type === "edit" ? "编辑" : "新建",
     });
-    console.log(this.data.uploading);
     if (this.data.uploading) {
       // 上传图片 会走 onshow 方法， 处理一下逻辑就行
       this.setData({
@@ -59,6 +58,8 @@ Page({
         this.setData({ loading: false });
       }
     }
+    // 隐藏返回 home 按钮
+    wx.hideHomeButton();
   },
 
   /**

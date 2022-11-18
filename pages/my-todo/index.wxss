@@ -43,7 +43,6 @@
   padding: 20rpx 24rpx;
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
 }
 .page-wrapper .wrapper .content .detail .wrapper {
   height: 100%;

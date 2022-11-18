@@ -1,69 +1,38 @@
-<view class="wrapper margin-12 padding-10 bg-white   {{checked ? 'selected':'' }}" hover-class="high" catchtap="onClick" data-id="{{data.id}}">
-  <view class="header">
-
-    <view class="left">
-      <view class="content">
-        <text>{{data.content || '明天准时上班！！！'}}</text>
-      </view>
+<view class="wrapper" hover-class="high" catchtap="onClick" data-id="{{data.id}}">
+  <!-- 日期 内容 信息 状态 -->
+  <view class="left" style="background-image: url({{url}});">
+    <text wx:if="{{is_today}}">今</text>
+    <text wx:else>{{ day }}</text>
+  </view>
+  <view class="center">
+    <view class="content">
+      <text>{{data.content}}</text>
     </view>
-    <view class="right">
-      <!-- 瑞幸格式的 时间提示 -->
-      <view class="ruixin" wx:if="{{type !== 'home'}}">
-        {{data.execute_time === today ? '今日' : data.execute_time}}
-      </view>
-    </view>
-  </view>
-  <view class="progress" wx:if="{{data.is_multiplayer}}">
-    <!-- 需要计算 他的进度条长度 等于当前完成人数/ uid 的长度 -->
-  </view>
-  <view class="status" wx:if="{{ type !== 'home'  }}">
-    <image src="./image/finish.png" wx:if="{{data.task_status == 'finish'}}"></image>
-    <image src="./image/delay.png" wx:if="{{data.task_status == 'delay'}}"></image>
-    <image src="./image/no_start.png" wx:if="{{data.is_start && data.task_status == 'running' }}"></image>
-    <image src="./image/running.png" wx:if="{{ !data.is_start  && data.task_status == 'running'}}"></image>
-  </view>
-  <view class="action">
-    <!-- 左边的操作栏 -->
-    <view class="left">
-      <view class="level">
-        <van-tag size="medium" color="#0284c7" wx:if="{{data.level == 0}}">低</van-tag>
-        <van-tag size="medium" color="#6366f1" wx:if="{{data.level == 1}}">中</van-tag>
-        <van-tag size="medium" color="#C464C0" wx:if="{{data.level == 2}}">高</van-tag>
-        <van-tag size="medium" color="#e11d48" wx:if="{{data.level >= 3}}">紧急</van-tag>
-      </view>
+    <view class="info">
+      <!-- 类型 -->
       <view class="type">
-        <image src="{{data.create_url}}"></image>
-        <view class="person" wx:if="{{!data.is_multiplayer}}">
-          <view class="three-more" wx:if="{{data.current_url.length > 2}}">
-          </view>
-        </view>
+        <!-- <van-tag plain wx:if="{{data.task_type == 'person'}}">个人</van-tag> -->
+        <van-tag plain wx:if="{{data.task_type == 'private'}}">公开</van-tag>
+      </view>
+      <!-- 优先级 -->
+      <view class="level">
+        <van-tag plain wx:if="{{data.level == 0}}" color="#7A64C1">低</van-tag>
+        <van-tag plain wx:if="{{data.level == 1}}" color="#0891b2">中</van-tag>
+        <van-tag wx:if="{{data.level == 2}}" color="#f87171">高</van-tag>
+        <van-tag wx:if="{{data.level > 3}}" color="#e11d48">紧急</van-tag>
+      </view>
+      <view class="multiplayer" wx:if="{{data.is_multiplayer}}">
+        <van-tag plain color="#5b67ca" size="samll">多人 {{value}}% </van-tag>
       </view>
     </view>
-    <!-- 右边的操作 -->
-    <view class="right" wx:if="{{type == 'home'}}">
-      <image src="../../images/action/action.png" class="{{ show ? 'active': ''}}" catchtap="showOperation"></image>
-      <view class="operation" wx:if="{{show}}">
-        <view class="item" catchtap="onClock">
-          <view class="image-wrapper">
-            <image src="../../images/action/clock.png"></image>
-          </view>
-        </view>
-        <view class="item" catchtap="onClock">
-          <view class="image-wrapper">
-            <image src="../../images/action/finish.png"></image>
-          </view>
-        </view>
-        <view class="item" catchtap="onClock" wx:if="{{data.is_multiplayer}}">
-          <view class="image-wrapper">
-            <image src="../../images/action/invite.png"></image>
-          </view>
-        </view>
-        <view class="item" catchtap="onClock">
-          <view class="image-wrapper">
-            <image src="../../images/action/delay_v2.png"></image>
-          </view>
-        </view>
-      </view>
+  </view>
+  <view class="right">
+    <!-- 状态栏吧 已完成 进行中 等等 -->
+    <view class="icon">
+      <image src="./image/cycle.png" class="cycle" wx:if="{{data.task_status == 'running' && data.is_cycle_todo}}"></image>
+      <image src="./image/finish.png" wx:elif="{{data.task_status == 'finish' }}"></image>
+      <image src="./image/timeout.png" wx:elif="{{data.task_status == 'delayed' }}"></image>
+      <image src="./image/ing.png" wx:else></image>
     </view>
   </view>
 </view>

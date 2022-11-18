@@ -1,5 +1,6 @@
 .task-wrapper {
-  min-height: 100vh;
+  min-height: calc(100vh - 10rpx);
+  padding-top: 10rpx;
   display: flex;
   flex-direction: column;
 }
@@ -40,5 +41,4 @@
 .task-wrapper .wrapper .content .detail {
   flex: 1;
   padding: 20rpx 24rpx;
-  background-color: #f5f5f5;
 }

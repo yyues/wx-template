@@ -25,7 +25,9 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {},
+  onReady() {
+    this.GetList();
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -34,7 +36,9 @@ Page({
     this.setData({
       global: app.globalData,
     });
-    this.GetList();
+
+    // 隐藏返回 home 按钮
+    wx.hideHomeButton();
   },
 
   /**
@@ -80,8 +84,8 @@ Page({
   onShareAppMessage() {},
   onAddCircle() {
     wx.redirectTo({
-      url: '/pages/circle/index?type=add',
-    })
+      url: "/pages/circle/index?type=add",
+    });
     // wx.navigateTo({
     //   url: "/pages/circle/index?type=add",
     // });

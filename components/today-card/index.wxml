@@ -8,7 +8,7 @@
     </van-checkbox>
   </view>
   <!-- 中间是选择框 -->
-  <view class="card__content">
+  <view class="card__content" bindtap="onClick">
     <!-- 上半部分是标题 -->
     <view class="content">
       <text>{{data.content}}</text>
@@ -33,7 +33,7 @@
     </view>
   </view>
   <!-- 右边是一个操作栏 -->
-  <view class="card__action" bindtap="onClick" wx:if="{{data.is_current_user}}">
-    <image src="../../images/action/ellipsis-v.png"></image>
+  <view class="card__action">
+    <!-- <image src="../../images/action/ellipsis-v.png"></image> -->
   </view>
 </view>

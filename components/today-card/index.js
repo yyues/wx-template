@@ -44,8 +44,11 @@ Component({
       //  需要更新状态
     },
     onClick() {
-      const id = this.data.data.id;
-      const index = this.data.index;
+      const {
+        data: { id, is_current_user },
+        index,
+      } = this.data;
+      if (!is_current_user) return;
       this.triggerEvent("detail", {
         id,
         index,

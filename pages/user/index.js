@@ -41,6 +41,8 @@ Page({
       testUser: wx.getStorageSync("isTest"),
     });
     // WE_APP_BASE_API +  '/public/user/avatar_default.png'
+    // 隐藏返回 home 按钮
+    wx.hideHomeButton();
   },
 
   /**

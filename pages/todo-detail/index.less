@@ -1,283 +1,132 @@
 @import "../../style/index.less";
+
+.page-wrapper {
+  min-height: 100vh;
+  background-color: @page-bg-color;
+  .loading {
+    height: calc(100vh - 180rpx);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content {
+    //  不给一个 统一的margin了
+    background-color: @page-bg-color;
+    min-height: 100vh;
+
+    .header {
+      // margin: @base-size * 2 0;
+      padding: @base-size * 4 @base-size * 2.4;
+      background-color: #fff;
+      display: flex;
+      // align-items: center;
+
+      .avatar {
+        image {
+          width: 128rpx;
+          height: 128rpx;
+          border-radius: 6px;
+        }
+
+        margin-right: @base-size * 2;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        .up {
+          margin-bottom: @base-size;
+
+          label {
+            color: @primary-second-text-color;
+            font-size: @size-14;
+            margin-right: @base-size;
+          }
+
+          text {
+            color: @text-header-color;
+            letter-spacing: 0.07px;
+          }
+        }
+      }
+    }
+    .member {
+      margin: @base-size * 2 0;
+      padding: @primary-theme-padding;
+      background-color: #fff;
+
+      display: flex;
+      flex-wrap: wrap;
+      .member-avatar {
+        width: 96rpx;
+        height: 96rpx;
+        image {
+          width: 100%;
+          height: 100%;
+          border-radius: @primary-radius;
+        }
+        margin-right: @base-size * 2;
+        line-height: 136rpx;
+      }
+      .add {
+        border: 1px dashed #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: @primary-radius;
+      }
+    }
+    .wx {
+      margin: @base-size * 2 0;
+      .wx-circle {
+        display: flex;
+        image {
+          width: 40rpx;
+          height: 40rpx;
+          margin-right: @base-size;
+        }
+        align-items: center;
+      }
+    }
+    .opeartion {
+      margin-top: @base-size * 6;
+      display: flex;
+      justify-content: center;
+    }
+    .wx-wrapper {
+      display: flex;
+      align-items: center;
+      image {
+        width: 32rpx;
+        height: 32rpx;
+        vertical-align: middle;
+        margin-left: @base-size * 2;
+      }
+    }
+  }
+}
 .my-submit {
   min-width: 200rpx;
   &.van-button {
     border-radius: 12rpx;
   }
 }
-
-.detail-page {
-  min-height: 100vh;
-  background-color: @page-bg-color;
-  display: flex;
-  flex-direction: column;
-
-  .wrapper {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-
-    .loading {
-      height: 100%;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-
-      // 错误 样式
-      .error {
-        flex: 1;
-      }
-
-      //  主要样式
-      .detail {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        //  背景 图片
-        .image_bg {
-          image {
-            width: 100%;
-            height: 400rpx;
-            object-fit: cover;
-          }
-        }
-        //  top
-        .top {
-          background-color: #fff;
-          padding: @primary-padding;
-          min-height: 250rpx;
-          // 标题
-          .header {
-            border-radius: @primary-radius;
-            min-height: 160rpx;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            //  标题
-            .content {
-              // margin-bottom: @base-size;
-
-              text {
-                font-size: @size-20;
-                line-height: @line-h-20;
-                color: rgba(23, 23, 37, 1);
-                font-weight: 700;
-              }
-            }
-
-            // 描述
-            .desc {
-              text {
-                font-size: @size-14;
-                line-height: @line-h-14;
-                font-weight: 400;
-                color: rgba(120, 130, 138, 1);
-              }
-            }
-            .action {
-              position: absolute;
-              right: @base-size * 2.4;
-              top: @base-size;
-              padding: 2rpx;
-            }
-            .h-action {
-              border: 2rpx solid @page-bg-color;
-              border-radius: @primary-radius;
-            }
-          }
-
-          // more
-          .more {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: @base-size * 2;
-
-            .author {
-              image {
-                width: 72rpx;
-                height: 72rpx;
-                border-radius: 50%;
-              }
-            }
-            .label {
-              // 标签
-              display: flex;
-              // justify-content: space-evenly;
-              .my-tag {
-                margin-right: @base-size * 2;
-              }
-            }
-          }
-        }
-
-        // bottom
-        .bottom {
-          background-color: @page-bg-color;
-          padding: @primary-padding;
-          // 时间
-          .timeline {
-            border: 1px solid #eee;
-            border-radius: 6px;
-            // background-image: url('http://127.0.0.1:7001/public/card/card_bg.jpg');
-            background-size: contain;
-            background: #fff;
-            box-shadow: 6px 6px 12px #f3f3f3, -6px -6px 12px #f7f7f7;
-            // margin: @primary-padding;
-            padding: @primary-padding;
-            .title {
-              margin-bottom: @base-size * 2;
-              text {
-                font-size: @size-14;
-                font-weight: 500;
-                letter-spacing: 0.7px;
-                line-height: @line-h-14;
-                color: rgba(156, 164, 171, 1);
-              }
-            }
-            .content {
-              border-radius: @primary-radius;
-              border: 2rpx solid @page-bg-color;
-              padding: @primary-padding * 2;
-            }
-            .icon {
-              width: 80rpx;
-              height: 80rpx;
-              background-color: @page-bg-color;
-
-              display: flex;
-              align-items: center;
-              justify-content: center;
-
-              border-radius: @primary-radius;
-              margin-right: @base-size * 2;
-              image {
-                width: 48rpx;
-                height: 48rpx;
-              }
-            }
-            .data {
-              .day {
-                text {
-                  font-size: @size-12;
-                  line-height: @line-h-12;
-                  letter-spacing: 0.06px;
-                  color: rgba(156, 164, 171, 1);
-                  text-align: left;
-                  vertical-align: top;
-                }
-              }
-              .hour {
-                text {
-                  font-size: @size-14;
-                  line-height: @line-h-14;
-                  font-weight: 700;
-                  letter-spacing: 0.07px;
-                }
-              }
-            }
-            .time-range {
-              display: flex;
-              align-items: center;
-              .start,
-              .end {
-                flex: 1;
-                display: flex;
-              }
-            }
-          }
-          // 参与人员
-          .team {
-            margin-top: @base-size * 2;
-            background-color: @primary-bg-color;
-            padding: @primary-padding;
-            border-radius: 6px;
-            .title {
-              margin-bottom: @base-size * 2;
-              text {
-                font-size: @size-14;
-                font-weight: 500;
-                letter-spacing: 0.7px;
-                line-height: @line-h-14;
-                color: rgba(156, 164, 171, 1);
-              }
-            }
-            .content {
-              border-radius: @primary-radius;
-              border: 2rpx solid @page-bg-color;
-              padding: @primary-padding * 2;
-              .empty {
-                text {
-                  color: #a09fd5;
-                }
-              }
-              .wrapper {
-                display: flex;
-                flex-wrap: wrap;
-                image {
-                  width: 80rpx;
-                  height: 80rpx;
-                  border-radius: 50%;
-                  margin: 0 @base-size * 2 @base-size * 2 0;
-                }
-              }
-            }
-          }
-        }
-
-        .operation {
-          flex: 1;
-          padding: @primary-padding;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-      }
-    }
+.add-btn {
+  &.van-button {
+    border: none;
   }
 }
-.actions {
-  padding: @primary-padding;
-  .header {
-    margin-top: @base-size;
-  }
-  .wrapper {
-    margin-top: @base-size * 4;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    .item {
-      flex: 1;
-      padding: @primary-padding;
-      display: flex;
-      flex-direction: column;
-      // justify-content: center;
-      align-items: center;
-      .my-icon {
-        background-color: @page-bg-color;
-        padding: @primary-padding;
-        border-radius: @primary-radius;
-        width: 64rpx;
-        height: 64rpx;
-      }
-      text {
-        margin-top: @base-size;
-        display: block;
-        font-size: @size-14;
-        line-height: @line-h-14;
-        letter-spacing: 0.6px;
-        color: @primary-text-color;
-      }
-    }
+.v-tag {
+  margin-right: @base-size;
+}
+.action-wrapper {
+  padding-bottom: 12vh;
+  .img {
+    width: 40rpx;
+    height: 40rpx;
+    vertical-align: middle;
   }
 }

@@ -1,132 +1,97 @@
-<view class="detail-page">
-  <!-- 导航栏 -->
-  <!-- <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff00;position:absolute" left-arrow bind:click-left="onClickLeft">
-    <view slot="title" class="nav-title">详情</view>
-  </van-nav-bar> -->
-
+<view class="page-wrapper">
   <view class="wrapper">
     <view class="loading" wx:if="{{loading}}">
       <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>
     </view>
     <view class="content" wx:else>
-      <view class="error" wx:if="{{Object.keys(data).length == 0}}">
-        <text>error</text>
+      <!-- 创建者信息 -->
+      <view class="header">
+        <view class="avatar">
+          <image src="{{data.create_url}}"></image>
+        </view>
+        <view class="info">
+          <view class="up">
+            <label>创建者:</label>
+            <text>{{data.create_name}}</text>
+          </view>
+          <view class="up">
+            <van-tag plain color="#7A64C1" custom-class='v-tag'>内测</van-tag>
+            <van-tag plain color="#5b67ca" custom-class='v-tag' wx:if="{{data.is_current_user}}">我的</van-tag>
+            <van-tag plain color="#4D8076" custom-class='v-tag' wx:if="{{data.IJoin}}">我加入的</van-tag>
+          </view>
+        </view>
       </view>
-      <view class="detail" wx:else>
-        <view class="image_bg">
-          <image src="https://picsum.photos/seed/picsum/375/200?grayscale"></image>
+      <!-- 群成员 -->
+      <view class="member" wx:if="{{data.is_multiplayer}}">
+        <view class="member-avatar">
+          <image src="{{data.create_url}}"></image>
         </view>
-        <!-- 主体信息 -->
-        <view class="top">
-          <view class="header" style="{{header}}">
-            <view class="content van-ellipsis">
-              <text>{{data.content}}</text>
-            </view>
-            <view class="desc">
-              <text>{{data.description}}</text>
-            </view>
-            <view class="action" bindtap="onAction" hover-class="h-action" wx:if="{{ data.is_current_user }}">
-              <van-icon name="ellipsis" size="48rpx" />
-            </view>
+        <block wx:for="{{data.member_avatar}}" wx:key="index">
+          <view class="member-avatar">
+            <image src="{{item}}"></image>
           </view>
-          <view class="more">
-            <view class="label">
-              <van-tag color="#5b67ca" size="medium" custom-class="my-tag" wx:if="{{data.is_current_user}}">我的</van-tag>
-              <van-tag color="#FF927A" size="medium" custom-class="my-tag" wx:if="{{data.is_multiplayer}}">多人</van-tag>
-            </view>
-            <view class="author" wx:if="{{false}}">
-              <image src="{{data.create_url}}"></image>
-            </view>
-          </view>
+        </block>
+        <!--  一个添加的按钮 -->
+        <view class="member-avatar add" wx:if="{{ data.is_current_user }}">
+          <!-- <van-icon name="plus" size="24px" color="#94a3b8" /> -->
+          <van-button icon="plus" color="#94a3b8" custom-class="add-btn" plain bindtap='onShareAppMessage' open-type="share" />
         </view>
-        <view class="bottom">
-          <!-- 待办时间 -->
-          <view class="timeline">
-            <view class="title"> <text>时间</text> </view>
-            <view class="content">
-              <!-- 两种情况，一种是截止时间一种是时间范围内 -->
-              <view class="time-range" wx:if="{{data.is_deadline}}">
-                <view class="icon">
-                  <image src="../../images/time_circle.png"></image>
-                </view>
-                <view class="data">
-                  <view class="day"> <text>{{data.execute_time}}</text> </view>
-                  <view class="hour"> <text>至{{data.end_time}}</text> </view>
-                </view>
-              </view>
-              <!-- 这种 是正常情况 -->
-              <view class="time-range" wx:else>
-                <view class="start">
-                  <view class="icon">
-                    <image src="../../images/time_circle.png"></image>
-                  </view>
-                  <view class="data">
-                    <view class="day"> <text>{{data.execute_time}}</text> </view>
-                    <view class="hour"> <text>{{data.start_time}}</text> </view>
-                  </view>
-                </view>
-                <view class="end">
-                  <view class="icon">
-                    <image src="../../images/time_circle.png"></image>
-                  </view>
-                  <view class="data">
-                    <view class="day"> <text>{{data.execute_time}}</text> </view>
-                    <view class="hour"> <text>{{data.end_time}}</text> </view>
-                  </view>
-                </view>
-              </view>
-            </view>
-          </view>
-          <!-- 多人 信息 -->
-          <view class="team" wx:if="{{data.is_multiplayer}}">
-            <!--  -->
-            <view class="title">
-              <text>小伙伴们</text>
-            </view>
-            <view class="content">
-              <view class="empty" wx:if="{{data.current_url.length ==0}}">
-                <text>还没有邀请小伙伴哦，快去邀请吧！</text>
-              </view>
-              <view class="wrapper" wx:else>
-                <image wx:for="data.current_url" wx:key="index" src="{{item}}" lazy-load="{{true}}"></image>
-              </view>
-            </view>
-          </view>
-        </view>
-        <view class="operation">
-          <van-button color="#5B67CA" wx:if="{{type === 'invite'}}" custom-class="my-submit" bind:click="onInvited" loading="{{loading}}" loading-text="接受中">接受邀请</van-button>
-        </view>
+      </view>
+      <!-- 基本信息 -->
+      <van-cell-group>
+        <van-cell title="内容" value="{{data.content}}" />
+        <van-cell title="优先级">
+          <van-tag plain wx:if="{{data.level == 0}}" color="#7A64C1">低</van-tag>
+          <van-tag plain wx:if="{{data.level == 1}}" color="#0891b2">中</van-tag>
+          <van-tag wx:if="{{data.level == 2}}" color="#f87171">高</van-tag>
+          <van-tag wx:if="{{data.level > 3}}" color="#e11d48">紧急</van-tag>
+        </van-cell>
+        <van-cell title="描述" value="{{data.description}}" />
+        <van-cell title="圈子人数" value="{{data.team_number}}" wx:if="{{data.is_multiplayer}}" />
+      </van-cell-group>
+      <!-- 执行时间 -->
+      <view class="wx">
+        <van-cell-group>
+          <van-cell title="执行日期" value="{{data.execute_time}}" />
+          <van-cell title="截止时间" wx:if="{{data.is_deadline}}" value="{{data.end_time}}" />
+          <van-cell title="开始时间" wx:if="{{!data.is_deadline}}" value="{{data.start_time}}" />
+          <van-cell title="结束时间" wx:if="{{!data.is_deadline}}" value="{{data.end_time}}" />
+          <van-cell title="提醒时间" wx:if="{{data.is_exist_remind}}" value="{{data.remind_time}}" />
+        </van-cell-group>
+      </view>
+      <!-- 操作栏  只有 is_current_user -->
+      <view class="action-wrapper" wx:if="{{data.is_current_user}}">
+        <!-- 编辑 -->
+        <van-cell title="编辑" bindtap="onEdit" center>
+          <image slot="right-icon" class="img" src="../../images/action/edit.png"></image>
+        </van-cell>
+        <!-- 完成 -->
+        <van-cell title="完成" bindtap="onFinish" wx:if="{{data.task_status == 'running'}}" center>
+          <image slot="right-icon" class="img" src="../../images/action/success.png"></image>
+        </van-cell>
+        <!-- 设置提醒时间 -->
+        <van-cell title="设置提醒时间" bindtap="onClock" center wx:if="{{!data.is_exist_remind && data.task_status == 'running'}}">
+          <image slot="right-icon" class="img" src="../../images/action/clock.png"></image>
+        </van-cell>
+        <!-- 邀请小伙伴一起参加 -->
+        <van-cell center title="邀请小伙伴一起参加" wx:if="{{data.is_multiplayer && data.task_status == 'running' }}" center>
+          <van-button slot="right-icon" plain type="info" bindtap='onShareAppMessage' open-type="share" block size="small" color="#5b67ca">一键邀请</van-button>
+        </van-cell>
+        <!-- 延期到明天 -->
+        <van-cell title="延至明日" bindtap="onDelay" center wx:if="{{data.task_status == 'running'}}">
+          <image slot="right-icon" class="img spec" src="../../images/action/delay_v2.png"></image>
+        </van-cell>
+        <!-- 删除 -->
+        <van-cell title="删除" center bindtap="onDelete">
+          <image slot="right-icon" class="img" src="../../images/action/delete.png"></image>
+        </van-cell>
       </view>
     </view>
   </view>
-  <van-popup show="{{ show }}" round position="bottom" custom-style="height: max-content;border-radius: 24rpx" bind:close="onClose" closeable>
-    <view class="actions">
-      <view class="header">
-        <text>操作栏</text>
-      </view>
-      <view class="wrapper">
-        <view class="item" bindtap="onEdit">
-          <image src="../../images/action/edit.png" class="my-icon"> </image>
-          <text>编辑</text>
-        </view>
-        <view class="item" bindtap="onDelay">
-          <image src="../../images/action/delay.png" class="my-icon"> </image>
-          <text>延迟</text>
-        </view>
-        <view class="item" bindtap="onFinish">
-          <image src="../../images/action/success.png" class="my-icon"> </image>
-          <text>完成</text>
-        </view>
-        <view class="item" bindtap="onDelete">
-          <image src="../../images/action/delete.png" class="my-icon"> </image>
-          <text>删除</text>
-        </view>
-        <view class="item" bindtap="onInvite" wx:if="{{data.is_multiplayer}}">
-          <image src="../../images/action/share.png" class="my-icon"> </image>
-          <text>邀请</text>
-        </view>
-      </view>
-    </view>
-  </van-popup>
+  <!-- 待办时间 选择提示 -->
+  <van-dialog use-slot show="{{ showTime }}" theme="round" style="--dialog-border-radius: 8px" show-confirm-button="{{false}}">
+    <van-datetime-picker type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" bind:confirm="changeClock" bind:cancel="onClose" />
+  </van-dialog>
   <van-dialog id="van-dialog" />
+  <van-toast id="van-toast" />
 </view>

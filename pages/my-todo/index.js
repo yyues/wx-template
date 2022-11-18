@@ -26,7 +26,10 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {},
+  onReady() {
+    // 渲染时请求数据
+    this.GetList();
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -50,8 +53,8 @@ Page({
         }
       );
     }
-    // 渲染时请求数据
-    this.GetList();
+    // 隐藏返回 home 按钮
+    wx.hideHomeButton();
   },
 
   /**
@@ -103,20 +106,15 @@ Page({
     if (form_type && form_type == "circle") {
       param.task_from_id = form_id;
     }
-    const arr = this.data.currentList;
+    //  刷新的时候 把 之前的数据 清楚掉
+    const arr = type && type === "refresh" ? [] : this.data.currentList;
     //  保留请求前的旧数据
-    this.setData({
-      beforeList: arr,
-      loading: true,
-    });
+    this.setData({ loading: true });
     getUserAllTodo(param)
       .then((res) => {
         // 更新数据
-        const data =
-          type && type === "refresh" ? [...res.rows] : [...arr, ...res.rows];
-        this.setData({
-          currentList: data,
-        });
+        const data = [...arr, ...res.rows];
+        this.setData({ currentList: data });
         if (type && type === "refresh") {
           // 页面下拉刷新
           wx.stopPullDownRefresh({
@@ -131,9 +129,7 @@ Page({
         }
       })
       .finally(() => {
-        this.setData({
-          loading: false,
-        });
+        this.setData({ loading: false });
       });
   },
   handleClick(e) {
@@ -143,8 +139,9 @@ Page({
     });
   },
   goTodoAdd() {
+    const id = getLocationParams("id");
     wx.navigateTo({
-      url: "/pages/add/index?type=my-todo&from=circle",
+      url: "/pages/add/index?type=add&from=user&id=" + id,
     });
   },
 });

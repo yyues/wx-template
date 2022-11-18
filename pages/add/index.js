@@ -54,24 +54,35 @@ Page({
   onShow() {
     const type = getLocationParams("type");
     const id = getLocationParams("id");
+    //  从圈子的 待办 新建 获得的数据
+    const from = getLocationParams("from");
     this.setData({
       type: type ?? "add",
       global: app.globalData,
+    });
+    // 动态设置标题
+    wx.setNavigationBarTitle({
+      title: type && type !== "add" ? "编辑待办" : "新建待办",
     });
     if (type == "edit") {
       //  查详情
       this.getDetail(id);
     }
-    if (type == "my-todo") {
+    //  这种情况是 从 圈子 然后到 我的待办页，再点击新建
+    if (from == "user") {
       const postForm = this.data.postForm;
       this.setData({
         postForm: {
           ...postForm,
           task_type: "private",
+          task_from_id: id,
         },
       });
     }
+    // 查询用户创建的 圈子
     this.GetUserCirlce();
+    // 隐藏返回 home 按钮
+    wx.hideHomeButton();
   },
 
   /**
@@ -124,9 +135,11 @@ Page({
     return true;
   },
   handleSubmit() {
-    const param = this.data.postForm;
+    const param = {
+      ...this.data.postForm,
+      task_cycle: Number(this.data.postForm.task_cycle) || 1,
+    };
     const type = this.data.type;
-
     const res = this.validate(param);
     if (
       this.data.postForm.task_type == "private" &&
@@ -157,9 +170,6 @@ Page({
           btnLoading: false,
         });
       });
-  },
-  onClickLeft() {
-    wx.navigateBack();
   },
   onChange() {},
   showCalender() {
@@ -382,5 +392,9 @@ Page({
         user_circle: res,
       });
     });
+  },
+  backPage() {
+    const from = getLocationParams("from");
+    wx.navigateBack();
   },
 });

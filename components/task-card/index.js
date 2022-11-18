@@ -1,7 +1,5 @@
 import moment from "moment";
-import {
-  WE_APP_BASE_API
-} from "../../env";
+import { WE_APP_BASE_API } from "../../env";
 Component({
   /**
    * 组件的属性列表
@@ -11,11 +9,6 @@ Component({
     hasSelect: {
       type: Boolean,
       value: true,
-    },
-    // 是否有操作栏，默认 false
-    hasAction: {
-      type: Boolean,
-      value: false,
     },
     // 类型，是用来判断使用位置的
     type: {
@@ -57,29 +50,42 @@ Component({
     today: moment().format("YYYY-MM-DD"),
     bg: WE_APP_BASE_API + "/public/card/card_bg.png",
     show: false,
+    day: 1,
+    url: WE_APP_BASE_API + "/public/card/day_bg.png",
+    gradientColor: {
+      "0%": "#ffd01e",
+      "100%": "#ee0a24",
+    },
+    value: 0,
+    is_today:false,
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    
     onClick(e) {
       const id = e.currentTarget.dataset.id;
       this.triggerEvent("onClick", id);
-      
     },
     showOperation(e) {
-      const data = this.data.show
+      const data = this.data.show;
       this.setData({
         show: !data,
       });
     },
     onClock(e) {
-      console.log('1111');
-    }
+      console.log("1111");
+    },
   },
   lifetimes: {
-    ready() {},
+    ready() {
+      const data = this.data.data;
+      this.setData({
+        day: moment(data.execute_time).date(),
+        is_today: data.execute_time == moment().format('YYYY-MM-DD'),
+        value: Number((data.finish_number / data.team_number) * 100).toFixed(1),
+      });
+    },
   },
 });

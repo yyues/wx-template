@@ -24,7 +24,10 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {},
+  onReady() {
+    // 渲染时请求数据
+    this.GetList();
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -34,8 +37,9 @@ Page({
     this.setData({
       currentList: [],
     });
-    // 渲染时请求数据
-    this.GetList();
+
+    // 隐藏返回 home 按钮
+    wx.hideHomeButton();
   },
 
   /**

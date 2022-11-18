@@ -1,9 +1,5 @@
 <view class="task-wrapper">
   <van-dialog id="van-dialog" />
-  <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
-    <view slot="title" class="nav-title">{{showTime}}</view>
-  </van-nav-bar>
   <calendar bind:selectDay="onSelect" class="calendar" />
   <view class="wrapper">
     <view class="loading" wx:if="{{loading}}">

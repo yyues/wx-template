@@ -1,5 +1,7 @@
 {
-  "enablePullDownRefresh": false,
+  "enablePullDownRefresh": true,
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFF",
   "usingComponents": {
     "calendar": "../../components/calendar/calendar",
     "task-card": "../../components/task-card/index"
