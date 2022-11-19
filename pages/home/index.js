@@ -37,10 +37,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-    //  查询今日待办
-    this.GetToday();
-  },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
@@ -52,6 +49,8 @@ Page({
     wx.setNavigationBarTitle({
       title: !!getToken() ? wx.getStorageSync("username") : "Hi!请先登录",
     });
+    //  查询今日待办
+    this.GetToday();
   },
 
   /**

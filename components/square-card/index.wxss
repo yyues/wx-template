@@ -22,6 +22,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
 }
 .wrapper .content-wrapper .name text {
   font-size: 32rpx;
