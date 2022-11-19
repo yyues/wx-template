@@ -1,17 +1,16 @@
 {
-  "name": "ts-we-modules",
+  "name": "weapp-template",
   "version": "1.0.0",
-  "description": "'weapp-template'",
+  "description": "weapp-template",
   "main": "app.js",
   "keywords": [
     "ts",
     "nodules"
   ],
-  "author": "coldblue",
+  "author": "yyue",
   "license": "ISC",
   "dependencies": {
     "@vant/weapp": "^1.6.2",
-    "miniprogram-computed": "^4.0.1",
     "moment": "^2.29.4"
   },
   "devDependencies": {
