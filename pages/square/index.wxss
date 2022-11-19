@@ -1,13 +1,9 @@
-.textarea {
-  min-height: 200rpx !important;
-}
 .part {
   margin-bottom: 32rpx;
   transition: height 0.28s;
 }
 .part .title {
   padding: 0rpx 32rpx;
-  background-color: #fff;
 }
 .part .title text {
   color: #8a8ab2;
@@ -19,7 +15,6 @@
   text-align: left;
 }
 .part .date {
-  background-color: #fff;
   padding: 20rpx 32rpx;
 }
 .part .date .wrapper {
@@ -38,15 +33,22 @@
 .part .wrapper {
   padding: 20rpx 32rpx;
 }
+.part .wrapper .empty {
+  color: #94a3b8;
+  font-size: 28rpx;
+}
 .part .high-date .wrapper {
   border-bottom: 1px solid #5b67ca;
 }
-.my-date-picker {
-  border-top: 1px solid #5b67ca55;
-  border-bottom: 1px solid #5b67ca55;
+.loading {
+  height: calc(100vh - 180rpx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.md-dialog .van-dialog__header--isolated {
-  padding: 20rpx 0;
+.my-switch {
+  vertical-align: middle;
+  margin-left: 20rpx;
 }
 .flex {
   display: flex;
@@ -65,9 +67,6 @@
   margin-bottom: 32rpx;
   padding: 0 32rpx;
   position: relative;
-}
-.config .title {
-  background-color: #fff;
 }
 .config .title text {
   color: #8a8ab2;
@@ -93,9 +92,15 @@
   align-items: center;
   padding: 160rpx 0;
 }
+.my-submit {
+  min-width: 200rpx;
+}
 .my-submit.van-button {
-  min-width: 240rpx;
-  letter-spacing: 4rpx;
   border-radius: 12rpx;
-  font-size: 32rpx;
+}
+.v-tag {
+  margin-right: 10rpx;
+}
+.expecial-wrapper {
+  padding-top: 10rpx;
 }

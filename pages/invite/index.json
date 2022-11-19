@@ -1,4 +1,8 @@
 {
+  "enablePullDownRefresh": true,
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFF",
+  "navigationBarTitleText": "查看邀请",
   "usingComponents": {
     "van-button": "@vant/weapp/button/index"
   }

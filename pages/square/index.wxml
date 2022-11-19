@@ -1,11 +1,7 @@
 <view class="expecial-wrapper">
-  <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" z-index="{{999}}" custom-style="background: #ffffff;" left-arrow bind:click-left="onClickLeft">
-    <view slot="title" class="nav-title">{{pageTitle}}</view>
-  </van-nav-bar>
   <view class="part">
     <view class="title"> <text>内容</text> </view>
-    <van-field value="{{ postForm.content }}" type="textarea" placeholder="发布你的想法吧！" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize="{{true}}" input-class="textarea" bind:change="onTaskChange" />
+    <van-field value="{{ postForm.content }}" type="textarea" placeholder="发布你的想法吧！" border="{{ true }}" clearable="{{ true }}" maxlength="{{max_content}}" show-word-limit="{{true}}" autosize="{{true}}" input-class="textarea" bind:input="onTaskChange" />
   </view>
   <!-- 是否发布到圈子 -->
   <view class="config flex">
@@ -18,8 +14,18 @@
       </van-checkbox>
     </view>
   </view>
+  <!-- 选择公开的时候应该选择一个 所属的圈子 -->
+  <view class="task-form part" wx:if="{{ postForm.is_exist_form }}">
+    <view class="title"><text>归属圈子</text></view>
+    <view class="wrapper">
+      <van-radio-group wx:if="{{user_circle.length !== 0}}" value="{{ postForm.form_id }}" bind:change="onTaskIdChange">
+        <van-radio wx:for="{{user_circle}}" wx:key="index" name="{{item.id}}" shape="square" checked-color="{{global.primaryColor}}" label-class="my-radio">{{item.name}}</van-radio>
+      </van-radio-group>
+      <text class="empty" wx:else> 还没有自己的圈子哦!</text>
+    </view>
+  </view>
   <view class="operation">
-    <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{loading}}" loading-text="请求中">发布</van-button>
+    <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleSubmit" loading="{{bloading}}" loading-text="请求中">发布</van-button>
   </view>
   <van-toast id="van-toast" />
 </view>

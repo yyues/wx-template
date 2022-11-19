@@ -138,9 +138,7 @@ Page({
           icon: "success",
           duration: 1500,
           success() {
-            wx.reLaunch({
-              url: "/pages/my-circle/index",
-            });
+            wx.navigateBack()
           },
         });
       })

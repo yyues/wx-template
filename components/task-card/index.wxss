@@ -2,13 +2,24 @@
   padding: 10rpx;
   display: flex;
   align-items: center;
-  margin-bottom: 10rpx;
+  margin-bottom: 20rpx;
+  border-radius: 8rpx;
+}
+.wrapper .index {
+  width: 22rpx;
+  margin-right: 40rpx;
+  text-align: center;
+}
+.wrapper .index text {
+  color: #94a3b8;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 18px;
 }
 .wrapper .left {
   width: 64rpx;
   height: 64rpx;
   background-size: 100% 100%;
-  margin-right: 40rpx;
+  margin-right: 20rpx;
   text-align: center;
 }
 .wrapper .left text {

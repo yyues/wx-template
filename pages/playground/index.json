@@ -5,6 +5,7 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index",
-    "circle-card": "../../components/circle-card/index"
+    "circle-card": "../../components/circle-card/index",
+    "square-card": "../../components/square-card/index"
   }
 }

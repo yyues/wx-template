@@ -17,8 +17,7 @@ Page({
    */
   data: {
     hasLogin: !!getToken(),
-    avatar_url: wx.getStorageSync("avatar_url"),
-    username: wx.getStorageSync("username"),
+    username: "",
     data: [], // 今日代办的数据
     arr: [], // loading 对应的状态数组集合
     show: false, // 展示底部弹窗的状态值
@@ -38,19 +37,21 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {},
+  onReady() {
+    //  查询今日待办
+    this.GetToday();
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
     initTabActive.bind(this)(0);
-    this.setData({
-      avatar_url: wx.getStorageSync("avatar_url"),
-      username: wx.getStorageSync("username"),
-      hasLogin: !!getToken(),
+    this.setData({ hasLogin: !!getToken() });
+    // 设置 标题 为用户账号
+    wx.setNavigationBarTitle({
+      title: !!getToken() ? wx.getStorageSync("username") : "Hi!请先登录",
     });
-    this.GetToday();
   },
 
   /**
@@ -92,7 +93,13 @@ Page({
       },
     };
   },
-  onSearch() {},
+  onSearch(e) {
+    wx.navigateTo({
+      url: `/pages/search/index?form=home&keyword=${
+        typeof e.detail == "string" ? e.detail : ""
+      }`,
+    });
+  },
   onCancel() {
     this.setData({
       searchValue: "",
@@ -105,7 +112,12 @@ Page({
   },
   onCircle() {
     wx.navigateTo({
-      url: "/pages/playground/index",
+      url: "/pages/playground/index?from=circle",
+    });
+  },
+  onSquare() {
+    wx.navigateTo({
+      url: "/pages/playground/index?from=square",
     });
   },
   GetToday() {

@@ -1,33 +1,27 @@
 <view class="page-wrapper">
-  <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background: #7174E2;">
-    <view slot="left" class="nav-title">
-      <view class="user" wx:if="{{ hasLogin}}">
-        <image class="image" src="{{avatar_url}}"></image>
-        <view class="name">
-          <text>{{username}}</text>
-        </view>
-      </view>
-      <text wx:else>Hi,请先登录！</text>
-    </view>
-  </van-nav-bar>
   <!-- 搜索框 -->
-  <van-search value="{{ searchValue }}" placeholder="搜索你创建的任务" bind:search="onSearch" bind:cancel="onCancel" custom-class="my-search" background="#7174E2" custom-class="white-input" />
+  <view class="search" bindtap="onSearch">
+    <van-search value="{{ searchValue }}" disabled placeholder="搜索你创建的任务" bind:search="onSearch" bind:cancel="onCancel" />
+  </view>
   <!-- 快捷操作栏 -->
   <view class="operation-wrapper">
     <view class="extal" bindtap="onTodo">
-      <image src="../../images/user/todo.png"></image>
+      <image src="../../images/home/todo_white.png"></image>
       <text>待办</text>
     </view>
     <view class="extal" bindtap="onCircle">
-      <image src="../../images/user/circle.png"></image>
+      <image src="../../images/home/circle.png"></image>
       <text>圈子</text>
     </view>
-    <view class="extal">
-      <image src="../../images/user/message.png"></image>
+    <view class="extal" bindtap="onSquare">
+      <image src="../../images/home/square.png"></image>
       <text>广场</text>
     </view>
+    <view class="image" wx:if="{{true}}">
+      <image src="https://image.meiye.art/pic_oIb7gOMTHStnn-6hG6M02" class="img" mode="aspectFill"></image>
+    </view>
   </view>
+
   <!-- 今日待办 -->
   <view class="today">
     <view class="header">

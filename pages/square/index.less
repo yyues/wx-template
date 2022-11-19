@@ -1,7 +1,4 @@
-.textarea {
-  min-height: 200rpx !important;
-}
-
+@import "../../style/index.less";
 .part {
   margin-bottom: 32rpx;
   transition: height 0.28s;
@@ -19,12 +16,9 @@
       letter-spacing: 0px;
       text-align: left;
     }
-
-    background-color: #fff;
   }
 
   .date {
-    background-color: #fff;
     padding: 20rpx 32rpx;
 
     .wrapper {
@@ -46,6 +40,10 @@
 
   .wrapper {
     padding: 20rpx 32rpx;
+    .empty {
+      color: @primary-second-text-color;
+      font-size: @size-14;
+    }
   }
 
   .high-date {
@@ -54,17 +52,16 @@
     }
   }
 }
-
-.my-date-picker {
-  // background-color: #5B67CA55;
-  border-top: 1px solid #5b67ca55;
-  border-bottom: 1px solid #5b67ca55;
+.loading {
+  height: calc(100vh - 180rpx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.md-dialog {
-  .van-dialog__header--isolated {
-    padding: 20rpx 0;
-  }
+.my-switch {
+  vertical-align: middle;
+  margin-left: @base-size * 2;
 }
 
 .flex {
@@ -97,8 +94,6 @@
       letter-spacing: 0px;
       text-align: left;
     }
-
-    background-color: #fff;
   }
 
   .desc {
@@ -121,10 +116,14 @@
 }
 
 .my-submit {
+  min-width: 200rpx;
   &.van-button {
-    min-width: 240rpx;
-    letter-spacing: 4rpx;
     border-radius: 12rpx;
-    font-size: 32rpx;
   }
+}
+.v-tag {
+  margin-right: @base-size;
+}
+.expecial-wrapper {
+  padding-top: @base-size;
 }

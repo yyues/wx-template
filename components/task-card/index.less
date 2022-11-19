@@ -3,12 +3,23 @@
   padding: @base-size;
   display: flex;
   align-items: center;
-  margin-bottom: @base-size;
+  margin-bottom: @base-size * 2;
+  border-radius: @primary-radius;
+  .index {
+    width: 22rpx;
+    margin-right: @base-size* 4;
+    text-align: center;
+    text {
+      color: @primary-second-text-color;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      font-size: 18px;
+    }
+  }
   .left {
     width: 64rpx;
     height: 64rpx;
     background-size: 100% 100%;
-    margin-right: @base-size * 4;
+    margin-right: @base-size * 2;
     text-align: center;
     text {
       line-height: 64rpx;

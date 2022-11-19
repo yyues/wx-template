@@ -1,0 +1,15 @@
+<view class="wrapper {{checked ? 'selected':'' }}" hover-class="high">
+  <!-- 左中右布局， 参照 网易云样式，不再使用 card 样式 -->
+  <view class="img">
+    <image src="{{data.create_url}}" alt="" />
+  </view>
+  <view class="content-wrapper" bindtap="onDetail">
+    <view class="name">
+      <text>{{data.create_name || '假如爱有天意'}}</text>
+      <van-tag plain wx:if="{{data.is_current_user}}" color="#7A64C1">本人</van-tag>
+    </view>
+    <view class="content van-multi-ellipsis--l2">
+      <text>{{data.content}}</text>
+    </view>
+  </view>
+</view>

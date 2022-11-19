@@ -1,8 +1,7 @@
 {
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFF",
   "usingComponents": {
-    "van-calendar": "@vant/weapp/calendar/index",
-    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-dialog": "@vant/weapp/dialog/index",
     "van-radio": "@vant/weapp/radio/index",
     "van-radio-group": "@vant/weapp/radio-group/index",
     "van-checkbox": "@vant/weapp/checkbox/index",

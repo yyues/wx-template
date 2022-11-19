@@ -11,12 +11,19 @@
       <view class="empty" wx:if="{{data.length == 0}}">
         <image src="../../images/page/empty.png"></image>
         <view class="message">
-          <text>没有公开的圈子，真是奇怪哦！</text>
+          <text wx:if="{{from == 'circle'}}">没有公开的圈子，真是奇怪哦！</text>
+          <text wx:else>没有发布的动态，快去发布吧！</text>
         </view>
       </view>
       <view class="detail" wx:else>
         <!-- 主要数据 -->
-        <circle-card wx:for="{{data}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" index="{{index}}" binddetail="onDetail" />
+        <block wx:if="{{from == 'circle'}}">
+          <circle-card wx:for="{{data}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" index="{{index + 1}}" binddetail="onDetail" />
+        </block>
+        <block wx:else>
+          <!-- 动态其实是个很简单的东西  只能 展示/新增 而不具备太多的东西 -->
+          <square-card wx:for="{{data}}" wx:key="id" type="user" data="{{item}}" index="{{index + 1}}" />
+        </block>
       </view>
     </view>
   </view>

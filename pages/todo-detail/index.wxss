@@ -17,6 +17,7 @@
   padding: 40rpx 24rpx;
   background-color: #fff;
   display: flex;
+  margin-bottom: 20rpx;
 }
 .page-wrapper .content .header .avatar {
   margin-right: 20rpx;

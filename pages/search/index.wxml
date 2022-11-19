@@ -1,2 +1,16 @@
-<!--pages/search/index.wxml-->
-<text>pages/search/index.wxml</text>
+<view class="search-page">
+  <!-- 搜索框 -->
+  <van-search value="{{ searchValue }}" placeholder="搜索个人/公开的待办" bind:search="onSearch" bind:cancel="onCancel" />
+  <view class="loading" wx:if="{{loading}}">
+    <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>
+  </view>
+  <view class="content" wx:else>
+    <view class="empty" wx:if="{{list.length == 0}}">
+      <van-empty image="search" description="没有查找到数据哦！" />
+    </view>
+    <block wx:else>
+
+      <task-card wx:for="{{list}}" index="{{index + 1 }}" wx:key="id" hasIndex type="search" key="searchValue" hasAction="{{false}}" data="{{item}}" bindonClick="handleClick" />
+    </block>
+  </view>
+</view>

@@ -1,5 +1,8 @@
 <view class="wrapper" hover-class="high" catchtap="onClick" data-id="{{data.id}}">
   <!-- 日期 内容 信息 状态 -->
+  <view class="index" wx:if="{{!!index}}">
+    <text>{{index}}</text>
+  </view>
   <view class="left" style="background-image: url({{url}});">
     <text wx:if="{{is_today}}">今</text>
     <text wx:else>{{ day }}</text>
@@ -26,7 +29,7 @@
       </view>
     </view>
   </view>
-  <view class="right">
+  <view class="right" wx:if="{{hasAction}}">
     <!-- 状态栏吧 已完成 进行中 等等 -->
     <view class="icon">
       <image src="./image/cycle.png" class="cycle" wx:if="{{data.task_status == 'running' && data.is_cycle_todo}}"></image>

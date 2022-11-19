@@ -46,12 +46,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
+  onReady() {
     const type = getLocationParams("type");
     const id = getLocationParams("id");
     //  从圈子的 待办 新建 获得的数据
@@ -64,8 +59,8 @@ Page({
     wx.setNavigationBarTitle({
       title: type && type !== "add" ? "编辑待办" : "新建待办",
     });
+    //  查详情
     if (type == "edit") {
-      //  查详情
       this.getDetail(id);
     }
     //  这种情况是 从 圈子 然后到 我的待办页，再点击新建
@@ -81,8 +76,14 @@ Page({
     }
     // 查询用户创建的 圈子
     this.GetUserCirlce();
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
     // 隐藏返回 home 按钮
-    wx.hideHomeButton();
+    // wx.hideHomeButton();
   },
 
   /**
@@ -159,9 +160,7 @@ Page({
           type: "success",
           message: type == "add" ? "创建成功！" : "保存成功！",
           onClose: () => {
-            wx.switchTab({
-              url: "/pages/home/index",
-            });
+            wx.navigateBack();
           },
         });
       })

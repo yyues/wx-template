@@ -15,9 +15,8 @@
       </view>
       <view class="detail" wx:else>
         <view class="wrapper">
-          <task-card wx:for="{{currentList}}" wx:key="id" hasSelect="{{false}}" type="user" data="{{item}}" bindonClick="handleClick" />
+          <task-card wx:for="{{currentList}}" wx:key="id" type="user" data="{{item}}" bindonClick="handleClick" />
         </view>
-
       </view>
       <view class="add" wx:if="{{type=='circle' && master}}" bindtap="goTodoAdd">
         <van-icon name="plus" color="#fff" size="32px" />

@@ -24,7 +24,8 @@
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "custom": true,
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/home/index",
         "text": "首页"
       },
@@ -35,7 +36,6 @@
     ]
   },
   "usingComponents": {
-    "van-nav-bar": "@vant/weapp/nav-bar/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    
   }
 }

@@ -1,13 +1,6 @@
 @import "../../style/index.less";
 
-.nav-title {
-  // color: @text-header-color;
-  color: white;
-}
-
 .user-page {
-  height: 100vh;
-
   //  背景色 面板
   .bg {
     width: 100%;
@@ -19,7 +12,6 @@
     // justify-content: flex-end;
     align-items: flex-end;
     padding: 0 0 @base-size * 4 @base-size * 4;
-
     .wrapper {
       image {
         width: 120rpx;
@@ -41,17 +33,11 @@
       }
     }
   }
-
-  background-color: @page-bg-color;
-
   .part {
-    &:first-child {
-      margin-top: @base-size * 2;
-    }
-
-    padding: @primary-padding 0;
+    border: 1px solid #f5f5f5;
+    margin: @primary-theme-padding;
+    border-radius: @primary-radius * 2;
   }
-
   .my-switch {
     vertical-align: middle;
     margin-left: @base-size * 2;

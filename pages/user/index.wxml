@@ -1,12 +1,5 @@
 <view class="user-page">
-  <van-dialog id="van-dialog" />
-  <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" custom-style="background-color: #ffffff00">
-    <view slot="title" class="nav-title">我的</view>
-    <!-- <view slot="left" class="nav-left">
-      <van-icon name="arrow-left" color="#fff" />
-    </view> -->
-  </van-nav-bar>
+
   <!-- 一个背景色， -->
   <view class="bg">
     <view class="wrapper">
@@ -24,38 +17,30 @@
   <!-- 换成传统的单元格了 -->
   <view class="part">
     <!-- 基础的我的功能 -->
-    <van-cell-group inset>
+    <van-cell-group border="{{false}}">
       <van-cell title="我的待办" is-link link-type="navigateTo" url="/pages/my-todo/index" />
       <van-cell title="我的圈子" is-link link-type="navigateTo" url="/pages/my-circle/index" />
-      <van-cell title="我的消息" is-link link-type="navigateTo" url="/pages/my-message/index" />
-    </van-cell-group>
-  </view>
-  <!-- 开发测试功能 -->
-  <view class="part">
-    <!-- 系统功能 -->
-    <van-cell-group inset>
-      <van-cell title="切换测试账号" center>
-        <van-switch checked="{{ testUser }}" active-color="{{global.primaryColor}}" size='16px' slot="right-icon" custom-class='my-switch' bind:change="onAccountChange" />
-      </van-cell>
+      <van-cell title="我的消息" border="{{false}}" is-link link-type="navigateTo" url="/pages/my-message/index" />
     </van-cell-group>
   </view>
   <view class="part">
     <!-- 系统功能 -->
-    <van-cell-group inset>
+    <van-cell-group border="{{false}}">
       <van-cell title="清除缓存" center>
         <van-button plain color="{{global.primaryColor}}" size="mini" bindtap="clearCache">清除</van-button>
       </van-cell>
-      <van-cell title="深色模式" center>
+      <van-cell title="深色模式" center border="{{false}}">
         <van-switch checked="{{ appDeep }}" active-color="{{global.primaryColor}}" size='16px' slot="right-icon" custom-class='my-switch' bind:change="onDeepChange" />
       </van-cell>
     </van-cell-group>
   </view>
   <view class="part">
     <!-- 最后的最后 -->
-    <van-cell-group inset>
+    <van-cell-group border="{{false}}">
       <van-cell title="请喝一杯coffee" is-link />
-      <van-cell title="关于开发者" is-link />
+      <van-cell title="关于开发者" is-link border="{{false}}" />
     </van-cell-group>
   </view>
   <van-toast id="van-toast" />
+  <van-dialog id="van-dialog" />
 </view>

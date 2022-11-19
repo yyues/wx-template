@@ -13,7 +13,7 @@ Page({
     inviteLoading: false,
     data: {},
     type: "user",
-    show: false,
+    showTime: false,
     minHour: 0,
     currentDate: "",
   },
@@ -95,7 +95,7 @@ Page({
 
   onClose() {
     this.setData({
-      show: false,
+      showTime: false,
     });
   },
   changeClock(e) {
@@ -202,7 +202,6 @@ Page({
       });
     this.setData({
       showTime: true,
-      show: false,
       minHour: moment().hours(),
       currentDate: moment().format("HH:mm"),
     });

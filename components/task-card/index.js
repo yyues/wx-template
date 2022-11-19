@@ -5,8 +5,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    // 是否有选择框，默认 false
-    hasSelect: {
+    // 是否有操作栏，默认 true
+    hasAction: {
       type: Boolean,
       value: true,
     },
@@ -22,8 +22,7 @@ Component({
     },
     //  渲染列表的 索引值，
     index: {
-      type: Number,
-      default: 0,
+      type: Number
     },
     data: {
       type: Object,
@@ -39,6 +38,15 @@ Component({
         is_master: true,
         is_cycle_todo: false,
       },
+    },
+    hasIndex: {
+      type: Boolean,
+      default: false,
+    },
+    // key 查询值 高亮当前输入的值
+    key: {
+      type: String,
+      required: false,
     },
   },
 
@@ -57,7 +65,7 @@ Component({
       "100%": "#ee0a24",
     },
     value: 0,
-    is_today:false,
+    is_today: false,
   },
 
   /**
@@ -83,7 +91,7 @@ Component({
       const data = this.data.data;
       this.setData({
         day: moment(data.execute_time).date(),
-        is_today: data.execute_time == moment().format('YYYY-MM-DD'),
+        is_today: data.execute_time == moment().format("YYYY-MM-DD"),
         value: Number((data.finish_number / data.team_number) * 100).toFixed(1),
       });
     },

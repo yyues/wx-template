@@ -1,4 +1,8 @@
 {
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFF",
+  "navigationBarTitleText": "账户登录",
+  "homeButton": "true",
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
     "van-icon": "@vant/weapp/icon/index",

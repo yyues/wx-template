@@ -72,3 +72,11 @@ export const receiveTodoById = (data) => {
     data
   })
 }
+// 查询所有符合条件的 数据
+export const findAllTodo = (data) => {
+  return request.axios({
+    method: "GET",
+    url: "/todo/findAll",
+    data,
+  });
+};

@@ -39,11 +39,36 @@
     min-height: 360rpx;
   }
 }
-
+.image {
+  position: absolute;
+  // padding: @primary-theme-padding;
+  .img {
+    width: 100%;
+    height: 100%;
+    border-radius: @primary-radius * 2;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba(#000000, 0.46);
+    }
+  }
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
 .operation-wrapper {
   display: flex;
-  margin: @base-size * 4 0;
-  min-width: 100%;
+  margin: @primary-theme-padding;
+  height: 200rpx;
+  position: relative;
+  align-items: center;
 }
 // van -操作栏
 .extal {
@@ -60,7 +85,8 @@
     font-size: @size-14;
     line-height: @line-h-14;
     margin-top: @base-size * 2.5;
-    color: @primary-text-color;
+    letter-spacing: 0.8px;
+    color: white;
   }
 }
 .white-input {
