@@ -1,0 +1,39 @@
+@import '../../style/index.less';
+
+.wrapper {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  .loading,
+  .empty {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    .detail {
+      flex: 1;
+      padding: @primary-theme-padding;
+    }
+
+    .add {
+      background-color: @primary-color;
+      position: absolute;
+      padding: @base-size * 2;
+      border-radius: 50%;
+      right: 90rpx;
+      bottom: 180rpx;
+    }
+  }
+}

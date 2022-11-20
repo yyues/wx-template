@@ -1,0 +1,39 @@
+<view class="wrapper">
+  <!-- loading 说明 列表页进入统一loading  因为要先处理类型判断 -->
+  <view class="loading" wx:if="{{loading}}">
+    <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>
+  </view>
+  <view class="content" wx:else>
+    <view class="header" wx:if="{{ hasHeader }}">
+      <!-- 只有 待办页 和  搜索页 才有 头部内容 -->
+      <calendar bind:selectDay="onHeaderSelect" wx:if="{{key === 'todo'}}" />
+      <van-search value="{{ searchValue }}" placeholder="搜索个人/公开的待办" wx:if="{{key === 'search'}}" bind:search="onHeaderSearch" bind:cancel="onSearchCancel" />
+    </view>
+    <view class="empty" wx:if="{{list.length === 0 }}">
+      <van-empty description="{{emptyMsg}}" />
+    </view>
+    <view class="detail" wx:else>
+      <block wx:for="{{list}}" wx:key="id">
+        <!-- 先处理有头部的数据 -->
+        <!-- 第一个是 搜索页面的  -->
+        <task-card wx:if="{{key === 'search'}}" index="{{index + 1 }}" hasIndex type="search" key="{{searchValue}}" hasAction="{{false}}" data="{{item}}" binddetail="onDetail" />
+        <!-- 第二个是 待办 todo  -->
+        <task-card wx:if="{{key === 'todo'}}" type="todo" data="{{item}}" binddetail="onDetail" />
+        <!-- 圈子 -->
+        <circle-card wx:if="{{key === 'circle'}}" data="{{item}}" index="{{index}}" binddetail="onDetail" bindaction="onAction" />
+        <!-- 动态 -->
+        <square-card wx:if="{{key === 'square'}}" data="{{item}}" index="{{index + 1}}" />
+        <!-- 我的/圈子的待办 -->
+        <task-card wx:if="{{key === 'my-todo'}}" data="{{item}}" binddetail="onDetail" />
+        <!-- 我的圈子 -->
+        <circle-card wx:if="{{key === 'my-circle'}}" hasAction data="{{item}}" index="{{index}}" bindclick="onAction" binddetail="onDetail" />
+        <!-- 我的消息 -->
+        <msg-card wx:if="{{key === 'my-message'}}" hasAction data="{{item}}" index="{{index}}" bindaction="onAction" />
+      </block>
+    </view>
+    <view class="add" bindtap="handleAdd" wx:if="{{showAdd}}">
+      <van-icon name="plus" color="#fff" size="24px" />
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+</view>

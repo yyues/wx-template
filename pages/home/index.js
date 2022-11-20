@@ -1,6 +1,10 @@
 // pages/home/index.js
-import { initTabActive } from "../../utils/index";
-import { getToken } from "../../utils/action";
+import {
+  initTabActive
+} from "../../utils/index";
+import {
+  getToken
+} from "../../utils/action";
 import {
   getTodoByDate,
   delayCurrentToDo,
@@ -9,7 +13,9 @@ import {
 } from "../../api/todo";
 import Toast from "@vant/weapp/toast/toast";
 import moment from "moment";
-import { TEMP_ID } from "../../env";
+import {
+  TEMP_ID
+} from "../../env";
 
 Page({
   /**
@@ -44,7 +50,9 @@ Page({
    */
   onShow() {
     initTabActive.bind(this)(0);
-    this.setData({ hasLogin: !!getToken() });
+    this.setData({
+      hasLogin: !!getToken()
+    });
     // 设置 标题 为用户账号
     wx.setNavigationBarTitle({
       title: !!getToken() ? wx.getStorageSync("username") : "Hi!请先登录",
@@ -79,8 +87,7 @@ Page({
     var that = this;
     return {
       title: "快进来看看吧", //要请时的卡片头部
-      imageUrl:
-        "https://image.meiye.art/pic_1628437229638?imageMogr2/thumbnail/450x/interlace/1", //图片地址
+      imageUrl: "https://image.meiye.art/pic_1628437229638?imageMogr2/thumbnail/450x/interlace/1", //图片地址
       path: "/pages/invite/index?type=home&key=todo&id=" + that.data.current.id, // 用户点击首先进入的当前页面
       success: function (res) {
         // 转发成功
@@ -93,10 +100,9 @@ Page({
     };
   },
   onSearch(e) {
+    const url = `/pages/list/index?key=search&from=home&type=add`
     wx.navigateTo({
-      url: `/pages/search/index?form=home&keyword=${
-        typeof e.detail == "string" ? e.detail : ""
-      }`,
+      url,
     });
   },
   onCancel() {
@@ -105,26 +111,31 @@ Page({
     });
   },
   onTodo() {
+    const url = `/pages/list/index?key=todo&from=home&type=add`
     wx.navigateTo({
-      url: "/pages/task/index",
+      url,
     });
   },
   onCircle() {
+    const url = `/pages/list/index?key=circle&from=home&type=add`
     wx.navigateTo({
-      url: "/pages/playground/index?from=circle",
+      url,
     });
   },
   onSquare() {
+    const url = `/pages/list/index?key=square&from=home&type=add`
     wx.navigateTo({
-      url: "/pages/playground/index?from=square",
+      url,
     });
   },
   GetToday() {
-    this.setData({ loading: true });
+    this.setData({
+      loading: true
+    });
     // 今天可能也有完成的， 要查没有完成的
     getTodoByDate({
-      task_status: "running",
-    })
+        task_status: "running",
+      })
       .then((res) => {
         this.setData({
           data: res,
@@ -132,23 +143,35 @@ Page({
         });
       })
       .finally(() => {
-        this.setData({ loading: false });
+        this.setData({
+          loading: false
+        });
       });
   },
   onFinish(e) {
-    const { id, index } = e.detail;
+    const {
+      id,
+      index
+    } = e.detail;
     //  加载loading
     const arr = this.data.arr;
     arr[index] = true;
-    this.setData({ arr });
-    finishTodo({ id }).then((res) => {
+    this.setData({
+      arr
+    });
+    finishTodo({
+      id
+    }).then((res) => {
       //  重新走一个请求就行了
       Toast.success("完成待办啦！");
       this.GetToday();
     });
   },
   onDetail(e) {
-    const { id, index } = e.detail;
+    const {
+      id,
+      index
+    } = e.detail;
     const res = this.data.data[index];
     // 展开 底部操作栏
     this.setData({
@@ -160,10 +183,14 @@ Page({
     });
   },
   hidenAction() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   },
   onEdit() {
-    const { id } = this.data.current;
+    const {
+      id
+    } = this.data.current;
     wx.navigateTo({
       url: "/pages/add/index?type=edit&id=" + id,
     });
@@ -207,7 +234,9 @@ Page({
               message: "设置成功！",
             });
             _this.GetToday();
-            _this.setData({ showTime: false });
+            _this.setData({
+              showTime: false
+            });
           });
         } else {
           Toast.fail({
@@ -220,7 +249,9 @@ Page({
     });
   },
   onClose() {
-    this.setData({ showTime: false });
+    this.setData({
+      showTime: false
+    });
   },
   onDelay() {
     const id = this.data.current.id;

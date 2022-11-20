@@ -1,7 +1,7 @@
-<view class="wrapper {{checked ? 'selected':'' }}" hover-class="high">
+<view class="wrapper" hover-class="high">
   <!-- 左中右布局， 参照 网易云样式，不再使用 card 样式 -->
   <view class="index">
-    <text>{{index}}</text>
+    <text>{{index + 1}}</text>
   </view>
   <view class="img">
     <image src="{{data.avatar_url}}" alt="" />
@@ -19,7 +19,7 @@
     </view>
   </view>
   <!-- 操作栏  -->
-  <view class="action" wx:if="{{hasAction && data.is_current_user}}" catchtap="onClick">
+  <view class="action" wx:if="{{hasAction && data.is_current_user}}" catchtap="onAction">
     <image src="../../images/action/ellipsis-v.png"></image>
   </view>
 </view>

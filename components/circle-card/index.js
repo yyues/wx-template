@@ -17,15 +17,9 @@ Component({
       type: Object,
       value: {},
     },
-    // 是否 被选中
-    checked: {
-      type: Boolean,
-      default: false,
-    },
     // 数组的索引值
     index: {
-      type: Number,
-      default: 0,
+      type: Number
     },
   },
 
@@ -41,12 +35,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onClick() {
-      this.triggerEvent("click", this.data.index);
-    },
     onDetail() {
-      console.log("我点击了 圈子 的数据");
       this.triggerEvent("detail", this.data.data.id);
+    },
+    onAction() {
+      this.triggerEvent("action", this.data.data.id);
     },
   },
   lifetimes: {

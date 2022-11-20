@@ -55,7 +55,7 @@ Page({
       .then((res) => {
         this.setData({
           data: res,
-          todoUrl: `/pages/my-todo/index?type=circle&name=${res.name}&id=${res.id}&master=${res.is_current_user}`,
+          todoUrl: `/pages/list/index?key=my-todo&type=add&from=circle-detail&name=${res.name}&id=${res.id}&master=${res.is_current_user}`,
         });
         // 设置标题
         wx.setNavigationBarTitle({ title: res.name });

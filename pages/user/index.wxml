@@ -18,9 +18,9 @@
   <view class="part">
     <!-- 基础的我的功能 -->
     <van-cell-group border="{{false}}">
-      <van-cell title="我的待办" is-link link-type="navigateTo" url="/pages/my-todo/index" />
-      <van-cell title="我的圈子" is-link link-type="navigateTo" url="/pages/my-circle/index" />
-      <van-cell title="我的消息" border="{{false}}" is-link link-type="navigateTo" url="/pages/my-message/index" />
+      <van-cell title="我的待办" is-link link-type="navigateTo" url="/pages/list/index?key=my-todo&from=user&type=add" />
+      <van-cell title="我的圈子" is-link link-type="navigateTo" url="/pages/list/index?key=my-circle&from=user&type=add" />
+      <van-cell title="我的消息" border="{{false}}" is-link link-type="navigateTo" url="/pages/list/index?key=my-message&from=user&type=add" />
     </van-cell-group>
   </view>
   <view class="part">

@@ -1,5 +1,7 @@
 import moment from "moment";
-import { WE_APP_BASE_API } from "../../env";
+import {
+  WE_APP_BASE_API
+} from "../../env";
 Component({
   /**
    * 组件的属性列表
@@ -75,6 +77,11 @@ Component({
     onClick(e) {
       const id = e.currentTarget.dataset.id;
       this.triggerEvent("onClick", id);
+    },
+    onDetail() {
+      const id = this.data.data.id
+      this.triggerEvent("detail", id);
+      console.log('dddddd');
     },
     showOperation(e) {
       const data = this.data.show;

@@ -1,0 +1,16 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFF",
+  "usingComponents": {
+    "calendar": "../../components/calendar/calendar",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "task-card": "../../components/task-card/index",
+    "circle-card": "../../components/circle-card/index",
+    "square-card": "../../components/square-card/index",
+    "msg-card": "../../components/message/index"
+  }
+}

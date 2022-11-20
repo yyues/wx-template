@@ -1,4 +1,4 @@
-<view class="wrapper" hover-class="high" catchtap="onClick" data-id="{{data.id}}">
+<view class="wrapper" hover-class="high" data-id="{{data.id}}">
   <!-- 日期 内容 信息 状态 -->
   <view class="index" wx:if="{{!!index}}">
     <text>{{index}}</text>
@@ -7,7 +7,7 @@
     <text wx:if="{{is_today}}">今</text>
     <text wx:else>{{ day }}</text>
   </view>
-  <view class="center">
+  <view class="center" bindtap="onDetail">
     <view class="content">
       <text>{{data.content}}</text>
     </view>

@@ -45,7 +45,7 @@ Component({
       this.triggerEvent("click", this.data.index);
     },
     onDetail() {
-      this.triggerEvent("detail", this.data.data.id);
+      this.triggerEvent("action", this.data.data.id);
     },
   },
   lifetimes: {
