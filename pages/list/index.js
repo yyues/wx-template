@@ -45,6 +45,10 @@ Page({
       keyword: "",
     }, // 分页查询条件 用来实现下拉刷新
     refersh: false, // 是否下拉刷新中
+    isTask: false, // 是否是 待办卡片
+    isCircle: false, // 是否是 圈子卡片
+    isMsg: false, // 是否是 消息卡片
+    isSquare: false, // 是否是 动态卡片
   },
 
   /**
@@ -64,8 +68,13 @@ Page({
       from,
       type,
       loading: true,
+      // todo/ circle / square / search / my-todo / my-circle / my-message / my-square
       showAdd: ['circle', 'square'].includes(key) || expec,
       hasHeader: ['search', 'todo'].includes(key),
+      isTask: ['search', 'todo', 'my-todo'].includes(key), // 是否是 待办卡片
+      isCircle: ['circle', 'my-circle'].includes(key), // 是否是 圈子卡片
+      isSquare: ['square'].includes(key),
+      isMsg: ['my-message'].includes(key), // 是否是 消息卡片
     })
     //  设置页面标题
     this.GetTitle()

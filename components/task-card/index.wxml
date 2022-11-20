@@ -3,10 +3,6 @@
   <view class="index" wx:if="{{!!index}}">
     <text>{{index}}</text>
   </view>
-  <view class="left" style="background-image: url({{url}});">
-    <text wx:if="{{is_today}}">今</text>
-    <text wx:else>{{ day }}</text>
-  </view>
   <view class="center" bindtap="onDetail">
     <view class="content">
       <text>{{data.content}}</text>
@@ -28,6 +24,10 @@
         <van-tag plain color="#5b67ca" size="samll">多人 {{value}}% </van-tag>
       </view>
     </view>
+  </view>
+  <view class="left" style="background-image: url({{url}});">
+    <text wx:if="{{is_today}}">今</text>
+    <text wx:else>{{ day }}</text>
   </view>
   <view class="right" wx:if="{{hasAction}}">
     <!-- 状态栏吧 已完成 进行中 等等 -->

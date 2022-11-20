@@ -4,11 +4,11 @@
     <image src="{{data.create_url}}" alt="" />
   </view>
   <view class="content-wrapper" bindtap="onDetail">
-    <view class="name">
+    <view class="content ">
       <text>{{data.create_name || '假如爱有天意'}}</text>
-      <van-tag plain wx:if="{{data.is_current_user}}" color="#7A64C1">本人</van-tag>
+      <!-- <van-tag plain wx:if="{{data.is_current_user}}" color="#7A64C1">本人</van-tag> -->
     </view>
-    <view class="content van-multi-ellipsis--l2">
+    <view class="van-multi-ellipsis--l2 name">
       <text>{{data.content}}</text>
     </view>
   </view>

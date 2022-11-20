@@ -14,21 +14,14 @@
     </view>
     <view class="detail" wx:else>
       <block wx:for="{{list}}" wx:key="id">
-        <!-- 先处理有头部的数据 -->
-        <!-- 第一个是 搜索页面的  -->
-        <task-card wx:if="{{key === 'search'}}" index="{{index + 1 }}" hasIndex type="search" key="{{searchValue}}" hasAction="{{false}}" data="{{item}}" binddetail="onDetail" />
-        <!-- 第二个是 待办 todo  -->
-        <task-card wx:if="{{key === 'todo'}}" type="todo" data="{{item}}" binddetail="onDetail" />
-        <!-- 圈子 -->
-        <circle-card wx:if="{{key === 'circle'}}" data="{{item}}" index="{{index}}" binddetail="onDetail" bindaction="onAction" />
+        <!-- 待办类 统一卡片  -->
+        <task-card wx:if="{{isTask}}" index="{{index + 1 }}" data="{{item}}" binddetail="onDetail" />
+        <!-- 圈子类 统一卡片  -->
+        <circle-card wx:if="{{isCircle}}" data="{{item}}" index="{{index}}" binddetail="onDetail" />
         <!-- 动态 -->
-        <square-card wx:if="{{key === 'square'}}" data="{{item}}" index="{{index + 1}}" />
-        <!-- 我的/圈子的待办 -->
-        <task-card wx:if="{{key === 'my-todo'}}" data="{{item}}" binddetail="onDetail" />
-        <!-- 我的圈子 -->
-        <circle-card wx:if="{{key === 'my-circle'}}" hasAction data="{{item}}" index="{{index}}" bindclick="onAction" binddetail="onDetail" />
+        <square-card wx:if="{{isSquare}}" data="{{item}}" index="{{index + 1}}" />
         <!-- 我的消息 -->
-        <msg-card wx:if="{{key === 'my-message'}}" hasAction data="{{item}}" index="{{index}}" bindaction="onAction" />
+        <msg-card wx:if="{{isMsg}}" hasAction data="{{item}}" index="{{index}}" bindaction="onAction" />
       </block>
     </view>
     <view class="add" bindtap="handleAdd" wx:if="{{showAdd}}">
