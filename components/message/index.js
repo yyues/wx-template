@@ -42,9 +42,6 @@ Component({
    */
   methods: {
     onClick() {
-      this.triggerEvent("click", this.data.index);
-    },
-    onDetail() {
       this.triggerEvent("action", this.data.data.id);
     },
   },

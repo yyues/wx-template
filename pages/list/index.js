@@ -20,6 +20,7 @@ import {
 } from "../../api/message";
 import moment from "moment";
 import Toast from "@vant/weapp/toast/toast";
+const app = getApp()
 Page({
 
   /**
@@ -49,6 +50,9 @@ Page({
     isCircle: false, // 是否是 圈子卡片
     isMsg: false, // 是否是 消息卡片
     isSquare: false, // 是否是 动态卡片
+    show: false, // 底部操作栏的展示开关
+    actions: [], // 对应的数组 
+    description: '', //描述信息，用来替代提示
   },
 
   /**
@@ -455,21 +459,34 @@ Page({
 
   },
   onAction(e) {
+    const msgId = e.detail
     const key = this.data.key
-    let url
-    switch (key) {
-      case 'circle':
-        url = "/pages/circle-detail/index?type=publish&id=" + e.detail
-        break;
-      case 'my-todo':
-        url = "/pages/todo-detail/index?type=publish&id=" + e.detail
-        break;
-      case 'my-circle':
-        url = "/pages/circle-detail/index?type=user&id=" + e.detail
-        break;
-      default:
-        return Toast.fail('点击错误')
-    }
+    if (key !== 'my-message') return Toast.fail('不能操作的哦!')
+    const actions = [{
+        name: '同意',
+        color: app.globalData.primaryColor,
+        loading: false,
+        disabled: false,
+        msgId
+      },
+      {
+        name: '拒绝',
+        color: '#ef4444',
+        loading: false,
+        disabled: false,
+        msgId
+      },
+      {
+        name: '忽略',
+        loading: false,
+        disabled: false,
+        msgId
+      }
+    ]
+    this.setData({
+      actions,
+      show: true
+    })
   },
   handleAdd() {
     const key = this.data.key
@@ -493,5 +510,56 @@ Page({
         url,
       })
     }
+  },
+  onActionClose() {
+    this.setData({
+      show: false,
+      description: ''
+    })
+  },
+  onActionSelect(e) {
+    console.log('点击操作栏的事件', e.detail);
+    const {
+      msgId,
+      name
+    } = e.detail
+    const data = this.data.list.filter(i => i.id == msgId)[0]
+    if (!data) return Toast.fail('数据错误！')
+    if (name == '同意') {
+      this.onAgree(data)
+    }
+  },
+  onAgree(data) {
+    const {
+      form_type,
+      form_id,
+      create_uid,
+      id
+    } = data;
+    let fn;
+    if (form_type === "circle-join") {
+      const param = {
+        id: form_id,
+        apply_id: create_uid,
+        msgId: id,
+      };
+      fn = agreeJoinCircle(param);
+    }
+    const actions = this.data.actions
+    actions[0].loading = true
+    this.setData({
+      actions
+    })
+    if (!fn) return Toast.fail("系统错误");
+    fn.then((res) => {
+      this.setData({
+        description: '已同意'
+      })
+    }).finally(() => {
+      actions[0].loading = false
+      this.setData({
+        actions
+      })
+    })
   }
 })

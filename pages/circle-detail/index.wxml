@@ -36,14 +36,14 @@
       </view>
     </view>
     <!-- 基本信息 -->
-    <van-cell-group>
+    <van-cell-group wx:if="{{data.status !== 're_publish'}}">
       <van-cell title="内容" value="{{data.content}}" />
       <van-cell title="目标" value="{{data.target}}" />
       <van-cell title="描述" value="{{data.description}}" />
       <van-cell title="圈子人数" value="{{data.current_number}}" />
     </van-cell-group>
     <!-- 涉及到微信相关的数据 -->
-    <view class="wx" wx:if="{{ type !== 'publish' }}">
+    <view class="wx" wx:if="{{ type !== 'publish' && data.status !== 're_publish'  }}">
       <van-cell-group>
         <van-cell title="圈主微信">
           <!-- 右侧图标 应该是个眼睛 ，点击后 变成 copy-->
@@ -72,11 +72,11 @@
       </van-cell-group>
     </view>
     <!-- 圈子下归属的 所有待办   -->
-    <view class="all-todo" wx:if="{{ type !== 'publish' }}">
+    <view class="all-todo" wx:if="{{ type !== 'publish' && data.status !== 're_publish' }}">
       <van-cell title="待办" is-link link-type="navigateTo" url="{{todoUrl}}" />
     </view>
     <!-- 打卡规则 只有创建者才有打卡规则的按钮 -->
-    <view class="all-todo" wx:if="{{ type !== 'publish' && data.is_current_user}}">
+    <view class="all-todo" wx:if="{{ type !== 'publish' && data.is_current_user && data.status !== 're_publish'}}">
       <van-cell title="打卡规则" is-link />
     </view>
     <!-- 用户 打卡按钮   -->
@@ -88,6 +88,12 @@
       <!--  从公开的页面进入的才有这个按钮 -->
       <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleJoin" loading="{{btnLoading}}" loading-text="请求中" disabled="{{data.current_number == data.max_number}}">
         {{data.current_number !== data.max_number ? '加入' : '圈子已满，无法加入'}}
+      </van-button>
+    </view>
+    <!-- 发布阿牛 -->
+    <view class="opeartion" wx:if="{{data.status == 're_publish' && data.is_current_user}}">
+      <van-button color="#5B67CA" custom-class="my-submit" bind:click="handlePublish">
+        去发布
       </van-button>
     </view>
   </view>

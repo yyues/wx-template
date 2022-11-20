@@ -6,7 +6,7 @@
     <view class="add-part" wx:if="{{type === 'add'}}">
       <!-- 新建的 部分 很简单 一个名字 和一个头像， 是否定时发布，默认是false -->
       <view class="my-upload">
-        <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="{{1}}" preview-size="180px" bind:delete="onDeletePicture" />
+        <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="{{1}}" preview-size="180px" max-size="860000" bind:delete="onDeletePicture" />
       </view>
       <!-- <view class="title">名称</view> -->
       <van-field value="{{ postForm.name }}" placeholder="请输入圈子名称" border="{{ true }}" clearable="{{ true }}" input-class="my-input" bind:input="onNameChange" />

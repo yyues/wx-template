@@ -24,9 +24,11 @@
         <msg-card wx:if="{{isMsg}}" hasAction data="{{item}}" index="{{index}}" bindaction="onAction" />
       </block>
     </view>
-    <view class="add" bindtap="handleAdd" wx:if="{{showAdd}}">
+    <view class="add" bindtap="handleAdd" wx:if="{{showAdd && !refersh}}">
       <van-icon name="plus" color="#fff" size="24px" />
     </view>
   </view>
+  <!-- 能够直接在列表页操作的也就只有 message -->
+  <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onActionClose" bind:select="onActionSelect" bind:cancel="onActionClose" cancel-text="取消" description="{{description }}"  />
   <van-toast id="van-toast" />
 </view>

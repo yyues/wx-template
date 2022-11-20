@@ -1,19 +1,24 @@
 @import "../../style/index.less";
+
 .wrapper {
   display: flex;
   align-items: flex-start;
-  padding: @base-size * 2;
+  padding: @base-size;
   border-radius: @primary-radius;
+
   .img {
     width: 72rpx;
     height: 72rpx;
+
     image {
       width: 100%;
       height: 100%;
-      border-radius: 8rpx;
+      border-radius: 50%;
     }
+
     margin-right: @base-size * 2;
   }
+
   .content-wrapper {
     flex: 1;
 
@@ -24,6 +29,7 @@
       text-overflow: ellipsis;
       display: flex;
       align-items: center;
+
       text {
         font-size: @size-16;
         line-height: @line-h-16;
@@ -31,9 +37,11 @@
         margin-right: @base-size;
       }
     }
+
     .content {
       width: 88%;
       min-height: @line-h-12 * 2;
+
       text {
         font-size: @size-12;
         line-height: @line-h-12;
@@ -41,10 +49,12 @@
       }
     }
   }
+
   .right {
     justify-self: flex-end;
   }
 }
+
 .high {
   border-radius: @primary-radius;
   background-color: @primary-hover-bg-color;

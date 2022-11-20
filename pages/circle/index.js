@@ -1,9 +1,18 @@
 import Toast from "@vant/weapp/toast/toast";
 import moment from "moment";
-import { circleSave, getDetailById } from "../../api/circle";
-import { WE_APP_BASE_API } from "../../env";
-import { getToken } from "../../utils/action";
-import { getLocationParams } from "../../utils/index";
+import {
+  circleSave,
+  getDetailById
+} from "../../api/circle";
+import {
+  WE_APP_BASE_API
+} from "../../env";
+import {
+  getToken
+} from "../../utils/action";
+import {
+  getLocationParams
+} from "../../utils/index";
 Page({
   /**
    * 页面的初始数据
@@ -41,7 +50,9 @@ Page({
   onShow() {
     const type = getLocationParams("type");
     // 调整结构
-    this.setData({ type });
+    this.setData({
+      type
+    });
     // 设置标题
     wx.setNavigationBarTitle({
       title: type === "publish" ? "发布" : type === "edit" ? "编辑" : "新建",
@@ -55,7 +66,9 @@ Page({
       if (type !== "add") {
         this.getCiclrDetail();
       } else {
-        this.setData({ loading: false });
+        this.setData({
+          loading: false
+        });
       }
     }
     // 隐藏返回 home 按钮
@@ -315,13 +328,21 @@ Page({
   },
   beforeRead(event) {
     // 需要在上传前吧 状态设置 true 不然会重新加载界面
-    this.setData({ uploading: true });
-    const { file, callback } = event.detail;
+    this.setData({
+      uploading: true
+    });
+    const {
+      file,
+      callback
+    } = event.detail;
+    console.log(file);
     callback(true);
   },
   // 上传逻辑接口
   afterRead(event) {
-    const { file } = event.detail;
+    const {
+      file
+    } = event.detail;
     var _this = this;
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
@@ -339,24 +360,22 @@ Page({
         const data = JSON.parse(res.data);
         const url = WE_APP_BASE_API + data.data.url;
         // 上传完成需要更新 fileList
-        const fileList = [
-          {
-            ...file,
-            url,
-            deletable: true,
-          },
-        ];
+        const fileList = [{
+          ...file,
+          url,
+          deletable: true,
+        }, ];
         const postForm = _this.data.postForm;
         const info =
-          _this.data.type === "add"
-            ? {
-                ...postForm,
-                avatar_url: url,
-              }
-            : {
-                ...postForm,
-                wx_image_url: url,
-              };
+          _this.data.type === "add" ?
+          {
+            ...postForm,
+            avatar_url: url,
+          } :
+          {
+            ...postForm,
+            wx_image_url: url,
+          };
         _this.setData({
           fileList,
           postForm: info,
@@ -394,17 +413,15 @@ Page({
     });
     const id = getLocationParams("id");
     getDetailById({
-      id,
-    })
+        id,
+      })
       .then((res) => {
-        const item = !!res.wx_image_url
-          ? [
-              {
-                url: res.wx_image_url,
-                deletable: true,
-              },
-            ]
-          : [];
+        const item = !!res.wx_image_url ?
+          [{
+            url: res.wx_image_url,
+            deletable: true,
+          }, ] :
+          [];
         this.setData({
           postForm: res,
           hasOwner: !!res.wx_master,
