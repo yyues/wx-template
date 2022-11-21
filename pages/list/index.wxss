@@ -16,6 +16,9 @@
   flex-direction: column;
   position: relative;
 }
+.wrapper .content .header {
+  margin: 10rpx 0;
+}
 .wrapper .content .detail {
   flex: 1;
   padding: 20rpx 24rpx;

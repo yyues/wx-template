@@ -5,7 +5,7 @@
   </view>
   <view class="center" bindtap="onDetail">
     <view class="content">
-      <text>{{data.content}}</text>
+      <text>{{data.content || '假如爱有天意'}}</text>
     </view>
     <view class="info">
       <!-- 类型 -->

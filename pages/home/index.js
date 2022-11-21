@@ -274,4 +274,14 @@ Page({
       });
     });
   },
+  toInvite() {
+    wx.navigateTo({
+      url: '/pages/invite/index',
+    })
+  },
+  toLogin() {
+    wx.navigateTo({
+      url: '/pages/login/index',
+    })
+  }
 });

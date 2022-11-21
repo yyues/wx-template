@@ -1,108 +1,59 @@
 @import "../../style/index.less";
-.nav-left {
-  display: flex;
-  align-items: center;
-
-  image {
-    width: 42rpx;
-    height: 42rpx;
-  }
-
-  text {
-    margin-left: @base-size * 2;
-    color: @text-header-color;
-    letter-spacing: 0.07px;
-    line-height: @line-h-16;
-    font-size: @size-16;
-  }
-}
-.invite-wrapper {
+.page {
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
-  // background: linear-gradient(to bottom, rgb(189, 195, 199), rgb(44, 62, 80));
-  background-attachment: fixed;
-  background-color: @page-bg-color;
-  .content {
+  .loading {
     flex: 1;
-
-    .loading {
-      height: calc(100vh - 180rpx);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     display: flex;
+    align-items: center;
     justify-content: center;
   }
-  // 下面就是主要的样式了
-  .card {
-    width: 84%;
-    height: 66vh;
-    margin-top: 4vh;
-    padding: @base-size * 2;
-    box-shadow: 0 10px 15px 3px rgb(0 0 0 / 0.1), 0 4px 6px 3px rgb(0 0 0 / 0.1);
-    border-radius: 12rpx;
-    // background: inherit;
-    background-color: #fff;
-
-    // &::after {
-    //   position: absolute;
-    //   content: "";
-    //   background: inherit;
-    //   top: 0;
-    //   left: 0;
-    //   right: 0;
-    //   bottom: 0;
-    //   filter: blur(10px);
-    //   z-index: 0;
-    // }
-    .header {
-      display: flex;
-      image {
-        width: 96rpx;
-        height: 96rpx;
-        border-radius: 4px;
-      }
-      margin-bottom: @base-size * 2;
-    }
+  .content {
+    position: relative;
+    margin: @primary-theme-padding;
+    padding: 0 @base-size * 2;
     .desc {
-      // color: white;
-      // font-size: 18px;
-      // line-height: 36px;
-    }
-  }
-  .content-wrapper,
-  .detail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    .content {
-      display: flex;
-      align-items: center;
-      // justify-content: center;
-      margin-top: @base-size * 4;
-      text-align: center;
-      label {
+      text {
         font-size: @size-14;
-        // line-height: @line-h-14;
+        line-height: @line-h-14;
         color: @primary-second-text-color;
       }
-      text {
-        font-size: @size-20;
-        // line-height: @line-h-20;
-        color: @text-header-color;
+    }
+    .header {
+      border-radius: @primary-radius;
+      .img {
+        image {
+          width: 144rpx;
+          height: 144rpx;
+          border-radius: 50%;
+        }
+      }
+      .user_name {
+        margin: @base-size 0;
+        text {
+          color: @text-header-color;
+          font-size: 36rpx;
+          line-height: 54rpx;
+        }
       }
     }
-  }
-
-  .my-submit {
-    min-width: 200rpx;
-    &.van-button {
-      border-radius: 12rpx;
+    .image {
+      margin: @base-size * 2 0;
+      image {
+        border-radius: @primary-radius;
+        width: 100%;
+        height: 800rpx;
+      }
+    }
+    .operation {
+      margin-top: 4vh;
+      .my-submit {
+        width: 100%;
+        min-width: 240rpx;
+        border-radius: 12rpx;
+        letter-spacing: 0.7rpx;
+      }
     }
   }
 }

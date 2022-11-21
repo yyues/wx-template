@@ -21,7 +21,6 @@
       <image src="https://image.meiye.art/pic_oIb7gOMTHStnn-6hG6M02" class="img" mode="aspectFill"></image>
     </view>
   </view>
-
   <!-- 今日待办 -->
   <view class="today">
     <view class="header">

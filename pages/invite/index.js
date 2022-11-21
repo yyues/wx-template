@@ -30,7 +30,7 @@ Page({
    */
   onShow() {
     //  检查是圈子还是待办
-    const key = getLocationParams("key");
+    const key = getLocationParams("key") || 'todo';
     this.setData({ key });
     if (key === "todo") {
       this.GetTodoInfo();

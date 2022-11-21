@@ -1,35 +1,28 @@
-<view class="invite-wrapper">
-  <!-- 邀请页，有两个部分一个是待办，一个是圈子 -->
-  <view class="content">
-    <view class="loading" wx:if="{{loading}}">
-      <image src="../../images/page/loading.gif"></image>
-    </view>
-    <block wx:else>
-      <!-- 主要的内容了 -->
-      <view class="detail card">
-        <view class="content-wrapper">
-          <view class="header">
-            <image src="{{todoInfo.create_url}}"></image>
-          </view>
-          <view class="desc">
-            <text wx:if="{{key == 'todo'}}">邀请你参加TA创建的待办</text>
-            <text wx:if="{{key == 'circle'}}">邀请你参加TA创建的圈子</text>
-          </view>
-          <view class="content">
-            <label wx:if="{{key == 'todo'}}">待办内容：</label>
-            <label wx:if="{{key == 'circle'}}">圈子：</label>
-          </view>
-          <view class="content">
-            <text wx:if="{{key == 'todo'}}">{{todoInfo.content}}</text>
-            <text wx:if="{{key == 'circle'}}">{{todoInfo.name}}</text>
-          </view>
-        </view>
-        <view class="operation">
-          <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleJoin" loading="{{btnLoading}}" loading-text="请求中" disabled="{{isFull}}">
-            {{ isFull ? '成员已满，无法加入':'加入'}}
-          </van-button>
-        </view>
+<view class="page">
+  <!-- loading  -->
+  <view class="loading" wx:if="{{loading}}">
+    <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>
+  </view>
+  <view class="content" wx:else>
+    <view class="header">
+      <view class="img">
+        <image src="{{todoInfo.create_url || '../../images/user/avatar_default.png'}}"></image>
       </view>
-    </block>
+      <view class="user_name">
+        <text>{{todoInfo.create_name || '假如爱有天意'}}</text>
+      </view>
+      <view class="desc">
+        <text wx:if="{{key === 'todo'}}">邀请你加入TA创建的待办</text>
+        <text wx:if="{{key === 'circle'}}">邀请你加入TA创建的圈子</text>
+      </view>
+      <view class="image">
+        <image src="https://image.meiye.art/pic_Tu5iegX_de--pjGmX1vEU?imageMogr2/thumbnail/450x/interlace/1"></image>
+      </view>
+    </view>
+    <view class="operation">
+      <van-button color="#5B67CA" custom-class="my-submit" bind:click="handleJoin" loading="{{btnLoading}}" loading-text="请求中" disabled="{{isFull}}">
+        {{ isFull ? '成员已满，无法加入':'加入'}}
+      </van-button>
+    </view>
   </view>
 </view>
