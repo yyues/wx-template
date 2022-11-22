@@ -23,7 +23,7 @@
       </view>
       <!-- 群成员 -->
       <view class="member" wx:if="{{data.is_multiplayer}}">
-        <view class="member-avatar">
+        <view class="member-avatar" wx:if="{{false}}">
           <image src="{{data.create_url}}"></image>
         </view>
         <block wx:for="{{data.member_avatar}}" wx:key="index">
@@ -47,7 +47,7 @@
           <van-tag wx:if="{{data.level > 3}}" color="#e11d48">紧急</van-tag>
         </van-cell>
         <van-cell title="描述" value="{{data.description}}" />
-        <van-cell title="圈子人数" value="{{data.team_number}}" wx:if="{{data.is_multiplayer}}" />
+        <van-cell title="参与人数" value="{{data.team_number}}" wx:if="{{data.is_multiplayer}}" />
       </van-cell-group>
       <!-- 执行时间 -->
       <view class="wx">
@@ -61,26 +61,7 @@
       </view>
       <!-- 操作栏  只有 is_current_user -->
       <view class="action-wrapper" wx:if="{{data.is_current_user}}">
-        <!-- 编辑 -->
-        <van-cell title="编辑" bindtap="onEdit" center>
-          <image slot="right-icon" class="img" src="../../images/action/edit.png"></image>
-        </van-cell>
-        <!-- 完成 -->
-        <van-cell title="完成" bindtap="onFinish" wx:if="{{data.task_status == 'running'}}" center>
-          <image slot="right-icon" class="img" src="../../images/action/success.png"></image>
-        </van-cell>
-        <!-- 设置提醒时间 -->
-        <van-cell title="设置提醒时间" bindtap="onClock" center wx:if="{{!data.is_exist_remind && data.task_status == 'running'}}">
-          <image slot="right-icon" class="img" src="../../images/action/clock.png"></image>
-        </van-cell>
-        <!-- 延期到明天 -->
-        <van-cell title="延至明日" bindtap="onDelay" center wx:if="{{data.task_status == 'running'}}">
-          <image slot="right-icon" class="img spec" src="../../images/action/delay_v2.png"></image>
-        </van-cell>
-        <!-- 删除 -->
-        <van-cell title="删除" center bindtap="onDelete">
-          <image slot="right-icon" class="img" src="../../images/action/delete.png"></image>
-        </van-cell>
+        <van-cell title="操作" bind:click="showAction" is-link />
       </view>
     </view>
   </view>
@@ -88,6 +69,7 @@
   <van-dialog use-slot show="{{ showTime }}" theme="round" style="--dialog-border-radius: 8px" show-confirm-button="{{false}}">
     <van-datetime-picker type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" bind:confirm="changeClock" bind:cancel="onClose" />
   </van-dialog>
+  <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onActionClose" bind:select="onActionSelect" bind:cancel="onActionClose" cancel-text="取消" description="{{description }}" />
   <van-dialog id="van-dialog" />
   <van-toast id="van-toast" />
 </view>

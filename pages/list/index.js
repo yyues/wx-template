@@ -416,7 +416,6 @@ Page({
   onDetail(e) {
     const key = this.data.key;
     let url;
-    console.log("onDetail", key);
     switch (key) {
       case "search":
         url = "/pages/todo-detail/index?id=" + e.detail;

@@ -83,6 +83,9 @@
     <view class="user-card" wx:if="{{ type !== 'publish' }}">
 
     </view>
+    <view class="wx" wx:if="{{data.is_current_user}}">
+      <van-cell title="操作" bind:click="showAction" is-link />
+    </view>
     <!-- 操作按钮 -->
     <view class="opeartion" wx:if="{{ type == 'publish' && !data.IJoin && !data.is_current_user }}">
       <!--  从公开的页面进入的才有这个按钮 -->
@@ -114,5 +117,6 @@
       </view>
     </view>
   </van-dialog>
+  <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onActionClose" bind:select="onActionSelect" bind:cancel="onActionClose" cancel-text="取消" description="{{description}}" />
   <van-toast id="van-toast" />
 </view>

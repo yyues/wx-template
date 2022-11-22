@@ -61,6 +61,7 @@
   line-height: 38rpx;
   letter-spacing: 0px;
   text-align: left;
+  margin: 20rpx 0;
 }
 .config {
   transition: height 0.28s;

@@ -1,13 +1,4 @@
 <view class="expecial-wrapper">
-  <!-- 导航栏 -->
-  <van-nav-bar border="{{false}}" fixed placeholder="{{true}}" z-index="{{999}}">
-    <view slot="left" class="nav-left">
-      <van-icon name="arrow-left" bindtap="backPage" />
-    </view>
-    <view slot="title">
-      <text>{{type !== "add" ? "编辑待办" : "新建待办"}}</text>
-    </view>
-  </van-nav-bar>
   <view class="loading" wx:if="{{ loading }}">
     <image src="../../images/page/loading.gif"></image>
   </view>

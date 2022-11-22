@@ -1,10 +1,5 @@
-import {
-  getDetailById,
-  JoinCircle
-} from "../../api/circle";
-import {
-  getLocationParams
-} from "../../utils/index";
+import { getDetailById, JoinCircle } from "../../api/circle";
+import { getLocationParams } from "../../utils/index";
 import Toast from "@vant/weapp/toast/toast";
 Page({
   /**
@@ -21,12 +16,12 @@ Page({
       showCancel: false,
       confirm_function: () => {
         this.setData({
-          showDialog: false
+          showDialog: false,
         });
       },
       cancel_function: () => {
         this.setData({
-          showDialog: false
+          showDialog: false,
         });
       },
       width: "640rpx",
@@ -39,6 +34,9 @@ Page({
     CanIsee: false, // 能否直接看微信 ，默认不能
     CanIseeMark: false, // 能否直接看微信备注
     btnLoading: false, // 按钮加载动画
+    show: false,
+    description: "",
+    actions: [],
   },
 
   /**
@@ -49,24 +47,19 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
+  onReady() {
     const type = getLocationParams("type");
     this.setData({
-      type
+      type,
     });
     // 因为整个页面只会走一个查询的接口，所以就不拆开写了
     const id = getLocationParams("id");
     this.setData({
-      loading: true
+      loading: true,
     });
     getDetailById({
-        id
-      })
+      id,
+    })
       .then((res) => {
         this.setData({
           data: res,
@@ -74,15 +67,20 @@ Page({
         });
         // 设置标题
         wx.setNavigationBarTitle({
-          title: res.name
+          title: res.name,
         });
       })
       .finally(() => {
         this.setData({
-          loading: false
+          loading: false,
         });
       });
   },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {},
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -110,8 +108,10 @@ Page({
     var that = this;
     return {
       title: "快进来看看吧", //要请时的卡片头部
-      imageUrl: "https://image.meiye.art/pic_1628437229638?imageMogr2/thumbnail/450x/interlace/1", //图片地址
-      path: "/pages/invite/index?type=detail&key=circle&id=" + that.data.data.id, // 用户点击首先进入的当前页面
+      imageUrl:
+        "https://image.meiye.art/pic_1628437229638?imageMogr2/thumbnail/450x/interlace/1", //图片地址
+      path:
+        "/pages/invite/index?type=detail&key=circle&id=" + that.data.data.id, // 用户点击首先进入的当前页面
       success: function (res) {
         // 转发成功
       },
@@ -171,26 +171,46 @@ Page({
   },
   handleJoin() {
     this.setData({
-      btnLoading: true
+      btnLoading: true,
     });
     // 走申请，
     const id = this.data.data.id;
     JoinCircle({
-        id
-      })
+      id,
+    })
       .then((res) => {
         Toast(res.message || "等待审核！");
       })
       .finally(() => {
         this.setData({
-          btnLoading: false
+          btnLoading: false,
         });
       });
   },
   handlePublish() {
-    const id = this.data.data.id
+    const id = this.data.data.id;
     wx.navigateTo({
-      url: '/pages/circle/index?type=publish&id=' + id,
-    })
-  }
+      url: "/pages/circle/index?type=publish&id=" + id,
+    });
+  },
+  onActionClose() {
+    this.setData({
+      show: false,
+      description: "",
+    });
+  },
+  onActionSelect(e) {
+    const obj = e.detail;
+  },
+  showAction() {
+    const { is_multiplayer } = this.data.data;
+    const actions = [
+      { name: "编辑", loading: false, disabled: false },
+      { name: "删除", loading: false, disabled: false },
+    ];
+    this.setData({
+      actions,
+      show: true,
+    });
+  },
 });

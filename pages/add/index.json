@@ -1,4 +1,6 @@
 {
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFF",
   "usingComponents": {
     "van-calendar": "@vant/weapp/calendar/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",

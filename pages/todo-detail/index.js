@@ -16,6 +16,9 @@ Page({
     showTime: false,
     minHour: 0,
     currentDate: "",
+    actions: [], // 操作列表
+    show: false,
+    description: "",
   },
 
   /**
@@ -26,17 +29,17 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {},
+  onReady() {
+    // 获取 类型
+    const type = getLocationParams("type");
+    this.setData({ type });
+    this.GetTodoDetail();
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-    this.GetTodoDetail();
-    // 获取 类型
-    const type = getLocationParams("type");
-    this.setData({ type });
-  },
+  onShow() {},
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -92,7 +95,12 @@ Page({
         });
       });
   },
-
+  onActionClose() {
+    this.setData({
+      show: false,
+      description: "",
+    });
+  },
   onClose() {
     this.setData({
       showTime: false,
@@ -213,6 +221,28 @@ Page({
       message: "点击右上角的按钮就能分享给朋友了！",
     }).then(() => {
       // on close
+    });
+  },
+  onActionSelect(e) {
+    const obj = e.detail;
+  },
+  showAction() {
+    const { is_multiplayer } = this.data.data;
+    const actions = [
+      { name: "编辑", loading: false, disabled: false },
+      { name: "延至明日", loading: false, disabled: false },
+    ];
+    if (is_multiplayer)
+      actions.push({
+        name: "邀请小伙伴",
+        loading: false,
+        disabled: false,
+        openType: "share",
+      });
+    actions.push({ name: "删除", loading: false, disabled: false });
+    this.setData({
+      actions,
+      show: true,
     });
   },
 });
