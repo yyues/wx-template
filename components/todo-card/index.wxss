@@ -1,0 +1,47 @@
+.wrapper {
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.loading,
+.select,
+.index,
+.action {
+  width: 44rpx;
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.loading text,
+.select text,
+.index text,
+.action text {
+  color: #94a3b8;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 18px;
+}
+.detail {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.detail .content {
+  width: 85%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 10rpx;
+}
+.detail .content text {
+  color: #24271e;
+}
+.label {
+  display: flex;
+  align-items: center;
+}
+.high {
+  border-radius: 8rpx;
+  background-color: #F9F7FF;
+}

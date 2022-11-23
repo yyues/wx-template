@@ -15,7 +15,7 @@
     <view class="detail" wx:else>
       <block wx:for="{{list}}" wx:key="id">
         <!-- 待办类 统一卡片  -->
-        <task-card wx:if="{{isTask}}" index="{{index + 1 }}" data="{{item}}" binddetail="onDetail" />
+        <task-card wx:if="{{isTask}}" index="{{index + 1 }}" data="{{item}}" hasIndex binddetail="onDetail" />
         <!-- 圈子类 统一卡片  -->
         <circle-card wx:if="{{isCircle}}" data="{{item}}" index="{{index}}" binddetail="onDetail" />
         <!-- 动态 -->

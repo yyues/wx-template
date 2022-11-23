@@ -1,0 +1,50 @@
+@import "../../style/index.less";
+
+.wrapper {
+  padding: @base-size * 2;
+  // margin: @base-size* 2 ;
+  margin-bottom: @base-size * 2;
+
+  display: flex;
+  align-items: center;
+}
+.loading,
+.select,
+.index,
+.action {
+  width: 44rpx;
+  margin-right: @base-size * 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text {
+    color: @primary-second-text-color;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 18px;
+  }
+}
+.detail {
+  flex: 1;
+  margin-left: @base-size * 2;
+  .content {
+    width: 85%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text {
+      color: @text-header-color;
+    }
+    margin-bottom: @base-size;
+  }
+}
+.label {
+  //  操作栏的
+  display: flex;
+  align-items: center;
+  // 简简单单 居中
+}
+.high {
+  border-radius: @primary-radius;
+  background-color: @primary-hover-bg-color;
+}

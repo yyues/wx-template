@@ -203,7 +203,6 @@ Page({
     // 如果当前时间已经过期了。不能设置
     const start =
       this.data.current.execute_time + " " + this.data.current.end_time;
-
     if (moment().isAfter(start))
       return Toast.fail({
         zIndex: "99999",
@@ -224,6 +223,9 @@ Page({
     wx.requestSubscribeMessage({
       tmplIds: [TEMP_ID],
       success(res) {
+        _this.setData({
+          showTime: false
+        });
         if (res[TEMP_ID] === "accept") {
           setTodoClock({
             id: current.id,

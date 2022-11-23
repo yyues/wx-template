@@ -4,7 +4,7 @@
     <text>{{index}}</text>
   </view>
   <view class="center" bindtap="onDetail">
-    <view class="content">
+    <view class="content van-ellipsis">
       <text>{{data.content || '假如爱有天意'}}</text>
     </view>
     <view class="info">
@@ -18,7 +18,7 @@
         <van-tag plain wx:if="{{data.level == 0}}" color="#7A64C1">低</van-tag>
         <van-tag plain wx:if="{{data.level == 1}}" color="#0891b2">中</van-tag>
         <van-tag wx:if="{{data.level == 2}}" color="#f87171">高</van-tag>
-        <van-tag wx:if="{{data.level > 3}}" color="#e11d48">紧急</van-tag>
+        <van-tag wx:if="{{data.level >= 3}}" color="#e11d48">紧急</van-tag>
       </view>
       <view class="multiplayer" wx:if="{{data.is_multiplayer}}">
         <van-tag plain color="#5b67ca" size="samll">多人 {{value}}% </van-tag>

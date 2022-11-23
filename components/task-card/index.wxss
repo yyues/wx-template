@@ -46,11 +46,15 @@
 }
 .wrapper .center .content {
   margin-bottom: 10rpx;
+  width: 70%;
 }
 .wrapper .center .content text {
   color: #24271e;
   font-size: 28rpx;
   line-height: 44rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .wrapper .center .info {
   display: flex;

@@ -2,7 +2,6 @@
   "component": true,
   "usingComponents": {
     "van-tabbar": "@vant/weapp/tabbar/index",
-    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index"
   }
 }

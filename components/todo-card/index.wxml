@@ -1,0 +1,36 @@
+<!-- 统一 task-card 和 todoy-card -->
+<view class="wrapper" hover-class="high">
+  <!-- left loading 优先  -->
+  <view class="loading" wx:if="{{loading}}">
+    <van-loading type="spinner" wx:if="{{ loading }}" color="#5B67CA" size="24px" />
+  </view>
+  <view class="select" wx:if="{{!loading && hasSelect}}">
+    <van-checkbox checked-color="#5B67CA" value="{{ checked }}" shape="square" bind:change="onSelect" size="48rpx" />
+  </view>
+  <view class="index" wx:if="{{!loading && hasIndex}}">
+    <text>{{index}}</text>
+  </view>
+  <view class="detail" bindtap="onDetail">
+    <!-- 上半层 标题  -->
+    <view class="content van-ellipsis">
+      <text>{{data.content}}</text>
+    </view>
+    <view class="label">
+      <!-- 闹钟 -->
+      <view class="clock" wx:if="{{data.is_exist_remind}}"> </view>
+      <!-- 等级 -->
+      <view class="level">
+        <van-tag plain="{{level.plain}}" color="{{level.color}}">{{level.content}}</van-tag>
+      </view>
+      <!-- 多人 -- 我的 / 我加入的 -->
+      <view class="team" wx:if="{{data.is_multiplayer}}">
+        <van-tag plain color="#5b67ca" size="samll" wx:if="{{data.is_current_user}}">我的 {{value}}% </van-tag>
+        <van-tag plain color="#5b67ca" size="samll" wx:else>我加入的 {{value}}% </van-tag>
+      </view>
+    </view>
+  </view>
+  <!-- 日期 / 在考虑要不要 -->
+  <view class="date"></view>
+  <!-- 操作按钮 其实一般是没有的 -->
+  <view class="action" wx:if="{{hasAction}}" bindtap="onAction"></view>
+</view>

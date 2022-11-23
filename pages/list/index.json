@@ -8,7 +8,7 @@
     "van-search": "@vant/weapp/search/index",
     "van-empty": "@vant/weapp/empty/index",
     "van-icon": "@vant/weapp/icon/index",
-    "task-card": "../../components/task-card/index",
+    "task-card": "../../components/todo-card/index",
     "circle-card": "../../components/circle-card/index",
     "square-card": "../../components/square-card/index",
     "msg-card": "../../components/message/index",

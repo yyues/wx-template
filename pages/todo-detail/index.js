@@ -1,24 +1,19 @@
 // pages/todo-detail/index.js
-import Dialog from "@vant/weapp/dialog/dialog";
+import Dialog from "../../utils/dialog";
 import { getTodoById, deleteTodoById, delayCurrentToDo } from "../../api/todo";
 import { getLocationParams } from "../../utils/index";
 import Toast from "@vant/weapp/toast/toast";
-import moment from "moment";
+
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     loading: false,
-    inviteLoading: false,
     data: {},
     type: "user",
-    showTime: false,
-    minHour: 0,
-    currentDate: "",
     actions: [], // 操作列表
     show: false,
-    description: "",
   },
 
   /**
@@ -98,42 +93,6 @@ Page({
   onActionClose() {
     this.setData({
       show: false,
-      description: "",
-    });
-  },
-  onClose() {
-    this.setData({
-      showTime: false,
-    });
-  },
-  changeClock(e) {
-    const detail = e.detail;
-    const current = this.data.data;
-    const _this = this;
-    // 走 授权
-    wx.requestSubscribeMessage({
-      tmplIds: [TEMP_ID],
-      success(res) {
-        if (res[TEMP_ID] === "accept") {
-          setTodoClock({
-            id: current.id,
-            remind_time: current.execute_time + " " + detail,
-          }).then(() => {
-            Toast.success({
-              zIndex: "99999",
-              message: "设置成功！",
-            });
-            _this.GetToday();
-            _this.setData({ showTime: false });
-          });
-        } else {
-          Toast.fail({
-            zIndex: "99999",
-            message: "失败了呢",
-          });
-        }
-      },
-      fail() {},
     });
   },
   onEdit() {
@@ -174,8 +133,8 @@ Page({
   onDelete() {
     const id = getLocationParams("id");
     Dialog.confirm({
-      title: "提示",
-      message: "确定要删除吗？多人待办删除会影响他人进度哦！",
+      title: "删除",
+      message: "确定要删除吗？\n多人待办删除会影响他人进度哦！",
     })
       .then(() => {
         deleteTodoById({ id }).then((res) => {
@@ -184,8 +143,8 @@ Page({
             icon: "success",
             duration: 1500,
             success() {
-              wx.redirectTo({
-                url: "/pages/my-todo/index",
+              wx.navigateBack({
+                delta: 0,
               });
             },
           });
@@ -195,25 +154,7 @@ Page({
         // on cancel
       });
   },
-  onClock() {
-    //  先关闭底部的弹窗，再打开 dialog
-    const { is_exist_remind, execute_time, end_time } = this.data.data;
-    const data = this.data.data.is_exist_remind;
-    if (is_exist_remind) return;
-    // 如果当前时间已经过期了。不能设置
-    const start = execute_time + " " + end_time;
 
-    if (moment().isAfter(start))
-      return Toast.fail({
-        zIndex: "99999",
-        message: "待办已经到期了哦！",
-      });
-    this.setData({
-      showTime: true,
-      minHour: moment().hours(),
-      currentDate: moment().format("HH:mm"),
-    });
-  },
   onInvite() {
     // 调用微信的转发方法
     Dialog.alert({
@@ -225,21 +166,27 @@ Page({
   },
   onActionSelect(e) {
     const obj = e.detail;
+    console.log({ obj });
+    if (obj.name == "编辑") {
+      this.onEdit();
+    }
+    if (obj.name == "延至明日") {
+      this.onDelay();
+    }
+    if (obj.name == "删除") {
+      this.onDelete();
+    }
   },
   showAction() {
-    const { is_multiplayer } = this.data.data;
+    const { is_exist_remind } = this.data.data;
     const actions = [
-      { name: "编辑", loading: false, disabled: false },
-      { name: "延至明日", loading: false, disabled: false },
+      { name: "延至明日", color: "#ca8a04", loading: false, disabled: false },
+      { name: "编辑", color: "#5b67ca", loading: false, disabled: false },
+      { name: "删除", color: "#ef4444", loading: false, disabled: false },
     ];
-    if (is_multiplayer)
-      actions.push({
-        name: "邀请小伙伴",
-        loading: false,
-        disabled: false,
-        openType: "share",
-      });
-    actions.push({ name: "删除", loading: false, disabled: false });
+    if (is_exist_remind) {
+      actions.shift();
+    }
     this.setData({
       actions,
       show: true,

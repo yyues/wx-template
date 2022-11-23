@@ -47,10 +47,15 @@
 
     .content {
       margin-bottom: @base-size;
+      width: 70%;
       text {
         color: @text-header-color;
         font-size: @size-14;
         line-height: @line-h-14;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     .info {

@@ -10,7 +10,6 @@
     "van-button": "@vant/weapp/button/index",
     "van-dialog": "@vant/weapp/dialog/index",
     "van-toast": "@vant/weapp/toast/index",
-    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "van-action-sheet": "@vant/weapp/action-sheet/index"
   }
 }

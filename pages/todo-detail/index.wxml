@@ -65,11 +65,7 @@
       </view>
     </view>
   </view>
-  <!-- 待办时间 选择提示 -->
-  <van-dialog use-slot show="{{ showTime }}" theme="round" style="--dialog-border-radius: 8px" show-confirm-button="{{false}}">
-    <van-datetime-picker type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" bind:confirm="changeClock" bind:cancel="onClose" />
-  </van-dialog>
-  <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onActionClose" bind:select="onActionSelect" bind:cancel="onActionClose" cancel-text="取消" description="{{description }}" />
-  <van-dialog id="van-dialog" />
+  <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onActionClose" bind:select="onActionSelect" bind:cancel="onActionClose" cancel-text="取消" />
+  <van-dialog id="van-dialog" custom-class="my-dialog" />
   <van-toast id="van-toast" />
 </view>
