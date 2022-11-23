@@ -28,7 +28,7 @@
     </view>
     <block wx:if="{{data.length !== 0}}">
       <view class="wrapper">
-        <today-card wx:for="{{data}}" wx:key="id" data="{{item}}" loading="{{arr[index]}}" index="{{index}}" bindfinish="onFinish" binddetail="onDetail" />
+        <today-card wx:for="{{data}}" wx:key="id" data="{{item}}" loading="{{arr[index]}}" index="{{index}}" bindselect="onFinish" binddetail="onDetail"  hasSelect    />
       </view>
     </block>
     <view class="empty" wx:else>

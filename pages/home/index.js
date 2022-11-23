@@ -149,10 +149,8 @@ Page({
       });
   },
   onFinish(e) {
-    const {
-      id,
-      index
-    } = e.detail;
+    const id = e.detail
+    const index = this.data.data.findIndex(i => i.id == id)
     //  加载loading
     const arr = this.data.arr;
     arr[index] = true;
@@ -163,23 +161,22 @@ Page({
       id
     }).then((res) => {
       //  重新走一个请求就行了
-      Toast.success("完成待办啦！");
-      this.GetToday();
+      Toast.success({
+        message: "完成待办啦！",
+        duration: 500,
+        onClose: () => {
+          this.GetToday();
+        },
+      });
     });
   },
   onDetail(e) {
-    const {
-      id,
-      index
-    } = e.detail;
-    const res = this.data.data[index];
+    const id = e.detail
+    const res = this.data.data.filter(i => i.id == id)[0]
     // 展开 底部操作栏
     this.setData({
       show: true,
-      current: {
-        ...res,
-        isOut: moment().isAfter(res.execute_time + " " + res.end_time),
-      },
+      current: res,
     });
   },
   hidenAction() {

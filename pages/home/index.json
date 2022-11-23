@@ -3,7 +3,7 @@
   "navigationBarBackgroundColor": "#FFF",
   "usingComponents": {
     "van-search": "@vant/weapp/search/index",
-    "today-card": "../../components/today-card/index",
+    "today-card": "../../components/todo-card/index",
     "van-empty": "@vant/weapp/empty/index",
     "van-toast": "@vant/weapp/toast/index",
     "van-action-sheet": "@vant/weapp/action-sheet/index",
