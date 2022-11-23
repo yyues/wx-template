@@ -30,7 +30,7 @@
         </view>
       </block>
       <!--  一个添加的按钮 -->
-      <view class="member-avatar add" wx:if="{{ data.is_current_user }}">
+      <view class="member-avatar add" wx:if="{{ data.is_current_user && data.status !== 're_publish'}}">
         <!-- <van-icon name="plus" size="24px" color="#94a3b8" /> -->
         <van-button icon="plus" color="#94a3b8" custom-class="add-btn" plain bindtap='onShareAppMessage' open-type="share" />
       </view>
@@ -83,7 +83,7 @@
     <view class="user-card" wx:if="{{ type !== 'publish' }}">
 
     </view>
-    <view class="wx" wx:if="{{data.is_current_user}}">
+    <view class="wx" wx:if="{{data.is_current_user && data.status !== 're_publish'}}">
       <van-cell title="操作" bind:click="showAction" is-link />
     </view>
     <!-- 操作按钮 -->
