@@ -1,0 +1,94 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 24rpx;
+  justify-content: center;
+}
+.wrapper .content {
+  background-color: #fff;
+  color: #24271e;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  position: relative;
+}
+.wrapper .content .close {
+  position: absolute;
+  right: 20rpx;
+  top: -80rpx;
+}
+.wrapper .content .header {
+  min-height: 32rpx;
+}
+.wrapper .content .action {
+  margin: 20rpx 24rpx;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .content .action .img {
+  margin-right: 10rpx;
+  width: 32rpx;
+  height: 32rpx;
+  cursor: pointer;
+}
+.wrapper .content .action .img image {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .content .action .right {
+  cursor: pointer;
+}
+.wrapper .content .action .right .canIsend {
+  background-color: #5b67ca;
+}
+.wrapper .content .action .right .disabled {
+  background-color: #94a3b8;
+}
+.wrapper .content .action .right .img {
+  margin-right: 0;
+  width: 28rpx;
+  height: 28rpx;
+}
+.wrapper .content .action .right .send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12rpx;
+  border-radius: 50%;
+}
+.wrapper .content .action .left {
+  display: flex;
+}
+.wrapper .content .action .left .img {
+  margin-right: 40rpx;
+}
+.wrapper .action-wrapper {
+  background-color: #fff;
+  color: #24271e;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  position: relative;
+  margin-top: 20rpx;
+  min-height: 80rpx;
+}
+.wrapper .action-wrapper .title {
+  margin-bottom: 30rpx;
+}
+.wrapper .action-wrapper .title text {
+  color: #24271e;
+}
+.wrapper .action-wrapper .level {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80rpx;
+}
+.wrapper .action-wrapper .cycle {
+  display: flex;
+  align-items: center;
+}
+.wrapper .action-wrapper .cycle .tag {
+  margin-right: 20rpx;
+}

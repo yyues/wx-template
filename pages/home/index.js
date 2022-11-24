@@ -1,10 +1,6 @@
 // pages/home/index.js
-import {
-  initTabActive
-} from "../../utils/index";
-import {
-  getToken
-} from "../../utils/action";
+import { initTabActive } from "../../utils/index";
+import { getToken } from "../../utils/action";
 import {
   getTodoByDate,
   delayCurrentToDo,
@@ -13,9 +9,7 @@ import {
 } from "../../api/todo";
 import Toast from "@vant/weapp/toast/toast";
 import moment from "moment";
-import {
-  TEMP_ID
-} from "../../env";
+import { TEMP_ID } from "../../env";
 
 Page({
   /**
@@ -31,6 +25,7 @@ Page({
     showTime: false, // 设置提醒时间的dialog 状态值
     currentDate: "",
     minHour: "",
+    showAdd: false,
   },
 
   /**
@@ -51,7 +46,7 @@ Page({
   onShow() {
     initTabActive.bind(this)(0);
     this.setData({
-      hasLogin: !!getToken()
+      hasLogin: !!getToken(),
     });
     // 设置 标题 为用户账号
     wx.setNavigationBarTitle({
@@ -87,7 +82,8 @@ Page({
     var that = this;
     return {
       title: "快进来看看吧", //要请时的卡片头部
-      imageUrl: "https://image.meiye.art/pic_1628437229638?imageMogr2/thumbnail/450x/interlace/1", //图片地址
+      imageUrl:
+        "https://image.meiye.art/pic_1628437229638?imageMogr2/thumbnail/450x/interlace/1", //图片地址
       path: "/pages/invite/index?type=home&key=todo&id=" + that.data.current.id, // 用户点击首先进入的当前页面
       success: function (res) {
         // 转发成功
@@ -100,7 +96,7 @@ Page({
     };
   },
   onSearch(e) {
-    const url = `/pages/list/index?key=search&from=home&type=add`
+    const url = `/pages/list/index?key=search&from=home&type=add`;
     wx.navigateTo({
       url,
     });
@@ -111,31 +107,36 @@ Page({
     });
   },
   onTodo() {
-    const url = `/pages/list/index?key=todo&from=home&type=add`
+    const url = `/pages/list/index?key=todo&from=home&type=add`;
     wx.navigateTo({
       url,
     });
   },
+  onAdd() {
+    this.setData({
+      showAdd: true,
+    });
+  },
   onCircle() {
-    const url = `/pages/list/index?key=circle&from=home&type=add`
+    const url = `/pages/list/index?key=circle&from=home&type=add`;
     wx.navigateTo({
       url,
     });
   },
   onSquare() {
-    const url = `/pages/list/index?key=square&from=home&type=add`
+    const url = `/pages/list/index?key=square&from=home&type=add`;
     wx.navigateTo({
       url,
     });
   },
   GetToday() {
     this.setData({
-      loading: true
+      loading: true,
     });
     // 今天可能也有完成的， 要查没有完成的
     getTodoByDate({
-        task_status: "running",
-      })
+      task_status: "running",
+    })
       .then((res) => {
         this.setData({
           data: res,
@@ -144,21 +145,21 @@ Page({
       })
       .finally(() => {
         this.setData({
-          loading: false
+          loading: false,
         });
       });
   },
   onFinish(e) {
-    const id = e.detail
-    const index = this.data.data.findIndex(i => i.id == id)
+    const id = e.detail;
+    const index = this.data.data.findIndex((i) => i.id == id);
     //  加载loading
     const arr = this.data.arr;
     arr[index] = true;
     this.setData({
-      arr
+      arr,
     });
     finishTodo({
-      id
+      id,
     }).then((res) => {
       //  重新走一个请求就行了
       Toast.success({
@@ -171,8 +172,8 @@ Page({
     });
   },
   onDetail(e) {
-    const id = e.detail
-    const res = this.data.data.filter(i => i.id == id)[0]
+    const id = e.detail;
+    const res = this.data.data.filter((i) => i.id == id)[0];
     // 展开 底部操作栏
     this.setData({
       show: true,
@@ -181,13 +182,11 @@ Page({
   },
   hidenAction() {
     this.setData({
-      show: false
+      show: false,
     });
   },
   onEdit() {
-    const {
-      id
-    } = this.data.current;
+    const { id } = this.data.current;
     wx.navigateTo({
       url: "/pages/add/index?type=edit&id=" + id,
     });
@@ -221,7 +220,7 @@ Page({
       tmplIds: [TEMP_ID],
       success(res) {
         _this.setData({
-          showTime: false
+          showTime: false,
         });
         if (res[TEMP_ID] === "accept") {
           setTodoClock({
@@ -234,7 +233,7 @@ Page({
             });
             _this.GetToday();
             _this.setData({
-              showTime: false
+              showTime: false,
             });
           });
         } else {
@@ -249,7 +248,8 @@ Page({
   },
   onClose() {
     this.setData({
-      showTime: false
+      showTime: false,
+      showAdd: false,
     });
   },
   onDelay() {
@@ -275,12 +275,12 @@ Page({
   },
   toInvite() {
     wx.navigateTo({
-      url: '/pages/invite/index',
-    })
+      url: "/pages/invite/index",
+    });
   },
   toLogin() {
     wx.navigateTo({
-      url: '/pages/login/index',
-    })
-  }
+      url: "/pages/login/index",
+    });
+  },
 });

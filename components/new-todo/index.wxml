@@ -1,0 +1,61 @@
+<van-overlay show="{{ show }}" style="--overlay-background-color:#0f172a99">
+  <view class="wrapper">
+    <van-transition show="{{ show }}" name="fade-down" duration="{{900}}" custom-class="content">
+      <view class="close" bindtap="onClickHide">
+        <van-icon name="cross" color="#fff" />
+      </view>
+      <view class="header">
+        <block wx:for="{{headers}}" wx:key="index">
+          <van-transition custom-class="icons">
+            <van-tag closeable color="{{item.color}}" id="{{item.key}}" bind:close="onClose">
+              {{item.content}}
+            </van-tag>
+          </van-transition>
+        </block>
+      </view>
+      <view class="input">
+        <van-field value="{{ postForm.content }}" placeholder="今天七点半早起 (˃ ⌑ ˂ഃ )" data-key="content" bind:change="changeByKey" type="textarea" autosize placeholder-style="{{placeholderStyle}}" />
+      </view>
+      <view class="action">
+        <view class="left">
+          <view class="img" wx:for="{{actions}}" wx:key="index">
+            <image src="{{item.url}}" bindtap="onAction" data-key="{{item.key}}" alt="" />
+          </view>
+        </view>
+        <view class="right">
+          <van-loading size="18px" color="{{primaryColor}}" wx:if="{{loading}}" />
+          <view class="img send  {{postForm.content ? 'canIsend' : 'disabled'}}" wx:else>
+            <image src="./img/send.png"></image>
+          </view>
+        </view>
+      </view>
+    </van-transition>
+    <van-transition show="{{ showAction }}" name="slide-up" custom-class="action-wrapper" duration="{{ { enter: 600, leave: 280 } }}">
+      <view class="title">
+        <text wx:if="{{currentKey == 'level'}}">选择优先级</text>
+        <text wx:if="{{currentKey == 'is_cycle_todo'}}">设置周期</text>
+      </view>
+      <!-- 等级 -->
+      <van-radio-group wx:if="{{currentKey == 'level'}}" value="{{ postForm.level }}" bind:change="onActionConfirm" direction="horizontal">
+        <van-radio wx:for="{{level}}" wx:key="index" name="{{item.name}}" shape="square" checked-color="{{primaryColor}}" label-class="my-radio">
+          {{item.content}}
+        </van-radio>
+      </van-radio-group>
+      <!-- 任务周期 三天 / 七天 / 两星期 -->
+      <view class="cycle" wx:if="{{currentKey == 'is_cycle_todo'}}">
+        <van-tag color="{{placeholderStyle}}" plain data-key="3" custom-class="tag" bindtap="onCycle">3天</van-tag>
+        <van-tag color="{{placeholderStyle}}" plain data-key="7" custom-class="tag" bindtap="onCycle">7天</van-tag>
+        <van-tag color="{{placeholderStyle}}" plain data-key="14" custom-class="tag" bindtap="onCycle">14天</van-tag>
+        <van-field value="{{ postForm.task_cycle }}" placeholder="自定义任务周期" type="number" bind:confirm="onCycle" bind:confirm />
+      </view>
+    </van-transition>
+  </view>
+</van-overlay>
+<!-- 选择日历 -->
+<!-- <van-transition show="{{ currentKey == 'execute_time' }}">
+  <van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" visible-item-count="{{3}}" bind:confirm="onActionConfirm" filter="{{ filter }}" bind:cancel="onActionClose" />
+</van-transition> -->
+<!-- 提醒时间 -->
+<!-- <van-transition show="{{ currentKey == 'remind_time' }}">
+  <van-datetime-picker type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" visible-item-count="{{3}}" bind:confirm="onActionConfirm" filter="{{ filter }}" bind:cancel="onActionClose" />
+</van-transition> -->

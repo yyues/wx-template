@@ -26,15 +26,18 @@
     <view class="header">
       <text>今日待办</text>
     </view>
+    <van-button bindtap="onAdd">添加</van-button>
     <block wx:if="{{data.length !== 0}}">
       <view class="wrapper">
-        <today-card wx:for="{{data}}" wx:key="id" data="{{item}}" loading="{{arr[index]}}" index="{{index}}" bindselect="onFinish" binddetail="onDetail"  hasSelect    />
+        <today-card wx:for="{{data}}" wx:key="id" data="{{item}}" loading="{{arr[index]}}" index="{{index}}" bindselect="onFinish" binddetail="onDetail" hasSelect />
       </view>
     </block>
     <view class="empty" wx:else>
       <van-empty description="今日还没有待办哦！" />
     </view>
   </view>
+  <!-- 添加卡片 -->
+  <new-add show="{{showAdd}}" bindclose="onClose" />
   <!-- 今日待办 详情操作栏 -->
   <van-action-sheet show="{{ show }}" title="详情" z-index="{{10001}}" bind:close="hidenAction" overlay="{{true}}">
     <view class="action-wrapper">
@@ -65,5 +68,6 @@
   <van-dialog use-slot show="{{ showTime }}" theme="round" style="--dialog-border-radius: 8px" show-confirm-button="{{false}}">
     <van-datetime-picker type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" bind:confirm="changeClock" bind:cancel="onClose" />
   </van-dialog>
+  <van-dialog id="van-dialog" />
   <van-toast id="van-toast" />
 </view>

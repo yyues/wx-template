@@ -14,6 +14,8 @@
     "van-tag": "@vant/weapp/tag/index",
     "van-switch": "@vant/weapp/switch/index",
     "van-icon": "@vant/weapp/icon/index",
-    "van-nav-bar": "@vant/weapp/nav-bar/index"
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-transition": "@vant/weapp/transition/index"
   }
 }
