@@ -34,6 +34,7 @@
       <view class="title">
         <text wx:if="{{currentKey == 'level'}}">选择优先级</text>
         <text wx:if="{{currentKey == 'is_cycle_todo'}}">设置周期</text>
+        <van-switch checked="{{ postForm.is_deadline }}" data-key="is_deadline" active-color="{{primaryColor}}" size='16px' custom-class='my-switch' bind:change="changeByKey" />
       </view>
       <!-- 等级 -->
       <van-radio-group wx:if="{{currentKey == 'level'}}" value="{{ postForm.level }}" bind:change="onActionConfirm" direction="horizontal">
@@ -41,21 +42,17 @@
           {{item.content}}
         </van-radio>
       </van-radio-group>
-      <!-- 任务周期 三天 / 七天 / 两星期 -->
+      <!-- 任务周期 三天 / 七天 / 两星期 其实应该是个滑块 -->
       <view class="cycle" wx:if="{{currentKey == 'is_cycle_todo'}}">
-        <van-tag color="{{placeholderStyle}}" plain data-key="3" custom-class="tag" bindtap="onCycle">3天</van-tag>
-        <van-tag color="{{placeholderStyle}}" plain data-key="7" custom-class="tag" bindtap="onCycle">7天</van-tag>
-        <van-tag color="{{placeholderStyle}}" plain data-key="14" custom-class="tag" bindtap="onCycle">14天</van-tag>
-        <van-field value="{{ postForm.task_cycle }}" placeholder="自定义任务周期" type="number" bind:confirm="onCycle" bind:confirm />
+        <!-- 滑块 -->
+        <van-slider value="{{postForm.task_cycle}}" min="1" max="30" step="1" bind:change="onCycleChange" inactive-color="#94a3b8" active-color="{{primaryColor}}" />
       </view>
+    </van-transition>
+    <van-transition show="{{ showTime }}" name="slide-up" custom-class="time-wrapper" duration="{{ { enter: 600, leave: 280 } }}">
+      <!-- 选择日历 -->
+      <van-datetime-picker wx:if="{{currentKey == 'execute_time'}}" type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" visible-item-count="{{3}}" bind:confirm="onActionConfirm" filter="{{ filter }}" custom-class="time" bind:cancel="onActionClose" />
+      <!-- 提醒时间 -->
+      <van-datetime-picker wx:if="{{ currentKey == 'remind_time' }}" type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" visible-item-count="{{3}}" bind:confirm="onActionConfirm" filter="{{ filter }}" bind:cancel="onActionClose" custom-class="time" />
     </van-transition>
   </view>
 </van-overlay>
-<!-- 选择日历 -->
-<!-- <van-transition show="{{ currentKey == 'execute_time' }}">
-  <van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" visible-item-count="{{3}}" bind:confirm="onActionConfirm" filter="{{ filter }}" bind:cancel="onActionClose" />
-</van-transition> -->
-<!-- 提醒时间 -->
-<!-- <van-transition show="{{ currentKey == 'remind_time' }}">
-  <van-datetime-picker type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" visible-item-count="{{3}}" bind:confirm="onActionConfirm" filter="{{ filter }}" bind:cancel="onActionClose" />
-</van-transition> -->

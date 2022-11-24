@@ -64,6 +64,12 @@
 .wrapper .content .action .left .img {
   margin-right: 40rpx;
 }
+.wrapper .time-wrapper {
+  border-radius: 8rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 20rpx;
+}
 .wrapper .action-wrapper {
   background-color: #fff;
   color: #24271e;
@@ -74,6 +80,8 @@
   min-height: 80rpx;
 }
 .wrapper .action-wrapper .title {
+  display: flex;
+  align-items: center;
   margin-bottom: 30rpx;
 }
 .wrapper .action-wrapper .title text {
@@ -86,9 +94,9 @@
   min-height: 80rpx;
 }
 .wrapper .action-wrapper .cycle {
-  display: flex;
-  align-items: center;
+  padding: 20rpx;
 }
-.wrapper .action-wrapper .cycle .tag {
-  margin-right: 20rpx;
+.my-switch {
+  vertical-align: middle;
+  margin-left: 20rpx;
 }

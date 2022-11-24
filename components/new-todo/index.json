@@ -11,6 +11,8 @@
     "van-switch": "@vant/weapp/switch/index",
     "van-toast": "@vant/weapp/toast/index",
     "van-transition": "@vant/weapp/transition/index",
-    "van-tag": "@vant/weapp/tag/index"
+    "van-tag": "@vant/weapp/tag/index",
+    "van-slider": "@vant/weapp/slider/index"
+
   }
 }

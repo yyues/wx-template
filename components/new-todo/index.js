@@ -7,7 +7,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    show: { type: Boolean, default: false }, // 是否展示
+    show: {
+      type: Boolean,
+      default: false
+    }, // 是否展示
   },
   /**
    * 组件的初始数据
@@ -18,16 +21,31 @@ Component({
       is_deadline: true,
       level: 0,
       task_cycle: 1,
+      content: '',
     }, // 提交的数据
     placeholderStyle: "",
     primaryColor: "",
     loading: false,
-    actions: [
-      { url: "./img/calendar.png", key: "execute_time" },
-      { url: "./img/remind.png", key: "remind_time" },
-      { url: "./img/level.png", key: "level" },
-      { url: "./img/multiplayer.png", key: "is_multiplayer" },
-      { url: "./img/cycle.png", key: "is_cycle_todo" },
+    actions: [{
+        url: "./img/calendar.png",
+        key: "execute_time"
+      },
+      {
+        url: "./img/remind.png",
+        key: "remind_time"
+      },
+      {
+        url: "./img/level.png",
+        key: "level"
+      },
+      {
+        url: "./img/multiplayer.png",
+        key: "is_multiplayer"
+      },
+      {
+        url: "./img/cycle.png",
+        key: "is_cycle_todo"
+      },
     ], // url, key
     currentKey: "", // 操作栏当前绑定的 key 用于区分不同的弹窗显示内容
     showAction: false,
@@ -36,6 +54,7 @@ Component({
     maxDate: "", // 可选择的最大 时间， 默认三个月
     minHour: "", // 可选择的最小时间
     level: [], // 优先级选择
+    showTime: false,
     filter(type, options) {
       const obj = {
         minute: "分",
@@ -63,7 +82,10 @@ Component({
       };
       Dialog.confirm(info)
         .then(() => {
-          this.setData({ showAction: false });
+          this.setData({
+            showAction: false,
+            currentKey: ''
+          });
           this.triggerEvent("close");
         })
         .catch(() => {});
@@ -77,36 +99,70 @@ Component({
         const data = !!postForm[key];
         postForm[key] = !data;
       }
-      this.setData({ postForm });
+      this.setData({
+        postForm
+      });
     },
     //  点击 操作图标的 事件
     onAction(e) {
       const key = e.currentTarget.dataset.key;
-      this.setData({ currentKey: key });
+      this.setData({
+        currentKey: key
+      });
+      if (this.data.showAction) {
+        this.setData({
+          showAction: false,
+        })
+        return
+      }
       const postForm = this.data.postForm;
       if (key == "is_multiplayer") {
         //  单独处理多人任务
         const res = !!postForm[key];
         postForm[key] = !res;
-        this.setData({ postForm, showAction: false });
+        this.setData({
+          postForm,
+          showAction: false
+        });
+        return;
+      }
+      if (["execute_time", "remind_time"].includes(key)) {
+        this.setData({
+          showTime: true
+        });
         return;
       }
       if (["level", "is_cycle_todo"].includes(key)) {
-        this.setData({ showAction: true });
+        this.setData({
+          showAction: true
+        });
         return;
       }
-      this.setData({ showAction: false });
+      this.setData({
+        showAction: false
+      });
     },
     onActionConfirm() {},
     onActionClose() {
-      this.setData({ showAction: false, currentKey: "" });
+      this.setData({
+        showAction: false,
+        currentKey: "",
+        showTime: false
+      });
     },
-    onCycle(e) {
-      const key = Number(e.currentTarget.dataset.key);
-      const postForm = this.data.postForm;
-      postForm.task_cycle = key ? key : Number(e.detail);
-      this.setData({ postForm });
-    },
+    onCycleChange(e) {
+      const data = Number(e.detail)
+      console.log({
+        data
+      });
+      const postForm = this.data.postForm
+      this.setData({
+        postForm: {
+          ...postForm,
+          task_cycle: data
+        }
+      })
+    }
   },
   lifetimes: {
     ready() {
@@ -118,11 +174,26 @@ Component({
         minDate: new Date().getTime(),
         maxDate: Number(moment().add(3, "months").format("x")),
         minHour: moment().hour() + 1,
-        level: [
-          { name: 0, content: "低", color: primaryColor },
-          { name: 1, content: "中", color: primaryColor },
-          { name: 2, content: "高", color: primaryColor },
-          { name: 3, content: "紧急", color: primaryColor },
+        level: [{
+            name: 0,
+            content: "低",
+            color: primaryColor
+          },
+          {
+            name: 1,
+            content: "中",
+            color: primaryColor
+          },
+          {
+            name: 2,
+            content: "高",
+            color: primaryColor
+          },
+          {
+            name: 3,
+            content: "紧急",
+            color: primaryColor
+          },
         ],
       });
     },
