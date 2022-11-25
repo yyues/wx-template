@@ -12,8 +12,6 @@
 
   <!-- 今日待办 -->
   <view class="today">
-    <!-- 分割线 -->
-    <van-divider />
     <view class="title" bindtap="OnShowDay">
       <text class="content">{{currentDay}}</text>
       <text class="week"> · {{currentWeek}}</text>

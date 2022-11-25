@@ -19,7 +19,7 @@ Page({
       },
       {
         icon: '../../images/home/my.png',
-        content: '我的待办',
+        content: '进行中的',
         name: 'fade',
         bgColor: '#F2F3F5',
         activeColor: '',
