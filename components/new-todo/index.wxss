@@ -31,7 +31,6 @@
   margin-right: 10rpx;
   width: 32rpx;
   height: 32rpx;
-  cursor: pointer;
 }
 .wrapper .content .action .img image {
   width: 100%;

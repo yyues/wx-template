@@ -9,7 +9,7 @@ Component({
   properties: {
     show: {
       type: Boolean,
-      default: false
+      default: false,
     }, // 是否展示
   },
   /**
@@ -21,30 +21,31 @@ Component({
       is_deadline: true,
       level: 0,
       task_cycle: 1,
-      content: '',
+      content: "",
     }, // 提交的数据
     placeholderStyle: "",
     primaryColor: "",
     loading: false,
-    actions: [{
+    actions: [
+      {
         url: "./img/calendar.png",
-        key: "execute_time"
+        key: "execute_time",
       },
       {
         url: "./img/remind.png",
-        key: "remind_time"
+        key: "remind_time",
       },
       {
         url: "./img/level.png",
-        key: "level"
+        key: "level",
       },
       {
         url: "./img/multiplayer.png",
-        key: "is_multiplayer"
+        key: "is_multiplayer",
       },
       {
         url: "./img/cycle.png",
-        key: "is_cycle_todo"
+        key: "is_cycle_todo",
       },
     ], // url, key
     currentKey: "", // 操作栏当前绑定的 key 用于区分不同的弹窗显示内容
@@ -84,7 +85,8 @@ Component({
         .then(() => {
           this.setData({
             showAction: false,
-            currentKey: ''
+            showTime: false,
+            currentKey: "",
           });
           this.triggerEvent("close");
         })
@@ -100,20 +102,21 @@ Component({
         postForm[key] = !data;
       }
       this.setData({
-        postForm
+        postForm,
       });
     },
     //  点击 操作图标的 事件
     onAction(e) {
       const key = e.currentTarget.dataset.key;
       this.setData({
-        currentKey: key
+        currentKey: key,
       });
-      if (this.data.showAction) {
+      if (this.data.showAction || this.data.showTime) {
         this.setData({
           showAction: false,
-        })
-        return
+          showTime: false,
+        });
+        return;
       }
       const postForm = this.data.postForm;
       if (key == "is_multiplayer") {
@@ -122,24 +125,26 @@ Component({
         postForm[key] = !res;
         this.setData({
           postForm,
-          showAction: false
+          showAction: false,
         });
         return;
       }
       if (["execute_time", "remind_time"].includes(key)) {
         this.setData({
-          showTime: true
+          showTime: true,
+          showAction: false,
         });
         return;
       }
       if (["level", "is_cycle_todo"].includes(key)) {
         this.setData({
-          showAction: true
+          showAction: true,
+          showTime: false,
         });
         return;
       }
       this.setData({
-        showAction: false
+        showAction: false,
       });
     },
     onActionConfirm() {},
@@ -147,22 +152,22 @@ Component({
       this.setData({
         showAction: false,
         currentKey: "",
-        showTime: false
+        showTime: false,
       });
     },
     onCycleChange(e) {
-      const data = Number(e.detail)
+      const data = Number(e.detail);
       console.log({
-        data
+        data,
       });
-      const postForm = this.data.postForm
+      const postForm = this.data.postForm;
       this.setData({
         postForm: {
           ...postForm,
-          task_cycle: data
-        }
-      })
-    }
+          task_cycle: data,
+        },
+      });
+    },
   },
   lifetimes: {
     ready() {
@@ -174,25 +179,26 @@ Component({
         minDate: new Date().getTime(),
         maxDate: Number(moment().add(3, "months").format("x")),
         minHour: moment().hour() + 1,
-        level: [{
+        level: [
+          {
             name: 0,
             content: "低",
-            color: primaryColor
+            color: primaryColor,
           },
           {
             name: 1,
             content: "中",
-            color: primaryColor
+            color: primaryColor,
           },
           {
             name: 2,
             content: "高",
-            color: primaryColor
+            color: primaryColor,
           },
           {
             name: 3,
             content: "紧急",
-            color: primaryColor
+            color: primaryColor,
           },
         ],
       });

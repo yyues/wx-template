@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFF",
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-divider": "@vant/weapp/divider/index"
+  }
+}

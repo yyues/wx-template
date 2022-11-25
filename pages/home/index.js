@@ -48,10 +48,6 @@ Page({
     this.setData({
       hasLogin: !!getToken(),
     });
-    // 设置 标题 为用户账号
-    wx.setNavigationBarTitle({
-      title: !!getToken() ? wx.getStorageSync("username") : "Hi!请先登录",
-    });
     //  查询今日待办
     this.GetToday();
   },

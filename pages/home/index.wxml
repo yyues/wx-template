@@ -1,7 +1,7 @@
 <view class="page-wrapper">
   <!-- 搜索框 -->
   <view class="search" bindtap="onSearch">
-    <van-search value="{{ searchValue }}" disabled placeholder="搜索你创建的任务" bind:search="onSearch" bind:cancel="onCancel" />
+   
   </view>
   <!-- 快捷操作栏 -->
   <view class="operation-wrapper">

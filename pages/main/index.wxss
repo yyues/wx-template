@@ -1,0 +1,77 @@
+.page {
+  min-height: 100vh;
+}
+.page .action {
+  display: flex;
+  padding: 20rpx 24rpx;
+  padding-bottom: 0;
+  justify-content: space-between;
+}
+.page .action .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+  aspect-ratio: 1;
+  width: 64px;
+}
+.page .action .item image {
+  width: 64rpx;
+  height: 64rpx;
+}
+.page .action .item text {
+  display: block;
+  margin-top: 20rpx;
+  color: #94a3b8;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  letter-spacing: 1.2px;
+}
+.page .action .item:hover {
+  background-color: #f4f4f5;
+  border-radius: 8rpx;
+}
+.page .today {
+  padding: 20rpx 24rpx;
+  padding-top: 0;
+}
+.page .today .title .content {
+  color: #24271e;
+  line-height: 48rpx;
+  font-weight: 600;
+}
+.page .today .title .week {
+  font-size: 24rpx;
+  color: #94a3b8;
+}
+.page .today .days-wrapper {
+  margin-top: 10rpx;
+  background-color: #fff;
+}
+.page .today .days-wrapper .days {
+  display: flex;
+  justify-content: space-between;
+}
+.page .today .days-wrapper .days .day {
+  text-align: center;
+  padding: 10rpx;
+  border-radius: 8rpx;
+}
+.page .today .days-wrapper .days .day .w {
+  display: block;
+  font-size: 24rpx;
+  color: #9ca3af;
+}
+.page .today .days-wrapper .days .day .d {
+  display: block;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+.page .today .days-wrapper .days .high-day {
+  background-color: #7174e2;
+  color: white;
+}
+.page .today .days-wrapper .days .high-day .w {
+  color: white;
+}

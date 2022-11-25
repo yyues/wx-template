@@ -34,7 +34,7 @@
       <view class="title">
         <text wx:if="{{currentKey == 'level'}}">选择优先级</text>
         <text wx:if="{{currentKey == 'is_cycle_todo'}}">设置周期</text>
-        <van-switch checked="{{ postForm.is_deadline }}" data-key="is_deadline" active-color="{{primaryColor}}" size='16px' custom-class='my-switch' bind:change="changeByKey" />
+        <van-switch checked="{{ postForm.is_deadline }}" wx:if="{{currentKey == 'is_cycle_todo'}}" data-key="is_deadline" active-color="{{primaryColor}}" size='16px' custom-class='my-switch' bind:change="changeByKey" />
       </view>
       <!-- 等级 -->
       <van-radio-group wx:if="{{currentKey == 'level'}}" value="{{ postForm.level }}" bind:change="onActionConfirm" direction="horizontal">
@@ -50,9 +50,9 @@
     </van-transition>
     <van-transition show="{{ showTime }}" name="slide-up" custom-class="time-wrapper" duration="{{ { enter: 600, leave: 280 } }}">
       <!-- 选择日历 -->
-      <van-datetime-picker wx:if="{{currentKey == 'execute_time'}}" type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" visible-item-count="{{3}}" bind:confirm="onActionConfirm" filter="{{ filter }}" custom-class="time" bind:cancel="onActionClose" />
+      <van-datetime-picker wx:if="{{currentKey == 'execute_time'}}" type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" visible-item-count="{{3}}" bind:confirm="onActionConfirm" filter="{{ filter }}" custom-class="time" bind:cancel="onActionClose" item-height="{{32}}" />
       <!-- 提醒时间 -->
-      <van-datetime-picker wx:if="{{ currentKey == 'remind_time' }}" type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" visible-item-count="{{3}}" bind:confirm="onActionConfirm" filter="{{ filter }}" bind:cancel="onActionClose" custom-class="time" />
+      <van-datetime-picker wx:if="{{ currentKey == 'remind_time' }}" type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" visible-item-count="{{3}}" bind:confirm="onActionConfirm" item-height="{{32}}" filter="{{ filter }}" bind:cancel="onActionClose" custom-class="time" />
     </van-transition>
   </view>
 </van-overlay>

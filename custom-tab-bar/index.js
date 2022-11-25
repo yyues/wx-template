@@ -6,7 +6,7 @@ Component({
     active: 0,
     list: [
       {
-        pagePath: '/pages/home/index',
+        pagePath: '/pages/main/index',
         iconPath: './image/home.png',
         selectedIconPath: './image/home_active.png',
         text: '首页'
