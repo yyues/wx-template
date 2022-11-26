@@ -80,6 +80,7 @@
 .page .card .content .wrapper .action .icon image {
   width: 56rpx;
   height: 56rpx;
+  vertical-align: middle;
 }
 .page .card .content .wrapper .action .detail {
   flex: 1;

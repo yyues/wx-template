@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/main/index",
-    "pages/home/index",
     "pages/user/index",
     "pages/login/index",
     "pages/square/index",

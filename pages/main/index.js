@@ -30,27 +30,27 @@ Page({
 
       {
         icon: '../../images/home/many.png',
-        content: '多人待办',
+        content: '圈子',
         name: 'fade',
         bgColor: '#F2F3F5',
         activeColor: '',
-        key: 'more'
+        key: 'circle'
       },
       {
         icon: '../../images/home/my.png',
-        content: '已延期的',
+        content: '动态',
         name: 'fade',
         bgColor: '#F2F3F5',
         activeColor: '',
-        key: 'delay'
+        key: 'square'
       },
       {
         icon: '../../images/home/finish.png',
-        content: '已完成的',
+        content: '使用说明',
         name: 'fade',
         bgColor: '#F2F3F5',
         activeColor: '',
-        key: 'finish'
+        key: 'use'
       }
     ],
     currentDay: '今日待办',
@@ -136,10 +136,18 @@ Page({
   },
   onAction(e) {
     const key = e.currentTarget.dataset.key
-    const url = `/pages/list/index?key=todo&from=home&type=${key}`
-    wx.navigateTo({
-      url
-    })
+    if (key == 'all') {
+      wx.navigateTo({
+        url: `/pages/list/index?key=todo&from=home&type=${key}`
+      })
+      return
+    }
+    if (['circle', 'square'].includes(key)) {
+      wx.navigateTo({
+        url: `/pages/list/index?key=${key}&from=home&type=${key}`
+      })
+      return
+    }
   },
   OnShowDay() {
     const data = this.data.showDays
