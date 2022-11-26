@@ -1,0 +1,63 @@
+<view class="page">
+  <!--  给个 全体的 背景色 然后白色卡片-->
+  <view class="card">
+    <van-transition name="slide-left" duration="{{600}}" custom-class="header">
+      <text>待办总览</text>
+    </van-transition>
+    <view class="content">
+      <van-transition custom-class="item">
+        <view class="title"> <text>全部</text> </view>
+        <view class="number all"> <text>40</text> </view>
+      </van-transition>
+      <van-transition custom-class="item">
+        <view class="title"> <text>已完成</text> </view>
+        <view class="number finish"> <text>24</text> </view>
+      </van-transition>
+      <van-transition custom-class="item">
+        <view class="title"> <text>未完成</text> </view>
+        <view class="number unFinish"><text>16</text></view>
+      </van-transition>
+    </view>
+  </view>
+  <!-- 视图层 -->
+  <view class="card">
+    <view class="header">
+      <text>待办视图</text>
+      <view class="action">
+        <van-transition wx:for="{{viewList}}" bindtap="onSelectKey" data-key="{{item}}" wx:key="index" duration="{{600}}" custom-class="day {{currentKey == item ? 'select' : ''}}">
+          <text>{{item}}</text>
+        </van-transition>
+      </view>
+    </view>
+    <view class="content">
+      <view class="container">
+        <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}"></ec-canvas>
+      </view>
+    </view>
+  </view>
+  <!-- 任务进度 -->
+  <view class="card">
+    <view class="header">
+      <text>任务进度</text>
+    </view>
+    <view class="content">
+      <view class="wrapper">
+        <view class="action" wx:for="{{actions}}" wx:key="index">
+          <!-- 左侧图标 -->
+          <view class="icon">
+            <image src="{{item.icon}}" mode="" />
+          </view>
+          <view class="detail">
+            <view class="h">
+              <text>-----</text>
+            </view>
+            <view class="b">
+              <text>{{item.content}}</text>
+              <text>3/5</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

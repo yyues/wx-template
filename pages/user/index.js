@@ -36,7 +36,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    initTabActive.bind(this)(2);
+    initTabActive.bind(this)(4);
     this.setData({
       avatar_url:
         wx.getStorageSync("avatar_url") ||

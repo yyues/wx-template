@@ -1,6 +1,17 @@
-import { getToken } from '../../utils/action'
-import { initTabActive } from '../../utils/index'
+import {
+  getToken
+} from '../../utils/action'
+import {
+  initTabActive
+} from '../../utils/index'
+import {
+  getTodoByDate,
+  delayCurrentToDo,
+  setTodoClock,
+  finishTodo,
+} from "../../api/todo";
 import moment from 'moment'
+import Toast from "@vant/weapp/toast/toast";
 Page({
   /**
    * 页面的初始数据
@@ -8,8 +19,7 @@ Page({
   data: {
     username: '',
     hasLogin: false,
-    actions: [
-      {
+    actions: [{
         icon: '../../images/home/all.png',
         content: '所有待办',
         name: 'fade',
@@ -17,14 +27,7 @@ Page({
         activeColor: '',
         key: 'all'
       },
-      {
-        icon: '../../images/home/my.png',
-        content: '进行中的',
-        name: 'fade',
-        bgColor: '#F2F3F5',
-        activeColor: '',
-        key: 'my'
-      },
+
       {
         icon: '../../images/home/many.png',
         content: '多人待办',
@@ -32,6 +35,14 @@ Page({
         bgColor: '#F2F3F5',
         activeColor: '',
         key: 'more'
+      },
+      {
+        icon: '../../images/home/my.png',
+        content: '已延期的',
+        name: 'fade',
+        bgColor: '#F2F3F5',
+        activeColor: '',
+        key: 'delay'
       },
       {
         icon: '../../images/home/finish.png',
@@ -44,8 +55,12 @@ Page({
     ],
     currentDay: '今日待办',
     currentWeek: '',
+    currentDate: '', // 当前选择的日期，默认是今天
     showDays: false,
-    weekList: []
+    weekList: [],
+    list: [],
+    loading: false,
+    arr: [] // loading 对应的数组
   },
 
   /**
@@ -57,7 +72,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    this.setData({ weekList: this.getWeekDayList() })
+    this.setData({
+      weekList: this.getWeekDayList(),
+      currentDate: moment().format("YYYY-MM-DD")
+    })
   },
 
   /**
@@ -69,10 +87,16 @@ Page({
     wx.setNavigationBarTitle({
       title: getToken() ? 'o(*￣▽￣*)ブ  ' : ' (＾－＾)V 登录吧！'
     })
-    this.setData({ showDays: false })
-
+    this.setData({
+      showDays: false,
+      hasLogin: !!getToken()
+    })
     // 设置当前时间
     this.getCurrentDay()
+    // 只有登录了才查询数据
+    if (!!getToken()) {
+      this.GetToday()
+    }
   },
 
   /**
@@ -106,16 +130,22 @@ Page({
   //
   onSearch() {
     const url = `/pages/list/index?key=search&from=home&type=add`
-    wx.navigateTo({ url })
+    wx.navigateTo({
+      url
+    })
   },
   onAction(e) {
     const key = e.currentTarget.dataset.key
     const url = `/pages/list/index?key=todo&from=home&type=${key}`
-    wx.navigateTo({ url })
+    wx.navigateTo({
+      url
+    })
   },
   OnShowDay() {
     const data = this.data.showDays
-    this.setData({ showDays: !data })
+    this.setData({
+      showDays: !data
+    })
   },
   getCurrentDay(date = new Date()) {
     const array = ['日', '一', '二', '三', '四', '五', '六']
@@ -129,7 +159,7 @@ Page({
     // 这个日期一定是当天的
     const array = ['日', '一', '二', '三', '四', '五', '六']
     const start = moment()
-      .subtract(moment().days(), 'days')
+      // .subtract(moment().days(), 'days')
       .format('YYYY-MM-DD')
 
     const arr = []
@@ -139,10 +169,69 @@ Page({
       const day = data.date()
       arr.push({
         week,
-        day
+        day,
+        data: moment(data).format("YYYY-MM-DD")
       })
     }
 
     return arr
+  },
+  onSelectToday(e) {
+    const date = e.currentTarget.dataset.key
+    this.setData({
+      currentDate: date == 'today' ? moment().format('YYYY-MM-DD') : date
+    }, () => {
+      this.GetToday()
+    })
+  },
+  GetToday() {
+    this.setData({
+      loading: true,
+    });
+    // 今天可能也有完成的， 要查没有完成的
+    getTodoByDate({
+        task_status: "running",
+        date: this.data.currentDate
+      })
+      .then((res) => {
+        this.setData({
+          list: res,
+          arr: new Array(res.length).fill(false),
+        });
+      })
+      .finally(() => {
+        this.setData({
+          loading: false,
+        });
+      });
+  },
+  onDetail() {
+
+  },
+  onFinish(e) {
+    const id = e.detail
+    const index = this.data.list.findIndex(i => i.id == id)
+    const arr = this.data.arr
+    arr[index] = true
+    this.setData({
+      arr
+    })
+    finishTodo({
+      id,
+    }).then((res) => {
+      //  重新走一个请求就行了
+      Toast.success({
+        message: "完成待办啦！",
+        duration: 500,
+        onClose: () => {
+          this.GetToday();
+        },
+      });
+    });
+  },
+  handleAdd() {
+    wx.navigateTo({
+      url: '/pages/add/index',
+    })
   }
 })

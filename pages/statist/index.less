@@ -1,0 +1,137 @@
+@import '../../style/index.less';
+
+.page {
+  min-height: calc(100vh - 40rpx);
+  background-color: @page-bg-color;
+  padding: @primary-theme-padding;
+  padding-bottom: 20vh;
+
+  .card {
+    padding: @base-size * 2;
+    background-color: #fff;
+    border-radius: @primary-radius * 1.5;
+    margin-bottom: @base-size * 2.5;
+
+    .header {
+      margin-bottom: @base-size *2;
+
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+
+      .text {
+        color: @text-header-color;
+        font-weight: 500;
+        font-size: @size-16;
+        line-height: @line-h-16;
+      }
+
+      .action {
+        display: flex;
+        background-color: rgba(@primary-color, 0.55);
+        border-radius: @primary-radius;
+
+        .day {
+          padding: @base-size @base-size *1.5;
+          font-size: @size-12;
+          color: @primary-color;
+
+          &.select {
+            background-color: @primary-color;
+            border-radius: @primary-radius;
+            color: white;
+            transition: all 0.4s;
+          }
+        }
+      }
+
+
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+
+      .item {
+        padding: @base-size @base-size *2;
+        border-radius: @primary-radius;
+
+        .title {
+          margin-bottom: @base-size * 2;
+
+          text {
+            color: @primary-second-text-color;
+          }
+        }
+
+        .number {
+          text-align: center;
+
+          text {
+            font-weight: bolder;
+            font-size: 18px;
+          }
+
+          &.all {
+            color: #0f766e;
+          }
+
+          &.finish {
+            color: @primary-color;
+          }
+
+          &.unFinish {
+            color: #f59e0b;
+          }
+        }
+      }
+
+      .wrapper {
+        width: 100%;
+
+        .action {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          padding: @base-size *2 0;
+
+          .icon {
+            image {
+              width: 56rpx;
+              height: 56rpx;
+            }
+
+          }
+
+          .detail {
+            flex: 1;
+            margin-left: @base-size *2;
+
+            .h {
+              margin-bottom: @base-size;
+            }
+
+            .b {
+              display: flex;
+              justify-content: space-between;
+              line-height: @line-h-14;
+              color: @primary-second-text-color;
+              font-size: @size-14;
+
+              text {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
+    margin-top: @base-size * 2;
+  }
+}

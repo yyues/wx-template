@@ -2,12 +2,15 @@
 
 .page {
   min-height: 100vh;
+  transition: height 0.28s;
+  position: relative;
 
   .action {
     display: flex;
     padding: @primary-theme-padding;
     padding-bottom: 0;
     justify-content: space-between;
+
     .item {
       display: flex;
       flex-direction: column;
@@ -21,46 +24,65 @@
         width: 64rpx;
         height: 64rpx;
       }
+
       text {
         display: block;
         margin-top: @base-size * 2;
         color: @primary-second-text-color;
-        font-size: @size-14;
+        font-size: @size-12;
         line-height: @line-h-14;
         letter-spacing: 1.2px;
       }
+
       &:hover {
         background-color: #f4f4f5;
         border-radius: @primary-radius;
       }
     }
   }
+
   .today {
+    margin-top: @base-size *2;
     padding: @primary-theme-padding;
     padding-top: 0;
+
     .title {
+      display: flex;
+      align-items: center;
+
       .content {
         color: @text-header-color;
         line-height: @line-h-16;
         font-weight: 600;
+        margin-right: @base-size * 0.6;
       }
+
       .week {
         font-size: @size-12;
         color: @primary-second-text-color;
       }
+
+      .show {
+        margin-left: @base-size *2;
+      }
     }
+
     .days-wrapper {
       margin-top: @base-size;
       background-color: #fff;
+
+
+
       .days {
         display: flex;
         justify-content: space-between;
 
         .day {
-          
+
           text-align: center;
           padding: @base-size;
           border-radius: @primary-radius;
+
           .w {
             display: block;
             font-size: @size-12;
@@ -73,14 +95,40 @@
             margin-top: @base-size * 0.8;
           }
         }
-        .high-day {
+
+        .checked {
           background-color: @primary-second-color;
-          color: white;
+          color: white !important;
+
           .w {
-            color: white;
+            color: white !important;
           }
         }
       }
     }
+  }
+
+  .detail-wrapper {
+    padding: @primary-theme-padding;
+  }
+
+  .add {
+    position: absolute;
+    right: @base-size *6;
+    bottom: @base-size *8;
+
+    image {
+      width: 90rpx;
+      height: 90rpx;
+    }
+  }
+}
+
+.high-day {
+  background-color: @primary-second-color;
+  color: white;
+
+  .w {
+    color: white;
   }
 }

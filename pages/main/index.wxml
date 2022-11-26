@@ -12,17 +12,40 @@
 
   <!-- 今日待办 -->
   <view class="today">
-    <view class="title" bindtap="OnShowDay">
-      <text class="content">{{currentDay}}</text>
-      <text class="week"> · {{currentWeek}}</text>
+    <view class="title">
+      <view bindtap="OnShowDay">
+        <text class="content">{{currentDay}}</text>
+        <text class="week"> · {{currentWeek}}</text>
+      </view>
+      <van-transition custom-class="show" name="slide-left" show="{{showDays}}" duration="{{900}}">
+        <van-tag size="small" wx:if="{{showDays}}" data-key="today" bindtap="onSelectToday" color="#5b67ca">回到今日</van-tag>
+      </van-transition>
     </view>
     <van-transition custom-class="days-wrapper" name="fade" show="{{showDays}}" duration="{{900}}">
       <view class="days">
-        <view class="day" wx:for="{{weekList}}" wx:key="index" hover-class="high-day">
+        <view class="day {{ item.data == currentDate ? 'checked': '' }}" wx:for="{{weekList}}" wx:key="index" hover-class="high-day" data-key="{{item.data}}" catchtap="onSelectToday">
           <text class="w">{{item.week}}</text>
           <text class="d">{{item.day}}</text>
         </view>
       </view>
     </van-transition>
   </view>
+  <view class="add" bindtap="handleAdd">
+    <image src="../../images/tabbar/add.png" mode="" />
+  </view>
+  <van-transition custom-class="detail-wrapper" name="fade" duration="{{900}}">
+    <!-- 如果说没有登录 -->
+    <view class="no-login" wx:if="{{!hasLogin}}">
+      <text>没有登录哦</text>
+    </view>
+    <view class="detail" wx:else>
+      <view class="empty" wx:if="{{list.length === 0}}">
+
+      </view>
+      <view class="content" wx:else>
+        <today-card wx:for="{{list}}" wx:key="id" data="{{item}}" loading="{{arr[index]}}" index="{{index}}" bindselect="onFinish" binddetail="onDetail" hasSelect />
+      </view>
+    </view>
+  </van-transition>
+  <van-toast id="van-toast" />
 </view>

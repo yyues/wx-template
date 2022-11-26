@@ -1,0 +1,106 @@
+.page {
+  min-height: calc(100vh - 40rpx);
+  background-color: #F2F3F5;
+  padding: 20rpx 24rpx;
+  padding-bottom: 20vh;
+}
+.page .card {
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 25rpx;
+}
+.page .card .header {
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+.page .card .header .text {
+  color: #24271e;
+  font-weight: 500;
+  font-size: 32rpx;
+  line-height: 48rpx;
+}
+.page .card .header .action {
+  display: flex;
+  background-color: rgba(91, 103, 202, 0.55);
+  border-radius: 8rpx;
+}
+.page .card .header .action .day {
+  padding: 10rpx 15rpx;
+  font-size: 24rpx;
+  color: #5b67ca;
+}
+.page .card .header .action .day.select {
+  background-color: #5b67ca;
+  border-radius: 8rpx;
+  color: white;
+  transition: all 0.4s;
+}
+.page .card .content {
+  display: flex;
+  justify-content: space-between;
+}
+.page .card .content .item {
+  padding: 10rpx 20rpx;
+  border-radius: 8rpx;
+}
+.page .card .content .item .title {
+  margin-bottom: 20rpx;
+}
+.page .card .content .item .title text {
+  color: #94a3b8;
+}
+.page .card .content .item .number {
+  text-align: center;
+}
+.page .card .content .item .number text {
+  font-weight: bolder;
+  font-size: 18px;
+}
+.page .card .content .item .number.all {
+  color: #0f766e;
+}
+.page .card .content .item .number.finish {
+  color: #5b67ca;
+}
+.page .card .content .item .number.unFinish {
+  color: #f59e0b;
+}
+.page .card .content .wrapper {
+  width: 100%;
+}
+.page .card .content .wrapper .action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+.page .card .content .wrapper .action .icon image {
+  width: 56rpx;
+  height: 56rpx;
+}
+.page .card .content .wrapper .action .detail {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.page .card .content .wrapper .action .detail .h {
+  margin-bottom: 10rpx;
+}
+.page .card .content .wrapper .action .detail .b {
+  display: flex;
+  justify-content: space-between;
+  line-height: 44rpx;
+  color: #94a3b8;
+  font-size: 28rpx;
+}
+.page .card .content .wrapper .action .detail .b text {
+  display: block;
+}
+.page .container {
+  margin: 0 auto;
+  width: 250px;
+  height: 250px;
+  margin-top: 20rpx;
+}

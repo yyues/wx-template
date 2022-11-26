@@ -8,7 +8,7 @@
 .index,
 .action {
   width: 44rpx;
-  margin-right: 20rpx;
+  margin-right: 12rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,6 +39,9 @@
 .label {
   display: flex;
   align-items: center;
+}
+.label .level {
+  margin-right: 10rpx;
 }
 .high {
   border-radius: 8rpx;
