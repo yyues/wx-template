@@ -74,17 +74,7 @@ Page({
               duration: 1000,
               success() {
                 // Loading 动画 做完该做的事情
-                if (
-                  ["pages/home/index", "pages/user/index"].includes(fullPath)
-                ) {
-                  wx.switchTab({
-                    url: `/${fullPath}`,
-                  });
-                  return;
-                }
-                wx.redirectTo({
-                  url: `/${fullPath}`,
-                });
+                wx.navigateBack()
               },
             });
           });
