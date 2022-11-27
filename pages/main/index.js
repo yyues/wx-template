@@ -186,6 +186,7 @@ Page({
   },
   onSelectToday(e) {
     const date = e.currentTarget.dataset.key
+    this.getCurrentDay(date == 'today' ? moment().format('YYYY-MM-DD') : date)
     this.setData({
       currentDate: date == 'today' ? moment().format('YYYY-MM-DD') : date
     }, () => {
