@@ -11,7 +11,8 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
+    padding-top: 16vh;
   }
 
   .content {
@@ -23,8 +24,21 @@
     position: relative;
 
     .header {
-      margin: @base-size 0;
+
+
+      .total {
+        padding: @base-size * 4 0 @base-size * 6 0;
+        background-color: @primary-color;
+        padding-left: @base-size * 4;
+
+        text {
+          color: white;
+          font-size: @size-14;
+          line-height: @line-h-14;
+        }
+      }
     }
+
     .detail {
       flex: 1;
       padding: @primary-theme-padding;
@@ -39,6 +53,7 @@
       bottom: 180rpx;
     }
   }
+
   .bg-color {
     background-color: @page-bg-color;
   }

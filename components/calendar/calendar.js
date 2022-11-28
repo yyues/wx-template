@@ -13,6 +13,14 @@ Component({
       type: String,
       value: ''
     },
+    list: {
+      type: Array,
+      default: []
+    }, // 用来展示对应颜色
+    selectDay: {
+      type: String,
+      default: ''
+    }
   },
 
   /**
@@ -29,7 +37,7 @@ Component({
     swiperHeight: 0,
     scrolling: false,
     swiperData: [],
-    currentList: [false, false, false, false, false, false, false,],
+    currentList: [false, false, false, false, false, false, false, ],
     selectTime: ''
   },
 
@@ -154,7 +162,8 @@ Component({
     ready() {
       const arr = this.initCalendar();
       this.setData({
-        swiperData: arr
+        swiperData: arr,
+        selectTime: this.data.selectDay
       })
     }
   },

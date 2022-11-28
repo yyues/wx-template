@@ -1,14 +1,27 @@
 // pages/list/index.js
-import { getLocationParams } from "../../utils/index";
-import { findAllTodo, getTodoByDate, getUserAllTodo } from "../../api/todo";
+import {
+  getLocationParams,
+  Login
+} from "../../utils/index";
+import {
+  findAllTodo,
+  getTodoByDate,
+  getUserAllTodo
+} from "../../api/todo";
 import {
   getPublicCircle,
   agreeJoinCircle,
   getUserAllCircle,
 } from "../../api/circle";
-import { getPublicSquare } from "../../api/square";
-import { getMyMsg } from "../../api/message";
-import { WE_APP_BASE_API } from "../../env";
+import {
+  getPublicSquare
+} from "../../api/square";
+import {
+  getMyMsg
+} from "../../api/message";
+import {
+  WE_APP_BASE_API
+} from "../../env";
 import moment from "moment";
 import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
@@ -50,7 +63,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const { key, from, type } = this.GetRouteParam();
+    const {
+      key,
+      from,
+      type
+    } = this.GetRouteParam();
     const master = getLocationParams("master");
     // 这个是 检测自己 的圈子下 的待办页面能够有新增按钮
     const expec = key == "my-todo" && from == "circle-detail" && !!master;
@@ -66,6 +83,7 @@ Page({
       isCircle: ["circle", "my-circle"].includes(key), // 是否是 圈子卡片
       isSquare: ["square"].includes(key),
       isMsg: ["my-message"].includes(key), // 是否是 消息卡片
+      selectDate: moment().format("YYYY-MM-DD")
     });
     //  设置页面标题
     this.GetTitle();
@@ -108,8 +126,7 @@ Page({
    */
   onPullDownRefresh() {
     const key = this.data.key;
-    this.setData(
-      {
+    this.setData({
         refersh: true,
       },
       () => {
@@ -127,9 +144,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-    console.log("top----");
     const key = this.data.key;
-    const { total, searchForm } = this.data;
+    const {
+      total,
+      searchForm
+    } = this.data;
     if (total < searchForm.limit) {
       // return Toast.fail("数据已加载完了！");
       return;
@@ -137,7 +156,9 @@ Page({
     if (key !== "search" && key !== "todo") {
       searchForm.page++;
       wx.showNavigationBarLoading();
-      this.setData({ searchForm }, () => {
+      this.setData({
+        searchForm
+      }, () => {
         this.GetList();
       });
     }
@@ -190,7 +211,10 @@ Page({
     };
   },
   GetTitle() {
-    const { key, from } = this.GetRouteParam();
+    const {
+      key,
+      from
+    } = this.GetRouteParam();
     let title;
     switch (key) {
       case "search":
@@ -233,7 +257,10 @@ Page({
     });
   },
   setEmptyMsg() {
-    const { key, from } = this.GetRouteParam();
+    const {
+      key,
+      from
+    } = this.GetRouteParam();
     let title;
     let url;
     switch (key) {
@@ -256,7 +283,7 @@ Page({
         title = "还没有新的消息呢！";
         break;
       case "todo":
-        title = "今天没有待办哦";
+        title = "今日没有待办哦";
         url = WE_APP_BASE_API + "/public/status/todo_empty.png";
         break;
       case "my-todo":
@@ -345,15 +372,26 @@ Page({
     const param = {
       date: this.data.selectDate,
     };
+    this.onStyle(false)
+    this.setData({
+      loading: true
+    })
     getTodoByDate(param).then((res) => {
       // 统一调用 一个 处理结果的方法把
+      if (this.data.key == 'todo') {
+        this.onStyle(res.length !== 0)
+      }
       this.GetAxiosRes(res);
+
+    }).finally(() => {
+      this.setData({
+        loading: false
+      })
     });
   },
   // search 搜索 start
   onHeaderSearch(e) {
-    this.setData(
-      {
+    this.setData({
         searchValue: e.detail,
       },
       () => {
@@ -376,7 +414,10 @@ Page({
   },
   // search 搜索 end
   GetList() {
-    const { key, from } = this.GetRouteParam();
+    const {
+      key,
+      from
+    } = this.GetRouteParam();
     this.setData({
       loading: true,
     });
@@ -450,8 +491,7 @@ Page({
     const msgId = e.detail;
     const key = this.data.key;
     if (key !== "my-message") return Toast.fail("不能操作的哦!");
-    const actions = [
-      {
+    const actions = [{
         name: "同意",
         color: app.globalData.primaryColor,
         loading: false,
@@ -508,7 +548,10 @@ Page({
   },
   onActionSelect(e) {
     console.log("点击操作栏的事件", e.detail);
-    const { msgId, name } = e.detail;
+    const {
+      msgId,
+      name
+    } = e.detail;
     const data = this.data.list.filter((i) => i.id == msgId)[0];
     if (!data) return Toast.fail("数据错误！");
     if (name == "同意") {
@@ -516,7 +559,12 @@ Page({
     }
   },
   onAgree(data) {
-    const { form_type, form_id, create_uid, id } = data;
+    const {
+      form_type,
+      form_id,
+      create_uid,
+      id
+    } = data;
     let fn;
     if (form_type === "circle-join") {
       const param = {
@@ -543,4 +591,10 @@ Page({
       });
     });
   },
+  onStyle(boolean) {
+    wx.setNavigationBarColor({
+      frontColor: boolean ? "#ffffff" : '#000000',
+      backgroundColor: boolean ? app.globalData.primaryColor : "#ffffff",
+    });
+  }
 });

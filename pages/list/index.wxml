@@ -6,7 +6,12 @@
   <view class="content" wx:else>
     <view class="header" wx:if="{{ hasHeader }}">
       <!-- 只有 待办页 和  搜索页 才有 头部内容 -->
-      <calendar bind:selectDay="onHeaderSelect" wx:if="{{key === 'todo'}}" />
+      <view class="all" wx:if="{{key === 'todo'}}">
+        <view class="total" wx:if="{{list.length !==0}}">
+          <text>今日共有{{list.length}}个待办</text>
+        </view>
+        <calendar bind:selectDay="onHeaderSelect" selectDay="{{selectDate}}" list="{{list}}" />
+      </view>
       <van-search value="{{ searchValue }}" placeholder="搜索个人/公开的待办" wx:if="{{key === 'search'}}" bind:search="onHeaderSearch" bind:cancel="onSearchCancel" />
     </view>
     <!-- 在待办页的时候给出一个背景色 -->

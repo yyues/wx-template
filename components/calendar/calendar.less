@@ -1,10 +1,12 @@
 @import "../../style/index.less";
+
 .flex {
   display: flex;
 }
 
 .calendar {
   background-color: #fff;
+
   // border-bottom: 1px solid #eee;
 }
 
@@ -67,6 +69,8 @@
     }
   }
 
+
+
   .now {
     .day {
       background-color: rgba(@primary-color, 0.9);
@@ -75,4 +79,10 @@
     }
   }
 
+}
+
+.has-data {
+  padding: @base-size *2 0;
+  margin-top: -@base-size *2;
+  border-radius: @base-size * 2 @base-size * 2 0 0;
 }
