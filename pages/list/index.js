@@ -168,6 +168,19 @@ Page({
    */
   onShareAppMessage() {},
   GetAxiosRes(res) {
+    // 先结束加载在处理
+    const status = this.data.refersh;
+    if (status) {
+      // 页面下拉刷新
+      wx.stopPullDownRefresh({
+        success() {
+          Toast.success("刷新成功");
+          _this.setData({
+            refersh: false,
+          });
+        },
+      });
+    }
     //  res 为请求返回的结果数据
     var _this = this;
     console.log("我被调用了 res");
@@ -186,18 +199,7 @@ Page({
       loading: false,
       total: res.count ?? 0,
     });
-    const status = this.data.refersh;
-    if (status) {
-      // 页面下拉刷新
-      wx.stopPullDownRefresh({
-        success() {
-          Toast.success("刷新成功");
-          _this.setData({
-            refersh: false,
-          });
-        },
-      });
-    }
+   
   },
   // 获取路由 详情
   GetRouteParam() {
@@ -271,6 +273,7 @@ Page({
         title = "还没有圈子，真是奇怪！";
         break;
       case "square":
+        url = WE_APP_BASE_API + "/public/status/square_empty.png";
         title = "没有人发布动态哦！快去发布把 ";
         break;
       case "my-circle":
