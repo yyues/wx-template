@@ -31,3 +31,6 @@
   right: 90rpx;
   bottom: 180rpx;
 }
+.wrapper .bg-color {
+  background-color: #F2F3F5;
+}

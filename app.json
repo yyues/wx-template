@@ -5,7 +5,6 @@
     "pages/login/index",
     "pages/square/index",
     "pages/circle/index",
-    "pages/detail/index",
     "pages/add/index",
     "pages/todo-detail/index",
     "pages/circle-detail/index",

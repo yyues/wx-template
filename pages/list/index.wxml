@@ -9,10 +9,11 @@
       <calendar bind:selectDay="onHeaderSelect" wx:if="{{key === 'todo'}}" />
       <van-search value="{{ searchValue }}" placeholder="搜索个人/公开的待办" wx:if="{{key === 'search'}}" bind:search="onHeaderSearch" bind:cancel="onSearchCancel" />
     </view>
-    <view class="empty" wx:if="{{list.length === 0 }}">
-      <van-empty description="{{emptyMsg}}" />
+    <!-- 在待办页的时候给出一个背景色 -->
+    <view class="empty {{key == 'todo' ? 'bg-color':''}}" wx:if="{{list.length === 0 }}">
+      <van-empty description="{{emptyMsg}}" image="{{emptyUrl}}" />
     </view>
-    <view class="detail" wx:else>
+    <view class="detail " wx:else>
       <block wx:for="{{list}}" wx:key="id">
         <!-- 待办类 统一卡片  -->
         <task-card wx:if="{{isTask}}" index="{{index + 1 }}" data="{{item}}" hasIndex binddetail="onDetail" />
@@ -29,6 +30,6 @@
     </view>
   </view>
   <!-- 能够直接在列表页操作的也就只有 message -->
-  <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onActionClose" bind:select="onActionSelect" bind:cancel="onActionClose" cancel-text="取消" description="{{description }}"  />
+  <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onActionClose" bind:select="onActionSelect" bind:cancel="onActionClose" cancel-text="取消" description="{{description }}" />
   <van-toast id="van-toast" />
 </view>

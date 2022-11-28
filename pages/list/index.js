@@ -8,6 +8,7 @@ import {
 } from "../../api/circle";
 import { getPublicSquare } from "../../api/square";
 import { getMyMsg } from "../../api/message";
+import { WE_APP_BASE_API } from "../../env";
 import moment from "moment";
 import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
@@ -26,7 +27,7 @@ Page({
     hasHeader: false, // 只有 todo、search 才有头部
     list: [], // 绑定的列表数据
     emptyMsg: "", // 不同页面 的 查询 空数据 的文案显示
-    emptyUrl: "", // 可配置项 空白页的 显示图片url
+    emptyUrl: "https://img.yzcdn.cn/vant/custom-empty-image.png", // 可配置项 空白页的 显示图片url
     searchValue: "", // 头部搜索框输入值
     selectDate: "", // todo 模式下 头部的选择日期
     searchForm: {
@@ -234,6 +235,7 @@ Page({
   setEmptyMsg() {
     const { key, from } = this.GetRouteParam();
     let title;
+    let url;
     switch (key) {
       case "search":
         title = "没有查找到待办哦！";
@@ -255,6 +257,7 @@ Page({
         break;
       case "todo":
         title = "今天没有待办哦";
+        url = WE_APP_BASE_API + "/public/status/todo_empty.png";
         break;
       case "my-todo":
         if (from === "circle-detail") {
@@ -263,14 +266,15 @@ Page({
         } else {
           title = "还没有自己的待办呢！";
         }
-
         break;
       default:
         title = "吱吱---，系统错误";
         break;
     }
+    const emptyUrl = this.data.emptyUrl
     this.setData({
       emptyMsg: title,
+      emptyUrl: url ?? emptyUrl
     });
   },
   // 头部处理逻辑

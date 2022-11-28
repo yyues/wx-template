@@ -173,7 +173,8 @@ Page({
     const arr = []
     for (let index = 0; index < 7; index++) {
       const data = moment(start).add(index, 'days')
-      const week = '周' + array[index]
+
+      const week = '周' + array[moment(data).days()]
       const day = data.date()
       arr.push({
         week,
