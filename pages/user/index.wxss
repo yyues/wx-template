@@ -1,32 +1,89 @@
-.user-page .bg {
-  width: 100%;
-  height: 400rpx;
-  background-color: #7174e2;
-  margin-top: -180rpx;
-  margin-bottom: 10rpx;
-  display: flex;
-  align-items: flex-end;
-  padding: 0 0 40rpx 40rpx;
+.user-page {
+  background-color: #F2F3F5;
+  min-height: 100vh;
 }
-.user-page .bg .wrapper image {
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 16rpx;
-  object-fit: cover;
+.user-page .wrapper {
+  background-color: #5b67ca;
+  height: 244rpx;
+  position: relative;
+  margin-bottom: 100px;
 }
-.user-page .bg .username {
-  height: 118rpx;
-  margin-left: 30rpx;
-  font-size: 40rpx;
-  color: #24271e;
-}
-.user-page .bg .username .label {
-  padding-top: 10rpx;
-}
-.user-page .part {
-  border: 1px solid #f5f5f5;
+.user-page .wrapper .card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 48rpx;
   margin: 20rpx 24rpx;
+  background-color: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  padding: 20rpx;
   border-radius: 16rpx;
+}
+.user-page .wrapper .card .card__header {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  padding: 10rpx;
+}
+.user-page .wrapper .card .card__header .avatar {
+  position: absolute;
+  left: 20rpx;
+  top: -60rpx;
+}
+.user-page .wrapper .card .card__header .avatar image {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.user-page .wrapper .card .card__header .edit-icon {
+  font-size: 24rpx;
+  border: 1px solid #374151;
+  color: #374151;
+  padding: 3rpx 16rpx;
+  border-radius: 16rpx;
+  cursor: pointer;
+}
+.user-page .wrapper .card .card__content {
+  display: flex;
+  align-items: center;
+  margin: 0 20rpx 10rpx;
+}
+.user-page .wrapper .card .card__content text {
+  font-size: 36rpx;
+  line-height: 56rpx;
+  font-weight: 600;
+}
+.user-page .wrapper .card .card__desc {
+  margin: 0 20rpx;
+}
+.user-page .wrapper .card .card__desc text {
+  font-size: 28rpx;
+  color: #94a3b8;
+}
+.user-page .wrapper .card .card__footer {
+  padding: 20rpx 20rpx 0;
+  margin: 0 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user-page .wrapper .card .card__footer .item {
+  text-align: center;
+}
+.user-page .wrapper .card .card__footer .item .number {
+  font-size: 40rpx;
+  line-height: 64rpx;
+  color: #374151;
+  font-weight: 600;
+}
+.user-page .wrapper .card .card__footer .item .type text {
+  color: #94a3b8;
+  letter-spacing: 0.7px;
+  font-size: 28rpx;
+}
+.user-page .action {
+  margin-bottom: 20rpx;
 }
 .user-page .my-switch {
   vertical-align: middle;

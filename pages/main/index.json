@@ -6,6 +6,7 @@
     "van-transition": "@vant/weapp/transition/index",
     "van-tag": "@vant/weapp/tag/index",
     "van-toast": "@vant/weapp/toast/index",
+    "van-empty": "@vant/weapp/empty/index",
     "today-card": "../../components/todo-card/index"
   }
 }

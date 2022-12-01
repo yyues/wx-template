@@ -16,7 +16,7 @@
     </view>
     <!-- 在待办页的时候给出一个背景色 -->
     <view class="empty {{key == 'todo' ? 'bg-color':''}}" wx:if="{{list.length === 0 }}">
-      <van-empty description="{{emptyMsg}}" image="{{emptyUrl}}" />
+      <van-empty description="{{emptyMsg}}" image="{{emptyUrl}}" custom-class="{{key == 'my-message' ? 'my-message' :''}}" />
     </view>
     <view class="detail " wx:else>
       <block wx:for="{{list}}" wx:key="id">

@@ -36,7 +36,8 @@
   <van-transition custom-class="detail-wrapper" name="fade" duration="{{900}}">
     <!-- 如果说没有登录 -->
     <view class="no-login" wx:if="{{!hasLogin}}">
-      <text>没有登录哦</text>
+      <!-- image="{{emptyUrl}}" custom-class="empty" -->
+      <van-empty description="还没有登录哦,快去登录吧(＾－＾)V" />
     </view>
     <view class="detail" wx:else>
       <view class="empty" wx:if="{{list.length === 0}}">

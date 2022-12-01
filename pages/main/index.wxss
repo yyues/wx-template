@@ -98,6 +98,10 @@
   width: 90rpx;
   height: 90rpx;
 }
+.page .empty .van-empty__image {
+  height: 188px;
+  margin-bottom: 20rpx;
+}
 .high-day {
   background-color: #7174e2;
   color: white;

@@ -57,7 +57,7 @@ Page({
   bindGetUserInfo(e) {
     const type = getLocationParams("type");
     wx.getUserProfile({
-      desc: "获得您的信息，",
+      desc: "Tasknow申请获取你的信息",
       success(res) {
         // 成功后去往原本要去的页面
         const fullPath =
@@ -74,7 +74,7 @@ Page({
               duration: 1000,
               success() {
                 // Loading 动画 做完该做的事情
-                wx.navigateBack()
+                wx.navigateBack();
               },
             });
           });

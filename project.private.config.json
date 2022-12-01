@@ -3,10 +3,10 @@
   "projectname": "wx-template",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": false,
+    "urlCheck": true,
     "autoAudits": false,
     "preloadBackgroundData": false,
     "useIsolateContext": false
   },
-  "libVersion": "2.27.2"
+  "libVersion": "2.26.2"
 }

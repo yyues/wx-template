@@ -1,66 +1,65 @@
-import {
-  getToken
-} from '../../utils/action'
-import {
-  initTabActive
-} from '../../utils/index'
+import { getToken } from "../../utils/action";
+import { initTabActive } from "../../utils/index";
 import {
   getTodoByDate,
   delayCurrentToDo,
   setTodoClock,
   finishTodo,
 } from "../../api/todo";
-import moment from 'moment'
+import moment from "moment";
 import Toast from "@vant/weapp/toast/toast";
+import { WE_APP_BASE_API } from "../../env";
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    username: '',
+    username: "",
     hasLogin: false,
-    actions: [{
-        icon: '../../images/home/all.png',
-        content: '所有待办',
-        name: 'fade',
-        bgColor: '#F2F3F5',
-        activeColor: '',
-        key: 'all'
+    actions: [
+      {
+        icon: "../../images/home/all.png",
+        content: "所有待办",
+        name: "fade",
+        bgColor: "#F2F3F5",
+        activeColor: "",
+        key: "all",
       },
 
       {
-        icon: '../../images/home/many.png',
-        content: '圈子',
-        name: 'fade',
-        bgColor: '#F2F3F5',
-        activeColor: '',
-        key: 'circle'
+        icon: "../../images/home/many.png",
+        content: "圈子",
+        name: "fade",
+        bgColor: "#F2F3F5",
+        activeColor: "",
+        key: "circle",
       },
       {
-        icon: '../../images/home/my.png',
-        content: '动态',
-        name: 'fade',
-        bgColor: '#F2F3F5',
-        activeColor: '',
-        key: 'square'
+        icon: "../../images/home/my.png",
+        content: "动态",
+        name: "fade",
+        bgColor: "#F2F3F5",
+        activeColor: "",
+        key: "square",
       },
       {
-        icon: '../../images/home/finish.png',
-        content: '使用说明',
-        name: 'fade',
-        bgColor: '#F2F3F5',
-        activeColor: '',
-        key: 'use'
-      }
+        icon: "../../images/home/finish.png",
+        content: "消息",
+        name: "fade",
+        bgColor: "#F2F3F5",
+        activeColor: "",
+        key: "my-message",
+      },
     ],
-    currentDay: '今日待办',
-    currentWeek: '',
-    currentDate: '', // 当前选择的日期，默认是今天
+    currentDay: "今日待办",
+    currentWeek: "",
+    currentDate: "", // 当前选择的日期，默认是今天
     showDays: false,
     weekList: [],
     list: [],
     loading: false,
-    arr: [] // loading 对应的数组
+    arr: [], // loading 对应的数组
+    emptyUrl: "",
   },
 
   /**
@@ -74,28 +73,29 @@ Page({
   onReady() {
     this.setData({
       weekList: this.getWeekDayList(),
-      currentDate: moment().format("YYYY-MM-DD")
-    })
+      currentDate: moment().format("YYYY-MM-DD"),
+      emptyUrl: WE_APP_BASE_API + "/public/status/no_login.png",
+    });
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    initTabActive.bind(this)(0)
+    initTabActive.bind(this)(0);
     // 设置 标题 为用户账号
     wx.setNavigationBarTitle({
-      title: getToken() ? 'o(*￣▽￣*)ブ  ' : ' (＾－＾)V 登录吧！'
-    })
+      title: getToken() ? "o(*￣▽￣*)ブ  " : " (＾－＾)V 登录吧！",
+    });
     this.setData({
       showDays: false,
-      hasLogin: !!getToken()
-    })
+      hasLogin: !!getToken(),
+    });
     // 设置当前时间
-    this.getCurrentDay()
+    this.getCurrentDay();
     // 只有登录了才查询数据
     if (!!getToken()) {
-      this.GetToday()
+      this.GetToday();
     }
   },
 
@@ -129,70 +129,73 @@ Page({
   onShareAppMessage() {},
   //
   onSearch() {
-    const url = `/pages/list/index?key=search&from=home&type=add`
+    const url = `/pages/list/index?key=search&from=home&type=add`;
     wx.navigateTo({
-      url
-    })
+      url,
+    });
   },
   onAction(e) {
-    const key = e.currentTarget.dataset.key
-    if (key == 'all') {
+    const key = e.currentTarget.dataset.key;
+    if (key == "all") {
       wx.navigateTo({
-        url: `/pages/list/index?key=todo&from=home&type=${key}`
-      })
-      return
+        url: `/pages/list/index?key=todo&from=home&type=${key}`,
+      });
+      return;
     }
-    if (['circle', 'square'].includes(key)) {
+    if (["circle", "square", "my-message"].includes(key)) {
       wx.navigateTo({
-        url: `/pages/list/index?key=${key}&from=home&type=${key}`
-      })
-      return
+        url: `/pages/list/index?key=${key}&from=home&type=${key}`,
+      });
+      return;
     }
   },
   OnShowDay() {
-    const data = this.data.showDays
+    const data = this.data.showDays;
     this.setData({
-      showDays: !data
-    })
+      showDays: !data,
+    });
   },
   getCurrentDay(date = new Date()) {
-    const array = ['日', '一', '二', '三', '四', '五', '六']
-    const week = moment(date).weekday()
+    const array = ["日", "一", "二", "三", "四", "五", "六"];
+    const week = moment(date).weekday();
     this.setData({
-      currentWeek: '星期' + array[week]
+      currentWeek: "星期" + array[week],
       // currentDay: moment(date).format("MM-DD"),
-    })
+    });
   },
   getWeekDayList() {
     // 这个日期一定是当天的
-    const array = ['日', '一', '二', '三', '四', '五', '六']
+    const array = ["日", "一", "二", "三", "四", "五", "六"];
     const start = moment()
       // .subtract(moment().days(), 'days')
-      .format('YYYY-MM-DD')
+      .format("YYYY-MM-DD");
 
-    const arr = []
+    const arr = [];
     for (let index = 0; index < 7; index++) {
-      const data = moment(start).add(index, 'days')
+      const data = moment(start).add(index, "days");
 
-      const week = '周' + array[moment(data).days()]
-      const day = data.date()
+      const week = "周" + array[moment(data).days()];
+      const day = data.date();
       arr.push({
         week,
         day,
-        data: moment(data).format("YYYY-MM-DD")
-      })
+        data: moment(data).format("YYYY-MM-DD"),
+      });
     }
 
-    return arr
+    return arr;
   },
   onSelectToday(e) {
-    const date = e.currentTarget.dataset.key
-    this.getCurrentDay(date == 'today' ? moment().format('YYYY-MM-DD') : date)
-    this.setData({
-      currentDate: date == 'today' ? moment().format('YYYY-MM-DD') : date
-    }, () => {
-      this.GetToday()
-    })
+    const date = e.currentTarget.dataset.key;
+    this.getCurrentDay(date == "today" ? moment().format("YYYY-MM-DD") : date);
+    this.setData(
+      {
+        currentDate: date == "today" ? moment().format("YYYY-MM-DD") : date,
+      },
+      () => {
+        this.GetToday();
+      }
+    );
   },
   GetToday() {
     this.setData({
@@ -200,9 +203,9 @@ Page({
     });
     // 今天可能也有完成的， 要查没有完成的
     getTodoByDate({
-        task_status: "running",
-        date: this.data.currentDate
-      })
+      task_status: "running",
+      date: this.data.currentDate,
+    })
       .then((res) => {
         this.setData({
           list: res,
@@ -215,17 +218,15 @@ Page({
         });
       });
   },
-  onDetail() {
-
-  },
+  onDetail() {},
   onFinish(e) {
-    const id = e.detail
-    const index = this.data.list.findIndex(i => i.id == id)
-    const arr = this.data.arr
-    arr[index] = true
+    const id = e.detail;
+    const index = this.data.list.findIndex((i) => i.id == id);
+    const arr = this.data.arr;
+    arr[index] = true;
     this.setData({
-      arr
-    })
+      arr,
+    });
     finishTodo({
       id,
     }).then((res) => {
@@ -241,7 +242,7 @@ Page({
   },
   handleAdd() {
     wx.navigateTo({
-      url: '/pages/add/index',
-    })
-  }
-})
+      url: "/pages/add/index",
+    });
+  },
+});

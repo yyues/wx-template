@@ -1,44 +1,74 @@
-<view class="user-page">
-
-  <!-- 一个背景色， -->
-  <view class="bg">
-    <view class="wrapper">
-      <image src="{{avatar_url}}"></image>
-    </view>
-    <view class="username">
-      <view class="content">
-        <text>{{username}}</text>
+<view class="user-page" style="--cell-group-inset-border-radius:16rpx">
+  <!-- 用户卡片 -->
+  <view class="wrapper">
+    <view class="card">
+      <view class="card__header">
+        <view class="avatar">
+          <image src="{{avatar_url}}" mode="" />
+        </view>
+        <view class="edit-icon">
+          <text>{{'编辑资料'}}</text>
+        </view>
       </view>
-      <view class="label">
-        <van-tag size="medium" color="{{global.primaryColor}}">内测用户</van-tag>
+      <view class="card__content">
+        <view class="username">
+          <text>{{username}}</text>
+        </view>
+      </view>
+      <view class="card__desc van-ellipsis">
+        <text>天啦撸，什么都没有，可能是神秘的外星人</text>
+      </view>
+      <view class="card__footer">
+        <view class="item">
+          <view class="number">
+            <text>0</text>
+          </view>
+          <view class="type">
+            <text>待办</text>
+          </view>
+        </view>
+        <view class="item">
+          <view class="number">
+            <text>0</text>
+          </view>
+          <view class="type">
+            <text>圈子</text>
+          </view>
+        </view>
+        <view class="item">
+          <view class="number">
+            <text>0</text>
+          </view>
+          <view class="type">
+            <text>消息</text>
+          </view>
+        </view>
       </view>
     </view>
   </view>
-  <!-- 换成传统的单元格了 -->
-  <view class="part">
-    <!-- 基础的我的功能 -->
-    <van-cell-group border="{{false}}">
+  <view class="action">
+    <van-cell-group border="{{false}}" inset>
       <van-cell title="我的待办" is-link link-type="navigateTo" url="/pages/list/index?key=my-todo&from=user&type=add" />
       <van-cell title="我的圈子" is-link link-type="navigateTo" url="/pages/list/index?key=my-circle&from=user&type=add" />
-      <van-cell title="我的消息" border="{{false}}" is-link link-type="navigateTo" url="/pages/list/index?key=my-message&from=user&type=add" />
+      <!-- <van-cell title="我的消息" border="{{false}}" is-link link-type="navigateTo" url="/pages/list/index?key=my-message&from=user&type=add" /> -->
+    </van-cell-group>
+
+
+  </view>
+  <view class="action">
+    <van-cell-group border="{{false}}" inset>
+      <van-cell title="请喝一杯coffee" is-link />
+      <van-cell title="关于开发者" is-link border="{{false}}" />
     </van-cell-group>
   </view>
-  <view class="part">
-    <!-- 系统功能 -->
-    <van-cell-group border="{{false}}">
+  <view class="action">
+    <van-cell-group border="{{false}}" inset>
       <van-cell title="清除缓存" center>
         <van-button plain color="{{global.primaryColor}}" size="mini" bindtap="clearCache">清除</van-button>
       </van-cell>
       <van-cell title="深色模式" center border="{{false}}">
         <van-switch checked="{{ appDeep }}" active-color="{{global.primaryColor}}" size='16px' slot="right-icon" custom-class='my-switch' bind:change="onDeepChange" />
       </van-cell>
-    </van-cell-group>
-  </view>
-  <view class="part">
-    <!-- 最后的最后 -->
-    <van-cell-group border="{{false}}">
-      <van-cell title="请喝一杯coffee" is-link />
-      <van-cell title="关于开发者" is-link border="{{false}}" />
     </van-cell-group>
   </view>
   <van-toast id="van-toast" />

@@ -271,6 +271,7 @@ Page({
         break;
       case "circle":
         title = "还没有圈子，真是奇怪！";
+        url = WE_APP_BASE_API + "/public/status/circle_empty.png";
         break;
       case "square":
         url = WE_APP_BASE_API + "/public/status/square_empty.png";
@@ -283,6 +284,7 @@ Page({
         title = "我的动态空空如也";
         break;
       case "my-message":
+        url = WE_APP_BASE_API + "/public/status/message_empty.png";
         title = "还没有新的消息呢！";
         break;
       case "todo":

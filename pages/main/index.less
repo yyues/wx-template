@@ -42,7 +42,7 @@
   }
 
   .today {
-    margin-top: @base-size *2;
+    margin-top: @base-size * 2;
     padding: @primary-theme-padding;
     padding-top: 0;
 
@@ -63,7 +63,7 @@
       }
 
       .show {
-        margin-left: @base-size *2;
+        margin-left: @base-size * 2;
       }
     }
 
@@ -71,14 +71,11 @@
       margin-top: @base-size;
       background-color: #fff;
 
-
-
       .days {
         display: flex;
         justify-content: space-between;
 
         .day {
-
           text-align: center;
           padding: @base-size;
           border-radius: @primary-radius;
@@ -114,12 +111,19 @@
 
   .add {
     position: absolute;
-    right: @base-size *6;
-    bottom: @base-size *8;
+    right: @base-size * 6;
+    bottom: @base-size * 8;
 
     image {
       width: 90rpx;
       height: 90rpx;
+    }
+  }
+  .empty {
+    .van-empty__image {
+      // width: 250px;
+      height: 188px;
+      margin-bottom: @base-size * 2;
     }
   }
 }

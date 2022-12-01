@@ -2,41 +2,93 @@
 
 .user-page {
   //  背景色 面板
-  .bg {
-    width: 100%;
-    height: 400rpx;
-    background-color: @primary-second-color;
-    margin-top: -180rpx;
-    margin-bottom: @base-size;
-    display: flex;
-    // justify-content: flex-end;
-    align-items: flex-end;
-    padding: 0 0 @base-size * 4 @base-size * 4;
-    .wrapper {
-      image {
-        width: 120rpx;
-        height: 120rpx;
-        border-radius: 16rpx;
-        object-fit: cover;
+  background-color: @primary-bg-color;
+  min-height: 100vh;
+  .wrapper {
+    background-color: @primary-color;
+    height: 244rpx;
+    position: relative;
+    margin-bottom: 100px;
+    .card {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 48rpx;
+      margin: @primary-theme-padding;
+      background-color: #fff;
+      box-shadow: @primary-hover-shadow;
+      padding: @base-size * 2;
+      border-radius: @primary-radius * 2;
+
+      .card__header {
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        padding: @base-size;
+        .avatar {
+          position: absolute;
+          left: @base-size * 2;
+          top: -@base-size * 6;
+          image {
+            width: 112rpx;
+            height: 112rpx;
+            border-radius: 50%;
+            vertical-align: middle;
+          }
+        }
+        .edit-icon {
+          font-size: @size-12;
+          border: 1px solid #374151;
+          color: #374151;
+          padding: 3rpx 16rpx;
+          border-radius: 16rpx;
+          cursor: pointer;
+        }
       }
-    }
-
-    .username {
-      height: 118rpx;
-      margin-left: @base-size * 3;
-      font-size: @size-20;
-      // line-height: 108rpx;
-      color: @text-header-color;
-
-      .label {
-        padding-top: @base-size;
+      .card__content {
+        display: flex;
+        align-items: center;
+        margin: 0 @base-size * 2 @base-size;
+        text {
+          font-size: 36rpx;
+          line-height: 56rpx;
+          font-weight: 600;
+        }
+      }
+      .card__desc {
+        margin: 0 @base-size * 2;
+        text {
+          font-size: @size-14;
+          color: @primary-second-text-color;
+        }
+      }
+      .card__footer {
+        padding: @base-size * 2 @base-size * 2 0;
+        margin: 0 @base-size * 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .item {
+          text-align: center;
+          .number {
+            font-size: @size-20;
+            line-height: @line-h-20;
+            color: #374151;
+            font-weight: 600;
+          }
+          .type {
+            text {
+              color: @primary-second-text-color;
+              letter-spacing: 0.7px;
+              font-size: @size-14;
+            }
+          }
+        }
       }
     }
   }
-  .part {
-    border: 1px solid #f5f5f5;
-    margin: @primary-theme-padding;
-    border-radius: @primary-radius * 2;
+  .action {
+    margin-bottom: @base-size * 2;
   }
   .my-switch {
     vertical-align: middle;
