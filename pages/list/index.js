@@ -268,6 +268,7 @@ Page({
     switch (key) {
       case "search":
         title = "没有查找到待办哦！";
+        url = WE_APP_BASE_API + "/public/status/search_empty.png";
         break;
       case "circle":
         title = "还没有圈子，真是奇怪！";

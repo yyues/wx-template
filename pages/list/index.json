@@ -1,5 +1,6 @@
 {
   "navigationStyle": "default",
+  "enablePullDownRefresh": true,
   "navigationBarBackgroundColor": "#FFF",
   "usingComponents": {
     "calendar": "../../components/calendar/calendar",

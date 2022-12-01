@@ -8,6 +8,7 @@
   padding: 20rpx 24rpx;
   padding-bottom: 0;
   justify-content: space-between;
+  background-color: #fff;
 }
 .page .action .item {
   display: flex;

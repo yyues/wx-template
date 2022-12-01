@@ -48,26 +48,29 @@
   </view>
   <view class="action">
     <van-cell-group border="{{false}}" inset>
-      <van-cell title="我的待办" is-link link-type="navigateTo" url="/pages/list/index?key=my-todo&from=user&type=add" />
-      <van-cell title="我的圈子" is-link link-type="navigateTo" url="/pages/list/index?key=my-circle&from=user&type=add" />
-      <!-- <van-cell title="我的消息" border="{{false}}" is-link link-type="navigateTo" url="/pages/list/index?key=my-message&from=user&type=add" /> -->
-    </van-cell-group>
-
-
-  </view>
-  <view class="action">
-    <van-cell-group border="{{false}}" inset>
-      <van-cell title="请喝一杯coffee" is-link />
-      <van-cell title="关于开发者" is-link border="{{false}}" />
-    </van-cell-group>
-  </view>
-  <view class="action">
-    <van-cell-group border="{{false}}" inset>
-      <van-cell title="清除缓存" center>
-        <van-button plain color="{{global.primaryColor}}" size="mini" bindtap="clearCache">清除</van-button>
+      <van-cell title="我的待办" is-link link-type="navigateTo" url="/pages/list/index?key=my-todo&from=user&type=add">
+        <image slot="icon" src="../../images/home/all.png" mode="" />
       </van-cell>
-      <van-cell title="深色模式" center border="{{false}}">
-        <van-switch checked="{{ appDeep }}" active-color="{{global.primaryColor}}" size='16px' slot="right-icon" custom-class='my-switch' bind:change="onDeepChange" />
+      <van-cell title="我的圈子" is-link link-type="navigateTo" url="/pages/list/index?key=my-circle&from=user&type=add">
+        <image slot="icon" src="../../images/home/many.png" mode="" />
+      </van-cell>
+      <!-- <van-cell title="我的消息" border="{{false}}" is-link link-type="navigateTo" url="/pages/list/index?key=my-message&from=user&type=add" /> -->
+      <van-cell title="请喝一杯coffee" is-link>
+        <image slot="icon" src="../../images/home/coffee.png" mode="" />
+      </van-cell>
+      <van-cell title="关于开发者" is-link border="{{false}}">
+        <image slot="icon" src="../../images/home/develop.png" mode="" />
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <view class="action">
+    <van-cell-group border="{{false}}" inset>
+
+      <van-cell title="项目说明" is-link border="{{false}}">
+        <image slot="icon" src="../../images/home/mark.png" mode="" />
+      </van-cell>
+      <van-cell title="未来功能" is-link>
+        <image slot="icon" src="../../images/home/feature.png" mode="" />
       </van-cell>
     </van-cell-group>
   </view>

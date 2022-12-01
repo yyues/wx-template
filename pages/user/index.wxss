@@ -83,7 +83,13 @@
   font-size: 28rpx;
 }
 .user-page .action {
-  margin-bottom: 20rpx;
+  margin: 20rpx 0;
+}
+.user-page .action image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+  vertical-align: middle;
 }
 .user-page .my-switch {
   vertical-align: middle;
