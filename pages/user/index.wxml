@@ -18,7 +18,7 @@
       <view class="card__desc van-ellipsis">
         <text>天啦撸，什么都没有，可能是神秘的外星人</text>
       </view>
-      <view class="card__footer">
+      <view class="card__footer" wx:if="{{true}}">
         <view class="item">
           <view class="number">
             <text>0</text>
@@ -47,7 +47,7 @@
     </view>
   </view>
   <view class="action">
-    <van-cell-group border="{{false}}" inset>
+    <van-cell-group border="{{false}}" inset >
       <van-cell title="我的待办" is-link link-type="navigateTo" url="/pages/list/index?key=my-todo&from=user&type=add">
         <image slot="icon" src="../../images/home/all.png" mode="" />
       </van-cell>

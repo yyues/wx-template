@@ -7,6 +7,72 @@
 
   // background-color: @page-bg-color;
 
+  .user-card {
+    // height: 160rpx;
+    color: white;
+    margin: @primary-theme-padding;
+    border-radius: @primary-radius;
+    padding: @base-size * 2;
+
+    background-image: url('https://image.meiye.art/pic_cXBNdpESiW-rE35DNkFh_?imageMogr2/thumbnail/450x/interlace/1');
+    background-size: cover;
+
+    position: relative;
+    z-index: 2;
+
+    .wrapper {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      .header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-bottom: @base-size * 2;
+
+        .content {
+          text {
+            font-size: 36rpx;
+            line-height: 56rpx;
+          }
+        }
+
+        .actions {
+          image {
+            width: 54rpx;
+            height: 54rpx;
+            vertical-align: middle;
+          }
+        }
+
+      }
+
+      .bottom {
+        text {
+          font-size: @size-12;
+          line-height: @line-h-12;
+          // color: @primary-second-text-color;
+        }
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(#000, 0.55);
+      z-index: 1;
+      border-radius: @primary-radius;
+    }
+  }
+
+
   .action {
     display: flex;
     padding: @primary-theme-padding;

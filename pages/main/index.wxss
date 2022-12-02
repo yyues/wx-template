@@ -3,6 +3,53 @@
   transition: height 0.28s;
   position: relative;
 }
+.page .user-card {
+  color: white;
+  margin: 20rpx 24rpx;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  background-image: url('https://image.meiye.art/pic_cXBNdpESiW-rE35DNkFh_?imageMogr2/thumbnail/450x/interlace/1');
+  background-size: cover;
+  position: relative;
+  z-index: 2;
+}
+.page .user-card .wrapper {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.page .user-card .wrapper .header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+}
+.page .user-card .wrapper .header .content text {
+  font-size: 36rpx;
+  line-height: 56rpx;
+}
+.page .user-card .wrapper .header .actions image {
+  width: 54rpx;
+  height: 54rpx;
+  vertical-align: middle;
+}
+.page .user-card .wrapper .bottom text {
+  font-size: 24rpx;
+  line-height: 28rpx;
+}
+.page .user-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+  border-radius: 8rpx;
+}
 .page .action {
   display: flex;
   padding: 20rpx 24rpx;
