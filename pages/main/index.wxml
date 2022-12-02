@@ -1,7 +1,7 @@
 <view class="page">
   <van-search disabled placeholder="搜索你创建的任务" bindtap="onSearch" />
   <!-- 操作栏  数组遍历吧 -->
-  <view class="action">
+  <view class="action" wx:if="{{false}}">
     <block wx:for="{{actions}}" wx:key="index">
       <van-transition custom-class="item" data-key="{{item.key}}" bindtap="onAction">
         <image src="{{item.icon}}" />
@@ -9,7 +9,6 @@
       </van-transition>
     </block>
   </view>
-
   <!-- 今日待办 -->
   <view class="today">
     <view class="title">
