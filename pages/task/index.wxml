@@ -1,0 +1,28 @@
+<view class="wrapper">
+  <!-- loading 说明 列表页进入统一loading  因为要先处理类型判断 -->
+  <view class="loading" wx:if="{{loading}}">
+    <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>
+  </view>
+  <view class="content" wx:else>
+    <view class="header">
+      <view class="total" wx:if="{{list.length !==0}}">
+        <text>今日共有{{list.length}}个待办</text>
+      </view>
+      <calendar bind:selectDay="onHeaderSelect" selectDay="{{selectDate}}" list="{{list}}" />
+    </view>
+    <!-- 在待办页的时候给出一个背景色 -->
+    <view class="empty bg-color" wx:if="{{list.length === 0 }}">
+      <van-empty description="{{emptyMsg}}" image="{{emptyUrl}}" />
+    </view>
+    <view class="detail " wx:else>
+      <block wx:for="{{list}}" wx:key="id">
+        <!-- 待办类 统一卡片  -->
+        <task-card index="{{index + 1 }}" data="{{item}}" hasIndex binddetail="onDetail" />
+      </block>
+    </view>
+    <view class="add" bindtap="handleAdd">
+      <van-icon name="plus" color="#fff" size="24px" />
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+</view>

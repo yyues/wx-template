@@ -276,9 +276,10 @@ Page({
         break;
       case "square":
         url = WE_APP_BASE_API + "/public/status/square_empty.png";
-        title = "没有人发布动态哦！快去发布把 ";
+        title = "没有人发布动态哦！快去发布吧！";
         break;
       case "my-circle":
+        url = WE_APP_BASE_API + "/public/status/my_circle_empty.png";
         title = "还没有创建圈子呢！";
         break;
       case "my-square":

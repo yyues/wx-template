@@ -1,0 +1,64 @@
+@import "../../style/index.less";
+
+.wrapper {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  .loading,
+  .empty {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    padding-top: 16vh;
+  }
+
+  .content {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    .header {
+      .total {
+        padding: @base-size * 4 0 @base-size * 6 0;
+        background-color: @primary-color;
+        padding-left: @base-size * 4;
+
+        text {
+          color: white;
+          font-size: @size-14;
+          line-height: @line-h-14;
+        }
+      }
+    }
+
+    .detail {
+      flex: 1;
+      padding: @primary-theme-padding;
+    }
+
+    .add {
+      background-color: @primary-color;
+      position: absolute;
+      padding: @base-size * 2;
+      border-radius: 50%;
+      right: 90rpx;
+      bottom: 180rpx;
+    }
+  }
+  .my-message {
+    .van-empty__image {
+      width: 198px;
+      // height: 188px;
+      margin-bottom: @base-size * 2;
+    }
+  }
+  .bg-color {
+    background-color: @page-bg-color;
+  }
+}
