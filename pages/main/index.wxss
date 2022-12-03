@@ -1,5 +1,5 @@
 .page {
-  min-height: 100vh;
+  min-height: 110vh;
   transition: height 0.28s;
   position: relative;
 }
