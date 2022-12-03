@@ -24,7 +24,7 @@ Page({
         bgColor: "#753ECF",
         activeColor: "",
         key: "all",
-        height: "168rpx",
+        height: "256rpx",
       },
 
       {
@@ -34,7 +34,7 @@ Page({
         bgColor: "#FFAA00",
         activeColor: "",
         key: "circle",
-        height: "124rpx",
+        height: "200rpx",
       },
       {
         icon: "../../images/home/my.png",
@@ -43,7 +43,7 @@ Page({
         bgColor: "#1C92D6",
         activeColor: "",
         key: "square",
-        height: "124rpx",
+        height: "200rpx",
       },
       {
         icon: "../../images/home/finish.png",
@@ -52,7 +52,7 @@ Page({
         bgColor: "#1C92D6",
         activeColor: "",
         key: "my-message",
-        height: "168rpx",
+        height: "256rpx",
       },
     ],
     currentDay: "今日待办",

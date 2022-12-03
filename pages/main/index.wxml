@@ -1,14 +1,14 @@
 <view class="page">
   <van-search disabled placeholder="搜索你创建的任务" bindtap="onSearch" />
   <!-- 用户卡片 -->
-  <view class="user-card">
+  <view class="user-card" wx:if="{{false}}">
     <view class="wrapper">
       <view class="header">
         <view class="content">
           <text>假如爱有天意</text>
         </view>
         <view class="actions">
-          <image src="../../images/home/actions.png" mode=""/>
+          <image src="../../images/home/actions.png" mode="" />
         </view>
       </view>
       <view class="bottom">
@@ -16,13 +16,17 @@
       </view>
     </view>
   </view>
+  <view class="action-header">
+    <text>推荐</text>
+  </view>
   <!-- 操作栏  数组遍历吧 -->
-  <view class="action" wx:if="{{false}}">
+  <view class="action" wx:if="{{true}}">
     <block wx:for="{{actions}}" wx:key="index">
-      <van-transition custom-class="item" data-key="{{item.key}}" bindtap="onAction">
+      <!-- bindtap="onAction" -->
+      <view class="item" data-key="{{item.key}}" style="background-color: {{item.bgColor}}; height: {{item.height}};">
         <image src="{{item.icon}}" />
         <text>{{item.content}}</text>
-      </van-transition>
+      </view>
     </block>
   </view>
   <!-- 今日待办 -->

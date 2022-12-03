@@ -14,7 +14,7 @@
     border-radius: @primary-radius;
     padding: @base-size * 2;
 
-    background-image: url('https://image.meiye.art/pic_cXBNdpESiW-rE35DNkFh_?imageMogr2/thumbnail/450x/interlace/1');
+    background-image: url("https://image.meiye.art/pic_cXBNdpESiW-rE35DNkFh_?imageMogr2/thumbnail/450x/interlace/1");
     background-size: cover;
 
     position: relative;
@@ -47,7 +47,6 @@
             vertical-align: middle;
           }
         }
-
       }
 
       .bottom {
@@ -60,7 +59,7 @@
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       top: 0;
@@ -71,33 +70,37 @@
       border-radius: @primary-radius;
     }
   }
-
-
+  .action-header {
+    margin: @base-size * 2 @base-size* 2.4;
+    text {
+      font-weight: 500;
+      line-height: 64rpx;
+      font-size: 48rpx;
+      font-family: "思源黑体";
+      color: @text-header-color;
+    }
+  }
   .action {
-    display: flex;
     padding: @primary-theme-padding;
-    padding-bottom: 0;
-    justify-content: space-between;
-    background-color: #fff;
 
+    column-count: 2;
     .item {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: @base-size * 2;
-      aspect-ratio: 1;
-      width: 64px;
-
+      margin: 0 0 @base-size * 2 0;
+      border-radius: @primary-radius * 2;
       image {
-        width: 64rpx;
-        height: 64rpx;
+        width: 80rpx;
+        height: 80rpx;
       }
 
       text {
         display: block;
         margin-top: @base-size * 2;
-        color: @primary-second-text-color;
+        // color: @primary-second-text-color;
+        color: white;
         font-size: @size-12;
         line-height: @line-h-14;
         letter-spacing: 1.2px;
@@ -105,7 +108,7 @@
 
       &:hover {
         background-color: #f4f4f5;
-        border-radius: @primary-radius;
+        border-radius: @primary-radius * 2;
       }
     }
   }

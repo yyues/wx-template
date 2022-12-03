@@ -8,7 +8,7 @@
   margin: 20rpx 24rpx;
   border-radius: 8rpx;
   padding: 20rpx;
-  background-image: url('https://image.meiye.art/pic_cXBNdpESiW-rE35DNkFh_?imageMogr2/thumbnail/450x/interlace/1');
+  background-image: url("https://image.meiye.art/pic_cXBNdpESiW-rE35DNkFh_?imageMogr2/thumbnail/450x/interlace/1");
   background-size: cover;
   position: relative;
   z-index: 2;
@@ -40,7 +40,7 @@
   line-height: 28rpx;
 }
 .page .user-card::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -50,37 +50,43 @@
   z-index: 1;
   border-radius: 8rpx;
 }
+.page .action-header {
+  margin: 20rpx 24rpx;
+}
+.page .action-header text {
+  font-weight: 500;
+  line-height: 64rpx;
+  font-size: 48rpx;
+  font-family: "思源黑体";
+  color: rgba(0, 0, 0, 0.85);
+}
 .page .action {
-  display: flex;
   padding: 20rpx 24rpx;
-  padding-bottom: 0;
-  justify-content: space-between;
-  background-color: #fff;
+  column-count: 2;
 }
 .page .action .item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20rpx;
-  aspect-ratio: 1;
-  width: 64px;
+  margin: 0 0 20rpx 0;
+  border-radius: 16rpx;
 }
 .page .action .item image {
-  width: 64rpx;
-  height: 64rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 .page .action .item text {
   display: block;
   margin-top: 20rpx;
-  color: #94a3b8;
+  color: white;
   font-size: 24rpx;
   line-height: 44rpx;
   letter-spacing: 1.2px;
 }
 .page .action .item:hover {
   background-color: #f4f4f5;
-  border-radius: 8rpx;
+  border-radius: 16rpx;
 }
 .page .today {
   margin-top: 20rpx;
@@ -92,7 +98,7 @@
   align-items: center;
 }
 .page .today .title .content {
-  color: #24271e;
+  color: rgba(0, 0, 0, 0.85);
   line-height: 48rpx;
   font-weight: 600;
   margin-right: 6rpx;
