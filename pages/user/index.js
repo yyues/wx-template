@@ -1,20 +1,16 @@
-// pages/task/index.js
-import initAxios from "../../request/create";
-import { initTabActive } from "../../utils/index";
-import Toast from "@vant/weapp/toast/toast";
-import { WE_APP_BASE_API } from "../../env";
-// 获取 全局颜色数据
 const app = getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    avatar_url: wx.getStorageSync("avatar_url"),
-    username: wx.getStorageSync("username"),
-    appDeep: false,
-    testUser: false, // 测试账号切换
-    global: {}, // 全局数据
+    userName: "假如爱有天意",
+    avatarUrl: "../../images/user/avatar_default.png",
+    primaryColor: "",
+    hasFinishSound: false,
+    hasAutoOrder: false,
+    hasTop: false,
+    uid: "100086",
   },
 
   /**
@@ -22,10 +18,14 @@ Page({
    */
   onLoad() {
     wx.setNavigationBarColor({
-      frontColor: "#ffffff",
       backgroundColor: app.globalData.primaryColor,
+      frontColor: "#ffffff",
+    });
+    this.setData({
+      primaryColor: app.globalData.primaryColor,
     });
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -35,18 +35,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    initTabActive.bind(this)(4);
-    this.setData({
-      avatar_url:
-        wx.getStorageSync("avatar_url") ||
-        "../../images/user/avatar_default.png",
-      username: wx.getStorageSync("username") || "Tasknow_9527",
-      global: app.globalData,
-      testUser: wx.getStorageSync("isTest"),
-    });
-    // WE_APP_BASE_API +  '/public/user/avatar_default.png'
-    // 隐藏返回 home 按钮
-    wx.hideHomeButton();
+    if (wx.getStorageSync("username")) {
+      this.setData({
+        userName: wx.getStorageSync("username"),
+      });
+    }
+    if (wx.getStorageSync("avatar_url")) {
+      this.setData({
+        avatarUrl: wx.getStorageSync("avatar_url"),
+      });
+    }
+    if (wx.getStorageSync("uid")) {
+      this.setData({
+        uid: wx.getStorageSync("uid"),
+      });
+    }
   },
 
   /**
@@ -58,34 +61,16 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-    console.log("ddd");
+  onSoundChange(e) {
+    const value = e.detail;
+    this.setData({ hasFinishSound: value });
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
-  onDeepChange(e) {
-    this.setData({
-      appDeep: e.detail,
-    });
+  onOrderChange(e) {
+    const value = e.detail;
+    this.setData({ hasAutoOrder: value });
   },
-  clearCache() {
-    // 清理本地缓存
-    wx.clearStorage();
-    //  重置 请求
-    initAxios();
-    this.onShow();
-    Toast.success("清理成功!");
+  onTopChange(e) {
+    const value = e.detail;
+    this.setData({ hasTop: value });
   },
 });

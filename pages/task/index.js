@@ -29,6 +29,8 @@ Page({
     actions: [], // 对应的数组
     description: "", //描述信息，用来替代提示
     total: 0, // 返回的列表数量
+    headerColor: "#ffffff",
+    hasColor: false,
   },
 
   /**
@@ -217,7 +219,7 @@ Page({
       "三十",
       "三十一",
     ];
-    return `${month[moment(time).month()]}月${day[moment(time).date() - 1]}日`;
+    return `${month[moment(time).month()]}月 ${day[moment(time).date() - 1]}日`;
   },
   // 根据日期获得当日待办
   getTodayToDo() {
@@ -258,6 +260,15 @@ Page({
     wx.setNavigationBarColor({
       frontColor: boolean ? "#ffffff" : "#000000",
       backgroundColor: boolean ? app.globalData.primaryColor : "#ffffff",
+    });
+    this.setData({
+      headerColor: boolean ? app.globalData.primaryColor : "#ffffff",
+      hasColor: boolean,
+    });
+  },
+  onClickLeft() {
+    wx.switchTab({
+      url: "/pages/main/index",
     });
   },
 });

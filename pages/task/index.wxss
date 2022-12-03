@@ -20,11 +20,12 @@
   padding: 40rpx 0 60rpx 0;
   background-color: #5b67ca;
   padding-left: 40rpx;
+  font-family: '思源黑体';
+  min-height: 88rpx;
 }
 .wrapper .content .header .total text {
   color: white;
-  font-size: 28rpx;
-  line-height: 44rpx;
+  line-height: 48rpx;
 }
 .wrapper .content .detail {
   flex: 1;
@@ -43,5 +44,5 @@
   margin-bottom: 20rpx;
 }
 .wrapper .bg-color {
-  background-color: #F2F3F5;
+  background-color: #f2f3f5;
 }

@@ -47,6 +47,7 @@ export const Login = (param) => {
           wx.setStorageSync('username', res.user_name)
           wx.setStorageSync('avatar_url', res.avatar_url)
           wx.setStorageSync('token', res.access_token)
+          wx.setStorageSync('uid', res.uid)
           // 更新 axios请求
           initAxios()
           wx.hideLoading()

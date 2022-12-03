@@ -1,79 +1,69 @@
-<view class="user-page" style="--cell-group-inset-border-radius:16rpx">
-  <!-- 用户卡片 -->
-  <view class="wrapper">
-    <view class="card">
-      <view class="card__header">
-        <view class="avatar">
-          <image src="{{avatar_url}}" mode="" />
-        </view>
-        <view class="edit-icon">
-          <text>{{'编辑资料'}}</text>
-        </view>
+<view class="page">
+  <view class="header">
+    <view class="left">
+      <view class="name">
+        <text>{{userName}}</text>
       </view>
-      <view class="card__content">
-        <view class="username">
-          <text>{{username}}</text>
-        </view>
-      </view>
-      <view class="card__desc van-ellipsis">
-        <text>天啦撸，什么都没有，可能是神秘的外星人</text>
-      </view>
-      <view class="card__footer" wx:if="{{true}}">
-        <view class="item">
-          <view class="number">
-            <text>0</text>
-          </view>
-          <view class="type">
-            <text>待办</text>
-          </view>
-        </view>
-        <view class="item">
-          <view class="number">
-            <text>0</text>
-          </view>
-          <view class="type">
-            <text>圈子</text>
-          </view>
-        </view>
-        <view class="item">
-          <view class="number">
-            <text>0</text>
-          </view>
-          <view class="type">
-            <text>消息</text>
-          </view>
-        </view>
+      <view class="mark">
+        <text>uid：{{uid}}</text>
       </view>
     </view>
+    <view class="right">
+      <image src="{{avatarUrl}}" mode="" />
+    </view>
   </view>
-  <view class="action">
-    <van-cell-group border="{{false}}" inset >
-      <van-cell title="我的待办" is-link link-type="navigateTo" url="/pages/list/index?key=my-todo&from=user&type=add">
-        <image slot="icon" src="../../images/home/all.png" mode="" />
-      </van-cell>
-      <van-cell title="我的圈子" is-link link-type="navigateTo" url="/pages/list/index?key=my-circle&from=user&type=add">
-        <image slot="icon" src="../../images/home/many.png" mode="" />
-      </van-cell>
-      <!-- <van-cell title="我的消息" border="{{false}}" is-link link-type="navigateTo" url="/pages/list/index?key=my-message&from=user&type=add" /> -->
-      <van-cell title="请喝一杯coffee" is-link>
-        <image slot="icon" src="../../images/home/coffee.png" mode="" />
-      </van-cell>
-      <van-cell title="关于开发者" is-link border="{{false}}">
-        <image slot="icon" src="../../images/home/develop.png" mode="" />
-      </van-cell>
-    </van-cell-group>
+  <view class="vip">
+    <view class="content">
+      <text>升级到高级会员</text>
+    </view>
+    <view class="desc">
+      <text>享受圈子、动态、统计等多种特权服务</text>
+    </view>
   </view>
-  <view class="action">
-    <van-cell-group border="{{false}}" inset>
-
-      <van-cell title="项目说明" is-link border="{{false}}">
-        <image slot="icon" src="../../images/home/mark.png" mode="" />
-      </van-cell>
-      <van-cell title="未来功能" is-link>
-        <image slot="icon" src="../../images/home/feature.png" mode="" />
-      </van-cell>
-    </van-cell-group>
+  <view class="content-wrapper">
+    <van-cell center border="{{false}}">
+      <view class="icon" slot='icon'>
+        <image src="../../images/user/clock.png" mode="" />
+      </view>
+      <view class="title" slot='title'>
+        <text>显示完成提示音</text>
+      </view>
+      <van-switch checked="{{ hasFinishSound }}" active-color="{{primaryColor}}" size="36rpx" custom-class='my-switch' bind:change="onSoundChange" />
+    </van-cell>
+    <van-cell center border="{{false}}">
+      <view class="icon" slot='icon'>
+        <image src="../../images/action/order.png" mode="" />
+      </view>
+      <view class="title" slot='title'>
+        <text>智能排序</text>
+      </view>
+      <van-switch checked="{{ hasAutoOrder }}" active-color="{{primaryColor}}" size="36rpx" custom-class='my-switch' bind:change="onOrderChange" />
+    </van-cell>
+    <van-cell center border="{{false}}">
+      <view class="icon" slot='icon'>
+        <image src="../../images/action/top.png" mode="" />
+      </view>
+      <view class="title" slot='title'>
+        <text>旗帜置顶</text>
+      </view>
+      <van-switch checked="{{ hasTop }}" active-color="{{primaryColor}}" size="36rpx" custom-class='my-switch' bind:change="onTopChange" />
+    </van-cell>
   </view>
-  <van-toast id="van-toast" />
-  <van-dialog id="van-dialog" />
+  <view class="content-wrapper">
+    <van-cell title="数据同步" center border="{{false}}" is-link>
+      <view class="icon" slot='icon'>
+        <image src="../../images/user/sync.png" mode="" />
+      </view>
+    </van-cell>
+    <van-cell title="外观设置" center border="{{false}}" is-link>
+      <view class="icon" slot='icon'>
+        <image src="../../images/user/look.png" mode="" />
+      </view>
+    </van-cell>
+    <van-cell title="其他设置" center border="{{false}}" is-link>
+      <view class="icon" slot='icon'>
+        <image src="../../images/user/set.png" mode="" />
+      </view>
+    </van-cell>
+  </view>
 </view>

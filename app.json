@@ -21,7 +21,8 @@
   "tabBar": {
     "color": "#94a3b8",
     "selectedColor": "#5b67ca",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/main/index",
         "iconPath": "./images/tabbar/home.png",
         "selectedIconPath": "./images/tabbar/home_active.png",
@@ -32,12 +33,6 @@
         "iconPath": "./images/tabbar/task.png",
         "selectedIconPath": "./images/tabbar/task_active.png",
         "text": "待办"
-      },
-      {
-        "pagePath": "pages/statist/index",
-        "iconPath": "./images/tabbar/statistics.png",
-        "selectedIconPath": "./images/tabbar/statistics_active.png",
-        "text": "统计"
       },
       {
         "pagePath": "pages/user/index",

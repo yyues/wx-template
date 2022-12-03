@@ -1,97 +1,77 @@
-.user-page {
-  background-color: #F2F3F5;
+.page {
   min-height: 100vh;
+  background-color: #f2f3f5;
 }
-.user-page .wrapper {
+.page .my-switch {
+  vertical-align: middle;
+}
+.page .header {
+  display: flex;
+  justify-content: space-between;
   background-color: #5b67ca;
-  height: 200rpx;
-  position: relative;
-  margin-bottom: 100px;
+  padding: 24rpx 44rpx;
+  color: white;
+  min-height: 16vh;
+  padding-bottom: 8vh;
+  align-items: center;
 }
-.user-page .wrapper .card {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 24rpx;
+.page .header .right image {
+  width: 128rpx;
+  height: 128rpx;
+  vertical-align: middle;
+  border: 2rpx solid #eeeeee;
+  border-radius: 50%;
+}
+.page .header .left .name {
+  font-size: 40rpx;
+  line-height: 64rpx;
+  margin-bottom: 20rpx;
+}
+.page .header .left .mark text {
+  color: #94a3b8;
+}
+.page .vip {
+  height: 120rpx;
+  padding: 24rpx;
+  background-image: url("https://www.utasknow.xyz/public/user/vip.png");
+  background-size: cover;
+  margin: 20rpx 24rpx;
+  color: rgba(0, 0, 0, 0.85);
+  border-radius: 16rpx;
+  font-family: "思源黑体";
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: -80rpx;
+}
+.page .vip .content text {
+  font-size: 32rpx;
+  line-height: 48rpx;
+  font-weight: 500;
+}
+.page .vip .desc text {
+  font-size: 24rpx;
+  line-height: 28rpx;
+}
+.page .content-wrapper {
   margin: 20rpx 24rpx;
   background-color: #fff;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   padding: 20rpx;
   border-radius: 16rpx;
 }
-.user-page .wrapper .card .card__header {
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  padding: 10rpx;
+.page .content-wrapper .icon {
+  margin-right: 16rpx;
 }
-.user-page .wrapper .card .card__header .avatar {
-  position: absolute;
-  left: 20rpx;
-  top: -60rpx;
-}
-.user-page .wrapper .card .card__header .avatar image {
-  width: 112rpx;
-  height: 112rpx;
-  border-radius: 50%;
+.page .content-wrapper .icon image {
+  width: 48rpx;
+  height: 48rpx;
   vertical-align: middle;
 }
-.user-page .wrapper .card .card__header .edit-icon {
-  font-size: 24rpx;
-  border: 1px solid #374151;
-  color: #374151;
-  padding: 3rpx 16rpx;
-  border-radius: 16rpx;
-  cursor: pointer;
+.page .content-wrapper .title text {
+  color: 32rpx;
+  line-height: 48rpx;
 }
-.user-page .wrapper .card .card__content {
-  display: flex;
-  align-items: center;
-  margin: 0 20rpx 10rpx;
-}
-.user-page .wrapper .card .card__content text {
-  font-size: 36rpx;
-  line-height: 56rpx;
-  font-weight: 600;
-}
-.user-page .wrapper .card .card__desc {
-  margin: 0 20rpx;
-}
-.user-page .wrapper .card .card__desc text {
-  font-size: 28rpx;
-  color: #94a3b8;
-}
-.user-page .wrapper .card .card__footer {
-  padding: 20rpx 20rpx 0;
-  margin: 0 20rpx;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.user-page .wrapper .card .card__footer .item {
-  text-align: center;
-}
-.user-page .wrapper .card .card__footer .item .number {
-  font-size: 40rpx;
-  line-height: 64rpx;
-  color: #374151;
-  font-weight: 600;
-}
-.user-page .wrapper .card .card__footer .item .type text {
-  color: #94a3b8;
-  letter-spacing: 0.7px;
-  font-size: 28rpx;
-}
-.user-page .action {
-  margin: 20rpx 0;
-}
-.user-page .action image {
-  width: 44rpx;
-  height: 44rpx;
-  margin-right: 20rpx;
-  vertical-align: middle;
-}
-.user-page .my-switch {
-  vertical-align: middle;
-  margin-left: 20rpx;
+.page .van-cell {
+  padding: 16rpx 10rpx;
 }
