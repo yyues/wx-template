@@ -52,6 +52,11 @@
   <view class="add" bindtap="handleAdd" wx:if="{{false}}">
     <image src="../../images/tabbar/add.png" mode="" />
   </view>
+  <!--选择时间 -->
+  <!-- 选择时间 -->
+  <van-dialog use-slot show="{{ showTime }}" theme="round" style="--dialog-border-radius: 8px" show-confirm-button="{{false}}">
+    <van-datetime-picker type="time" title="设置提醒时间"  min-hour="{{minHour}}" min-minute="{{minMinute}}" bind:confirm="onTimeChange" bind:cancel="onCloseDialog" />
+  </van-dialog>
   <van-transition custom-class="detail-wrapper" name="fade" duration="{{900}}">
     <!-- 如果说没有登录 -->
     <view class="no-login" wx:if="{{!hasLogin}}">

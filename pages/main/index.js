@@ -71,7 +71,10 @@ Page({
     loading: false,
     emptyUrl: "",
     sound: null,
-    showTime: false
+    showTime: false,
+    currentId: '',
+    minHour: 0,
+    minMinute: 0,
   },
 
   /**
@@ -170,9 +173,9 @@ Page({
   },
   OnShowDay() {
     const data = this.data.showDays;
-    this.setData({
-      showDays: !data,
-    });
+    // this.setData({
+    //   showDays: !data,
+    // });
   },
   getCurrentDay(date = new Date()) {
     const array = ["日", "一", "二", "三", "四", "五", "六"];
@@ -282,6 +285,29 @@ Page({
   },
   onClock(e) {
     const id = e.currentTarget.dataset.id
+    const data = this.data.list.filter(i => i.id == id)[0]
+    if (data.is_exist_remind) return Toast.fail('已设置过提醒')
     // 设置时间
+    this.setData({
+      showTime: true,
+      currentId: id,
+      minHour: moment().hour() + 1,
+      minMinute: moment().minute(),
+    })
+  },
+  onCloseDialog() {
+    this.setData({
+      showTime: false,
+      currentId: ''
+    })
+  },
+  onTimeChange(e) {
+    const time = e.detail
+    const id = this.data.currentId
+    const param = {
+      id,
+      is_exist_remind: true,
+      remind_time: moment().format('YYYY-MM-DD') + ' ' + time
+    }
   }
 });

@@ -135,8 +135,6 @@ Page({
     }
     //  res 为请求返回的结果数据
     var _this = this;
-    console.log("我被调用了 res");
-
     this.setData({
       list: res,
       loading: false,
