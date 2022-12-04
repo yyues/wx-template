@@ -1,5 +1,7 @@
 // 初始化aixos
-import { getToken } from "./utils/action";
+import {
+  getToken
+} from "./utils/action";
 import initAxios from "./request/create";
 App({
   onLaunch: function () {
@@ -9,6 +11,7 @@ App({
     _initShare();
     // 初始化 默认值
     // this.gloabalData.token = getToken()
+    this.gloabalData.hasFinishSound = wx.getStorageSync('hasFinishSound')
   },
   globalData: {
     token: getToken(),
@@ -20,7 +23,9 @@ App({
     textHeaderColor: "#24271e",
     //  次级 文字标题 浅色系
     primarySecondTextColor: "#94a3b8",
-    systemInfo: wx.getSystemInfoSync(),
+    // 是否有 完成提示音
+    hasFinishSound: false,
+
   },
 });
 
@@ -28,8 +33,7 @@ App({
 function _initShare() {
   var PageTmp = Page;
   Page = function (pageConfig) {
-    pageConfig = Object.assign(
-      {
+    pageConfig = Object.assign({
         onShareAppMessage: function () {
           return {
             title: "weapp-template-默认分享文案",

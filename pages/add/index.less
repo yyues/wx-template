@@ -1,7 +1,11 @@
 @import "../../style/index.less";
+.padding {
+  padding: @primary-theme-padding;
+}
 .part {
   margin-bottom: 32rpx;
   transition: height 0.28s;
+
 
   // margin: 10rpx 0;
   .title {
@@ -40,6 +44,7 @@
 
   .wrapper {
     padding: 20rpx 32rpx;
+
     .empty {
       color: @primary-second-text-color;
       font-size: @size-14;
@@ -52,6 +57,7 @@
     }
   }
 }
+
 .loading {
   height: calc(100vh - 180rpx);
   display: flex;
@@ -118,13 +124,16 @@
 
 .my-submit {
   min-width: 200rpx;
+
   &.van-button {
     border-radius: 12rpx;
   }
 }
+
 .v-tag {
   margin-right: @base-size;
 }
+
 .expecial-wrapper {
   padding-top: @base-size;
 }

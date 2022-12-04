@@ -1,10 +1,10 @@
 import axios from "./axios";
 import { getToken } from "../utils/action";
 import { Login } from "../utils/index";
-import { WE_APP_BASE_API } from "../env";
+import { WE_APP_LOCAL_BASE_API } from "../env";
 
 function initAxios() {
-  const baseUrl = WE_APP_BASE_API;
+  const baseUrl = WE_APP_LOCAL_BASE_API;
   const header = {
     "content-type": "application/json; charset=UTF-8",
     Authorization: "Bearer " + getToken(),
@@ -14,7 +14,7 @@ function initAxios() {
   // 给APP 全局值 赋值 免得 报错
   // request拦截 请求参数
   // const transformRequest = (data) => {
-  //   console.log(232323,data)
+
   //   return {
   //     ...data,
   //   };

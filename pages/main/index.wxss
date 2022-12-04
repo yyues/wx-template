@@ -1,5 +1,5 @@
 .page {
-  min-height: 110vh;
+  min-height: 100vh;
   transition: height 0.28s;
   position: relative;
 }
@@ -51,12 +51,12 @@
   border-radius: 8rpx;
 }
 .page .action-header {
-  margin: 20rpx 24rpx;
+  margin: 10rpx 24rpx;
 }
 .page .action-header text {
-  font-weight: 500;
-  line-height: 64rpx;
-  font-size: 48rpx;
+  font-weight: 600;
+  line-height: 48rpx;
+  font-size: 32rpx;
   font-family: "思源黑体";
   color: rgba(0, 0, 0, 0.85);
 }
@@ -162,4 +162,35 @@
 }
 .high-day .w {
   color: white;
+}
+.operation {
+  height: calc(100% - 10rpx * 0);
+  display: flex;
+  align-items: center;
+}
+.operation .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  justify-content: center;
+  background-color: #f2f3f5;
+  border-radius: 8rpx;
+}
+.operation .item image {
+  width: 48rpx;
+  height: 48rpx;
+  vertical-align: middle;
+}
+.operation .item.finish {
+  background-color: #34C759;
+}
+.operation .item:not(:last-child) {
+  margin-right: 10rpx;
+}
+.operation .item.flag {
+  background-color: #FFAA00;
+}
+.operation .item.clock {
+  background-color: #3DB6FC;
 }

@@ -1,7 +1,7 @@
 {
   "navigationStyle": "default",
   "navigationBarBackgroundColor": "#F2F3F5",
-  "navigationBarTitleText": "统计",
+  "navigationBarTitleText": "数据统计",
   "usingComponents": {
     "ec-canvas": "../../ec-canvas/ec-canvas",
     "van-transition": "@vant/weapp/transition/index"

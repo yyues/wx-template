@@ -2,7 +2,7 @@
   <!--  给个 全体的 背景色 然后白色卡片-->
   <view class="card">
     <van-transition name="slide-left" duration="{{600}}" custom-class="header">
-      <text>待办总览</text>
+      <text>积累完成</text>
     </van-transition>
     <view class="content">
       <van-transition custom-class="item">
@@ -22,7 +22,7 @@
   <!-- 视图层 -->
   <view class="card">
     <view class="header">
-      <text>待办视图</text>
+      <text>时间分布</text>
       <view class="action">
         <van-transition wx:for="{{viewList}}" bindtap="onSelectKey" data-key="{{item}}" wx:key="index" duration="{{600}}" custom-class="day {{currentKey == item ? 'select' : ''}}">
           <text>{{item}}</text>

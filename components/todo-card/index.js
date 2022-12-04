@@ -74,7 +74,6 @@ Component({
       this.getLevel();
       //  计算 多人 进度
       this.calcValue();
-      console.log({ data: this.data });
     },
   },
 });

@@ -84,7 +84,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-    console.log("onUnload-add-circle");
     // const type = this.data.type;
     // if (type == "add") {
     //   wx.redirectTo({
@@ -335,7 +334,6 @@ Page({
       file,
       callback
     } = event.detail;
-    console.log(file);
     callback(true);
   },
   // 上传逻辑接口

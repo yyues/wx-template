@@ -23,7 +23,7 @@
   <view class="action" wx:if="{{true}}">
     <block wx:for="{{actions}}" wx:key="index">
       <!-- bindtap="onAction" -->
-      <view class="item" data-key="{{item.key}}" style="background-color: {{item.bgColor}}; height: {{item.height}};">
+      <view class="item" data-key="{{item.key}}" bindtap="onAction" style="background-color: {{item.bgColor}}; height: {{item.height}};">
         <image src="{{item.icon}}" />
         <text>{{item.content}}</text>
       </view>
@@ -60,10 +60,27 @@
     </view>
     <view class="detail" wx:else>
       <view class="empty" wx:if="{{list.length === 0}}">
-
       </view>
       <view class="content" wx:else>
-        <today-card wx:for="{{list}}" wx:key="id" data="{{item}}" loading="{{arr[index]}}" index="{{index}}" bindselect="onFinish" binddetail="onDetail" hasSelect />
+        <block wx:for="{{list}}" wx:key="id">
+          <van-swipe-cell right-width="{{ 100 }}" left-width="{{ !item.is_exist_remind ? 44 : 0}}">
+            <view slot="left" class="operation">
+              <view class="item clock" data-id="{{item.id}}" bindtap="onClock" wx:if="{{!item.is_exist_remind}}">
+                <image src="../../images/action/clock_white.png" mode="" />
+              </view>
+            </view>
+            <today-card data="{{item}}" index="{{index + 1}}" binddetail="onDetail" hasIndex hasAction />
+            <view slot="right" class="operation">
+              <view class="item finish" data-id="{{item.id}}" bindtap="onFinish">
+                <image src="../../images/action/finish_white.png" mode="" />
+              </view>
+              <view class="item flag" data-id="{{item.id}}" bindtap="onFlag">
+                <image src="../../images/action/flag.png" mode="" />
+              </view>
+            </view>
+          </van-swipe-cell>
+        </block>
+
       </view>
     </view>
   </van-transition>

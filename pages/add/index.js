@@ -1,8 +1,18 @@
 import Toast from "@vant/weapp/toast/toast";
 import moment from "moment";
-import { taskSave, getTodoById } from "../../api/todo";
-import { getLocationParams } from "../../utils/index";
-import { getUserAllCircle } from "../../api/circle";
+import {
+  isVip
+} from '../../utils/vip';
+import {
+  taskSave,
+  getTodoById
+} from "../../api/todo";
+import {
+  getLocationParams
+} from "../../utils/index";
+import {
+  getUserAllCircle
+} from "../../api/circle";
 const app = getApp();
 Page({
   /**
@@ -36,6 +46,7 @@ Page({
     minHour: 0, // 可选择的最小时间
     minMinute: 0, // 可选择的最小分钟
     global: {},
+    isVip: false
   },
 
   /**
@@ -84,6 +95,9 @@ Page({
   onShow() {
     // 隐藏返回 home 按钮
     // wx.hideHomeButton();
+    this.setData({
+      isVip: isVip()
+    })
   },
 
   /**
@@ -203,7 +217,7 @@ Page({
   onDealineChange(e) {
     const data = this.data.postForm;
     //  检测是不是今天，今天的话就把最小时间限制到当前
-    console.log(data);
+   
     const isToday = data.execute_time === moment().format("YYYY-MM-DD");
     this.setData({
       postForm: {
@@ -257,15 +271,13 @@ Page({
   },
   onTaskChange(e) {
     const data = this.data.postForm;
-    this.setData(
-      {
+    this.setData({
         postForm: {
           ...data,
           content: e.detail,
         },
       },
       () => {
-        console.log(this.data.postForm);
       }
     );
   },
@@ -343,7 +355,7 @@ Page({
     this.setData({
       postForm: {
         ...data,
-        task_cycle: e.detail,
+        task_cycle: Number(e.detail ?? '1'),
       },
     });
   },
@@ -370,8 +382,8 @@ Page({
       loading: true,
     });
     getTodoById({
-      id,
-    })
+        id,
+      })
       .then((res) => {
         this.setData({
           postForm: res,

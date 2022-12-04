@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTitleText": "更多",
+  "usingComponents": {
+    "van-transition": "@vant/weapp/transition/index"
+  }
+}

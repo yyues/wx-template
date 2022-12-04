@@ -166,7 +166,7 @@ Page({
   },
   onActionSelect(e) {
     const obj = e.detail;
-    console.log({ obj });
+
     if (obj.name == "编辑") {
       this.onEdit();
     }

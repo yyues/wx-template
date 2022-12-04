@@ -1,7 +1,13 @@
 // pages/list/index.js
-import { getLocationParams } from "../../utils/index";
-import { getTodoByDate } from "../../api/todo";
-import { WE_APP_BASE_API } from "../../env";
+import {
+  getLocationParams
+} from "../../utils/index";
+import {
+  getTodoByDate
+} from "../../api/todo";
+import {
+  WE_APP_BASE_API
+} from "../../env";
 import moment from "moment";
 import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
@@ -37,7 +43,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const { key, from, type } = this.GetRouteParam();
+    const {
+      key,
+      from,
+      type
+    } = this.GetRouteParam();
     const master = getLocationParams("master");
     // 这个是 检测自己 的圈子下 的待办页面能够有新增按钮
     const expec = key == "my-todo" && from == "circle-detail" && !!master;
@@ -64,7 +74,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {},
+  onShow() {
+    this.getTodayToDo()
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -81,8 +93,7 @@ Page({
    */
   onPullDownRefresh() {
     const key = this.data.key;
-    this.setData(
-      {
+    this.setData({
         refersh: true,
       },
       () => {
@@ -95,7 +106,10 @@ Page({
    */
   onReachBottom() {
     const key = this.data.key;
-    const { total, searchForm } = this.data;
+    const {
+      total,
+      searchForm
+    } = this.data;
     if (total < searchForm.limit) {
       // return Toast.fail("数据已加载完了！");
       return;
@@ -145,9 +159,6 @@ Page({
     this.setData({
       title,
     });
-    wx.setNavigationBarTitle({
-      title,
-    });
   },
   setEmptyMsg() {
     const title = "今日没有待办哦";
@@ -163,11 +174,10 @@ Page({
     const day = e.detail;
     this.setData({
       selectDate: day,
-    });
-    // 设置页面标题
-    wx.setNavigationBarTitle({
       title: this.filterTime(day),
     });
+    // 设置页面标题
+
     // 选择的时候查询当天数据
     this.getTodayToDo();
   },
@@ -250,8 +260,7 @@ Page({
     });
   },
   handleAdd() {
-    const id = getLocationParams("id");
-    let url = "/pages/add/index?type=add&from=user&id=" + id;
+    let url = "/pages/add/index?type=add&from=task";
     wx.navigateTo({
       url,
     });

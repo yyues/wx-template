@@ -3,6 +3,7 @@
 }
 .calendar {
   background-color: #fff;
+  padding-top: 20rpx;
 }
 .wrapper {
   display: flex;

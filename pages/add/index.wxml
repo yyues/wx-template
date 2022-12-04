@@ -56,7 +56,7 @@
       </view>
     </view>
     <!-- 代办的类型 -->
-    <view class="part">
+    <view class="part" wx:if="{{isVip}}">
       <view class="title"><text>类型</text></view>
       <view class="wrapper">
         <van-radio-group value="{{ postForm.task_type }}" bind:change="onTaskTypeChange" direction="horizontal">
@@ -109,11 +109,13 @@
     </view>
     <!-- 周期天数应该有待办周期时长的限制 -->
     <view class="part" wx:if="{{postForm.is_cycle_todo}}">
-      <view class="title"><text>待办周期时长(天)</text></view>
-      <van-field value="{{ postForm.task_cycle }}" placeholder="请输入待办周期时长" type="number" border="{{ true }}" clearable="{{ true }}" max="{{90}}" bind:input="onTaskCycleChange" />
+      <view class="title"><text>待办周期时长( {{postForm.task_cycle }}天 )</text></view>
+      <view class="padding">
+        <van-slider value="{{ postForm.task_cycle }}" min="1" max="15" step="1" active-color="{{global.primaryColor}}" bind:change="onTaskCycleChange" />
+      </view>
     </view>
     <view class="operation">
-      <van-button color="{{global.primaryColor}}" custom-class="my-submit" bind:click="handleSubmit" loading="{{btnLoading}}" loading-text="请求中">{{ type !== 'add' ? '保存': '创建' }}</van-button>
+      <van-button color="{{global.primaryColor}}" block custom-class="my-submit" bind:click="handleSubmit" loading="{{btnLoading}}" loading-text="请求中">{{ type !== 'add' ? '保存': '创建' }}</van-button>
     </view>
   </view>
   <van-toast id="van-toast" />

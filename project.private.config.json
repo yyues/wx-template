@@ -3,7 +3,7 @@
   "projectname": "wx-template",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": true,
+    "urlCheck": false,
     "autoAudits": false,
     "preloadBackgroundData": false,
     "useIsolateContext": false

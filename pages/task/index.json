@@ -1,6 +1,5 @@
 {
   "navigationStyle": "custom",
-  "navigationBarBackgroundColor": "#FFF",
   "homeButton": true,
   "usingComponents": {
     "calendar": "../../components/calendar/calendar",

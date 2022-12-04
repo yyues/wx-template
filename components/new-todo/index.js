@@ -157,9 +157,7 @@ Component({
     },
     onCycleChange(e) {
       const data = Number(e.detail);
-      console.log({
-        data,
-      });
+      
       const postForm = this.data.postForm;
       this.setData({
         postForm: {

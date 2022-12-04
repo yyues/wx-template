@@ -147,7 +147,6 @@ Component({
       //   swiperCurrent: current,
       //   oldCurrent: oldIndex
       // })
-      console.log(e, '滚动切换');
     },
     selectChange(e) {
       const time = e.currentTarget.dataset.time

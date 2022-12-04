@@ -98,7 +98,7 @@ Page({
     const id = e.detail;
     const array = this.data.user_circle;
     const data = array.filter((i) => i.id == id)[0];
-    console.log(data);
+   
     const postForm = this.data.postForm;
     this.setData({
       postForm: {

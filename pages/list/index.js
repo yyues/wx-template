@@ -183,7 +183,6 @@ Page({
     }
     //  res 为请求返回的结果数据
     var _this = this;
-    console.log("我被调用了 res");
     const hasHeader = this.data.hasHeader;
     const refresh = this.data.refersh;
     const before = this.data.list;
@@ -554,7 +553,6 @@ Page({
     });
   },
   onActionSelect(e) {
-    console.log("点击操作栏的事件", e.detail);
     const {
       msgId,
       name

@@ -73,5 +73,5 @@
   line-height: 48rpx;
 }
 .page .van-cell {
-  padding: 16rpx 10rpx;
+  padding: 20rpx 10rpx;
 }

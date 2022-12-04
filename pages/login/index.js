@@ -81,7 +81,6 @@ Page({
         });
       },
       fail(err) {
-        console.log(err);
         Toast.fail("出错了哦！");
       },
     });

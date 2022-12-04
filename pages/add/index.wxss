@@ -1,3 +1,6 @@
+.padding {
+  padding: 20rpx 24rpx;
+}
 .part {
   margin-bottom: 32rpx;
   transition: height 0.28s;

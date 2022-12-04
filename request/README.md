@@ -34,7 +34,6 @@
 axios
   .post("/url", { id: 123 })
   .then((res) => {
-    console.log(response);
   })
   .catch((err) => {
     console.log(err);

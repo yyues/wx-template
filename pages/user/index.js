@@ -50,6 +50,10 @@ Page({
         uid: wx.getStorageSync("uid"),
       });
     }
+    this.setData({
+      hasFinishSound: wx.getStorageSync('hasFinishSound')
+    })
+    app.globalData.hasFinishSound = wx.getStorageSync('hasFinishSound')
   },
 
   /**
@@ -63,14 +67,22 @@ Page({
   onUnload() {},
   onSoundChange(e) {
     const value = e.detail;
-    this.setData({ hasFinishSound: value });
+    this.setData({
+      hasFinishSound: value
+    });
+    app.globalData.hasFinishSound = value
+    wx.setStorageSync('hasFinishSound', value)
   },
   onOrderChange(e) {
     const value = e.detail;
-    this.setData({ hasAutoOrder: value });
+    this.setData({
+      hasAutoOrder: value
+    });
   },
   onTopChange(e) {
     const value = e.detail;
-    this.setData({ hasTop: value });
+    this.setData({
+      hasTop: value
+    });
   },
 });

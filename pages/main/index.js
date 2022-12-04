@@ -1,14 +1,22 @@
-import { getToken } from "../../utils/action";
-import { initTabActive } from "../../utils/index";
+import {
+  getToken
+} from "../../utils/action";
+import {
+  initTabActive
+} from "../../utils/index";
 import {
   getTodoByDate,
-  delayCurrentToDo,
-  setTodoClock,
+  taskSave,
   finishTodo,
 } from "../../api/todo";
+import Sound from '../../utils/sound';
 import moment from "moment";
 import Toast from "@vant/weapp/toast/toast";
-import { WE_APP_BASE_API } from "../../env";
+
+const app = getApp()
+import {
+  WE_APP_BASE_API
+} from "../../env";
 Page({
   /**
    * 页面的初始数据
@@ -16,42 +24,41 @@ Page({
   data: {
     username: "",
     hasLogin: false,
-    actions: [
-      {
-        icon: "../../images/home/all.png",
+    actions: [{
+        icon: "../../images/home/all_white.png",
         content: "所有待办",
         name: "fade",
         bgColor: "#753ECF",
         activeColor: "",
-        key: "all",
+        key: "my-todo",
         height: "256rpx",
       },
 
       {
-        icon: "../../images/home/many.png",
-        content: "圈子",
+        icon: "../../images/home/static.png",
+        content: "统计",
         name: "fade",
         bgColor: "#FFAA00",
         activeColor: "",
-        key: "circle",
+        key: "statist",
         height: "200rpx",
       },
       {
-        icon: "../../images/home/my.png",
-        content: "动态",
-        name: "fade",
-        bgColor: "#1C92D6",
-        activeColor: "",
-        key: "square",
-        height: "200rpx",
-      },
-      {
-        icon: "../../images/home/finish.png",
+        icon: "../../images/action/flag.png",
         content: "消息",
         name: "fade",
-        bgColor: "#1C92D6",
+        bgColor: "#5776F2",
         activeColor: "",
         key: "my-message",
+        height: "200rpx",
+      },
+      {
+        icon: "../../images/home/tmore.png",
+        content: "更多",
+        name: "fade",
+        bgColor: "#1C92D6",
+        activeColor: "",
+        key: "more",
         height: "256rpx",
       },
     ],
@@ -62,8 +69,9 @@ Page({
     weekList: [],
     list: [],
     loading: false,
-    arr: [], // loading 对应的数组
     emptyUrl: "",
+    sound: null,
+    showTime: false
   },
 
   /**
@@ -101,6 +109,21 @@ Page({
     if (!!getToken()) {
       this.GetToday();
     }
+    if (app.globalData.hasFinishSound) {
+      const url = WE_APP_BASE_API + '/public/sound/finish.mp3'
+      this.setData({
+        sound: new Sound(url)
+      }, () => {
+        this.data.sound.init()
+      })
+    } else {
+      this.setData({
+        sound: ''
+      })
+    }
+    this.setData({
+      showTime: false
+    })
   },
 
   /**
@@ -110,27 +133,6 @@ Page({
     // this.setData({ showDays: false });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-    // this.setData({ showDays: false });
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
   //
   onSearch() {
     const url = `/pages/list/index?key=search&from=home&type=add`;
@@ -140,12 +142,25 @@ Page({
   },
   onAction(e) {
     const key = e.currentTarget.dataset.key;
-    if (key == "all") {
+    if (key == "my-todo") {
       wx.navigateTo({
-        url: `/pages/list/index?key=todo&from=home&type=${key}`,
+        url: `/pages/list/index?key=my-todo&from=home`,
       });
       return;
     }
+    if (key == 'statist') {
+      wx.navigateTo({
+        url: '/pages/statist/index',
+      })
+      return
+    }
+    if (key == 'more') {
+      wx.navigateTo({
+        url: '/pages/more/index',
+      })
+      return
+    }
+
     if (["circle", "square", "my-message"].includes(key)) {
       wx.navigateTo({
         url: `/pages/list/index?key=${key}&from=home&type=${key}`,
@@ -192,8 +207,7 @@ Page({
   onSelectToday(e) {
     const date = e.currentTarget.dataset.key;
     this.getCurrentDay(date == "today" ? moment().format("YYYY-MM-DD") : date);
-    this.setData(
-      {
+    this.setData({
         currentDate: date == "today" ? moment().format("YYYY-MM-DD") : date,
       },
       () => {
@@ -207,13 +221,12 @@ Page({
     });
     // 今天可能也有完成的， 要查没有完成的
     getTodoByDate({
-      task_status: "running",
-      date: this.data.currentDate,
-    })
+        task_status: "running",
+        date: this.data.currentDate,
+      })
       .then((res) => {
         this.setData({
-          list: res,
-          arr: new Array(res.length).fill(false),
+          list: res
         });
       })
       .finally(() => {
@@ -224,21 +237,21 @@ Page({
   },
   onDetail() {},
   onFinish(e) {
-    const id = e.detail;
-    const index = this.data.list.findIndex((i) => i.id == id);
-    const arr = this.data.arr;
-    arr[index] = true;
-    this.setData({
-      arr,
-    });
+    const id = e.currentTarget.dataset.id
     finishTodo({
       id,
     }).then((res) => {
       //  重新走一个请求就行了
+      if (this.data.sound) {
+        this.data.sound.play()
+      }
       Toast.success({
         message: "完成待办啦！",
         duration: 500,
         onClose: () => {
+          if (this.data.sound) {
+            this.data.sound.stop()
+          }
           this.GetToday();
         },
       });
@@ -249,4 +262,26 @@ Page({
       url: "/pages/add/index",
     });
   },
+  onFlag(e) {
+    // 为待办设置旗帜
+    const id = e.currentTarget.dataset.id
+    const data = this.data.list.filter(i => i.id === id)[0]
+    if (data.icon_type === 'flag') return Toast.fail('已有旗帜了！')
+    taskSave({
+      id,
+      icon_type: 'flag'
+    }).then(() => {
+      Toast({
+        type: 'success',
+        message: '设置旗帜成功',
+        onClose: () => {
+          this.GetToday()
+        },
+      });
+    })
+  },
+  onClock(e) {
+    const id = e.currentTarget.dataset.id
+    // 设置时间
+  }
 });

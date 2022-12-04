@@ -1,7 +1,7 @@
 @import "../../style/index.less";
 
 .page {
-  min-height: 110vh;
+  min-height: 100vh;
   transition: height 0.28s;
   position: relative;
 
@@ -70,20 +70,24 @@
       border-radius: @primary-radius;
     }
   }
+
   .action-header {
-    margin: @base-size * 2 @base-size* 2.4;
+    margin: @base-size @base-size* 2.4;
+
     text {
-      font-weight: 500;
-      line-height: 64rpx;
-      font-size: 48rpx;
+      font-weight: 600;
+      line-height: @line-h-16;
+      font-size: @size-16;
       font-family: "思源黑体";
       color: @text-header-color;
     }
   }
+
   .action {
     padding: @primary-theme-padding;
 
     column-count: 2;
+
     .item {
       display: flex;
       flex-direction: column;
@@ -91,6 +95,7 @@
       justify-content: center;
       margin: 0 0 @base-size * 2 0;
       border-radius: @primary-radius * 2;
+
       image {
         width: 80rpx;
         height: 80rpx;
@@ -208,4 +213,44 @@
   .w {
     color: white;
   }
+}
+
+.operation {
+
+  height: calc(100% - @base-size * 0);
+  display: flex;
+  align-items: center;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: @base-size * 2;
+    justify-content: center;
+    background-color: @page-bg-color;
+    border-radius: @primary-radius;
+
+    image {
+      width: 48rpx;
+      height: 48rpx;
+      vertical-align: middle;
+    }
+
+    &.finish {
+      background-color: @primary-success-color;
+    }
+
+    &:not(:last-child) {
+      margin-right: @base-size;
+    }
+
+    &.flag {
+      background-color: #FFAA00;
+    }
+
+    &.clock {
+      background-color: #3DB6FC;
+    }
+  }
+
 }
