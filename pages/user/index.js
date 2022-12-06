@@ -35,6 +35,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    wx.setNavigationBarColor({
+      backgroundColor: app.globalData.primaryColor,
+      frontColor: "#ffffff",
+    });
     if (wx.getStorageSync("username")) {
       this.setData({
         userName: wx.getStorageSync("username"),
