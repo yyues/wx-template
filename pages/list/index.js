@@ -1,14 +1,25 @@
 // pages/list/index.js
-import { getLocationParams } from '../../utils/index'
-import { findAllTodo, getUserAllTodo } from '../../api/todo'
+import {
+  getLocationParams
+} from '../../utils/index'
+import {
+  findAllTodo,
+  getUserAllTodo
+} from '../../api/todo'
 import {
   getPublicCircle,
   agreeJoinCircle,
   getUserAllCircle
 } from '../../api/circle'
-import { getPublicSquare } from '../../api/square'
-import { getMyMsg } from '../../api/message'
-import { WE_APP_BASE_API } from '../../env'
+import {
+  getPublicSquare
+} from '../../api/square'
+import {
+  getMyMsg
+} from '../../api/message'
+import {
+  WE_APP_BASE_API
+} from '../../env'
 import moment from 'moment'
 import Toast from '@vant/weapp/toast/toast'
 const app = getApp()
@@ -43,11 +54,22 @@ Page({
     actions: [], // 对应的数组
     description: '', // 描述信息，用来替代提示
     total: 0, // 返回的列表数量
-    todoTypeList: [
-      { title: '全部', key: '' },
-      { title: '进行中', key: 'running' },
-      { title: '已完成', key: 'finish' },
-      { title: '逾期', key: 'delay' }
+    todoTypeList: [{
+        title: '全部',
+        key: ''
+      },
+      {
+        title: '进行中',
+        key: 'running'
+      },
+      {
+        title: '已完成',
+        key: 'finish'
+      },
+      {
+        title: '逾期',
+        key: 'delay'
+      }
     ],
     currentTodoType: ''
   },
@@ -56,7 +78,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const { key, from, type } = this.GetRouteParam()
+    const {
+      key,
+      from,
+      type
+    } = this.GetRouteParam()
     const master = getLocationParams('master')
     // 这个是 检测自己 的圈子下 的待办页面能够有新增按钮
     const expec = key === 'my-todo' && from === 'circle-detail' && !!master
@@ -107,8 +133,7 @@ Page({
    */
   onPullDownRefresh() {
     const key = this.data.key
-    this.setData(
-      {
+    this.setData({
         refresh: true
       },
       () => {
@@ -125,7 +150,10 @@ Page({
    */
   onReachBottom() {
     const key = this.data.key
-    const { total, searchForm } = this.data
+    const {
+      total,
+      searchForm
+    } = this.data
     if (total < searchForm.limit) {
       // return Toast.fail("数据已加载完了！");
       return
@@ -133,8 +161,7 @@ Page({
     if (key !== 'search' && key !== 'todo') {
       searchForm.page++
       wx.showNavigationBarLoading()
-      this.setData(
-        {
+      this.setData({
           searchForm
         },
         () => {
@@ -163,7 +190,7 @@ Page({
     const before = this.data.list
     const key = this.data.key
     let list
-    if (['my-circle'].includes(key)) {
+    if (['my-circle', 'search'].includes(key)) {
       list = res
     } else {
       list = refresh ? [...res.rows] : [...before, ...res.rows]
@@ -186,7 +213,10 @@ Page({
     }
   },
   GetTitle() {
-    const { key, from } = this.GetRouteParam()
+    const {
+      key,
+      from
+    } = this.GetRouteParam()
     let title
     switch (key) {
       case 'search':
@@ -226,7 +256,10 @@ Page({
     })
   },
   setEmptyMsg() {
-    const { key, from } = this.GetRouteParam()
+    const {
+      key,
+      from
+    } = this.GetRouteParam()
     let title
     let url
     switch (key) {
@@ -273,8 +306,7 @@ Page({
   },
   // search 搜索 start
   onHeaderSearch(e) {
-    this.setData(
-      {
+    this.setData({
         searchValue: e.detail
       },
       () => {
@@ -297,7 +329,10 @@ Page({
   },
   // search 搜索 end
   GetList() {
-    const { key, from } = this.GetRouteParam()
+    const {
+      key,
+      from
+    } = this.GetRouteParam()
     this.setData({
       loading: true
     })
@@ -369,8 +404,7 @@ Page({
     const msgId = e.detail
     const key = this.data.key
     if (key !== 'my-message') return Toast.fail('不能操作的哦!')
-    const actions = [
-      {
+    const actions = [{
         name: '同意',
         color: app.globalData.primaryColor,
         loading: false,
@@ -426,7 +460,10 @@ Page({
     })
   },
   onActionSelect(e) {
-    const { msgId, name } = e.detail
+    const {
+      msgId,
+      name
+    } = e.detail
     const data = this.data.list.filter((i) => i.id === msgId)[0]
     if (!data) return Toast.fail('数据错误！')
     if (name === '同意') {
@@ -434,7 +471,12 @@ Page({
     }
   },
   onAgree(data) {
-    const { form_type, form_id, create_uid, id } = data
+    const {
+      form_type,
+      form_id,
+      create_uid,
+      id
+    } = data
     let fn
     if (form_type === 'circle-join') {
       const param = {

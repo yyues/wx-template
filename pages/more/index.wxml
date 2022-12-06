@@ -1,2 +1,42 @@
-<!--pages/more/index.wxml-->
-<text>pages/more/index.wxml</text>
+<view class="page">
+
+  <view class="list-wrapper">
+    <view class="list-header">
+      <text>功能</text>
+    </view>
+    <view class="list-content">
+      <block wx:for="{{func}}" wx:key="index">
+        <van-transition name="fade" custom-class='list-item'>
+          <view class="content" bindtap="onFunc" data-key="{{item.key}}">
+            <view class="icon">
+              <image src="{{item.icon}}" style="width: {{item.iconWidth}}; height: {{item.iconWidth}};" mode="" />
+            </view>
+            <view class="title">
+              <text>{{item.title}}</text>
+            </view>
+          </view>
+        </van-transition>
+      </block>
+
+    </view>
+  </view>
+  <view class="list-wrapper">
+    <view class="list-header">
+      <text>说明</text>
+    </view>
+    <view class="list-content">
+      <block wx:for="{{list}}" wx:key="index">
+        <van-transition name="fade" custom-class='list-item'>
+          <view class="content" bindtap="onSay" data-key="{{item.key}}">
+            <view class="icon">
+              <image src="{{item.icon}}" style="width: {{item.iconWidth}}; height: {{item.iconWidth}};" mode="" />
+            </view>
+            <view class="title">
+              <text>{{item.title}}</text>
+            </view>
+          </view>
+        </van-transition>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,1 +1,41 @@
-/* pages/more/index.wxss */
+.page {
+  min-height: calc(100vh - 10rpx * 2);
+  background-color: #f2f3f5;
+  padding: 0 24rpx;
+  padding-top: 20rpx;
+}
+.page .list-wrapper .list-header {
+  margin: 20rpx 0;
+}
+.page .list-wrapper .list-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.page .list-wrapper .list-item .content {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 112rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+}
+.page .list-wrapper .list-item .content .icon {
+  text-align: center;
+}
+.page .list-wrapper .list-item .content .icon image {
+  vertical-align: middle;
+}
+.page .list-wrapper .list-item .content .title {
+  margin-top: 16rpx;
+  text-align: center;
+}
+.page .list-wrapper .list-item .content .title text {
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: rgba(0, 0, 0, 0.85);
+  letter-spacing: 0.07px;
+}

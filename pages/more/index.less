@@ -1,0 +1,55 @@
+@import '../../style/index.less';
+
+.page {
+  min-height: calc(100vh - @base-size * 2);
+  background-color: @page-bg-color;
+  padding: 0 @base-size * 2.4;
+  padding-top: @base-size * 2;
+
+  .list-wrapper {
+
+    .list-header {
+      margin: @base-size * 2 0;
+    }
+
+    .list-content {
+      display: flex;
+      // flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .list-item {
+      .content {
+        padding: @base-size * 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 112rpx;
+        margin-right: @base-size * 2;
+        margin-bottom: @base-size * 2;
+        background-color: #fff;
+        border-radius: @primary-radius * 2;
+
+        .icon {
+          text-align: center;
+
+          image {
+            vertical-align: middle;
+          }
+        }
+
+        .title {
+          margin-top: @base-size * 1.6;
+          text-align: center;
+          text {
+            font-size: @size-14;
+            line-height: @line-h-14;
+            color: @text-header-color;
+            letter-spacing: 0.07px;
+          }
+        }
+      }
+    }
+  }
+}
