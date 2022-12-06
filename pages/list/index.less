@@ -1,8 +1,10 @@
-@import '../../style/index.less';
+@import "../../style/index.less";
 
 .wrapper {
   min-height: 100vh;
-
+  &.bg {
+    background-color: @page-bg-color;
+  }
   display: flex;
   flex-direction: column;
 
@@ -11,8 +13,8 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    // align-items: center;
-    padding-top: 16vh;
+    align-items: center;
+    // padding-top: 16vh;
   }
 
   .content {
@@ -24,8 +26,6 @@
     position: relative;
 
     .header {
-
-
       .total {
         padding: @base-size * 4 0 @base-size * 6 0;
         background-color: @primary-color;
@@ -62,5 +62,30 @@
   }
   .bg-color {
     background-color: @page-bg-color;
+  }
+  .todo-type {
+    margin: 0 @base-size * 2.4;
+    display: flex;
+    padding: 6rpx;
+    border-radius: @primary-radius * 4;
+    background-color: @primary-color;
+    .type-item {
+      flex: 1;
+      text-align: center;
+      padding: 4rpx 0;
+      text {
+        font-size: @size-14;
+        line-height: @line-h-14;
+        color: white;
+      }
+      border-radius: @primary-radius * 4;
+      cursor: pointer;
+    }
+    .todo-select {
+      background-color: #fff;
+      text {
+        color: @primary-color;
+      }
+    }
   }
 }

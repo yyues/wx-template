@@ -34,7 +34,7 @@
   margin-bottom: 10rpx;
 }
 .detail .content text {
-  color: #24271e;
+  color: rgba(0, 0, 0, 0.85);
 }
 .label {
   display: flex;
@@ -43,7 +43,12 @@
 .label .level {
   margin-right: 10rpx;
 }
+.icon-flag image {
+  width: 52rpx;
+  height: 52rpx;
+  vertical-align: middle;
+}
 .high {
   border-radius: 8rpx;
-  background-color: #F9F7FF;
+  background-color: #f9f7ff;
 }

@@ -1,28 +1,30 @@
-<view class="wrapper">
+<view class="wrapper {{key === 'my-todo' ? 'bg':''}}">
   <!-- loading 说明 列表页进入统一loading  因为要先处理类型判断 -->
   <view class="loading" wx:if="{{loading}}">
     <image src="../../images/page/loading.gif" lazy-load="{{true}}"></image>
   </view>
   <view class="content" wx:else>
     <view class="header" wx:if="{{ hasHeader }}">
-      <!-- 只有 待办页 和  搜索页 才有 头部内容 -->
-      <view class="all" wx:if="{{key === 'todo'}}">
-        <view class="total" wx:if="{{list.length !==0}}">
-          <text>今日共有{{list.length}}个待办</text>
+      <van-sticky offset-top="{{ 0 }}">
+        <view class="todo-type" wx:if="{{key === 'my-todo'}}">
+          <view class="type-item {{currentTodoType === item.key ? 'todo-select':''}}" data-key="{{item.key}}" bind:tap="onTodoTypeChange" wx:for="{{todoTypeList}}" wx:key="index">
+            <text>{{item.title}}</text>
+          </view>
         </view>
-        <calendar bind:selectDay="onHeaderSelect" selectDay="{{selectDate}}" list="{{list}}" />
-      </view>
+      </van-sticky>
+
+      <!-- 只有 待办页 和  搜索页 才有 头部内容 -->
       <van-search value="{{ searchValue }}" placeholder="搜索个人/公开的待办" wx:if="{{key === 'search'}}" bind:search="onHeaderSearch" bind:cancel="onSearchCancel" />
     </view>
     <!-- 在待办页的时候给出一个背景色 -->
-    <view class="empty {{key == 'todo' ? 'bg-color':''}}" wx:if="{{list.length === 0 }}">
+    <view class="empty " wx:if="{{list.length === 0 }}">
       <van-empty description="{{emptyMsg}}" image="{{emptyUrl}}" custom-class="{{key == 'my-message' ? 'my-message' :''}}" />
     </view>
     <view class="detail " wx:else>
       <block wx:for="{{list}}" wx:key="id">
-        <!-- 待办类 统一卡片  -->
+        <!-- 待办类 统一卡片 -->
         <task-card wx:if="{{isTask}}" index="{{index + 1 }}" data="{{item}}" hasIndex binddetail="onDetail" />
-        <!-- 圈子类 统一卡片  -->
+        <!-- 圈子类 统一卡片 -->
         <circle-card wx:if="{{isCircle}}" data="{{item}}" index="{{index}}" binddetail="onDetail" />
         <!-- 动态 -->
         <square-card wx:if="{{isSquare}}" data="{{item}}" index="{{index + 1}}" />

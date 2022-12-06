@@ -31,8 +31,8 @@
   line-height: 56rpx;
 }
 .page .user-card .wrapper .header .actions image {
-  width: 54rpx;
-  height: 54rpx;
+  width: 48rpx;
+  height: 48rpx;
   vertical-align: middle;
 }
 .page .user-card .wrapper .bottom text {
@@ -51,7 +51,8 @@
   border-radius: 8rpx;
 }
 .page .action-header {
-  margin: 10rpx 24rpx;
+  padding: 10rpx 24rpx;
+  background-color: #f2f3f5;
 }
 .page .action-header text {
   font-weight: 600;
@@ -61,28 +62,32 @@
   color: rgba(0, 0, 0, 0.85);
 }
 .page .action {
-  padding: 20rpx 24rpx;
-  column-count: 2;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 16rpx 0;
+  background-color: #f2f3f5;
 }
 .page .action .item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 0 20rpx 0;
+  min-width: 120rpx;
+  padding: 20rpx;
   border-radius: 16rpx;
 }
 .page .action .item image {
-  width: 80rpx;
-  height: 80rpx;
+  width: 56rpx;
+  height: 56rpx;
+  vertical-align: middle;
+  margin-bottom: 16rpx;
 }
 .page .action .item text {
   display: block;
-  margin-top: 20rpx;
-  color: white;
-  font-size: 24rpx;
+  color: #94a3b8;
+  font-size: 28rpx;
   line-height: 44rpx;
-  letter-spacing: 1.2px;
 }
 .page .action .item:hover {
   background-color: #f4f4f5;
@@ -189,8 +194,8 @@
   margin-right: 10rpx;
 }
 .operation .item.flag {
-  background-color: #FFAA00;
+  background-color: #ffaa00;
 }
 .operation .item.clock {
-  background-color: #3DB6FC;
+  background-color: #3db6fc;
 }

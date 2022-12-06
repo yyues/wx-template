@@ -1,7 +1,7 @@
 <view class="wrapper">
   <van-nav-bar bind:click-left="onClickLeft" border="{{false}}" placeholder="{{true}}" fixed="{{true}}" custom-style="background-color:{{headerColor}}">
     <text slot="title" style="color: {{hasColor ? '#fff':'#000'}};"> {{title}}</text>
-    <van-icon slot='left' size="24px" name="arrow-left" color="{{hasColor ? '#fff':'#5b67ca'}}" />
+    <van-icon slot='left' size="20px" name="arrow-left" color="{{hasColor ? '#fff':'#5b67ca'}}" />
   </van-nav-bar>
   <!-- loading 说明 列表页进入统一loading  因为要先处理类型判断 -->
   <view class="loading" wx:if="{{loading}}">

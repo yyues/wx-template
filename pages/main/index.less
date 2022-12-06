@@ -42,8 +42,8 @@
 
         .actions {
           image {
-            width: 54rpx;
-            height: 54rpx;
+            width: 48rpx;
+            height: 48rpx;
             vertical-align: middle;
           }
         }
@@ -72,8 +72,9 @@
   }
 
   .action-header {
-    margin: @base-size @base-size* 2.4;
-
+    padding: @base-size @base-size* 2.4;
+    // border-radius: @primary-radius * 2 @primary-radius * 2 0 0;
+    background-color: @page-bg-color;
     text {
       font-weight: 600;
       line-height: @line-h-16;
@@ -84,31 +85,34 @@
   }
 
   .action {
-    padding: @primary-theme-padding;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    // border-radius: 0 0 @primary-radius * 2 @primary-radius * 2;
+    padding: @base-size * 1.6 0;
 
-    column-count: 2;
-
+    background-color: @page-bg-color;
     .item {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: 0 0 @base-size * 2 0;
+      min-width: 120rpx;
+      padding: @base-size * 2;
       border-radius: @primary-radius * 2;
-
       image {
-        width: 80rpx;
-        height: 80rpx;
+        width: 56rpx;
+        height: 56rpx;
+        vertical-align: middle;
+        margin-bottom: @base-size * 1.6;
       }
 
       text {
         display: block;
-        margin-top: @base-size * 2;
-        // color: @primary-second-text-color;
-        color: white;
-        font-size: @size-12;
+
+        color: @primary-second-text-color;
+        font-size: @size-14;
         line-height: @line-h-14;
-        letter-spacing: 1.2px;
       }
 
       &:hover {
@@ -216,7 +220,6 @@
 }
 
 .operation {
-
   height: calc(100% - @base-size * 0);
   display: flex;
   align-items: center;
@@ -245,12 +248,11 @@
     }
 
     &.flag {
-      background-color: #FFAA00;
+      background-color: #ffaa00;
     }
 
     &.clock {
-      background-color: #3DB6FC;
+      background-color: #3db6fc;
     }
   }
-
 }

@@ -12,6 +12,7 @@
     "circle-card": "../../components/circle-card/index",
     "square-card": "../../components/square-card/index",
     "msg-card": "../../components/message/index",
-    "van-action-sheet": "@vant/weapp/action-sheet/index"
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-sticky": "@vant/weapp/sticky/index"
   }
 }

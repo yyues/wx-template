@@ -32,5 +32,9 @@
   <!-- 日期 / 在考虑要不要 -->
   <view class="date"></view>
   <!-- 操作按钮 其实一般是没有的 -->
-  <view class="action" wx:if="{{hasAction}}" bindtap="onAction"></view>
+  <view class="action" wx:if="{{hasAction}}" bindtap="onAction">
+    <view class="icon-flag" wx:if="{{data.icon_type === 'flag'}}">
+      <image src="../../images/flag.png" mode=""/>
+    </view>
+  </view>
 </view>
